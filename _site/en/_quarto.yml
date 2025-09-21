@@ -1,0 +1,43 @@
+project:
+  type: website
+  output-dir: ../../docs/en
+  
+website:
+  title: "&nbsp;&nbsp;Dashboard"
+  favicon: "RoundLogoSchriftzug_blue.png"
+  navbar:
+    logo: "LogoSchriftzug.png"
+    left:
+      - href: index.qmd
+        text: "{{< iconify ph star-four-light >}} AI Tracker"
+      - href: https://favstats.github.io/campaigntracker/explore
+        text: "{{< iconify ph binoculars-light >}} AI Explorer"
+      - href: https://favstats.github.io/campaigntracker/blog
+        text: "{{< iconify ph newspaper-light >}} Blog"
+      - href: info.qmd
+        text: "{{< iconify ph info-light >}} About Us"
+    right:
+      - href: https://favstats.github.io/nl25/
+        text: "{{< iconify material-symbols:target >}} Targeting Tracker"        
+        id: targeting-tracker
+      - text: "de {{< iconify emojione flag-for-netherlands >}}"
+        href: "https://www.campaigntracker.nl"
+        
+  page-footer:
+    background: light # or dark
+    left:
+      - text: "Copyright 2025, CampAIgn Tracker (Click for Impressum)"
+        href: https://favstats.github.io/campaigntrackernl/impressum.html
+      - text: "Datenschutzerklärung"
+        href: https://favstats.github.io/campaigntrackernl/daentschutz.html
+    right:
+      - text: "Financed through the Baden-Württemberg Stiftung"
+        href: "https://www.bwstiftung.de/"
+
+    
+format:
+  html:
+    theme:
+      - cosmo
+      - custom.scss
+    fontsize: 1.2em
