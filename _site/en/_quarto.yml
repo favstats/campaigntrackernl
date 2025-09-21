@@ -10,9 +10,9 @@ website:
     left:
       - href: index.qmd
         text: "{{< iconify ph star-four-light >}} AI Tracker"
-      - href: https://favstats.github.io/campaigntracker/explore
+      - href: https://favstats.github.io/campaigntrackernl/explore
         text: "{{< iconify ph binoculars-light >}} AI Explorer"
-      - href: https://favstats.github.io/campaigntracker/blog
+      - href: https://favstats.github.io/campaigntrackernl/blog
         text: "{{< iconify ph newspaper-light >}} Blog"
       - href: info.qmd
         text: "{{< iconify ph info-light >}} About Us"
