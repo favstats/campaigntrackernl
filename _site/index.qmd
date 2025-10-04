@@ -1488,9 +1488,6 @@ htmltools::browsable(medienformatte)
 ### Others
 
 
-
-## `r get_text("media_formats", lang)` {#medienformatte}
-
 ```{r}
 medienformatte <- full_data %>%
   filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
