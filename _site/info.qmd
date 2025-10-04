@@ -12,17 +12,16 @@ format:
       text: |
         <script>
           document.addEventListener("DOMContentLoaded", function () {
-              document.querySelectorAll("a[href='https://favstats.github.io/de25/']").forEach(function(link) {
+              document.querySelectorAll("a[href='https://favstats.github.io/nl25/']").forEach(function(link) {
                   link.addEventListener("click", function(event) {
-                      event.preventDefault(); // Prevent default behavior
-                      window.open(link.href, "_blank"); // Open in a new tab/window
+                      event.preventDefault();
+                      window.open(link.href, "_blank");
                   });
               });
           });
         </script>
 ---
 
-<!-- Custom CSS -->
 <style>
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
@@ -35,6 +34,11 @@ body {
 h1, h2 {
   text-align: center;
   color: #0056b3;
+}
+
+h3 {
+  color: #0056b3;
+  margin-top: 1.5em;
 }
 
 .section-container {
@@ -53,6 +57,19 @@ h1, h2 {
 
 .section-container strong {
   color: #0073e6;
+}
+
+.section-container ul {
+  font-size: 1.05em;
+  line-height: 1.8;
+}
+
+.highlight-box {
+  background-color: #e8f4f8;
+  border-left: 4px solid #0073e6;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 5px;
 }
 
 .button-container {
@@ -75,97 +92,113 @@ h1, h2 {
 .button:hover {
   background-color: #0056b3;
 }
+
+.team-section {
+  margin-top: 2em;
+}
+
+.team-category {
+  margin-bottom: 1.5em;
+}
+
+.team-category h4 {
+  color: #0073e6;
+  margin-bottom: 0.5em;
+  font-size: 1.1em;
+}
+
+.team-list {
+  margin-left: 1em;
+  color: #555;
+}
 </style>
 
-<!-- Content -->
 <div class="section-container">
   <h1>CampAIgn Tracker</h1>
   
-  <h2>Über Uns</h2>
+  <h2>About Us</h2>
+  
   <p>
-    Wir sind ein interdisziplinäres Team, welches sich ehrenamtlich dafür engagiert, dass im politischen Diskurs auf Social Media Transparenz über den Einsatz von KI herrscht. Wir haben uns auf dem von der [Baden-Württemberg Stiftung](https://www.bwstiftung.de/de/) organisierten Politechathon in Berlin kennengelernt. Auf diesem konnten wir das Preisgeld in der Kategorie „Medienkompetenz“ gewinnen, was es uns ermöglicht, den <strong>CampAIgn Tracker</strong> weiterzuentwickeln.
+    We are an interdisciplinary team dedicated to bringing transparency to the use of AI in political discourse on social media. Our project has received significant support through multiple funding sources, enabling us to build a comprehensive monitoring infrastructure.
   </p>
 
+<div class="highlight-box"> <h3>Funding & Support</h3> <p> Our work is made possible through grants from the <strong>University of Amsterdam's Research Priority Area in Artificial Intelligence & Politics</strong> ([AI & Politics RPA](https://aissr.uva.nl/our-research/artificial-intelligence-politics.html)), which provides annual funding of 250,000 euros over five years to stimulate interdisciplinary research into how AI is reshaping politics and society. </p> <p> We also received crucial funding from the <strong>SIDN Fonds</strong> as part of the <strong>Hybrid Election Interference Observatory</strong> (HEIO) consortium. This project brings together Post-X Society, AI Forensics, Trollrensics, Justice for Prosperity to protect election integrity by monitoring social media platforms for foreign interference operations. </p> </div>
+
+  <h3>Our Team</h3>
+  
   <p>
-    Wir, das sind unsere zwei Forscher Dr. Simon Kruschinski (Universität Mainz) und Dr. Fabio Votta ([AlgoSoc Konsortium](https://algosoc.org/) an der Universität Amsterdam), die im Bereich politische Kampagnen auf Social Media forschen. Sie haben die Idee in die Gruppe gebracht und sind für die reibungslose Kodierung der Bilder und Videos sowie deren schnelle Aufbereitung auf unserer Plattform verantwortlich. Miriam Runde ist Data Scientist und ist vor allem mitverantwortlich für das Backend der Plattform sowie die Nutzung von KI-Detektoren. Jakob Scherer (Hintergrund in BWL und IT) und Theresa Schültken (Hintergrund in Politik und Strategischer Vorausschau) sind für die Außenkommunikation des CampAIgn Trackers sowie die inhaltliche Mitgestaltung zuständig.
+    The <strong>CampAIgn Tracker</strong> is led by <strong>Dr. Fabio Votta</strong> ([AlgoSoc Consortium](https://algosoc.org/) at the University of Amsterdam) and <strong>Dr. Simon Kruschinski</strong> (University of Mainz), who brought this initiative to life and are responsible for the research project. Both researchers specialize in political campaigns on social media.
   </p>
 
-![](img/us.png)
-  <p>
-    <strong>Von links nach rechts auf dem Bild:</strong> Theresa Gröninger (Jurorin beim Politechathon), Theresa Schültken, Miriam Runde, Fabio Votta, Simon Kruschinski, Jakob Scherer <em>[Credits: @BW Stiftung / Viktor Heekeren]</em>
-  </p>
-</div>
+
+<div class="team-category"> <h4>Research Assistants</h4> <div class="team-list"> <p>Doortje Cools, Lynn Louvet, Ella van Vloten, Daisy Blass, Isabella van der Zanden, Raluca Groza</p> <p><em>We extend our deepest thanks to our research assistants for their exceptional dedication and effort in bringing this project to life.</em></p> </div> </div> <div class="team-category"> <h4>PhD Students & Postdocs (University of Amsterdam)</h4> <div class="team-list"> <p>Tobias Kleindamm, Ellen Linnert, Annamijn Beijeman</p> <p><em>We are equally grateful to our PhD students and postdocs, whose expertise and commitment have been vital to shaping the scientific backbone of the CampAIgn Tracker.</em></p> </div> </div>
+
+
+
 
 <div class="section-container">
 
-## Methode
+## Method
 
-Wir wollen mit dem **CampAIgn Tracker** dazu beitragen, dass Bürger:innen und Journalist:innen nachvollziehen können, **wo KI genutzt wurde und in welchem Kontext**. Dafür haben wir ein **zweistufiges Verfahren** entwickelt, um KI-generierte Bilder zuverlässig zu identifizieren und zu kodieren.  
+With the **CampAIgn Tracker**, we aim to help citizens and journalists understand **where AI has been used and in what context**. To achieve this, we have developed a **two-stage process** to reliably identify and code AI-generated images.
 
-### Datenerhebung  
+### Data Collection
 
 ```{r, echo=F, warning=F, message=F}
 library(tidyverse)
 library(reactable)
 full_data <- readRDS("../data/full_data.rds")
-
-
 ```
 
-Wir erfassen **alle unbezahlten Beiträge und bezahlten Werbeanzeigen** von über **3000 Accounts** der Parteien und Spitzenkandidierenden von SPD, CDU/CSU, FDP, Grünen, der Linken, AfD, BSW, Freie Wähler, Tierschutzpartei, Partei des Fortschritts, dieBasis, VOLT, Piraten, Bayernpartei, V-Partei, und NPD/Heimat (und viele weitere Kleinstparteien). 
+We capture **all posts** from over **3000 accounts** of parties, leading candidates, political commentators and influencers. We consider **party accounts at the national, provincial, and local levels**.
 
-Dabei berücksichtigen wir die **Accounts der Parteien auf Bundes-, Landes- und Lokalebene**.  
-
-- **Organische Posts** werden über die *[Brightdata](https://brightdata.com)* gesammelt.  
-- **Werbeanzeigen** stammen aus der *[Meta Ad Library API](https://www.facebook.com/ads/library/api/)*.  
-
-Derzeit tracken wir *`r nrow(full_data)` Beiträge* zwischen `r min(full_data$posted_date)` und `r max(full_data$posted_date)`.
+We are currently tracking *`r nrow(full_data)` posts* between `r min(full_data$posted_date)` and `r max(full_data$posted_date)`.
 
 ```{r, echo=F, warning=F, message=F}
-
 full_data %>% 
   count(party, sort = T) %>%
-  rename(Partei = party, Beiträge = n) %>% 
+  rename(Party = party, Posts = n) %>% 
   reactable()
 ```
 
+The classification of accounts is based on the work of our research assistants as well as dedicated volunteer work of [Who Targets Me](https://whotargets.me/), an organization committed to transparency in digital campaigning. They track the online advertising spending of over 100,000 advertisers from 650+ parties in over 50 countries.
 
-Die Klassifizierung der Accounts basiert auf der engagierten Freiwilligenarbeit von [Who Targets Me](https://whotargets.me/), einer Organisation, die sich für Transparenz im digitalen Wahlkampf einsetzt. Sie verfolgen die Online-Werbeausgaben von über 100.000 Werbetreibenden von 650+ Parteien in über 50 Ländern. 
+### AI Detection
 
-### KI-Detektion  
+Our AI detection is a **two-stage process** that combines **automatic classification** using an AI model with **manual annotation**.
 
-Unsere KI-Detektion ist ein *zweistufiges Verfahren*, das **automatische Klassifikation** mit einem KI-Modell und **manuelle Annotation** kombiniert.  
+**1. Automatic Review:**
+   - All collected images and video stills are checked for AI generation using the **AI detection model from [SightEngine](https://sightengine.com/detect-ai-generated-images)**.
 
-1. **Automatische Prüfung:**  
-   - Alle gesammelten Bilder und Video-Stills werden mit dem **KI-Detektionsmodell von [SightEngine](https://sightengine.com/detect-ai-generated-images)** auf KI-Generierung geprüft.  
+**2. Human Validation:**
+   - If the *classification probability is above 0.1*, **trained coders** manually review the image.
+   - This ensures that automatic AI classification is validated by human expertise.
 
-2. **Menschliche Validierung:**  
-   - Falls die *Klassifikations-wahrscheinlichkeit über 0.1 liegt*, prüfen **geschulte Codierer:innen** das Bild manuell.  
-   - So wird die automatische KI-Klassifikation durch menschliche Expertise abgesichert.  
+Additionally, for all identified **AI posts**, coders classify the following features:
 
-Zusätzlich klassifizieren die Codierer:innen für alle identifizierten **KI-Beiträge** folgende Merkmale:  
+- **The labeling of AI use**
+- **The actors in the image or video**
+- **The theme of the image or video**
+- **The actors in the entire post**
+- **The use of negativity**, e.g., through attacks on parties
+- **The use of acclaims**, e.g., through references to a party's successes
 
-- **Die Kennzeichnung von KI-Nutzung**  
-- **Die Akteur:innen im Bild oder Video**  
-- **Das Thema des Bildes oder Videos**  
-- **Die Akteur:innen im gesamten Beitrag**  
-- **Die Verwendung von Negativität**, z. B. durch Angriffe auf Parteien  
-- **Die Verwendung von Acclaims**, z. B. durch Verweise auf Erfolge einer Partei  
+This comprehensive information is available on our platform [campaigntracker.nl](https://www.campaigntracker.nl) in simple visualizations.
 
-Diese umfassenden Informationen sind auf unserer Plattform [campaigntracker.de](https://www.campaigntracker.de) in einfachen Visualisierungen verfügbar.  
+This enables **citizens and journalists** to learn how AI is being used in election campaigns and to hold a **public debate** about the use of AI in politics.
 
-So ermöglichen wir, dass **Bürger:innen und Journalist:innen** erfahren, wie KI im Wahlkampf genutzt wird und eine **öffentliche Debatte** über den Einsatz von KI in der Politik führen können.  
 </div>
 
+
 <div class="section-container button-container">
-  <h2>Kontakt</h2>
+  <h2>Contact</h2>
   <p>
-    Um mehr über die methodischen Hintergründe zu erfahren oder falls Sie als Journalist:in mit dem Team in Kontakt treten wollen, kontaktieren Sie uns bitte unter:
+    To learn more about the methodological background or if you are a journalist wanting to contact the team, please reach out to us at:
   </p>
   <a href="mailto:info@campaigntracker.de" class="button">info@campaigntracker.de</a>
 </div>
 
-
+<h3>Our Origins</h3> <p> We initially started with this project at the Politechathon in Berlin, organized by the [Baden-Württemberg Stiftung](https://www.bwstiftung.de/de/), where we won the prize in the "Media Literacy" category. This initial success allowed us to develop the <strong>CampAIgn Tracker</strong> further. </p> ![](img/us.png) <p style="text-align: center; font-style: italic; color: #666;"> <strong>From left to right:</strong> Theresa Gröninger (Jury member at the Politechathon), Theresa Schültken, Miriam Runde, Fabio Votta, Simon Kruschinski, Jakob Scherer<br> <em>[Credits: @BW Stiftung / Viktor Heekeren]</em> </p> </div>
 
 <br>
 <center>

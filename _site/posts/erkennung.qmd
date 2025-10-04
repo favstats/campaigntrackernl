@@ -1,15 +1,15 @@
 ---
-title: "Wie erkennt man KI-generierte Bilder und wie stärkt man die eigene KI-Kompetenz?"
-description-meta: "Tipps zur Erkennung KI-generierter Bilder und zur Stärkung digitaler Resilienz in politischen Kampagnen."
+title: "How to Recognize AI-Generated Images and Strengthen Your AI Literacy"
+description-meta: "Tips for recognizing AI-generated images and strengthening digital resilience in political campaigns."
 author: "Jakob Scherer"
 date: "2.17.2025"
 image: "yPrk02y.png"
-lang: de
+lang: en
 format:
   html:
     theme: lumen
     toc: true
-    toc-title: "Inhalt"
+    toc-title: "Contents"
     toc-depth: 2
     smooth-scroll: true
 ---
@@ -68,46 +68,46 @@ blockquote {
 </style>
 
 
-Die Fähigkeit, KI-generierte Bilder zu erkennen, ist essenziell, um Desinformation und Manipulation in digitalen Kampagnen zu verhindern. Besonders im Kontext politischer Kommunikation wird generative KI zunehmend genutzt – teils für kreative Zwecke, teils für bewusste Irreführung. Der **campAIgn Tracker** bietet einen Überblick über aktuelle KI-Trends in politischen Kampagnen und hilft Bürgerinnen und Bürgern, sich gegen Desinformation zu wappnen.
+The ability to recognize AI-generated images is essential to preventing disinformation and manipulation in digital campaigns. Especially in the context of political communication, generative AI is increasingly used – sometimes for creative purposes, sometimes for deliberate deception. The **campAIgn Tracker** provides an overview of current AI trends in political campaigns and helps citizens protect themselves against disinformation.
 
-### **KI-generierte Bilder: Täuschend echt und doch erkennbar**
+### **AI-Generated Images: Deceptively Real Yet Detectable**
 
-Moderne KI kann mittlerweile realistisch anmutende Bilder erstellen. Doch einige Hinweise verraten sie:
+Modern AI can now create images that look realistic. But some clues give them away:
 
-- **Unnatürliche Details:** Verzerrte Gesichtsproportionen, inkonsistente Lichtquellen oder fehlende Reflexionen.  
-- **Auffällige Texturen und Muster:** Wiederholungen oder unscharfe Stellen, besonders in Hintergründen.  
-- **Probleme bei Augen und Händen:** KI hat Schwierigkeiten, realistische Hände oder symmetrische Augen zu generieren.  
-- **Metadaten-Analyse:** Mit Tools wie *Foto-Forensik* oder *Google Lens* kann die Herkunft eines Bildes überprüft werden.  
-- **Reverse Image Search:** Durch eine Rückwärtssuche kann festgestellt werden, ob das Bild als KI-generiert markiert wurde.  
+- **Unnatural details:** Distorted facial proportions, inconsistent light sources, or missing reflections.  
+- **Strange textures and patterns:** Repetitions or blurry spots, especially in backgrounds.  
+- **Problems with eyes and hands:** AI struggles to generate realistic hands or symmetrical eyes.  
+- **Metadata analysis:** Tools like *Foto Forensics* or *Google Lens* can be used to check the origin of an image.  
+- **Reverse image search:** A reverse search can reveal whether the image has been flagged as AI-generated.  
 
-![[Infobox aus aktueller Studie zur KI im Wahlkampf](https://www.otto-brenner-stiftung.de/generative-ki-in-politischen-kampagnen/) von Dr. Simon Kruschinski, Dr. Pablo Jost, Tobias Scherer und Hannah Fecher](A4gQPaI.png)
+![[Infobox from current study on AI in election campaigns](https://www.otto-brenner-stiftung.de/generative-ki-in-politischen-kampagnen/) by Dr. Simon Kruschinski, Dr. Pablo Jost, Tobias Scherer, and Hannah Fecher](A4gQPaI.png)
 
-### Digitale Resilienz: Wie Bürger*innen ihre KI-Kompetenz stärken
+### Digital Resilience: How Citizens Can Strengthen Their AI Literacy
 
-Um Manipulationen zu vermeiden, ist eine kritische Auseinandersetzung mit digitalen Inhalten unerlässlich. Hier sind einige Maßnahmen, die helfen:
+To avoid manipulation, a critical approach to digital content is essential. Here are some measures that can help:
 
-#### **1. Kritisches Denken schulen**
+#### **1. Train Critical Thinking**
 
-- Hinterfragen Sie Bilder und Inhalte, vor allem in politischen Kontexten.  
-- Vergleichen Sie Informationen mit seriösen Nachrichtenquellen oder Faktencheck-Plattformen.  
+- Question images and content, especially in political contexts.  
+- Compare information with reliable news sources or fact-checking platforms.  
 
-#### **2. Technische Hilfsmittel nutzen**
+#### **2. Use Technical Tools**
 
-- Spezialisierte *Deepfake-Detektoren* und *Bildanalyse-Tools* helfen bei der Erkennung manipulierter Inhalte.  
-- Erweiterungen für Browser und KI-Warnsysteme geben erste Hinweise auf Fälschungen.  
+- Specialized *deepfake detectors* and *image analysis tools* can help identify manipulated content.  
+- Browser extensions and AI warning systems provide early signs of falsification.  
 
-#### **3. Medienkompetenz ausbauen**
+#### **3. Expand Media Literacy**
 
-- Nutzen Sie Bildungsangebote zu digitaler Kompetenz, wie sie der **campAIgn Tracker** bereitstellt.  
-- Schulen und Bildungseinrichtungen sollten verstärkt Workshops zu KI-Erkennung und ethischem Umgang mit KI anbieten.  
+- Use educational resources on digital literacy, such as those provided by the **campAIgn Tracker**.  
+- Schools and educational institutions should increasingly offer workshops on AI detection and the ethical use of AI.  
 
-#### **4. KI-Kennzeichnung fordern**
+#### **4. Demand AI Labeling**
 
-- Setzen Sie sich für Transparenzrichtlinien ein, die eine Kennzeichnung von KI-generierten Inhalten verpflichtend machen.  
-- Öffentlicher Druck auf Plattformen wie **Meta** oder **X** (ehemals Twitter) kann helfen, verlässliche KI-Markierungen durchzusetzen.  
+- Advocate for transparency rules that require labeling of AI-generated content.  
+- Public pressure on platforms like **Meta** or **X** (formerly Twitter) can help enforce reliable AI tagging.  
 
-### **Fazit**
+### **Conclusion**
 
-Der **campAIgn Tracker** zeigt, wie generative KI bereits heute in politischen Kampagnen eingesetzt wird – mit positiven wie negativen Auswirkungen. Wer weiß, wie KI-Bilder erkannt werden, kann sich besser vor Manipulation schützen.  
+The **campAIgn Tracker** shows how generative AI is already being used in political campaigns today – with both positive and negative effects. Those who know how to recognize AI-generated images are better equipped to protect themselves from manipulation.  
 
-**Digitale Resilienz** bedeutet, kritisches Denken, technische Hilfsmittel und ein Bewusstsein für Medienkompetenz zu kombinieren. Bleiben Sie informiert und stärken Sie Ihre digitale Kompetenz mit dem **campAIgn Tracker**!
+**Digital resilience** means combining critical thinking, technical tools, and media literacy. Stay informed and strengthen your digital skills with the **campAIgn Tracker**!

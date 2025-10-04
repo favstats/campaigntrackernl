@@ -1,15 +1,15 @@
 ---
-title: "Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz"
-description-meta: "Der CampAIgn Tracker schafft Transparenz über den Einsatz von KI in politischen Kampagnen auf Social Media. Verfolgen Sie den Einfluss von KI-generierten Inhalten im Wahlkampf 2024."
+title: "How it all Began: The CampAIgn Tracker for more Transparency in AI Use"
+description-meta: "The CampAIgn Tracker creates transparency around the use of AI in political campaigns on social media. Track the influence of AI-generated content in election campaigns."
 author: "Theresa Schültken"
 date: "2.12.2025"
 image: "Foto 2_Preisgeld.jpeg"
-lang: de
+lang: en
 format:
   html:
     theme: lumen
     toc: true
-    toc-title: "Inhalt"
+    toc-title: "Contents"
     toc-depth: 2
     smooth-scroll: true
 ---
@@ -67,60 +67,60 @@ blockquote {
 }
 </style>
 
-# Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz
+# The CampAIgn Tracker for More Transparency in AI Use
 
-Samstagmorgen, 9.00 Uhr im grauen Berlin: voller Erwartungen und Vorfreude treffen wir einzeln in der weihnachtlich beleuchteten Landesvertretung Baden-Württemberg ein.  
-Wir, das sind **Dr. Simon Kruschinski** (Politischer Kommunikationsforscher der Johannes Gutenberg-Universität Mainz), **Miriam Runde** (M. Sc. Data Science for Public Policy), **Dr. Fabio Votta** (Postdoc Forscher Data-Driven-Campaigning an der Universität Amsterdam), **Jakob Scherer** (M. Sc. Management) und **Theresa Schültken** (MA Internationale Beziehungen, Beraterin Strategische Vorausschau).
+Saturday morning, 9:00 a.m. in gray Berlin: full of expectations and anticipation, we each arrive at the festively lit Baden-Württemberg State Representation.  
+We are **Dr. Simon Kruschinski** (Political Communication Researcher at Johannes Gutenberg University Mainz), **Miriam Runde** (M. Sc. Data Science for Public Policy), **Dr. Fabio Votta** (Postdoc Researcher in Data-Driven Campaigning at the University of Amsterdam), **Jakob Scherer** (M. Sc. Management) and **Theresa Schültken** (MA International Relations, Strategic Foresight Consultant).
 
-Als wir uns dann gegen 10.30 Uhr zum ersten Mal kennenlernen, merken wir gleich, dass wir mit der Kombination aus **Politikwissenschaft**, **Data Science** und **KI-Kenntnissen** eine sehr gute Grundlage für das Wochenende haben.  
-Im Laufe eines Wochenendes paralleler Datenaufbereitung, Tests von möglichen KI-Modellen, Persona-Recherche und vielen erkenntnisreichen Gesprächen wurde aus einer Idee ein Projekt: **Der CampAIgn Tracker.**
+When we first meet around 10:30 a.m., we immediately realize that the combination of **political science**, **data science**, and **AI expertise** provides a strong foundation for the weekend.  
+Over the course of a weekend of parallel data preparation, testing possible AI models, persona research, and many insightful conversations, an idea turned into a project: **The CampAIgn Tracker.**
 
-![Teamfoto des CampAIgn Tracker](fotoa1.png)  
+![Team photo of the CampAIgn Tracker](fotoa1.png)  
 <div class="credit">Credits @ BW Stiftung / Viktor Heekeren</div>
 
-## Hintergrund
+## Background
 
-Vor dem Hintergrund des Super-Wahljahres 2024 wurden in den Medien und der Öffentlichkeit immer wieder die Gefahren von KI-Einsatz in der politischen Debatte thematisiert.  
-Die Sorge vor **Fake News**, **Desinformation**, **Emotionalisierung** und **Beeinflussung** ist zu spüren und trägt zur Verunsicherung bei – konkrete Anhaltspunkte und eine Datengrundlage, inwieweit KI tatsächlich in politischen Kampagnen auf Social Media Plattformen eingesetzt wird, fehlen allerdings.
+In the context of the super election year 2024, the dangers of AI use in political debate were repeatedly discussed in the media and public sphere.  
+The fear of **fake news**, **disinformation**, **emotionalization**, and **manipulation** is palpable and contributes to uncertainty – yet concrete evidence and a data basis on the extent to which AI is actually used in political campaigns on social media platforms is lacking.
 
-Hier setzt der **CampAIgn Tracker** an:  
-Er stellt eine Plattform bereit, auf der nachvollzogen werden kann, welche Bild- und Videobotschaften von politischen Akteuren in Deutschland auf Social Media tatsächlich mit Hilfe von KI erzeugt wurden.
+This is where the **CampAIgn Tracker** comes in:  
+It provides a platform to trace which image and video messages from political actors in Germany on social media were in fact generated with the help of AI.
 
-> _"Mit CampAIgn Tracker tragen wir wesentlich zur notwendigen Transparenz rund um den Einsatz von KI zur Generierung visueller Inhalte bei, der den Menschen dabei hilft, zu diskutieren, ob dieser Einsatz zur Verbreitung auf Social Media stattfindet, legitim ist oder eine mögliche Gefahr davon ausgeht."_  
+> _"With the CampAIgn Tracker, we contribute significantly to the necessary transparency around the use of AI for generating visual content, helping people to discuss whether this use for dissemination on social media is legitimate or poses a potential risk."_  
 > — **Dr. Simon Kruschinski**
 
-## Entwicklung des Prototyps
+## Development of the Prototype
 
-Auf dem **Politechathon** entstand hierfür ein erster Prototyp.  
-Die Datengrundlage umfasste die bezahlten Facebook- und Instagram-Posts von allen Bundes- und Landesparteien im Jahr 2024.  
-Die erste Herausforderung bestand darin, ein **KI-Modell zur Identifizierung von KI-generierten Inhalten** zu finden und mit der Datengrundlage zu testen.
+At the **Politechathon**, a first prototype was created.  
+The dataset included paid Facebook and Instagram posts from all federal and state parties in 2024.  
+The first challenge was to find an **AI model capable of identifying AI-generated content** and test it with the dataset.
 
-Hier setzt der CampAIgn Tracker auf ein **zweistufiges Verfahren**:
+The CampAIgn Tracker relies on a **two-step process**:
 
-1. **Automatisierte Erkennung** von KI-generierten Inhalten.  
-2. **Manuelle Validierung** durch Expert:innen, um die Genauigkeit zu erhöhen.  
+1. **Automated detection** of AI-generated content.  
+2. **Manual validation** by experts to increase accuracy.  
 
-So wird eine sehr hohe Genauigkeit bei der Identifikation von KI-generierten Inhalten sichergestellt – ein zentraler Faktor für die Akzeptanz des Projekts.
+This ensures a very high level of accuracy in identifying AI-generated content – a key factor for the project’s acceptance.
 
-## Ausblick
+## Outlook
 
-Auf der Website [www.campaigntracker.de](https://www.campaigntracker.de) können in Zukunft:
+On the website [www.campaigntracker.de](https://www.campaigntracker.de), in the future it will be possible to:
 
-- **KI-generierte Inhalte** von über 3000 politischen Akteuren in Deutschland eingesehen werden  
-- Details zu **Interaktionen**, **Geldausgaben** und **Reichweite** abgerufen werden  
-- Einzelne KI-Botschaften mit Metadaten analysiert werden  
+- View **AI-generated content** from over 3000 political actors in Germany  
+- Access details on **interactions**, **spending**, and **reach**  
+- Analyze individual AI messages with metadata  
 
-## Unser Erfolg beim Politechathon
+## Our Success at the Politechathon
 
-Am Sonntagnachmittag kam dann die große Überraschung:  
-Nach einem Projektpitch gewannen wir den **ersten Platz in der Kategorie Medienkompetenz** – samt Preisgeld für die Weiterentwicklung des CampAIgn Trackers.
+On Sunday afternoon came the big surprise:  
+After pitching the project, we won **first place in the Media Literacy category** – including prize money for the further development of the CampAIgn Tracker.
 
-Innerhalb von 48 Stunden wurde aus einer Idee eine anwendungsreife Plattform zur Förderung von **Transparenz im Wahlkampf**.
+Within 48 hours, an idea became a ready-to-use platform for promoting **transparency in election campaigns**.
 
-> _"Fazit: Netzwerk erweitern, in kürzester Zeit ein KI-Tool entwickeln und am Ende sogar ausgezeichnet werden – der Politechathon hat gezeigt, dass mit dem richtigen Teamgeist und etwas 'Nerd-Power' (wie die Tagesthemen so liebevoll titelten) in 48 Stunden Unfassbares entstehen kann."_  
+> _"Conclusion: expand your network, develop an AI tool in the shortest possible time, and even win an award in the end – the Politechathon showed that with the right team spirit and some 'nerd power' (as the evening news so fondly put it), the unimaginable can happen in 48 hours."_  
 > — **Miriam Runde**
 
-![Preisverleihung des Politechathons](Foto 2_Preisgeld.jpeg)  
+![Award ceremony of the Politechathon](Foto 2_Preisgeld.jpeg)  
 <div class="credit">Credits @ BW Stiftung / Viktor Heekeren</div>
 
 
@@ -128,5 +128,5 @@ Innerhalb von 48 Stunden wurde aus einer Idee eine anwendungsreife Plattform zur
 
 <br>
 <center>
-<img src="logo.png" width="50%">
+<img src="https://github.com/favstats/campaigntracker/blob/main/_site/logo.png?raw=true" width="50%">
 </center>
