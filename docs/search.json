@@ -122,15 +122,15 @@
     "objectID": "index.html#ki-content-by-party1",
     "href": "index.html#ki-content-by-party1",
     "title": "&nbsp;&nbsp;Dashboard",
-    "section": "AI-inhoud per partij",
-    "text": "AI-inhoud per partij\n\n\n\n\n\n\n\n\nDeze visualisatie laat zien hoeveel AI-gegenereerde inhoud elke partij heeft gepubliceerd. De veldgrootte komt overeen met het aantal geïdentificeerde berichten. Grotere velden duiden op een hoger gebruik van AI door de betreffende partij."
+    "section": "XXXXX",
+    "text": "XXXXX"
   },
   {
     "objectID": "index.html#ki-content-by-party2",
     "href": "index.html#ki-content-by-party2",
     "title": "&nbsp;&nbsp;Dashboard",
     "section": "Aandeel berichten met en zonder AI per partij",
-    "text": "Aandeel berichten met en zonder AI per partij\n\n\n\n\n\n\n\n\n\n\nDeze grafiek toont het relatieve aandeel AI-gegenereerde inhoud per partij. De partijen zijn gesorteerd naar het hoogste aandeel AI-inhoud.\n\nLet op: bij partijen met minder totale berichten (inclusief kleinere partijen) kan zelfs beperkt AI-gebruik leiden tot hoge relatieve percentages."
+    "text": "Aandeel berichten met en zonder AI per partij\n\nPartijen & PoliticiOthers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeze grafiek toont het relatieve aandeel AI-gegenereerde inhoud per partij. De partijen zijn gesorteerd naar het hoogste aandeel AI-inhoud.\n\nLet op: bij partijen met minder totale berichten (inclusief kleinere partijen) kan zelfs beperkt AI-gebruik leiden tot hoge relatieve percentages."
   },
   {
     "objectID": "index.html#content-analyse",
@@ -221,14 +221,14 @@
     "href": "index.html#medienformatte",
     "title": "&nbsp;&nbsp;Dashboard",
     "section": "AI-mediavormen",
-    "text": "AI-mediavormen\n\n\n\n\n\n\n\n\n\n\nDeze grafiek toont het percentage afbeeldingen en video’s in berichten die als AI-gegenereerd zijn geïdentificeerd. Dit helpt te laten zien welke mediavormen vaker met AI worden ingezet."
+    "text": "AI-mediavormen"
   },
   {
     "objectID": "index.html#personen",
     "href": "index.html#personen",
     "title": "&nbsp;&nbsp;Dashboard",
-    "section": "",
-    "text": "Deze visualisatie toont welke persoon(groepen) in hoeveel van de AI-gegenereerde afbeeldingen/video’s worden afgebeeld.\n\nLet op: een enkele afbeelding kan meerdere personen bevatten."
+    "section": "Afgebeelde personen in AI-inhoud",
+    "text": "Afgebeelde personen in AI-inhoud\n\nPartijen & PoliticiOthers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeze visualisatie toont welke persoon(groepen) in hoeveel van de AI-gegenereerde afbeeldingen/video’s worden afgebeeld.\n\nLet op: een enkele afbeelding kan meerdere personen bevatten."
   },
   {
     "objectID": "posts/ausgaben.html",
@@ -396,14 +396,14 @@
     "href": "index.html#ai-transparantie",
     "title": "&nbsp;&nbsp;Dashboard",
     "section": "AI-transparantie",
-    "text": "AI-transparantie\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpenbaarmaking van AI-inhoud via disclaimers van partijen of platformlabels is cruciaal voor transparantie. Deze visualisatie toont hoe vaak AI-gegenereerde inhoud werd gepubliceerd met/zonder disclosure en of het label door de partij of door Meta werd toegevoegd."
+    "text": "AI-transparantie\n\nPartijen & PoliticiOthers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpenbaarmaking van AI-inhoud via disclaimers van partijen of platformlabels is cruciaal voor transparantie. Deze visualisatie toont hoe vaak AI-gegenereerde inhoud werd gepubliceerd met/zonder disclosure en of het label door de partij of door Meta werd toegevoegd."
   },
   {
     "objectID": "index.html#ai-inhoudsanalyse",
     "href": "index.html#ai-inhoudsanalyse",
     "title": "&nbsp;&nbsp;Dashboard",
     "section": "AI-inhoudsanalyse",
-    "text": "AI-inhoudsanalyse\n\n\n\n\n\n\n\n\n\n\n\nLet op: het is mogelijk dat een bericht zowel negatieve als positieve inhoud bevat.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkel bericht kan meerdere thema’s behandelen.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkele afbeelding kan meerdere beeld-/videothema’s bevatten."
+    "text": "AI-inhoudsanalyse\n\nPartijen & PoliticiOthers\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: het is mogelijk dat een bericht zowel negatieve als positieve inhoud bevat.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkel bericht kan meerdere thema’s behandelen.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: het is mogelijk dat een bericht zowel negatieve als positieve inhoud bevat.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkel bericht kan meerdere thema’s behandelen.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkele afbeelding kan meerdere beeld-/videothema’s bevatten."
   },
   {
     "objectID": "posts/anfang.html#background",
@@ -446,5 +446,26 @@
     "title": "\nCampAIgn Tracker\n",
     "section": "",
     "text": "This project is part of the University of Amsterdam’s Research Priority Area in Artificial Intelligence & Politics (AI & Politics RPA).\nThe RPA addresses the guiding question: How is AI changing contemporary politics, and how is the development and application of AI affected by political dynamics?\nThe RPA embraces a broad definition of politics, spanning both formal and informal dynamics through which societal challenges and conflicts are processed. As AI diffuses through our lives, it reconfigures central aspects of politics and society—affecting political deliberation, public service delivery, and transforming political issues into technical problems to be solved through private means."
+  },
+  {
+    "objectID": "index.html#ki-content-by-party3",
+    "href": "index.html#ki-content-by-party3",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "Aandeel berichten met en zonder AI per partij",
+    "text": "Aandeel berichten met en zonder AI per partij\n\n\n\n\n\n\n\n\n\n\nDeze grafiek toont het relatieve aandeel AI-gegenereerde inhoud per partij. De partijen zijn gesorteerd naar het hoogste aandeel AI-inhoud.\n\nLet op: bij partijen met minder totale berichten (inclusief kleinere partijen) kan zelfs beperkt AI-gebruik leiden tot hoge relatieve percentages."
+  },
+  {
+    "objectID": "index.html#ai-transparantie-1",
+    "href": "index.html#ai-transparantie-1",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "AI-transparantie",
+    "text": "AI-transparantie\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpenbaarmaking van AI-inhoud via disclaimers van partijen of platformlabels is cruciaal voor transparantie. Deze visualisatie toont hoe vaak AI-gegenereerde inhoud werd gepubliceerd met/zonder disclosure en of het label door de partij of door Meta werd toegevoegd."
+  },
+  {
+    "objectID": "index.html#ai-inhoudsanalyse-1",
+    "href": "index.html#ai-inhoudsanalyse-1",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "AI-inhoudsanalyse",
+    "text": "AI-inhoudsanalyse\n\n\n\n\n\n\n\n\n\n\n\nLet op: het is mogelijk dat een bericht zowel negatieve als positieve inhoud bevat.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkel bericht kan meerdere thema’s behandelen.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkele afbeelding kan meerdere beeld-/videothema’s bevatten."
   }
 ]
