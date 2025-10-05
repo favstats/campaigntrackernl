@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "&nbsp;&nbsp;Dashboard",
+    "title": "Overzicht van Inhoud",
     "section": "",
     "text": "WARNING THIS ONLY SHOWS A MOCK-UP THE DATA IS NOT REAL YET! DO NOTE CITE.\nIn de CampAIgn Tracker analyseren we alle berichten op Facebook, Instagram, TikTok en X van partijen en kandidaten en geselecteerde influencers en commentatoren voor de Tweede Kamerverkiezingen van 2025.\nDe live monitoring laat zien hoeveel AI-gegenereerde berichten door welke partijen worden verspreid. Daarnaast tonen we of AI-labels worden gebruikt, welke actoren in beeld komen, welke thema’s aan bod komen en of de toon positief of negatief is.\nOp deze pagina vindt u analyses van AI-gegenereerde campagnes voor de Tweede Kamerverkiezingen van 2025. Een doorzoekbaar overzicht van afzonderlijke AI-gegenereerde afbeeldingen en video’s is beschikbaar in de AI Explorer."
   },
@@ -114,7 +114,7 @@
   {
     "objectID": "index.html#ai-over-time",
     "href": "index.html#ai-over-time",
-    "title": "&nbsp;&nbsp;Dashboard",
+    "title": "Overzicht van Inhoud",
     "section": "AI-inhoud door de tijd heen",
     "text": "AI-inhoud door de tijd heen\n\n\n\n\n\n\n\n\n\n\n\nDeze grafiek toont het gebruik van AI versus niet-AI-inhoud door de tijd heen."
   },
@@ -128,9 +128,9 @@
   {
     "objectID": "index.html#ki-content-by-party2",
     "href": "index.html#ki-content-by-party2",
-    "title": "&nbsp;&nbsp;Dashboard",
+    "title": "Overzicht van Inhoud",
     "section": "Aandeel berichten met en zonder AI",
-    "text": "Aandeel berichten met en zonder AI\n\nPartijen & PoliticiOthers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeze grafiek toont het relatieve aandeel AI-gegenereerde inhoud per partij. De partijen zijn gesorteerd naar het hoogste aandeel AI-inhoud.\n\nLet op: bij partijen met minder totale berichten (inclusief kleinere partijen) kan zelfs beperkt AI-gebruik leiden tot hoge relatieve percentages."
+    "text": "Aandeel berichten met en zonder AI\n\nPartijen & PoliticiOverige Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeze grafiek toont het relatieve aandeel AI-gegenereerde inhoud per partij. De partijen zijn gesorteerd naar het hoogste aandeel AI-inhoud.\n\nLet op: bij partijen met minder totale berichten (inclusief kleinere partijen) kan zelfs beperkt AI-gebruik leiden tot hoge relatieve percentages."
   },
   {
     "objectID": "index.html#content-analyse",
@@ -219,16 +219,16 @@
   {
     "objectID": "index.html#medienformatte",
     "href": "index.html#medienformatte",
-    "title": "&nbsp;&nbsp;Dashboard",
+    "title": "Overzicht van Inhoud",
     "section": "AI-mediavormen",
-    "text": "AI-mediavormen\n\nPartijen & PoliticiOthers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeze grafiek toont het percentage afbeeldingen en video’s in berichten die als AI-gegenereerd zijn geïdentificeerd. Dit helpt te laten zien welke mediavormen vaker met AI worden ingezet."
+    "text": "AI-mediavormen\n\nPartijen & PoliticiOverige Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeze grafiek toont het percentage afbeeldingen en video’s in berichten die als AI-gegenereerd zijn geïdentificeerd. Dit helpt te laten zien welke mediavormen vaker met AI worden ingezet."
   },
   {
     "objectID": "index.html#personen",
     "href": "index.html#personen",
-    "title": "&nbsp;&nbsp;Dashboard",
+    "title": "Overzicht van Inhoud",
     "section": "Afgebeelde personen in AI-inhoud",
-    "text": "Afgebeelde personen in AI-inhoud\n\nPartijen & PoliticiOthers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeze visualisatie toont welke persoon(groepen) in hoeveel van de AI-gegenereerde afbeeldingen/video’s worden afgebeeld.\n\nLet op: een enkele afbeelding kan meerdere personen bevatten."
+    "text": "Afgebeelde personen in AI-inhoud\n\nPartijen & PoliticiOverige Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeze visualisatie toont welke persoon(groepen) in hoeveel van de AI-gegenereerde afbeeldingen/video’s worden afgebeeld.\n\nLet op: een enkele afbeelding kan meerdere personen bevatten."
   },
   {
     "objectID": "posts/ausgaben.html",
@@ -394,16 +394,16 @@
   {
     "objectID": "index.html#ai-transparantie",
     "href": "index.html#ai-transparantie",
-    "title": "&nbsp;&nbsp;Dashboard",
+    "title": "Overzicht van Inhoud",
     "section": "AI-transparantie",
-    "text": "AI-transparantie\n\nPartijen & PoliticiOthers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpenbaarmaking van AI-inhoud via disclaimers van partijen of platformlabels is cruciaal voor transparantie. Deze visualisatie toont hoe vaak AI-gegenereerde inhoud werd gepubliceerd met/zonder disclosure en of het label door de partij of door Meta werd toegevoegd."
+    "text": "AI-transparantie\n\nPartijen & PoliticiOverige Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpenbaarmaking van AI-inhoud via disclaimers van partijen of platformlabels is cruciaal voor transparantie. Deze visualisatie toont hoe vaak AI-gegenereerde inhoud werd gepubliceerd met/zonder disclosure en of het label door de partij of door Meta werd toegevoegd."
   },
   {
     "objectID": "index.html#ai-inhoudsanalyse",
     "href": "index.html#ai-inhoudsanalyse",
-    "title": "&nbsp;&nbsp;Dashboard",
+    "title": "Overzicht van Inhoud",
     "section": "AI-inhoudsanalyse",
-    "text": "AI-inhoudsanalyse\n\nPartijen & PoliticiOthers\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: het is mogelijk dat een bericht zowel negatieve als positieve inhoud bevat.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkel bericht kan meerdere thema’s behandelen.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: het is mogelijk dat een bericht zowel negatieve als positieve inhoud bevat.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkel bericht kan meerdere thema’s behandelen.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkele afbeelding kan meerdere beeld-/videothema’s bevatten."
+    "text": "AI-inhoudsanalyse\n\nPartijen & PoliticiOverige Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: het is mogelijk dat een bericht zowel negatieve als positieve inhoud bevat.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkel bericht kan meerdere thema’s behandelen.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: het is mogelijk dat een bericht zowel negatieve als positieve inhoud bevat.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkel bericht kan meerdere thema’s behandelen.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkele afbeelding kan meerdere beeld-/videothema’s bevatten."
   },
   {
     "objectID": "posts/anfang.html#background",

@@ -131,7 +131,7 @@ h3 {
   </p>
 
 
-<div class="team-category"> <h4>Research Assistants</h4> <div class="team-list"> <p>Doortje Cools, Lynn Louvet, Ella van Vloten, Daisy Blass, Isabella van der Zanden, Raluca Groza</p> <p><em>We extend our deepest thanks to our research assistants for their exceptional dedication and effort in bringing this project to life.</em></p> </div> </div> <div class="team-category"> <h4>PhD Students & Postdocs (University of Amsterdam)</h4> <div class="team-list"> <p>Tobias Kleindamm, Ellen Linnert, Annamijn Beijeman, Haylee Kelsall </p> <p><em>We are equally grateful to our colleagues, whose expertise and commitment have been vital for the success of this project.</em></p> </div> </div>
+<div class="team-category"> <h4>Research Assistants</h4> <div class="team-list"> <p>[Doortje Cools](https://www.linkedin.com/in/dorothea-cools-38b6542a1/), Lynn Louvet, Ella van Vloten, Daisy Blass, Isabella van der Zanden, Raluca Groza</p> <p><em>We extend our deepest thanks to our research assistants for their exceptional dedication and effort in bringing this project to life.</em></p> </div> </div> <div class="team-category"> <h4>PhD Students & Postdocs (University of Amsterdam)</h4> <div class="team-list"> <p>Tobias Kleindamm, Ellen Linnert, Annamijn Beijeman, Haylee Kelsall </p> <p><em>We are equally grateful to our colleagues, whose expertise and commitment have been vital for the success of this project.</em></p> </div> </div>
 
 
 

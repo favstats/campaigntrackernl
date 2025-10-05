@@ -86,7 +86,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "&nbsp;&nbsp;Dashboard",
+    "title": "Overview of Content",
     "section": "",
     "text": "WARNING THIS ONLY SHOWS A MOCK-UP THE DATA IS NOT REAL YET! DO NOTE CITE.\nIn the CampAIgn Tracker, we analyze all posts on Facebook, Instagram, TikTok, and X from parties and candidates and selected influencers and commentators for the 2025 Dutch Parliamentary election.\nThe live tracking allows you to see how many AI-generated messages are being spread by which parties. Additionally, we show if AI-Labels are used, what actors are depicted, which topics are discussed and whether the tone is positive or negative.\nOn this page, you will find analyses of AI-generated campaigns for the 2025 Dutch Parliamentary election. A searchable overview of individual AI-generated images and videos is available in the AI Explorer."
   },
@@ -100,42 +100,42 @@
   {
     "objectID": "index.html#ki-content-by-party2",
     "href": "index.html#ki-content-by-party2",
-    "title": "&nbsp;&nbsp;Dashboard",
+    "title": "Overview of Content",
     "section": "Share of Posts with and without AI",
-    "text": "Share of Posts with and without AI\n\nPartijen & PoliticiOthers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis graphic shows the relative share of AI-generated content per party. The parties are sorted by the highest share of AI content.\n\nNote: For parties with fewer total posts (including smaller parties), even limited AI use may result in high relative percentages."
+    "text": "Share of Posts with and without AI\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis graphic shows the relative share of AI-generated content per party. The parties are sorted by the highest share of AI content.\n\nNote: For parties with fewer total posts (including smaller parties), even limited AI use may result in high relative percentages."
   },
   {
     "objectID": "index.html#ai-transparency",
     "href": "index.html#ai-transparency",
-    "title": "&nbsp;&nbsp;Dashboard",
+    "title": "Overview of Content",
     "section": "AI Transparency",
-    "text": "AI Transparency\n\nPartijen & PoliticiOthers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDisclosure of AI content through party-added disclaimers or platform labels is crucial for transparency. This visualization shows how often AI-generated content was published with/without disclosures and whether the label was applied by the party or Meta."
+    "text": "AI Transparency\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDisclosure of AI content through party-added disclaimers or platform labels is crucial for transparency. This visualization shows how often AI-generated content was published with/without disclosures and whether the label was applied by the party or Meta."
   },
   {
     "objectID": "index.html#medienformatte",
     "href": "index.html#medienformatte",
-    "title": "&nbsp;&nbsp;Dashboard",
+    "title": "Overview of Content",
     "section": "AI Media Formats",
-    "text": "AI Media Formats\n\nPartijen & PoliticiOthers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis graphic shows the percentage share of images and videos in posts identified as AI-generated. This helps reveal which media formats are used more frequently with AI."
+    "text": "AI Media Formats\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis graphic shows the percentage share of images and videos in posts identified as AI-generated. This helps reveal which media formats are used more frequently with AI."
   },
   {
     "objectID": "index.html#ai-content-analysis",
     "href": "index.html#ai-content-analysis",
-    "title": "&nbsp;&nbsp;Dashboard",
+    "title": "Overview of Content",
     "section": "AI Content Analysis",
-    "text": "AI Content Analysis\n\nPartijen & PoliticiOthers\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: it is possible that a post shows both negative and positive content.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single post may cover multiple topics.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: it is possible that a post shows both negative and positive content.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single post may cover multiple topics.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single image may contain multiple image/video topics."
+    "text": "AI Content Analysis\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: it is possible that a post shows both negative and positive content.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single post may cover multiple topics.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: it is possible that a post shows both negative and positive content.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single post may cover multiple topics.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single image may contain multiple image/video topics."
   },
   {
     "objectID": "index.html#personen",
     "href": "index.html#personen",
-    "title": "&nbsp;&nbsp;Dashboard",
+    "title": "Overview of Content",
     "section": "People Shown in AI Content",
-    "text": "People Shown in AI Content\n\nPartijen & PoliticiOthers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis visualization shows which person (groups) are depicted in how many of the AI-generated images/videos.\n\nNote: A single image may contain multiple people."
+    "text": "People Shown in AI Content\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis visualization shows which person (groups) are depicted in how many of the AI-generated images/videos.\n\nNote: A single image may contain multiple people."
   },
   {
     "objectID": "index.html#ai-over-time",
     "href": "index.html#ai-over-time",
-    "title": "&nbsp;&nbsp;Dashboard",
+    "title": "Overview of Content",
     "section": "AI Content Over Time",
     "text": "AI Content Over Time\n\n\n\n\n\n\n\n\n\n\n\nThis chart shows the usage of of AI vs non-AI content over time."
   },

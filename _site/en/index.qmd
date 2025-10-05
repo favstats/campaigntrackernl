@@ -93,6 +93,15 @@ format:
 
 ---
 
+<style>
+  /* Color all Markdown bold text */
+  main.content strong,
+  main.content b {
+    color: #0d6efd !important;  /* nice blue; override theme if needed */
+    font-weight: 700;           /* keep it bold */
+  }
+</style>
+
 > WARNING THIS ONLY SHOWS A MOCK-UP THE DATA IS NOT REAL YET! DO NOTE CITE.
 
 
@@ -115,6 +124,58 @@ htmltools::tags$head(
 # sets <- jsonlite::fromJSON(here::here("settings.json"))
 
 
+party_colors <- c(
+  "50+"                   = "#7F2481", # 50PLUS purple
+  "50PLUS"= "#7F2481",   # alias fixes grey tile
+  "BBB"                   = "#009639", # BoerBurgerBeweging green
+  "BIJ1"                  = "#00FF66", # neon green on black branding
+  "BVNL"                  = "#FF6D00", # orange accent
+  "CDA"                   = "#006F54", # CDA green
+  "CO"                    = "#FF7F00", # Code Oranje orange
+  "CU"                    = "#00A1DE", # ChristenUnie light blue
+  "D66"                   = "#009E60", # D66 green
+  "DENK"                  = "#00A7B3", # DENK turquoise
+  "Daan Versteeg"         = "#7F7F7F", # neutral gray
+  "Formerly CDA"          = "#66A897", # muted CDA green
+  "Formerly FvD"          = "#B35A5A", # muted FvD burgundy
+  "FvD"                   = "#7B1E26", # Forum voor Democratie burgundy
+  "GL"                    = "#00A75A", # GroenLinks green
+  "GL-PvdA"               = "#C00040", # joint list red (blend)
+  "GL/PvdA"               = "#C00040", # alias
+  "Groen Rechts"          = "#228B22", # forest green
+  "GroenLinks"            = "#00A75A", # alias
+  "JA21"                  = "#0C2E6E", # deep navy
+  "JONG"                  = "#00AEEF", # bright cyan-blue
+  "LEF"                   = "#FFD200", # yellow
+  "LP"                    = "#003399", # Libertaire Partij blue
+  "NIDA"                  = "#2DAE9B", # teal-green
+  "NSC"                   = "#009E9D", # Omtzigt teal
+  "Ons Diemen"            = "#8A8A8A", # local/neutral gray
+  "PVV"                   = "#003082", # dark royal blue
+  "Pirat"                 = "#FF8800", # Pirate Party orange
+  "Politieke Partij Delta"= "#00B6F1", # aqua
+  "PvdA"                  = "#D91E36", # PvdA red
+  "PvdD"                  = "#006843", # Partij voor de Dieren dark green
+  "SGP"                   = "#E57200", # SGP orange
+  "SP"                    = "#BE1E2D", # SP red
+  "Splinter"              = "#ED1E79", # magenta/pink
+  "VN"                    = "#1F6FB2", # Vrede & Neutraliteit blue
+  "VVD"                   = "#FF7900", # VVD orange
+  "Volt"                  = "#562883", # Volt purple
+  "Volt Netherlands"      = "#562883",  # alias
+  "Pro-PVV"            = "#B22222", # strong crimson (distinct from PVV blue)
+  "PVV"                = "#003082", # keep party color
+  "VVD"                = "#FF7900", # keep party color
+  "Anti-Wilders"       = "#555555", # neutral/dark gray
+  "D66"                = "#009E60", # keep party color
+  "Pro-Right Satire"   = "#6A5ACD", # slate purple
+  "Pro-Farmer"         = "#2E8B57", # farmer green
+  "Progressive Account"= "#8A2BE2",  # vivid progressive violet
+    # --- NEW: missing labels from your treemap screenshot ---
+  "NCPN"           = "#CC0000", # communist red, distinct from SP/PvdA
+  "Anti-Immigrant" = "#EE6677", # Tol Bright coral (color-blind–safe)
+  "De Linie"       = "#AA3377"  # Tol Bright purple (distinct & CVD-safe)
+)
 
 
 # library(glue)
@@ -167,24 +228,17 @@ blockquote:hover {
 
 `r get_text("landingtext", lang)`
 
-<!-- > Der **CampAIgn Tracker** zeigt alle *Posts und bezahlten Werbeanzeigen* auf **Facebook** und **Instagram** von über 3000 Accounts der deutschen **Parteien und Kandidierenden**, die vier Wochen vor der **Bundestagswahl 2025** gepostet/gekauft wurden *(26.1.25–23.2.25)*. -->
-
-<!-- **Willkommen beim CampAIgn Tracker!**  Die **Plattform**, die KI-Kampagnen der Parteien auf sozialen Netzwerken aufdeckt.   -->
-
-<!-- Im **Live-Tracking** untersuchen wir alle **Posts und bezahlten Werbeanzeigen** auf **Facebook und Instagram** von **Parteien und Kandidierenden** zur **Bundestagswahl 2025**.  Im **CampAIgn Tracker** kann nachgeschaut werden, **wie viele KI-generierte Botschaften** von welchen Parteien verbreitet werden.  Außerdem zeigen wir, **welche Themen genutzt werden** und ob **eine positive oder negative Tonalität** vorherrscht.   -->
-
-<!-- Auf dieser Seite finden sich **Auswertungen zu den KI-generierten Kampagnen bei der Bundestagswahl 2025**. Eine durchsuchbare Übersicht über die  einzelnen Ki-Bilder und -Videos ist im [KI Explorer](https://favstats.github.io/campaigntracker/explore) zu finden. -->
-
-
 ```{r}
 # setwd("/mnt/storage/campaigntrackernl")
 
 # cleaned_content <- readRDS("../../data/cleaned_content.rds")
 labeled <- readRDS("../../data/labeled.rds")  %>%
-  filter(timevar >= as.Date("2025-09-19")) %>% 
-  mutate(timevar = lubridate::floor_date(timevar, unit = "day"))
-  # mutate(party = case_when(
-  #   party == "AFD" ~ "AfD",
+  filter(timevar >= as.Date("2025-09-17")) %>% 
+  filter(timevar <= as.Date("2025-09-26")) %>% 
+  mutate(timevar = lubridate::floor_date(timevar, unit = "day"))  %>% 
+  mutate(list_source = ifelse(list_source == "NL Historic", "Parties", list_source)) %>% 
+  mutate(party = case_when(
+    party == "GL" ~ "GL-PvdA",
   #   party == "BüSo – Bürgerrechtsbewegung Solidarität" ~ "BüSo",
   #   party %in% c("CDU", "CSU") ~ "CDU/CSU",
   #   party %in% c("MLPD – Marxistisch-Leninistische Partei Deutschlands") ~ "MLPD",
@@ -193,14 +247,16 @@ labeled <- readRDS("../../data/labeled.rds")  %>%
   #   party %in% c("V-Partei³ - Partei für Veränderung, Vegetarier und Veganer") ~ "V-Partei³",
   #   str_detect(party, "ÖDP") ~ "ÖDP",
   #   str_detect(party, "PdF") ~ "PdF",
-  #   T ~party
-  # )) #%>% 
+    T ~party
+  )) #%>%
   # filter(str_detect(page_name, "Stiftung", negate = T))
 
 
 organic_data <- readRDS("../../data/organic_data.rds") %>%
-  filter(timevar >= as.Date("2025-09-19")) %>% 
-  mutate(timevar = lubridate::floor_date(timevar, unit = "day"))
+  filter(timevar >= as.Date("2025-09-17")) %>% 
+  filter(timevar <= as.Date("2025-09-26")) %>% 
+  mutate(timevar = lubridate::floor_date(timevar, unit = "day")) %>% 
+  mutate(list_source = ifelse(is.na(list_source), "Fans", list_source))
 
 workwith <- labeled %>% 
   # count(ki_bild_video) %>% 
@@ -293,6 +349,26 @@ full_data <- workwith %>%
 #   # filter(type == "organic") %>% 
 #   select(page_name, page_id, phandle, posted_date, text, url, everything()) %>% 
 #   write_csv("../../data/ai_schatz.csv")
+
+# full_data %>%
+#   filter(ai == 1) %>% 
+#   count(list_source)
+```
+
+
+```{r, eval = F}
+full_data %>%
+  filter(ai == 1) %>% 
+  filter(party == "Pro-Right Satire") %>% 
+  count(timevar)
+  glimpse()
+  count(party)
+  filter(username == "het.snorretje")
+  
+  
+full_data %>%
+  filter(ai == 1) %>% 
+  count(list_source)
 ```
 
 
@@ -375,53 +451,6 @@ total_ai <- spark_box(
 # )
   # Official German party color mapping
 # Dutch party colors
-party_colors <- c(
-  "50+"                   = "#7F2481", # 50PLUS purple
-  "BBB"                   = "#009639", # BoerBurgerBeweging green
-  "BIJ1"                  = "#00FF66", # neon green on black branding
-  "BVNL"                  = "#FF6D00", # orange accent
-  "CDA"                   = "#006F54", # CDA green
-  "CO"                    = "#FF7F00", # Code Oranje orange
-  "CU"                    = "#00A1DE", # ChristenUnie light blue
-  "D66"                   = "#009E60", # D66 green
-  "DENK"                  = "#00A7B3", # DENK turquoise
-  "Daan Versteeg"         = "#7F7F7F", # neutral gray
-  "Formerly CDA"          = "#66A897", # muted CDA green
-  "Formerly FvD"          = "#B35A5A", # muted FvD burgundy
-  "FvD"                   = "#7B1E26", # Forum voor Democratie burgundy
-  "GL"                    = "#00A75A", # GroenLinks green
-  "GL-PvdA"               = "#C00040", # joint list red (blend)
-  "GL/PvdA"               = "#C00040", # alias
-  "Groen Rechts"          = "#228B22", # forest green
-  "GroenLinks"            = "#00A75A", # alias
-  "JA21"                  = "#0C2E6E", # deep navy
-  "JONG"                  = "#00AEEF", # bright cyan-blue
-  "LEF"                   = "#FFD200", # yellow
-  "LP"                    = "#003399", # Libertaire Partij blue
-  "NIDA"                  = "#2DAE9B", # teal-green
-  "NSC"                   = "#009E9D", # Omtzigt teal
-  "Ons Diemen"            = "#8A8A8A", # local/neutral gray
-  "PVV"                   = "#003082", # dark royal blue
-  "Pirat"                 = "#FF8800", # Pirate Party orange
-  "Politieke Partij Delta"= "#00B6F1", # aqua
-  "PvdA"                  = "#D91E36", # PvdA red
-  "PvdD"                  = "#006843", # Partij voor de Dieren dark green
-  "SGP"                   = "#E57200", # SGP orange
-  "SP"                    = "#BE1E2D", # SP red
-  "Splinter"              = "#ED1E79", # magenta/pink
-  "VN"                    = "#1F6FB2", # Vrede & Neutraliteit blue
-  "VVD"                   = "#FF7900", # VVD orange
-  "Volt"                  = "#562883", # Volt purple
-  "Volt Netherlands"      = "#562883",  # alias
-  "Pro-PVV"            = "#B22222", # strong crimson (distinct from PVV blue)
-  "PVV"                = "#003082", # keep party color
-  "VVD"                = "#FF7900", # keep party color
-  "Anti-Wilders"       = "#555555", # neutral/dark gray
-  "D66"                = "#009E60", # keep party color
-  "Pro-Right Satire"   = "#6A5ACD", # slate purple
-  "Pro-Farmer"         = "#2E8B57", # farmer green
-  "Progressive Account"= "#8A2BE2"  # vivid progressive violet
-)
 # Display in one row using div with CSS Flexbox
 # Display in one row with improved spacing
 htmltools::tags$div(
@@ -470,7 +499,16 @@ library(highcharter)
 library(htmltools)
 ```
 
-## By Platform {#ki-content-by-party1}
+<br>
+
+#  `r get_text("overview_text", lang)`
+
+`r get_text("platform_descr", lang)`
+
+::: {.panel-tabset}
+
+
+## `r get_text("platform_text", lang)` {#ki-content-by-party2}
 
 ```{r}
 # Custom CSS for Responsive Container
@@ -559,7 +597,12 @@ sorted_source_data <- full_data %>%
   group_by(ai, platform) %>%
   summarize(ai_1_proportion = proportion[ai == 1]) %>%
   arrange(desc(ai_1_proportion)) %>%
-  left_join(list_data, by = "platform")
+  left_join(list_data, by = "platform") %>% 
+  mutate(platform = case_when(
+    platform == "FB" ~ "Facebook",
+    platform == "IG" ~ "Instagram",
+    T ~platform
+  ))
 
 # Create sample data
 cities_data <- data.frame(
@@ -572,8 +615,8 @@ cities_data <- data.frame(
 # Generate the treemap
 tm <- create_political_treemap_ac(
   data = cities_data,
-  title = "",
-      party_colors = c("FB" = "#2E8B57", "IG" = "#562883", "TikTok" = "#7B1E26", "X" = "black"),
+  title = get_text("platform_text", lang),
+      party_colors = c("Facebook" = "#1877F2", "Instagram" = "#E4405F", "TikTok" = "#69C9D0", "X" = "000000"),
   height = 400
 )
 
@@ -593,8 +636,9 @@ htmltools::browsable(tm)
 )
 ```
 
-## XXXXX {#ki-content-by-party1}
 
+
+## `r get_text("by_type_text", lang)` {#ki-content-by-party2}
 
 
 
@@ -645,11 +689,17 @@ cities_data <- data.frame(
   filter(ai == 1) %>% pull(n)
 )
 
+actor_type_colors <- c(
+  "Politicians" = "#0072B2", # blue
+  "Parties"     = "#D55E00", # vermillion
+  "Fans"        = "#009E73"  # green
+)
+
 # Generate the treemap
 tm <- create_political_treemap_ac(
   data = cities_data,
-  title = "",
-      party_colors = c("Politicians" = "#2E8B57", "Parties" = "#562883", "Fans" = "#7B1E26"),
+  title = get_text("by_type_text", lang),
+      party_colors = c("Politicians" = "#0072B2", "Parties" = "#D55E00", "Fans" = "#009E73"),
   height = 400
 )
 
@@ -687,6 +737,25 @@ custom_css2 <- tags$style(HTML("
     border-radius: 10px;       /* Rounded corners */
   }
 "))
+
+party_data <- full_data %>%
+  # filter(list_source %in% c("Politicians", "Parties")) %>% 
+  count(ai, party) %>%
+  group_by(party) %>%
+  mutate(total = sum(n)) %>%
+  ungroup() %>%
+  mutate(proportion = n / total * 100)
+
+# Render both charts
+# overall_chart
+# Sort parties by the proportion of AI = 1 (descending)
+sorted_party_data <- party_data %>%
+  group_by(party) %>%
+  summarize(ai_1_proportion = proportion[ai == 1]) %>%
+  arrange(desc(ai_1_proportion)) %>%
+  left_join(party_data, by = "party")
+
+
 
 # Create sample data
 cities_data2 <- data.frame(
@@ -784,7 +853,14 @@ create_political_treemap <- function(
 # Generate the treemap
 tm2 <- create_political_treemap(
   data = cities_data2,
-  title = "",
+  title = get_text("ai_by_party", lang),
+  height = 400
+)
+
+
+tm2 <- create_political_treemap_ac(
+  data = cities_data2,
+  title = get_text("ai_by_party", lang), party_colors = party_colors,
   height = 400
 )
 
@@ -804,13 +880,11 @@ htmltools::browsable(tm2)
 )
 ```
 
-<br>
 
 `r get_text("ai_by_party_descr", lang)`
 
-<br>
 
-
+::: 
 
 
 ## `r get_text("rel_ai_by_party", lang)` {#ki-content-by-party2}
@@ -819,7 +893,14 @@ htmltools::browsable(tm2)
 
 ::: {.panel-tabset}
 
-### Partijen & Politici
+```{r, eval = F}
+# full_data %>%
+#   filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
+#   count(list_source)
+```
+
+
+### `r get_text("parties_and_politicians", lang)`
 
 ```{r}
 
@@ -927,7 +1008,7 @@ htmltools::tagList(
 ```
 
 
-### Others
+### `r get_text("other_actors", lang)`
 
 ```{r}
 
@@ -1056,7 +1137,7 @@ htmltools::tagList(
 
 ::: {.panel-tabset}
 
-### Partijen & Politici
+### `r get_text("parties_and_politicians", lang)`
 
 ```{r}
 dislcimaer <- full_data %>%
@@ -1228,7 +1309,7 @@ htmltools::tagList(
 
 
 
-### Others
+### `r get_text("other_actors", lang)`
 
 
 ```{r}
@@ -1417,7 +1498,7 @@ htmltools::tagList(
 
 ::: {.panel-tabset}
 
-### Partijen & Politici
+### `r get_text("parties_and_politicians", lang)`
 
 ```{r}
 medienformatte <- full_data %>%  
@@ -1470,7 +1551,7 @@ htmltools::browsable(medienformatte)
 
 
 
-### Others
+### `r get_text("other_actors", lang)`
 
 
 ```{r}
@@ -1537,7 +1618,7 @@ htmltools::browsable(medienformatte)
 
 ::: {.panel-tabset}
 
-### Partijen & Politici
+### `r get_text("parties_and_politicians", lang)`
 
 
 ```{r}
@@ -1885,7 +1966,7 @@ htmltools::tagList(
 ```
 
 
-### Others
+### `r get_text("other_actors", lang)`
 
 
 ```{r}
@@ -2247,7 +2328,7 @@ htmltools::tagList(
 
 ::: {.panel-tabset}
 
-### Partijen & Politici
+### `r get_text("parties_and_politicians", lang)`
 
 ```{r}
 
@@ -2422,7 +2503,7 @@ htmltools::tagList(
 
 
 
-### Others
+### `r get_text("other_actors", lang)`
 
 
 
