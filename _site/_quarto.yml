@@ -15,7 +15,7 @@ website:
       - href: blog.qmd
         text: "{{< iconify ph newspaper-light >}} Blog"
       - href: info.qmd
-        text: "{{< iconify ph info-light >}} Meer Info"
+        text: "{{< iconify ph info-light >}} Info"
     right:
       - href: https://favstats.github.io/nl25/
         text: "{{< iconify material-symbols:target >}} Targeting Tracker"        

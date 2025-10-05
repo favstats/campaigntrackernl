@@ -180,36 +180,27 @@ blockquote:hover {
 # setwd("/mnt/storage/campaigntrackernl")
 
 # cleaned_content <- readRDS("../data/cleaned_content.rds")
-labeled <- readRDS("../data/labeled.rds")  %>% 
-  mutate(party = case_when(
-    party == "AFD" ~ "AfD",
-    party == "BüSo – Bürgerrechtsbewegung Solidarität" ~ "BüSo",
-    party %in% c("CDU", "CSU") ~ "CDU/CSU",
-    party %in% c("MLPD – Marxistisch-Leninistische Partei Deutschlands") ~ "MLPD",
-    party %in% c("Piratenpartei Deutschland", "Piratenpartei") ~ "Piratenpartei",
-    party %in% c("SSW - Südschleswiger Wählerverband") ~ "SSW",
-    party %in% c("V-Partei³ - Partei für Veränderung, Vegetarier und Veganer") ~ "V-Partei³",
-    str_detect(party, "ÖDP") ~ "ÖDP",
-    str_detect(party, "PdF") ~ "PdF",
-    T ~party
-  )) #%>% 
+labeled <- readRDS("../data/labeled.rds")  %>%
+  filter(timevar >= as.Date("2025-09-19")) %>% 
+  mutate(timevar = lubridate::floor_date(timevar, unit = "day"))
+  # mutate(party = case_when(
+  #   party == "AFD" ~ "AfD",
+  #   party == "BüSo – Bürgerrechtsbewegung Solidarität" ~ "BüSo",
+  #   party %in% c("CDU", "CSU") ~ "CDU/CSU",
+  #   party %in% c("MLPD – Marxistisch-Leninistische Partei Deutschlands") ~ "MLPD",
+  #   party %in% c("Piratenpartei Deutschland", "Piratenpartei") ~ "Piratenpartei",
+  #   party %in% c("SSW - Südschleswiger Wählerverband") ~ "SSW",
+  #   party %in% c("V-Partei³ - Partei für Veränderung, Vegetarier und Veganer") ~ "V-Partei³",
+  #   str_detect(party, "ÖDP") ~ "ÖDP",
+  #   str_detect(party, "PdF") ~ "PdF",
+  #   T ~party
+  # )) #%>% 
   # filter(str_detect(page_name, "Stiftung", negate = T))
 
-ai_dat <- readRDS("../data/ai_dat.rds")  %>% 
-  mutate(party = case_when(
-    party == "AFD" ~ "AfD",
-    party == "BüSo – Bürgerrechtsbewegung Solidarität" ~ "BüSo",
-    party %in% c("CDU", "CSU") ~ "CDU/CSU",
-    party %in% c("MLPD – Marxistisch-Leninistische Partei Deutschlands") ~ "MLPD",
-    party %in% c("Piratenpartei Deutschland", "Piratenpartei") ~ "Piratenpartei",
-    party %in% c("SSW - Südschleswiger Wählerverband") ~ "SSW",
-    party %in% c("V-Partei³ - Partei für Veränderung, Vegetarier und Veganer") ~ "V-Partei³",
-    str_detect(party, "ÖDP") ~ "ÖDP",
-    str_detect(party, "PdF") ~ "PdF",
-    T ~party
-  ))
 
-
+organic_data <- readRDS("../data/organic_data.rds") %>%
+  filter(timevar >= as.Date("2025-09-19")) %>% 
+  mutate(timevar = lubridate::floor_date(timevar, unit = "day"))
 
 workwith <- labeled %>% 
   # count(ki_bild_video) %>% 
@@ -220,19 +211,19 @@ workwith <- labeled %>%
   # )
 
 
-
 full_data <- workwith %>%
   bind_rows(
-    ai_dat %>% mutate(ai = 0) %>% 
+    organic_data %>% mutate(ai = 0) %>% 
       mutate(input_url_url = url)
   ) %>% 
   as_tibble() %>% 
   # mutate(id = ifelse(is.na(id), ad_id, id)) %>% 
-  mutate(id = input_url_url) %>% 
+  mutate(id = input_url_url) %>%
   filter(!is.na(id)) %>%
-  distinct(id, .keep_all = T)
+  distinct(id, .keep_all = T) %>% 
+  mutate(posted_date = timevar)
 
-saveRDS(full_data, file = "../data/full_data.rds")
+# saveRDS(full_data, file = "../data/full_data.rds")
 
 # workwith %>% 
 #   count(ai)
@@ -306,7 +297,7 @@ saveRDS(full_data, file = "../data/full_data.rds")
 
 
 ```{r}
-test <- T
+test <- F
 if(test){
 anchors <- na.omit(full_data$posted_date)
 n_na    <- sum(is.na(full_data$posted_date))
@@ -479,11 +470,25 @@ library(highcharter)
 library(htmltools)
 ```
 
-
-## XXXXX {#ki-content-by-party1}
+## By Platform {#ki-content-by-party1}
 
 ```{r}
+# Custom CSS for Responsive Container
+custom_css <- tags$style(HTML("
+  .apex-container0 {
+    max-width: 100%;
+    height: auto;
+    overflow-x: auto;    /* Horizontal scroll if needed */
+    overflow-y: auto;    /* Vertical scroll if needed */
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #ccc;    /* Subtle border */
+    border-radius: 10px;       /* Rounded corners */
+  }
+"))
 
+
+# Simpler, stricter apexcharter treemap (no custom JS in tooltip)
 create_political_treemap_ac <- function(
   data,
   party_colors,
@@ -492,17 +497,22 @@ create_political_treemap_ac <- function(
 ) {
   stopifnot(is.data.frame(data))
   if (!all(c("x", "y") %in% names(data))) {
-    stop("Data must contain columns named 'x' (labels) and 'y' (values).")
+    stop("Data must have columns 'x' and 'y'.")
   }
+  # Clean inputs
+  data <- data[!is.na(data$x) & !is.na(data$y), ]
+  data$x <- as.character(data$x)
+  data$y <- as.numeric(data$y)
+
   if (missing(party_colors) || is.null(names(party_colors))) {
-    stop("Provide a named color vector 'party_colors', e.g., c('PartyA'='#...', 'PartyB'='#...').")
+    stop("Provide a *named* color vector 'party_colors', e.g. c('Party'='#123456').")
   }
 
-  # map colors by x, fallback gray
-  cols <- party_colors[match(data$x, names(party_colors))]
+  # Map colors by label; fallback gray
+  cols <- unname(party_colors[match(data$x, names(party_colors))])
   cols[is.na(cols)] <- "#CCCCCC"
 
-  # Build treemap with apexcharter verbs
+  # Build treemap
   ax <- apexcharter::apex(
     data    = data,
     mapping = apexcharter::aes(x = x, y = y),
@@ -511,58 +521,81 @@ create_political_treemap_ac <- function(
   )
 
   ax |>
-    apexcharter::ax_chart(
-      toolbar = list(show = FALSE)
-    ) |>
+    apexcharter::ax_chart(toolbar = list(show = FALSE)) |>
     apexcharter::ax_title(
       text  = title,
       align = "center",
-      style = list(fontSize = "16px")
+      style = list(fontSize = "16px") # fully named list
     ) |>
     apexcharter::ax_legend(show = FALSE) |>
     apexcharter::ax_colors(cols) |>
     apexcharter::ax_plotOptions(
       treemap = list(
-        distributed  = TRUE,     # different color per cell
-        enableShades = FALSE,    # don't shade by value
-        dataLabels   = list(style = list(fontSize = "12px"))
+        distributed  = TRUE,
+        enableShades = FALSE,
+        dataLabels   = list(
+          enabled = TRUE,                 # make naming explicit to avoid partial names
+          style   = list(fontSize = "12px")
+        )
       )
-    ) |>
-    apexcharter::ax_tooltip(
-      style = list(fontSize = "14px", color = "#000000"),
-      # marker control is limited from tooltip; keep default visible marker
-      y = list(formatter = htmlwidgets::JS(
-        # show raw value; adapt if you want pretty numbers
-        "function(val){ return val; }"
-      ))
     )
 }
 
-# --- Minimal reproducible example -----------------------------------------
-# Using ggplot2::mpg just to demo (manufacturer counts)
-if (interactive()) {
-  library(dplyr)
-  library(ggplot2)
-  library(apexcharter)
 
-  data("mpg", package = "ggplot2")
-  df <- mpg |>
-    rename(x = manufacturer) %>% 
-    count(x, name = "y") |>
-    arrange(desc(y))
+list_data <- full_data %>%
+  count(ai, platform) %>%
+  group_by(ai, platform) %>%
+  mutate(total = sum(n)) %>%
+  ungroup() %>%
+  mutate(proportion = n / total * 100)
 
-  # dummy party_colors keyed by manufacturers for demo
-  set.seed(1)
-  demo_cols <- setNames(grDevices::rainbow(length(unique(df$x))), unique(df$x))
+## TODO: include list_source somehow
+sorted_source_data <- full_data %>%
+  count(ai, platform) %>%
+  group_by(ai, platform) %>%
+  mutate(total = sum(n)) %>%
+  ungroup() %>%
+  mutate(proportion = n / total * 100) %>%
+  group_by(ai, platform) %>%
+  summarize(ai_1_proportion = proportion[ai == 1]) %>%
+  arrange(desc(ai_1_proportion)) %>%
+  left_join(list_data, by = "platform")
 
-  create_political_treemap_ac(
-    data = df,
-    party_colors = demo_cols,
-    title = "Counts by Manufacturer (treemap)",
-    height = 420
+# Create sample data
+cities_data <- data.frame(
+  x = sorted_source_data %>% arrange(desc(n)) %>% 
+  filter(ai.y == 1) %>% pull(platform),
+  y = sorted_source_data %>% arrange(desc(n)) %>% 
+  filter(ai.y == 1) %>% pull(n)
+)
+
+# Generate the treemap
+tm <- create_political_treemap_ac(
+  data = cities_data,
+  title = "",
+      party_colors = c("FB" = "#2E8B57", "IG" = "#562883", "TikTok" = "#7B1E26", "X" = "black"),
+  height = 400
+)
+
+# Display in RStudio Viewer or browser
+# htmltools::browsable(tm)
+# htmltools::html_print(tm)
+# htmltools::HTML(as.character(tm))
+# tm
+# htmltools::save_html(as.character(tm), file = "t.html")
+# Embedding Chart into Responsive Container
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container0",
+htmltools::browsable(tm)
   )
-}
+)
 ```
+
+## XXXXX {#ki-content-by-party1}
+
+
 
 
 ```{r, results='asis'}
@@ -580,6 +613,88 @@ custom_css <- tags$style(HTML("
   }
 "))
 
+
+
+
+
+list_data <- full_data %>% 
+  mutate(list_source = ifelse(list_source == "NL Historic", "Parties", list_source)) %>% 
+  count(ai, list_source) %>%
+  group_by(list_source) %>%
+  mutate(total = sum(n)) %>%
+  ungroup() %>%
+  mutate(proportion = n / total * 100)
+
+## TODO: include list_source somehow
+sorted_source_data <- full_data %>%
+  count(ai, list_source) %>%
+  group_by(list_source) %>%
+  mutate(total = sum(n)) %>%
+  ungroup() %>%
+  mutate(proportion = n / total * 100) %>%
+  group_by(list_source) %>%
+  summarize(ai_1_proportion = proportion[ai == 1]) %>%
+  arrange(desc(ai_1_proportion)) %>%
+  left_join(list_data, by = "list_source") 
+
+# Create sample data
+cities_data <- data.frame(
+  x = sorted_source_data %>% arrange(desc(n)) %>% 
+  filter(ai == 1) %>% pull(list_source),
+  y = sorted_source_data %>% arrange(desc(n)) %>% 
+  filter(ai == 1) %>% pull(n)
+)
+
+# Generate the treemap
+tm <- create_political_treemap_ac(
+  data = cities_data,
+  title = "",
+      party_colors = c("Politicians" = "#2E8B57", "Parties" = "#562883", "Fans" = "#7B1E26"),
+  height = 400
+)
+
+# Display in RStudio Viewer or browser
+# htmltools::browsable(tm)
+# htmltools::html_print(tm)
+# htmltools::HTML(as.character(tm))
+# tm
+# htmltools::save_html(as.character(tm), file = "t.html")
+# Embedding Chart into Responsive Container
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(tm)
+  )
+)
+```
+
+
+## `r get_text("ai_by_party", lang)` {#ki-content-by-party2}
+
+
+
+```{r, results='asis'}
+custom_css2 <- tags$style(HTML("
+  .apex-container2 {
+    max-width: 100%;
+    height: auto;
+    overflow-x: auto;    /* Horizontal scroll if needed */
+    overflow-y: auto;    /* Vertical scroll if needed */
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #ccc;    /* Subtle border */
+    border-radius: 10px;       /* Rounded corners */
+  }
+"))
+
+# Create sample data
+cities_data2 <- data.frame(
+  x = sorted_party_data %>% arrange(desc(n)) %>% 
+  filter(ai == 1) %>% pull(party),
+  y = sorted_party_data %>% arrange(desc(n)) %>% 
+  filter(ai == 1) %>% pull(n)
+)
 
 create_political_treemap <- function(
   data,
@@ -665,136 +780,6 @@ create_political_treemap <- function(
   )
 }
 
-# Simpler, stricter apexcharter treemap (no custom JS in tooltip)
-create_political_treemap_ac <- function(
-  data,
-  party_colors,
-  title  = "AI Content Distribution by Political Party",
-  height = 400
-) {
-  stopifnot(is.data.frame(data))
-  if (!all(c("x", "y") %in% names(data))) {
-    stop("Data must have columns 'x' and 'y'.")
-  }
-  # Clean inputs
-  data <- data[!is.na(data$x) & !is.na(data$y), ]
-  data$x <- as.character(data$x)
-  data$y <- as.numeric(data$y)
-
-  if (missing(party_colors) || is.null(names(party_colors))) {
-    stop("Provide a *named* color vector 'party_colors', e.g. c('Party'='#123456').")
-  }
-
-  # Map colors by label; fallback gray
-  cols <- unname(party_colors[match(data$x, names(party_colors))])
-  cols[is.na(cols)] <- "#CCCCCC"
-
-  # Build treemap
-  ax <- apexcharter::apex(
-    data    = data,
-    mapping = apexcharter::aes(x = x, y = y),
-    type    = "treemap",
-    height  = height
-  )
-
-  ax |>
-    apexcharter::ax_chart(toolbar = list(show = FALSE)) |>
-    apexcharter::ax_title(
-      text  = title,
-      align = "center",
-      style = list(fontSize = "16px") # fully named list
-    ) |>
-    apexcharter::ax_legend(show = FALSE) |>
-    apexcharter::ax_colors(cols) |>
-    apexcharter::ax_plotOptions(
-      treemap = list(
-        distributed  = TRUE,
-        enableShades = FALSE,
-        dataLabels   = list(
-          enabled = TRUE,                 # make naming explicit to avoid partial names
-          style   = list(fontSize = "12px")
-        )
-      )
-    )
-}
-
-list_data <- full_data %>%
-  count(ai, list_source) %>%
-  group_by(list_source) %>%
-  mutate(total = sum(n)) %>%
-  ungroup() %>%
-  mutate(proportion = n / total * 100)
-
-## TODO: include list_source somehow
-sorted_source_data <- full_data %>%
-  count(ai, list_source) %>%
-  group_by(list_source) %>%
-  mutate(total = sum(n)) %>%
-  ungroup() %>%
-  mutate(proportion = n / total * 100) %>%
-  group_by(list_source) %>%
-  summarize(ai_1_proportion = proportion[ai == 1]) %>%
-  arrange(desc(ai_1_proportion)) %>%
-  left_join(list_data, by = "list_source")
-
-# Create sample data
-cities_data <- data.frame(
-  x = sorted_source_data %>% arrange(desc(n)) %>% 
-  filter(ai == 1) %>% pull(list_source),
-  y = sorted_source_data %>% arrange(desc(n)) %>% 
-  filter(ai == 1) %>% pull(n)
-)
-
-# Generate the treemap
-tm <- create_political_treemap_ac(
-  data = cities_data,
-  title = "",
-      party_colors = c("Politicians" = "#2E8B57", "Parties" = "#562883", "Fans" = "#7B1E26"),
-  height = 400
-)
-
-# Display in RStudio Viewer or browser
-# htmltools::browsable(tm)
-# htmltools::html_print(tm)
-# htmltools::HTML(as.character(tm))
-# tm
-# htmltools::save_html(as.character(tm), file = "t.html")
-# Embedding Chart into Responsive Container
-htmltools::tagList(
-  custom_css,
-  tags$div(
-    class = "apex-container",
-htmltools::browsable(tm)
-  )
-)
-```
-
-
-## `r get_text("ai_by_party", lang)` {#ki-content-by-party2}
-
-
-
-```{r, results='asis'}
-custom_css2 <- tags$style(HTML("
-  .apex-container2 {
-    max-width: 100%;
-    height: auto;
-    overflow-x: auto;    /* Horizontal scroll if needed */
-    overflow-y: auto;    /* Vertical scroll if needed */
-    padding: 20px;
-    background-color: #f8f9fa; /* Light background */
-    border: 1px solid #ccc;    /* Subtle border */
-    border-radius: 10px;       /* Rounded corners */
-  }
-"))
-
-# Create sample data
-cities_data2 <- data.frame(
-  x = sorted_party_data %>% arrange(desc(n)) %>% 
-  filter(ai == 1) %>% pull(party),
-  y = sorted_party_data %>% arrange(desc(n)) %>% 
-  filter(ai == 1) %>% pull(n)
-)
 
 # Generate the treemap
 tm2 <- create_political_treemap(
