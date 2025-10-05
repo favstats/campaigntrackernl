@@ -176,6 +176,7 @@ party_colors <- c(
   "Anti-Immigrant" = "#EE6677", # Tol Bright coral (color-blind–safe)
   "De Linie"       = "#AA3377"  # Tol Bright purple (distinct & CVD-safe)
 )
+party_colors <- party_colors[!duplicated(names(party_colors), fromLast = TRUE)]
 
 
 # library(glue)
