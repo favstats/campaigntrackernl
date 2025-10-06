@@ -745,8 +745,6 @@ htmltools::browsable(tm2)
 `r get_text("ai_by_party_descr", lang)`
 
 
-::: 
-
 
 ## `r get_text("platform_text", lang)` {#ki-content-by-party2}
 
@@ -906,6 +904,8 @@ htmltools::browsable(tm)
   )
 )
 ```
+
+::: 
 
 
 ## `r get_text("rel_ai_by_party", lang)` {#ki-content-by-party2}
