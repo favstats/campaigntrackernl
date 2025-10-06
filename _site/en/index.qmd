@@ -280,7 +280,7 @@ full_data <- workwith %>%
   distinct(id, .keep_all = T) %>% 
   mutate(posted_date = timevar)
 
-saveRDS(full_data, file = "../../data/full_data.rds")
+# saveRDS(full_data, file = "../../data/full_data.rds")
 
 # workwith %>% 
 #   count(ai)
