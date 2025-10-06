@@ -241,6 +241,7 @@ labeled <- readRDS("../data/labeled.rds")  %>%
   mutate(party = case_when(
     party == "GL" ~ "GL-PvdA",
     party == "PvdA" ~ "GL-PvdA",
+    str_detect(username, "groenlinks|pvda") ~ "GL-PvdA",
   #   party == "BüSo – Bürgerrechtsbewegung Solidarität" ~ "BüSo",
   #   party %in% c("CDU", "CSU") ~ "CDU/CSU",
   #   party %in% c("MLPD – Marxistisch-Leninistische Partei Deutschlands") ~ "MLPD",
