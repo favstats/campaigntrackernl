@@ -509,12 +509,13 @@ library(htmltools)
 ::: {.panel-tabset}
 
 
-## `r get_text("platform_text", lang)` {#ki-content-by-party2}
+## `r get_text("ai_by_party", lang)` {#ki-content-by-party2}
 
-```{r}
-# Custom CSS for Responsive Container
-custom_css <- tags$style(HTML("
-  .apex-container0 {
+
+
+```{r, results='asis'}
+custom_css2 <- tags$style(HTML("
+  .apex-container2 {
     max-width: 100%;
     height: auto;
     overflow-x: auto;    /* Horizontal scroll if needed */
@@ -579,6 +580,174 @@ create_political_treemap_ac <- function(
       )
     )
 }
+
+party_data <- full_data %>%
+  # filter(list_source %in% c("Politicians", "Parties")) %>% 
+  count(ai, party) %>%
+  group_by(party) %>%
+  mutate(total = sum(n)) %>%
+  ungroup() %>%
+  mutate(proportion = n / total * 100)
+
+# Render both charts
+# overall_chart
+# Sort parties by the proportion of AI = 1 (descending)
+sorted_party_data <- party_data %>%
+  group_by(party) %>%
+  summarize(ai_1_proportion = proportion[ai == 1]) %>%
+  arrange(desc(ai_1_proportion)) %>%
+  left_join(party_data, by = "party")
+
+
+
+# Create sample data
+cities_data2 <- data.frame(
+  x = sorted_party_data %>% arrange(desc(n)) %>% 
+  filter(ai == 1) %>% pull(party),
+  y = sorted_party_data %>% arrange(desc(n)) %>% 
+  filter(ai == 1) %>% pull(n)
+)
+
+create_political_treemap <- function(
+  data,
+  title = "AI Content Distribution by Political Party",
+  height = 400
+) {
+
+  
+  # Validate data structure
+  if (!all(c("x", "y") %in% names(data))) {
+    stop("Data must contain 'x' and 'y' columns")
+  }
+  
+  # Match colors to parties
+  data_colors <- party_colors[match(data$x, names(party_colors))]
+  data_colors[is.na(data_colors)] <- "#CCCCCC"  # Fallback gray
+  
+  # Convert data to JSON format
+  series_data <- jsonlite::toJSON(
+    lapply(1:nrow(data), function(i) {
+      list(x = data$x[i], y = data$y[i])
+    }),
+    auto_unbox = TRUE
+  )
+  
+    unique_id <- paste0("chart-", sample(1:10000, 1))  # Generate unique ID
+
+  
+  # Create HTML components
+  htmltools::tagList(
+    htmltools::div(id = "custom-treemap"),  # Changed ID to be unique
+    htmltools::tags$script(
+      sprintf(
+        "
+        (function() {
+          // Use unique variable names
+          var treemapOptions = {
+            series: [{ data: %s }],
+            legend: { show: false },
+            chart: {
+              id: 'partyTreemap',
+              height: %d,
+              type: 'treemap',
+              toolbar: { show: false }
+            },
+            title: {
+              text: '%s',
+              align: 'center',
+              style: { fontSize: '16px' }
+            },
+            colors: %s,
+            plotOptions: {
+              treemap: {
+                distributed: true,
+                enableShades: false,
+                dataLabels: {
+                  style: { fontSize: '12px' }
+                }
+              }
+            },
+            tooltip: {
+              style: { fontSize: '14px', color: '#000000' },
+              marker: { show: true, size: 20 }
+            }
+          };
+          
+          // Wait for DOM readiness
+          document.addEventListener('DOMContentLoaded', function() {
+            var treemapChart = new ApexCharts(
+              document.querySelector('#custom-treemap'),
+              treemapOptions
+            );
+            treemapChart.render();
+          });
+        })();
+        ",
+        series_data,
+        height,
+        title,
+        jsonlite::toJSON(as.character(data_colors))
+      )
+    )
+  )
+}
+
+
+# # Generate the treemap
+# tm2 <- create_political_treemap(
+#   data = cities_data2,
+#   title = get_text("ai_by_party", lang),
+#   height = 400
+# )
+
+
+tm2 <- create_political_treemap_ac(
+  data = cities_data2,
+  title = get_text("ai_by_party", lang), party_colors = party_colors,
+  height = 400
+)
+
+# Display in RStudio Viewer or browser
+# htmltools::browsable(tm)
+# htmltools::html_print(tm)
+# htmltools::HTML(as.character(tm))
+
+# htmltools::save_html(as.character(tm), file = "t.html")
+# Embedding Chart into Responsive Container
+htmltools::tagList(
+  custom_css2,
+  tags$div(
+    class = "apex-container2",
+htmltools::browsable(tm2)
+  )
+)
+```
+
+
+`r get_text("ai_by_party_descr", lang)`
+
+
+::: 
+
+
+## `r get_text("platform_text", lang)` {#ki-content-by-party2}
+
+```{r}
+# Custom CSS for Responsive Container
+custom_css <- tags$style(HTML("
+  .apex-container0 {
+    max-width: 100%;
+    height: auto;
+    overflow-x: auto;    /* Horizontal scroll if needed */
+    overflow-y: auto;    /* Vertical scroll if needed */
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #ccc;    /* Subtle border */
+    border-radius: 10px;       /* Rounded corners */
+  }
+"))
+
+
 
 
 list_data <- full_data %>%
@@ -719,173 +888,6 @@ htmltools::browsable(tm)
   )
 )
 ```
-
-
-## `r get_text("ai_by_party", lang)` {#ki-content-by-party2}
-
-
-
-```{r, results='asis'}
-custom_css2 <- tags$style(HTML("
-  .apex-container2 {
-    max-width: 100%;
-    height: auto;
-    overflow-x: auto;    /* Horizontal scroll if needed */
-    overflow-y: auto;    /* Vertical scroll if needed */
-    padding: 20px;
-    background-color: #f8f9fa; /* Light background */
-    border: 1px solid #ccc;    /* Subtle border */
-    border-radius: 10px;       /* Rounded corners */
-  }
-"))
-
-party_data <- full_data %>%
-  # filter(list_source %in% c("Politicians", "Parties")) %>% 
-  count(ai, party) %>%
-  group_by(party) %>%
-  mutate(total = sum(n)) %>%
-  ungroup() %>%
-  mutate(proportion = n / total * 100)
-
-# Render both charts
-# overall_chart
-# Sort parties by the proportion of AI = 1 (descending)
-sorted_party_data <- party_data %>%
-  group_by(party) %>%
-  summarize(ai_1_proportion = proportion[ai == 1]) %>%
-  arrange(desc(ai_1_proportion)) %>%
-  left_join(party_data, by = "party")
-
-
-
-# Create sample data
-cities_data2 <- data.frame(
-  x = sorted_party_data %>% arrange(desc(n)) %>% 
-  filter(ai == 1) %>% pull(party),
-  y = sorted_party_data %>% arrange(desc(n)) %>% 
-  filter(ai == 1) %>% pull(n)
-)
-
-create_political_treemap <- function(
-  data,
-  title = "AI Content Distribution by Political Party",
-  height = 400
-) {
-
-  
-  # Validate data structure
-  if (!all(c("x", "y") %in% names(data))) {
-    stop("Data must contain 'x' and 'y' columns")
-  }
-  
-  # Match colors to parties
-  data_colors <- party_colors[match(data$x, names(party_colors))]
-  data_colors[is.na(data_colors)] <- "#CCCCCC"  # Fallback gray
-  
-  # Convert data to JSON format
-  series_data <- jsonlite::toJSON(
-    lapply(1:nrow(data), function(i) {
-      list(x = data$x[i], y = data$y[i])
-    }),
-    auto_unbox = TRUE
-  )
-  
-    unique_id <- paste0("chart-", sample(1:10000, 1))  # Generate unique ID
-
-  
-  # Create HTML components
-  htmltools::tagList(
-    htmltools::div(id = "custom-treemap"),  # Changed ID to be unique
-    htmltools::tags$script(
-      sprintf(
-        "
-        (function() {
-          // Use unique variable names
-          var treemapOptions = {
-            series: [{ data: %s }],
-            legend: { show: false },
-            chart: {
-              id: 'partyTreemap',
-              height: %d,
-              type: 'treemap',
-              toolbar: { show: false }
-            },
-            title: {
-              text: '%s',
-              align: 'center',
-              style: { fontSize: '16px' }
-            },
-            colors: %s,
-            plotOptions: {
-              treemap: {
-                distributed: true,
-                enableShades: false,
-                dataLabels: {
-                  style: { fontSize: '12px' }
-                }
-              }
-            },
-            tooltip: {
-              style: { fontSize: '14px', color: '#000000' },
-              marker: { show: true, size: 20 }
-            }
-          };
-          
-          // Wait for DOM readiness
-          document.addEventListener('DOMContentLoaded', function() {
-            var treemapChart = new ApexCharts(
-              document.querySelector('#custom-treemap'),
-              treemapOptions
-            );
-            treemapChart.render();
-          });
-        })();
-        ",
-        series_data,
-        height,
-        title,
-        jsonlite::toJSON(as.character(data_colors))
-      )
-    )
-  )
-}
-
-
-# Generate the treemap
-tm2 <- create_political_treemap(
-  data = cities_data2,
-  title = get_text("ai_by_party", lang),
-  height = 400
-)
-
-
-tm2 <- create_political_treemap_ac(
-  data = cities_data2,
-  title = get_text("ai_by_party", lang), party_colors = party_colors,
-  height = 400
-)
-
-# Display in RStudio Viewer or browser
-# htmltools::browsable(tm)
-# htmltools::html_print(tm)
-# htmltools::HTML(as.character(tm))
-
-# htmltools::save_html(as.character(tm), file = "t.html")
-# Embedding Chart into Responsive Container
-htmltools::tagList(
-  custom_css2,
-  tags$div(
-    class = "apex-container2",
-htmltools::browsable(tm2)
-  )
-)
-```
-
-
-`r get_text("ai_by_party_descr", lang)`
-
-
-::: 
 
 
 ## `r get_text("rel_ai_by_party", lang)` {#ki-content-by-party2}
