@@ -114,7 +114,7 @@ h3 {
 </style>
 
 <div class="section-container">
-  <h1>CampAIgn Tracker</h1>
+  <!-- <h1>CampAIgn Tracker</h1> -->
   
   <h2>About Us</h2>
   
@@ -122,7 +122,21 @@ h3 {
     We are an interdisciplinary team dedicated to bringing transparency to the use of AI in political discourse on social media. Our project has received significant support through multiple funding sources, enabling us to build a comprehensive monitoring infrastructure.
   </p>
 
-<div class="highlight-box"> <h3>Funding & Support</h3> <p> Our work is made possible through grants from the <strong>University of Amsterdam's Research Priority Area in Artificial Intelligence & Politics</strong> ([AI & Politics RPA](https://aissr.uva.nl/our-research/artificial-intelligence-politics.html)), which provides annual funding of 250,000 euros over five years to stimulate interdisciplinary research into how AI is reshaping politics and society. </p> <p> We also received crucial funding from the <strong>SIDN Fonds</strong> as part of the <strong>Hybrid Election Interference Observatory</strong> (HEIO) consortium. This project brings together Post-X Society, AI Forensics, Trollrensics, Justice for Prosperity to protect election integrity by monitoring social media platforms for foreign interference operations. </p> </div>
+<div class="highlight-box">
+  <h3>Funding & Support</h3>
+  <p>
+    Our work is made possible through grants from the University of Amsterdam’s Research Priority Area in Artificial Intelligence & Politics <strong><a href="https://aissr.uva.nl/our-research/artificial-intelligence-politics.html">(AI & Politics RPA)</a></strong>,
+    which provides annual funding of 250,000 euros over five years to stimulate interdisciplinary research into how AI is reshaping politics and society.
+  </p>
+  <p>
+    We also received crucial funding from the <strong><a href="https://www.sidnfonds.nl/">SIDN Fonds</a></strong> as part of the <strong>Hybrid Election Interference Observatory (HEIO)</strong> consortium. This project brings together
+    <a href="https://postxsociety.nl/">Post-X Society</a>,
+    <a href="https://aiforensics.org/">AI Forensics</a>,
+    <a href="https://trollrensics.com/">Trollrensics</a>,
+    and <a href="https://justiceforprosperity.org/">Justice for Prosperity</a>
+    to protect election integrity by monitoring social media platforms for foreign interference operations.
+  </p>
+</div>
 
   <h3>Our Team</h3>
   
@@ -130,9 +144,11 @@ h3 {
     The <strong>CampAIgn Tracker</strong> is led by <strong>Dr. Fabio Votta</strong> ([AlgoSoc Consortium](https://algosoc.org/) at the University of Amsterdam) and <strong>Dr. Simon Kruschinski</strong> (University of Mainz), who brought this initiative to life and are responsible for the research project. Both researchers specialize in political campaigns on social media.
   </p>
 
+<center>
+<img src="fasim.jpg" alt="FASIM" style="width: 450px; height: auto;" />
+</center>
 
-<div class="team-category"> <h4>Research Assistants</h4> <div class="team-list"> <p>[Doortje Cools](https://www.linkedin.com/in/dorothea-cools-38b6542a1/), Lynn Louvet, Ella van Vloten, Daisy Blass, Isabella van der Zanden, Raluca Groza</p> <p><em>We extend our deepest thanks to our research assistants for their exceptional dedication and effort in bringing this project to life.</em></p> </div> </div> <div class="team-category"> <h4>PhD Students & Postdocs (University of Amsterdam)</h4> <div class="team-list"> <p>Tobias Kleindamm, Ellen Linnert, Annamijn Beijeman, Haylee Kelsall </p> <p><em>We are equally grateful to our colleagues, whose expertise and commitment have been vital for the success of this project.</em></p> </div> </div>
-
+<div class="team-category"> <h4>Research Assistants</h4> <div class="team-list"> <p> <a href="https://www.linkedin.com/in/dorothea-cools-38b6542a1/">Doortje Cools</a>, <a href="https://nl.linkedin.com/in/lynn-louvet-b7757b266">Lynn Louvet</a>, <a href="https://www.linkedin.com/in/elisabeth-christina-v-18a30b142/">Ella van Vloten</a>, <a href="https://nl.linkedin.com/in/daisyblass">Daisy Blass</a>, Isabella van der Zanden, Emily Murphy, Raluca Groza </p> <p><em>We extend our deepest thanks to our research assistants for their exceptional dedication and effort in bringing this project to life.</em></p> </div> </div> <div class="team-category"> <h4>PhD Students & Postdocs (University of Amsterdam)</h4> <div class="team-list"> <p> <a href="https://nl.linkedin.com/in/tobias-kleineidam">Tobias Kleindamm</a>, <a href="https://www.uva.nl/en/profile/l/i/e.u.linnert2/e.u.linnert.html">Ellen Linnert</a>, <a href="https://nl.linkedin.com/in/annamijn-beijeman-124492217">Annamijn Beijeman</a>, <a href="https://www.uva.nl/en/profile/k/e/h.m.kelsall2/h.m.kelsall.html">Haylee Kelsall</a>, </p> <p><em>We are grateful to our colleagues, whose expertise and commitment have been vital for the success of this project.</em></p> </div> </div>
 
 
 
@@ -150,18 +166,18 @@ library(reactable)
 full_data <- readRDS("../data/full_data.rds")
 ```
 
-We capture **all posts** from over **3000 accounts** of parties, leading candidates, political commentators and influencers. We consider **party accounts at the national, provincial, and local levels**.
+We capture **all posts** from over **4000 accounts** of parties, leading candidates, political commentators and influencers. We consider **party accounts at the national, provincial, and local levels**.
 
 We are currently tracking *`r nrow(full_data)` posts* between `r min(full_data$posted_date)` and `r max(full_data$posted_date)`.
 
 ```{r, echo=F, warning=F, message=F}
 full_data %>% 
   count(party, sort = T) %>%
-  rename(Party = party, Posts = n) %>% 
+  rename(`Party/Group` = party, Posts = n) %>% 
   reactable()
 ```
 
-The classification of accounts is based on the work of our research assistants as well as dedicated volunteer work of [Who Targets Me](https://whotargets.me/), an organization committed to transparency in digital campaigning. They track the online advertising spending of over 100,000 advertisers from 650+ parties in over 50 countries.
+The classification of accounts is based on the work of our **research assistants** as well as dedicated volunteer work of **[Who Targets Me](https://whotargets.me/)**, an organization committed to transparency in digital campaigning. They track the online advertising spending of over 100,000 advertisers from 650+ parties in over 50 countries.
 
 ### AI Detection
 
@@ -171,8 +187,8 @@ Our AI detection is a **two-stage process** that combines **automatic classifica
    - All collected images and video stills are checked for AI generation using the **AI detection model from [SightEngine](https://sightengine.com/detect-ai-generated-images)**.
 
 **2. Human Validation:**
-   - If the *classification probability is above 0.1*, **trained coders** manually review the image.
-   - This ensures that automatic AI classification is validated by human expertise.
+   - If the *classification probability is above 0.1*, **trained research assisstants** manually review the image.
+   - This ensures that automatic AI classification is **always validated by human expertise**.
 
 Additionally, for all identified **AI posts**, coders classify the following features:
 
@@ -185,7 +201,7 @@ Additionally, for all identified **AI posts**, coders classify the following fea
 
 This comprehensive information is available on our platform [campaigntracker.nl](https://www.campaigntracker.nl) in simple visualizations.
 
-This enables **citizens and journalists** to learn how AI is being used in election campaigns and to hold a **public debate** about the use of AI in politics.
+Our hope is that this enables **citizens and journalists** to learn how AI is being used in election campaigns and to hold a **public debate** about the use of AI in politics.
 
 </div>
 
@@ -198,7 +214,14 @@ This enables **citizens and journalists** to learn how AI is being used in elect
   <a href="mailto:info@campaigntracker.de" class="button">info@campaigntracker.de</a>
 </div>
 
-<h3>Our Origins</h3> <p> We initially started with this project at the Politechathon in Berlin, organized by the [Baden-Württemberg Stiftung](https://www.bwstiftung.de/de/), where we won the prize in the "Media Literacy" category. This initial success allowed us to develop the <strong>CampAIgn Tracker</strong> further. </p> ![](img/us.png) <p style="text-align: center; font-style: italic; color: #666;"> <strong>From left to right:</strong> Theresa Gröninger (Jury member at the Politechathon), Theresa Schültken, Miriam Runde, Fabio Votta, Simon Kruschinski, Jakob Scherer<br> <em>[Credits: @BW Stiftung / Viktor Heekeren]</em> </p> </div>
+<h3>Our Origins</h3> <p> We initially started with this project at the Politechathon in Berlin, organized by the [Baden-Württemberg Stiftung](https://www.bwstiftung.de/de/), where we won the prize in the "Media Literacy" category.  <p>
+  The <strong>CampAIgn Tracker</strong> project launched its first version 
+  during the 2025 German elections: 
+  <a href="https://www.campaigntracker.de" target="_blank" rel="noopener">campaigntracker.de</a>.
+</p> </p> ![](img/us.png) <p style="text-align: center; font-style: italic; color: #666;"> <strong>From left to right:</strong> Theresa Gröninger (Jury member at the Politechathon), Theresa Schültken, Miriam Runde, Fabio Votta, Simon Kruschinski, Jakob Scherer<br> <em>[Credits: @BW Stiftung / Viktor Heekeren]</em> </p></div>
+
+
+
 
 <br>
 <center>
