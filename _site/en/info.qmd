@@ -163,7 +163,7 @@ With the **CampAIgn Tracker**, we aim to help citizens and journalists understan
 ```{r, echo=F, warning=F, message=F}
 library(tidyverse)
 library(reactable)
-full_data <- readRDS("../data/full_data.rds")
+full_data <- readRDS("../../data/full_data.rds")
 ```
 
 We capture **all posts** from over **4000 accounts** of parties, leading candidates, political commentators and influencers. We consider **party accounts at the national, provincial, and local levels**.
