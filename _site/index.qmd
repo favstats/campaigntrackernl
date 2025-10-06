@@ -371,6 +371,20 @@ full_data %>%
 full_data %>%
   filter(ai == 1) %>% 
   count(list_source)
+
+workwith
+
+ workwith %>%
+  bind_rows(
+    organic_data %>% mutate(ai = 0) %>% 
+      mutate(input_url_url = url)
+  ) %>% 
+  as_tibble() %>% 
+  # mutate(id = ifelse(is.na(id), ad_id, id)) %>% 
+  mutate(id = input_url_url) %>%
+  filter(!is.na(id)) %>%
+   filter(id == "https://www.instagram.com/p/DO_ZvvfjAGI")
+  filter(ai == 1) %>% count(id, sort =T)
 ```
 
 
@@ -466,6 +480,9 @@ htmltools::tags$div(
   htmltools::tags$div(style = "flex: 1; min-width: 300px;", total_posts),
   htmltools::tags$div(style = "flex: 1; min-width: 300px;", total_ai)
 )
+
+# full_data %>% 
+#   filter(ai == 1)
 ```
 
 
