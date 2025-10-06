@@ -240,6 +240,7 @@ labeled <- readRDS("../../data/labeled.rds")  %>%
   mutate(list_source = ifelse(list_source == "NL Historic", "Parties", list_source)) %>% 
   mutate(party = case_when(
     party == "GL" ~ "GL-PvdA",
+    party == "PvdA" ~ "GL-PvdA",
   #   party == "BüSo – Bürgerrechtsbewegung Solidarität" ~ "BüSo",
   #   party %in% c("CDU", "CSU") ~ "CDU/CSU",
   #   party %in% c("MLPD – Marxistisch-Leninistische Partei Deutschlands") ~ "MLPD",
