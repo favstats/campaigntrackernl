@@ -1557,15 +1557,57 @@ apex(type = "donut", mapping = aes(x = image_s_video_s_included, y = n)) %>%
     lineCap = "round"
   )
 
-htmltools::tagList(
-  custom_css,
-  tags$div(
-    class = "apex-container",
-htmltools::browsable(medienformatte)
-  )
-)
+# htmltools::tagList(
+#   custom_css,
+#   tags$div(
+#     class = "apex-container",
+# htmltools::browsable(medienformatte)
+#   )
+# )
 ```
 
+```{r}
+like_real_dat <- full_data %>%  #View()
+  filter(list_source %in% c("Politicians", "Parties")) %>% 
+
+  filter(ai == 1)  %>% 
+  mutate(nature_of_the_image_video = case_when(
+    str_detect(nature_of_the_image_video, "contains real-looking conten") ~ get_text("like_real", lang),
+    str_detect(nature_of_the_image_video, "does NOT") ~ get_text("like_unreal", lang)
+  )) %>% 
+  count(nature_of_the_image_video)%>% 
+
+apex(type = "donut", mapping = aes(x = nature_of_the_image_video, y = n)) %>%
+  ax_colors(c("#FA0347", "#AC0999", "#darkblue")) %>%
+  ax_chart(height = 299) %>%  # Increase chart size
+  ax_plotOptions(
+    radialBar = list(
+      hollow = list(size = "60%"),  # Adjust hollow size for more text space
+      dataLabels = list(
+        name = list(
+          show = TRUE,
+          # offsetY = 10,  # Adjust vertical position
+          style = list(color = "#000", fontSize = "16px", fontWeight = "bold")  # Black text
+        ),
+        value = list(
+          show = TRUE,
+          # offsetY = -10,  # Position value closer to center
+          formatter = JS("function(val) { return val + '%'; }"),
+          style = list(color = "#000", fontSize = "20px", fontWeight = "bold")  # Black text
+        )
+      )
+    )
+  ) %>%
+  ax_fill(
+    type = "solid"
+  ) %>%
+  ax_stroke(
+    show = TRUE,
+    lineCap = "round"
+  ) %>%
+  ax_title(text = get_text("disclaimer_frequency", lang), align = "center",
+           style = list(fontSize = "18px", color = "#000")) 
+```
 
 
 ### `r get_text("other_actors", lang)`

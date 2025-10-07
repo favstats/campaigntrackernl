@@ -93,6 +93,7 @@ format:
 
 ---
 
+
 <style>
   /* Color all Markdown bold text */
   main.content strong,
@@ -105,6 +106,7 @@ format:
 
 
 > WARNING THIS ONLY SHOWS A MOCK-UP THE DATA IS NOT REAL YET! DO NOTE CITE.
+
 
 
 ```{r setup, include=FALSE}
@@ -176,7 +178,9 @@ blockquote:hover {
 
 
 
+
 `r get_text("landingtext", lang)`
+
 
 ```{r}
 # setwd("/mnt/storage/campaigntrackernl")
@@ -307,7 +311,6 @@ full_data <- workwith %>%
 #   count(list_source)
 ```
 
-
 ```{r, eval = F}
 full_data %>%
   filter(ai == 1) %>% 
@@ -336,7 +339,6 @@ workwith
    filter(id == "https://www.instagram.com/p/DO_ZvvfjAGI")
   filter(ai == 1) %>% count(id, sort =T)
 ```
-
 
 ```{r}
 test <- F
@@ -435,7 +437,6 @@ htmltools::tags$div(
 #   filter(ai == 1)
 ```
 
-
 ```{r}
 # workwith %>% count(party)
 
@@ -468,6 +469,7 @@ library(highcharter)
 library(htmltools)
 ```
 
+
 <br>
 
 #  `r get_text("overview_text", lang)`
@@ -478,6 +480,7 @@ library(htmltools)
 
 
 ## `r get_text("ai_by_party", lang)` {#ki-content-by-party2}
+
 
 
 
@@ -692,11 +695,13 @@ htmltools::browsable(tm2)
 ```
 
 
+
 `r get_text("ai_by_party_descr", lang)`
 
 
 
 ## `r get_text("platform_text", lang)` {#ki-content-by-party2}
+
 
 ```{r}
 # Custom CSS for Responsive Container
@@ -774,7 +779,9 @@ htmltools::browsable(tm)
 
 
 
+
 ## `r get_text("by_type_text", lang)` {#ki-content-by-party2}
+
 
 
 
@@ -855,6 +862,7 @@ htmltools::browsable(tm)
 )
 ```
 
+
 ::: 
 
 
@@ -864,6 +872,7 @@ htmltools::browsable(tm)
 
 ::: {.panel-tabset}
 
+
 ```{r, eval = F}
 # full_data %>%
 #   filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
@@ -871,7 +880,9 @@ htmltools::browsable(tm)
 ```
 
 
+
 ### `r get_text("parties_and_politicians", lang)`
+
 
 ```{r}
 
@@ -979,7 +990,9 @@ htmltools::tagList(
 ```
 
 
+
 ### `r get_text("other_actors", lang)`
+
 
 ```{r}
 
@@ -1090,6 +1103,7 @@ htmltools::tagList(
 
 
 
+
 :::
 
 
@@ -1109,6 +1123,7 @@ htmltools::tagList(
 <!-- ::: {.panel-tabset} -->
 
 ### `r get_text("parties_and_politicians", lang)`
+
 
 ```{r}
 dislcimaer <- full_data %>%
@@ -1204,7 +1219,6 @@ intheshadows <- bytype_dis %>% filter(!(detect_bild == "TRUE" & detect_bild == "
 
 
 ```
-
 
 ```{r}
 # Calculate total AI-generated content
@@ -1302,7 +1316,9 @@ htmltools::tagList(
 
 
 
+
 ### `r get_text("other_actors", lang)`
+
 
 
 ```{r}
@@ -1399,7 +1415,6 @@ intheshadows <- bytype_dis %>% filter(!(detect_bild == "TRUE" & detect_bild == "
 
 
 ```
-
 
 ```{r}
 # Calculate total AI-generated content
@@ -1498,6 +1513,7 @@ htmltools::tagList(
 )
 ```
 
+
 <!-- ::: -->
 
 
@@ -1516,6 +1532,7 @@ htmltools::tagList(
 ::: {.panel-tabset}
 
 ### `r get_text("parties_and_politicians", lang)`
+
 
 ```{r}
 medienformatte <- full_data %>%  
@@ -1632,7 +1649,9 @@ htmltools::tagList(
 ```
 
 
+
 ### `r get_text("other_actors", lang)`
+
 
 
 ```{r}
@@ -1685,6 +1704,7 @@ htmltools::browsable(medienformatte)
 
 
 
+
 :::
 
 
@@ -1700,6 +1720,7 @@ htmltools::browsable(medienformatte)
 ::: {.panel-tabset}
 
 ### `r get_text("parties_and_politicians", lang)`
+
 
 
 ```{r}
@@ -1782,7 +1803,9 @@ htmltools::browsable(tonchart)
 ```
 
 
+
 ### `r get_text("other_actors", lang)`
+
 
 
 ```{r}
@@ -1865,6 +1888,7 @@ htmltools::browsable(tonchart)
 ```
 
 
+
 :::
 
 
@@ -1879,6 +1903,7 @@ htmltools::browsable(tonchart)
 
 
 ### `r get_text("parties_and_politicians", lang)`
+
 
 ```{r}
 
@@ -2010,7 +2035,9 @@ htmltools::browsable(themechart)
 ```
 
 
+
 ### `r get_text("other_actors", lang)`
+
 
 
 
@@ -2147,6 +2174,7 @@ htmltools::browsable(themechart)
 
 
 
+
 :::
 
 
@@ -2163,6 +2191,7 @@ htmltools::browsable(themechart)
 
 
 ### `r get_text("parties_and_politicians", lang)`
+
 
 ```{r}
 # --- 1) Map internal keys -> ENGLISH labels found in full_data$theme_of_the_image_video ---
@@ -2286,7 +2315,9 @@ htmltools::tagList(
 
 
 
+
 ### `r get_text("other_actors", lang)`
+
 
 
 ```{r}
@@ -2410,6 +2441,7 @@ htmltools::tagList(
 ```
 
 
+
 :::
 
 <br>
@@ -2427,6 +2459,7 @@ htmltools::tagList(
 ::: {.panel-tabset}
 
 ### `r get_text("parties_and_politicians", lang)`
+
 
 ```{r}
 
@@ -2601,7 +2634,9 @@ htmltools::tagList(
 
 
 
+
 ### `r get_text("other_actors", lang)`
+
 
 
 
@@ -2778,6 +2813,7 @@ htmltools::tagList(
 
 
 
+
 :::
 
 <br>
@@ -2792,6 +2828,7 @@ htmltools::tagList(
 
 
 ## `r get_text("time_evolution", lang)` {#ai-over-time}
+
 
 ```{r, eval = T}
 
@@ -2838,6 +2875,7 @@ htmltools::browsable(ai_time_chart)
 
 ```
 
+
 <br>
 
 `r get_text("time_chart_desc", lang)`
@@ -2850,4 +2888,5 @@ htmltools::browsable(ai_time_chart)
     <img src="logobelow.png" width="50%">
   </a>
 </center>
+
 
