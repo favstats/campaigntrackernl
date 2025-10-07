@@ -1539,303 +1539,248 @@ htmltools::tagList(
 
 ## `r get_text("media_formats", lang)` {#medienformatte}
 
-<script>
-document.addEventListener('shown.bs.tab', function(){
-  window.dispatchEvent(new Event('resize'));
-  setTimeout(()=>window.dispatchEvent(new Event('resize')), 120);
-});
-</script>
-<!-- ::: {.panel-tabset} -->
+
+::: {.panel-tabset}
 
 ### `r get_text("parties_and_politicians", lang)`
 
 ```{r}
-medienformatte <- full_data %>%  
-  filter(list_source %in% c("Politicians", "Parties")) %>% 
 
-  filter(ai == 1) %>% 
-  count(image_s_video_s_included) %>% 
-  mutate(image_s_video_s_included = case_when(
+
+library(dplyr)
+library(apexcharter)
+
+med_df <- full_data %>%
+  filter(list_source %in% c("Politicians","Parties"), ai == 1) %>%
+  mutate(type = case_when(
     str_detect(image_s_video_s_included, "image") ~ get_text("img", lang),
-    str_detect(image_s_video_s_included, "video") ~ get_text("vid", lang)
-  )) %>% 
+    str_detect(image_s_video_s_included, "video") ~ get_text("vid", lang),
+    TRUE ~ NA_character_
+  )) %>%
+  filter(!is.na(type)) %>%
+  count(type, name = "n") %>%
+  mutate(pct = 100 * n / sum(n),
+         label = sprintf("%s (n=%d)", type, n)) %>%
+  arrange(desc(pct))
 
-apex(type = "pie", mapping = aes(x = image_s_video_s_included, y = n)) %>%
-  ax_colors(c("#FF6347", "#4682B4", "#32CD32")) %>%
-  ax_chart(height = 299) %>%  # Increase chart size
-  ax_plotOptions(
-    radialBar = list(
-      hollow = list(size = "60%"),  # Adjust hollow size for more text space
-      dataLabels = list(
-        name = list(
-          show = TRUE,
-          # offsetY = 10,  # Adjust vertical position
-          style = list(color = "#000", fontSize = "16px", fontWeight = "bold")  # Black text
-        ),
-        value = list(
-          show = TRUE,
-          # offsetY = -10,  # Position value closer to center
-          formatter = JS("function(val) { return val + '%'; }"),
-          style = list(color = "#000", fontSize = "20px", fontWeight = "bold")  # Black text
-        )
-      )
-    )
-  ) %>%
-  ax_fill(
-    type = "solid"
-  ) %>%
-  ax_stroke(
-    show = TRUE,
-    lineCap = "round"
-  ) %>%
-  ax_title(text = get_text("title_type", lang), align = "center",
-           style = list(fontSize = "18px", color = "#000"))   %>%
-ax_legend(position = "bottom")%>%
+medienformatte_bar <- med_df %>%
+  apex(type = "bar", mapping = aes(x = label, y = round(pct, 1))) %>%
   ax_chart(
-    height = 420,
-    sparkline = list(enabled = F),
-    background = "transparent",          # ← no white canvas
+    height = 200,
+    background = "transparent",
     foreColor  = "#000",
+    animations = list(enabled = FALSE),
     redrawOnWindowResize  = TRUE,
     redrawOnParentResize  = TRUE,
-    animations = list(enabled = FALSE)
-  ) 
+    toolbar = list(show = FALSE)
+  ) %>%
+  ax_plotOptions(
+    bar = list(horizontal = TRUE, barHeight = "60%", borderRadius = 6, distributed = TRUE)
+  ) %>%
+  ax_dataLabels(enabled = TRUE,
+    formatter = JS("function(v){ return (Math.round(v*10)/10) + '%'; }")
+  ) %>%
+  ax_xaxis(max = 100,
+    labels = list(formatter = JS("function(v){ return v + '%'; }")),
+    title  = list(text = get_text('percent', lang))
+  ) %>%
+  ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
+  ax_colors(c("#FF6347", "#4682B4")) %>%
+  ax_legend(show = FALSE) %>%
+  ax_title(text = get_text("title_type", lang), align = "center",
+           style = list(fontSize = "18px", fontWeight = "bold"))
 
-# htmltools::tagList(
-#   custom_css,
-#   tags$div(
-#     class = "apex-container",
-# htmltools::browsable(medienformatte)
-#   )
-# )
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(medienformatte_bar)
+  )
+)
 ```
 
+### `r get_text("other_actors", lang)`
+
 ```{r}
-like_real_dat <- full_data %>%  #View()
-  filter(list_source %in% c("Politicians", "Parties")) %>% 
+library(dplyr)
+library(apexcharter)
 
-  filter(ai == 1)  %>% 
-  filter(str_detect(nature_of_the_image_video,  "contains real-looking conten")) %>% 
+med_df <- full_data %>%
+  filter(!(list_source %in% c("Politicians","Parties")), ai == 1) %>%
+  mutate(type = case_when(
+    str_detect(image_s_video_s_included, "image") ~ get_text("img", lang),
+    str_detect(image_s_video_s_included, "video") ~ get_text("vid", lang),
+    TRUE ~ NA_character_
+  )) %>%
+  filter(!is.na(type)) %>%
+  count(type, name = "n") %>%
+  mutate(pct = 100 * n / sum(n),
+         label = sprintf("%s (n=%d)", type, n)) %>%
+  arrange(desc(pct))
 
-  mutate(nature_of_the_image_video = case_when(
-    str_detect(nature_of_the_image_video, "contains real-looking conten") ~ get_text("like_real", lang),
-    str_detect(nature_of_the_image_video, "does NOT") ~ get_text("like_unreal", lang)
-  )) %>% 
-
-  count(nature_of_the_image_video) %>% 
-
-
-apex(type = "radialBar", mapping = aes(x = get_text("like_real", lang), y = n)) %>%
-  ax_colors(c("#FA0347", "#AC0999", "#darkblue")) %>%
-  ax_chart(height = 299) %>%  # Increase chart size
-  ax_plotOptions(
-    radialBar = list(
-      hollow = list(size = "60%"),  # Adjust hollow size for more text space
-      dataLabels = list(
-        name = list(
-          show = TRUE,
-          # offsetY = 10,  # Adjust vertical position
-          style = list(color = "#000", fontSize = "16px", fontWeight = "bold")  # Black text
-        ),
-        value = list(
-          show = TRUE,
-          # offsetY = -10,  # Position value closer to center
-          formatter = JS("function(val) { return val + '%'; }"),
-          style = list(color = "#000", fontSize = "20px", fontWeight = "bold")  # Black text
-        )
-      )
-    )
-  ) %>%
-  ax_fill(
-    type = "solid"
-  ) %>%
-  ax_stroke(
-    show = TRUE,
-    lineCap = "round"
-  ) %>%
-  ax_title(text = get_text("title_real", lang), align = "center",
-           style = list(fontSize = "18px", color = "#000"))  %>%
-ax_legend(position = "bottom")%>%
+medienformatte_bar <- med_df %>%
+  apex(type = "bar", mapping = aes(x = label, y = round(pct, 1))) %>%
   ax_chart(
-    height = 420,
-    sparkline = list(enabled = F),
-    background = "transparent",          # ← no white canvas
+    height = 200,
+    background = "transparent",
     foreColor  = "#000",
+    animations = list(enabled = FALSE),
     redrawOnWindowResize  = TRUE,
     redrawOnParentResize  = TRUE,
-    animations = list(enabled = FALSE)
-  ) 
+    toolbar = list(show = FALSE)
+  ) %>%
+  ax_plotOptions(
+    bar = list(horizontal = TRUE, barHeight = "60%", borderRadius = 6, distributed = TRUE)
+  ) %>%
+  ax_dataLabels(enabled = TRUE,
+    formatter = JS("function(v){ return (Math.round(v*10)/10) + '%'; }")
+  ) %>%
+  ax_xaxis(max = 100,
+    labels = list(formatter = JS("function(v){ return v + '%'; }")),
+    title  = list(text = get_text('percent', lang))
+  ) %>%
+  ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
+  ax_colors(c("#FF6347", "#4682B4")) %>%
+  ax_legend(show = FALSE) %>%
+  ax_title(text = get_text("title_type", lang), align = "center",
+           style = list(fontSize = "18px", fontWeight = "bold"))
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(medienformatte_bar)
+  )
+)
+```
 
 
+:::
+
+`r get_text("media_formats_descr", lang)`
+
+
+::: {.panel-tabset}
+
+### `r get_text("parties_and_politicians", lang)`
+
+
+```{r}
+real_df <- full_data %>%
+  filter(list_source %in% c("Politicians","Parties"), ai == 1) %>%
+  mutate(kind = case_when(
+    str_detect(nature_of_the_image_video, "contains real-looking") ~ get_text("like_real", lang),
+    str_detect(nature_of_the_image_video, "does NOT")              ~ get_text("like_unreal", lang),
+    TRUE ~ NA_character_
+  )) %>%
+  filter(!is.na(kind)) %>%
+  count(kind, name = "n") %>%
+  mutate(pct = 100 * n / sum(n),
+         label = sprintf("%s (n=%d)", kind, n)) %>%
+  arrange(desc(pct))
+
+like_real_bar <- real_df %>%
+  apex(type = "bar", mapping = aes(x = label, y = round(pct, 1))) %>%
+  ax_chart(
+    height = 200,
+    background = "transparent",
+    foreColor  = "#000",
+    animations = list(enabled = FALSE),
+    redrawOnWindowResize  = TRUE,
+    redrawOnParentResize  = TRUE,
+    toolbar = list(show = FALSE)
+  ) %>%
+  ax_plotOptions(
+    bar = list(horizontal = TRUE, barHeight = "60%", borderRadius = 6, distributed = TRUE)
+  ) %>%
+  ax_dataLabels(enabled = TRUE,
+    formatter = JS("function(v){ return (Math.round(v*10)/10) + '%'; }")
+  ) %>%
+  ax_xaxis(max = 100,
+    labels = list(formatter = JS("function(v){ return v + '%'; }")),
+    title  = list(text = get_text('percent', lang))
+  ) %>%
+  ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
+  ax_colors(c("#1F5A96", "#AC0999")) %>%
+  ax_legend(show = FALSE) %>%
+  ax_title(text = get_text("title_real", lang), align = "center",
+           style = list(fontSize = "18px", fontWeight = "bold"))
 
 
 htmltools::tagList(
   custom_css,
   tags$div(
     class = "apex-container",
-    htmltools::tags$div(
-  style = "
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px;  /* Adds space between boxes */
-    padding: 10px;
-  ",
-  htmltools::tags$div(style = "flex: 1; min-width: 300px;", medienformatte),
-  htmltools::tags$div(style = "flex: 1; min-width: 300px;", like_real_dat)
-)
+htmltools::browsable(like_real_bar)
   )
 )
-
 ```
 
 
 ### `r get_text("other_actors", lang)`
 
 
+
 ```{r}
-medienformatte <- full_data %>%  
-  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
+real_df <- full_data %>%
+  filter(!(list_source %in% c("Politicians","Parties")), ai == 1) %>%
+  mutate(kind = case_when(
+    str_detect(nature_of_the_image_video, "contains real-looking") ~ get_text("like_real", lang),
+    str_detect(nature_of_the_image_video, "does NOT")              ~ get_text("like_unreal", lang),
+    TRUE ~ NA_character_
+  )) %>%
+  filter(!is.na(kind)) %>%
+  count(kind, name = "n") %>%
+  mutate(pct = 100 * n / sum(n),
+         label = sprintf("%s (n=%d)", kind, n)) %>%
+  arrange(desc(pct))
 
-  filter(ai == 1) %>% 
-  count(image_s_video_s_included) %>% 
-  mutate(image_s_video_s_included = case_when(
-    str_detect(image_s_video_s_included, "image") ~ get_text("img", lang),
-    str_detect(image_s_video_s_included, "video") ~ get_text("vid", lang)
-  )) %>% 
-
-apex(type = "donut", mapping = aes(x = image_s_video_s_included, y = n)) %>%
-  ax_colors(c("#FF6347", "#4682B4", "#32CD32")) %>%
-  ax_chart(height = 299) %>%  # Increase chart size
-  ax_plotOptions(
-    radialBar = list(
-      hollow = list(size = "60%"),  # Adjust hollow size for more text space
-      dataLabels = list(
-        name = list(
-          show = TRUE,
-          # offsetY = 10,  # Adjust vertical position
-          style = list(color = "#000", fontSize = "16px", fontWeight = "bold")  # Black text
-        ),
-        value = list(
-          show = TRUE,
-          # offsetY = -10,  # Position value closer to center
-          formatter = JS("function(val) { return val + '%'; }"),
-          style = list(color = "#000", fontSize = "20px", fontWeight = "bold")  # Black text
-        )
-      )
-    )
-  ) %>%
-  ax_fill(
-    type = "solid"
-  ) %>%
-  ax_stroke(
-    show = TRUE,
-    lineCap = "round"
-  ) %>%
-  ax_title(text = get_text("title_type", lang), align = "center",
-           style = list(fontSize = "18px", color = "#000"))   %>%
-ax_legend(position = "bottom")%>%
+like_real_bar <- real_df %>%
+  apex(type = "bar", mapping = aes(x = label, y = round(pct, 1))) %>%
   ax_chart(
-    height = 420,
-    sparkline = list(enabled = F),
-    background = "transparent",          # ← no white canvas
+    height = 200,
+    background = "transparent",
     foreColor  = "#000",
+    animations = list(enabled = FALSE),
     redrawOnWindowResize  = TRUE,
     redrawOnParentResize  = TRUE,
-    animations = list(enabled = FALSE)
-  ) 
-
-# htmltools::tagList(
-#   custom_css,
-#   tags$div(
-#     class = "apex-container",
-# htmltools::browsable(medienformatte)
-#   )
-# )
-```
-
-```{r}
-like_real_dat <- full_data %>%  #View()
-  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
-
-  filter(ai == 1)  %>% 
-  drop_na(nature_of_the_image_video) %>% 
-  mutate(nature_of_the_image_video = case_when(
-    str_detect(nature_of_the_image_video, "contains real-looking conten") ~ get_text("like_real", lang),
-    str_detect(nature_of_the_image_video, "does NOT") ~ get_text("like_unreal", lang)
-  )) %>% 
-  count(nature_of_the_image_video) %>% 
-
-apex(type = "donut", mapping = aes(x = nature_of_the_image_video, y = n)) %>%
-  ax_colors(c("#FA0347", "#AC0999", "#darkblue")) %>%
-  ax_chart(height = 299) %>%  # Increase chart size
+    toolbar = list(show = FALSE)
+  ) %>%
   ax_plotOptions(
-    radialBar = list(
-      hollow = list(size = "60%"),  # Adjust hollow size for more text space
-      dataLabels = list(
-        name = list(
-          show = TRUE,
-          # offsetY = 10,  # Adjust vertical position
-          style = list(color = "#000", fontSize = "16px", fontWeight = "bold")  # Black text
-        ),
-        value = list(
-          show = TRUE,
-          # offsetY = -10,  # Position value closer to center
-          formatter = JS("function(val) { return val + '%'; }"),
-          style = list(color = "#000", fontSize = "20px", fontWeight = "bold")  # Black text
-        )
-      )
-    )
+    bar = list(horizontal = TRUE, barHeight = "60%", borderRadius = 6, distributed = TRUE)
   ) %>%
-  ax_fill(
-    type = "solid"
+  ax_dataLabels(enabled = TRUE,
+    formatter = JS("function(v){ return (Math.round(v*10)/10) + '%'; }")
   ) %>%
-  ax_stroke(
-    show = TRUE,
-    lineCap = "round"
+  ax_xaxis(max = 100,
+    labels = list(formatter = JS("function(v){ return v + '%'; }")),
+    title  = list(text = get_text('percent', lang))
   ) %>%
+  ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
+  ax_colors(c("#1F5A96", "#AC0999")) %>%
+  ax_legend(show = FALSE) %>%
   ax_title(text = get_text("title_real", lang), align = "center",
-           style = list(fontSize = "18px", color = "#000"))  %>%
-ax_legend(position = "bottom")%>%
-  ax_chart(
-    height = 420,
-    sparkline = list(enabled = F),
-    background = "transparent",          # ← no white canvas
-    foreColor  = "#000",
-    redrawOnWindowResize  = TRUE,
-    redrawOnParentResize  = TRUE,
-    animations = list(enabled = FALSE)
-  ) 
-
+           style = list(fontSize = "18px", fontWeight = "bold"))
 
 
 htmltools::tagList(
   custom_css,
   tags$div(
     class = "apex-container",
-    htmltools::tags$div(
-  style = "
-    display: flex; 
-    justify-content: space-between; 
-    align-items: flex-start; 
-    gap: 20px;  /* Adds space between boxes */
-    padding: 10px;
-  ",
-  htmltools::tags$div(style = "flex: 1; min-width: 300px;", medienformatte),
-  htmltools::tags$div(style = "flex: 1; min-width: 300px;", like_real_dat)
-)
+htmltools::browsable(like_real_bar)
   )
 )
 ```
 
 
 
-<!-- ::: -->
+:::
 
+
+<br>
 
 `r get_text("media_formats_descr", lang)`
 
-<br>
 
 
 ## `r get_text("tonal_analysis", lang)`
