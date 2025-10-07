@@ -171,6 +171,7 @@ party_colors <- c(
   "Pro-Right Satire"   = "#6A5ACD", # slate purple
   "Pro-Farmer"         = "#2E8B57", # farmer green
   "Progressive Account"= "#8A2BE2",  # vivid progressive violet
+  "Vrede voor Dieren"= "#5496c6",  # vivid progressive violet
     # --- NEW: missing labels from your treemap screenshot ---
   "NCPN"           = "#CC0000", # communist red, distinct from SP/PvdA
   "Anti-Immigrant" = "#EE6677", # Tol Bright coral (color-blind–safe)
