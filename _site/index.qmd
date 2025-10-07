@@ -168,7 +168,7 @@ party_colors <- c(
   "VVD"                = "#FF7900", # keep party color
   "Anti-Wilders"       = "#555555", # neutral/dark gray
   "D66"                = "#009E60", # keep party color
-  "Pro-Right Satire"   = "#6A5ACD", # slate purple
+  "Satire"   = "#6A5ACD", # slate purple
   "Pro-Farmer"         = "#2E8B57", # farmer green
   "Progressive Account"= "#8A2BE2",  # vivid progressive violet
   "Vrede voor Dieren"= "#5496c6",  # vivid progressive violet
@@ -2100,6 +2100,12 @@ htmltools::browsable(themechart)
 
 <br>
 
+
+::: {.panel-tabset}
+
+
+### `r get_text("parties_and_politicians", lang)`
+
 ```{r}
 # --- 1) Map internal keys -> ENGLISH labels found in full_data$theme_of_the_image_video ---
 theme_map_en <- c(
@@ -2222,11 +2228,7 @@ htmltools::tagList(
 
 
 
-
 ### `r get_text("other_actors", lang)`
-
-
-
 
 
 ```{r}

@@ -168,7 +168,7 @@ party_colors <- c(
   "VVD"                = "#FF7900", # keep party color
   "Anti-Wilders"       = "#555555", # neutral/dark gray
   "D66"                = "#009E60", # keep party color
-  "Pro-Right Satire"   = "#6A5ACD", # slate purple
+  "Satire"   = "#6A5ACD", # slate purple
   "Pro-Farmer"         = "#2E8B57", # farmer green
   "Progressive Account"= "#8A2BE2",  # vivid progressive violet
   "Vrede voor Dieren"= "#5496c6",  # vivid progressive violet
@@ -1724,12 +1724,7 @@ htmltools::browsable(tonchart)
 ```
 
 
-<br>
-
->  `r get_text("positive_negative_content", lang)`
-
-<br>
-
+### `r get_text("other_actors", lang)`
 
 
 ```{r}
@@ -1812,17 +1807,20 @@ htmltools::browsable(tonchart)
 ```
 
 
+:::
+
+
 <br>
 
 >  `r get_text("positive_negative_content", lang)`
 
 <br>
 
-:::
 
 ::: {.panel-tabset}
 
 
+### `r get_text("parties_and_politicians", lang)`
 
 ```{r}
 
@@ -1952,136 +1950,6 @@ htmltools::browsable(themechart)
   )
 )
 ```
-
-
-<br>
-
-> `r get_text("multi_topic_note", lang)`
-
-
-<br>
-
-```{r}
-# --- 1) Map internal keys -> ENGLISH labels found in full_data$theme_of_the_image_video ---
-theme_map_en <- c(
-  theme_event_announcement   = "Event announcement/Election call/Candidate presentation",
-  theme_political_positioning= "Political positioning",
-  theme_negative_content     = "Negative imagery/Negative campaigning",
-  theme_positive_content     = "Positive imagery/Acclaims",
-  theme_symbolic_image       = "Symbolic image",
-  theme_events_scenery       = "Events/Landscape & city scenes",
-  theme_campaign_event       = "Image from a campaign event",
-  theme_voter_contact        = "Individual voter contact",
-  theme_media_work           = "Media work",
-  theme_personal_background  = "Private background story",
-  theme_daily_politics       = "Everyday politics",
-  theme_nostalgic            = "Nostalgic / historical Dutch imagery",
-  theme_humor                = "Humor / Satire",
-  theme_fantasy              = "Fantasy / futuristic scenarios",
-  theme_other_image_content  = "Other imagery"
-)
-
-# Localized labels
-theme_labels_local <- vapply(names(theme_map_en), function(k) safe_get(k, lang), character(1))
-theme_labels_local <- make.unique(unname(theme_labels_local), sep = "_")
-
-# --- 3) Slice data and pull theme column ---
-df <- full_data %>% 
-  filter(list_source %in% c("Politicians", "Parties")) %>% 
-  filter(ai == 1)
-stopifnot("theme_of_the_image_video" %in% names(df))
-theme_vec <- df$theme_of_the_image_video
-
-# --- 4) Build logical indicators ---
-theme_indicators_list <- setNames(
-  lapply(names(theme_map_en), function(k) {
-    str_detect(theme_vec, fixed(theme_map_en[[k]], ignore_case = TRUE))
-  }),
-  theme_labels_local
-)
-
-theme_indicators <- as_tibble(theme_indicators_list)
-
-# --- 5) Pivot long + counts ---
-theme_bild_video_data <- theme_indicators %>%
-  pivot_longer(everything(), names_to = "theme", values_to = "value") %>%
-  filter(value) %>%
-  count(theme, sort = TRUE)
-
-# --- 6) Define colors for each theme (order matches theme_map_en) ---
-theme_bild_video_colors <- setNames(
-  c(
-    "#FF6F61", # Event announcement
-    "#6B5B95", # Political positioning
-    "#88B04B", # Negative imagery
-    "#F7CAC9", # Positive imagery
-    "#92A8D1", # Symbolic image
-    "#955251", # Events/Landscape
-    "#B565A7", # Campaign event
-    "#009B77", # Voter contact
-    "#DD4124", # Media work
-    "#45B8AC", # Private background
-    "#D65076", # Everyday politics
-    "#FFD662", # Nostalgic imagery
-    "#5B5EA6", # Humor / Satire
-    "#0096C7", # Fantasy / Futuristic
-    "#EFC050"  # Other imagery
-  ),
-  theme_labels_local
-)
-
-# --- (Optional) Diagnostics: missing translations ---
-missing_keys <- names(theme_map_en)[vapply(names(theme_map_en), function(k) {
-  x <- tryCatch(get_text(k, lang), error = function(e) character(0))
-  !(length(x) == 1 && nzchar(x))
-}, logical(1))]
-if (length(missing_keys)) {
-  message("Missing get_text() translations for: ", paste(missing_keys, collapse = ", "))
-}
-
-# Bar Chart Using Apexcharter
-theme_bild_video_chart <- apex(data = theme_bild_video_data, type = "bar", mapping = aes(x = reorder(theme, n), y = n)) %>%
-  ax_chart(stacked = FALSE, horizontal = TRUE, height = 800) %>%
-  ax_plotOptions(
-    bar = list(
-      barHeight = "60%",
-      borderRadius = 5
-    )
-  ) %>%
-  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
-  ax_xaxis(
-    title = list(text = get_text("numberposts", lang))
-  ) %>%
-  ax_yaxis(
-    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
-  ) %>%
-  ax_title(
-    text = get_text("topics_media", lang),
-    align = "center",
-    style = list(fontSize = "18px", fontWeight = "bold")
-  ) %>%
-  ax_tooltip(
-    shared = TRUE,
-    y = list(
-      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
-    )
-  ) %>%
-  ax_legend(
-    position = "bottom",
-    labels = list(colors = "#000")
-  )
-
-htmltools::tagList(
-  custom_css,
-  tags$div(
-    class = "apex-container",
-    htmltools::browsable(theme_bild_video_chart)
-  )
-)
-
-```
-
-
 
 
 ### `r get_text("other_actors", lang)`
@@ -2219,12 +2087,149 @@ htmltools::browsable(themechart)
 ```
 
 
+
+
+:::
+
+
+
 <br>
 
 > `r get_text("multi_topic_note", lang)`
 
 
 <br>
+
+
+::: {.panel-tabset}
+
+
+### `r get_text("parties_and_politicians", lang)`
+
+```{r}
+# --- 1) Map internal keys -> ENGLISH labels found in full_data$theme_of_the_image_video ---
+theme_map_en <- c(
+  theme_event_announcement   = "Event announcement/Election call/Candidate presentation",
+  theme_political_positioning= "Political positioning",
+  theme_negative_content     = "Negative imagery/Negative campaigning",
+  theme_positive_content     = "Positive imagery/Acclaims",
+  theme_symbolic_image       = "Symbolic image",
+  theme_events_scenery       = "Events/Landscape & city scenes",
+  theme_campaign_event       = "Image from a campaign event",
+  theme_voter_contact        = "Individual voter contact",
+  theme_media_work           = "Media work",
+  theme_personal_background  = "Private background story",
+  theme_daily_politics       = "Everyday politics",
+  theme_nostalgic            = "Nostalgic / historical Dutch imagery",
+  theme_humor                = "Humor / Satire",
+  theme_fantasy              = "Fantasy / futuristic scenarios",
+  theme_other_image_content  = "Other imagery"
+)
+
+# Localized labels
+theme_labels_local <- vapply(names(theme_map_en), function(k) safe_get(k, lang), character(1))
+theme_labels_local <- make.unique(unname(theme_labels_local), sep = "_")
+
+# --- 3) Slice data and pull theme column ---
+df <- full_data %>% 
+  filter(list_source %in% c("Politicians", "Parties")) %>% 
+  filter(ai == 1)
+stopifnot("theme_of_the_image_video" %in% names(df))
+theme_vec <- df$theme_of_the_image_video
+
+# --- 4) Build logical indicators ---
+theme_indicators_list <- setNames(
+  lapply(names(theme_map_en), function(k) {
+    str_detect(theme_vec, fixed(theme_map_en[[k]], ignore_case = TRUE))
+  }),
+  theme_labels_local
+)
+
+theme_indicators <- as_tibble(theme_indicators_list)
+
+# --- 5) Pivot long + counts ---
+theme_bild_video_data <- theme_indicators %>%
+  pivot_longer(everything(), names_to = "theme", values_to = "value") %>%
+  filter(value) %>%
+  count(theme, sort = TRUE)
+
+# --- 6) Define colors for each theme (order matches theme_map_en) ---
+theme_bild_video_colors <- setNames(
+  c(
+    "#FF6F61", # Event announcement
+    "#6B5B95", # Political positioning
+    "#88B04B", # Negative imagery
+    "#F7CAC9", # Positive imagery
+    "#92A8D1", # Symbolic image
+    "#955251", # Events/Landscape
+    "#B565A7", # Campaign event
+    "#009B77", # Voter contact
+    "#DD4124", # Media work
+    "#45B8AC", # Private background
+    "#D65076", # Everyday politics
+    "#FFD662", # Nostalgic imagery
+    "#5B5EA6", # Humor / Satire
+    "#0096C7", # Fantasy / Futuristic
+    "#EFC050"  # Other imagery
+  ),
+  theme_labels_local
+)
+
+# --- (Optional) Diagnostics: missing translations ---
+missing_keys <- names(theme_map_en)[vapply(names(theme_map_en), function(k) {
+  x <- tryCatch(get_text(k, lang), error = function(e) character(0))
+  !(length(x) == 1 && nzchar(x))
+}, logical(1))]
+if (length(missing_keys)) {
+  message("Missing get_text() translations for: ", paste(missing_keys, collapse = ", "))
+}
+
+# Bar Chart Using Apexcharter
+theme_bild_video_chart <- apex(data = theme_bild_video_data, type = "bar", mapping = aes(x = reorder(theme, n), y = n)) %>%
+  ax_chart(stacked = FALSE, horizontal = TRUE, height = 800) %>%
+  ax_plotOptions(
+    bar = list(
+      barHeight = "60%",
+      borderRadius = 5
+    )
+  ) %>%
+  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
+  ax_xaxis(
+    title = list(text = get_text("numberposts", lang))
+  ) %>%
+  ax_yaxis(
+    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
+  ) %>%
+  ax_title(
+    text = get_text("topics_media", lang),
+    align = "center",
+    style = list(fontSize = "18px", fontWeight = "bold")
+  ) %>%
+  ax_tooltip(
+    shared = TRUE,
+    y = list(
+      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
+    )
+  ) %>%
+  ax_legend(
+    position = "bottom",
+    labels = list(colors = "#000")
+  )
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+    htmltools::browsable(theme_bild_video_chart)
+  )
+)
+
+```
+
+
+
+### `r get_text("other_actors", lang)`
+
 
 ```{r}
 # --- 1) Map internal keys -> ENGLISH labels found in full_data$theme_of_the_image_video ---
