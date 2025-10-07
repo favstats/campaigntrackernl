@@ -1724,12 +1724,103 @@ htmltools::browsable(tonchart)
 ```
 
 
+### `r get_text("other_actors", lang)`
+
+
+```{r}
+library(apexcharter)
+library(dplyr)
+
+# Example Data
+negative_tendenz_data <- full_data %>%
+  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
+  filter(ai == 1) %>%
+  count(negative_tendency_tonality) %>% 
+  rename(tonalität = negative_tendency_tonality)
+
+
+# Example Data
+positive_tendenz_data <- full_data %>%
+  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
+  filter(ai == 1) %>%
+  count(positive_tendency_tonality)%>% 
+  rename(tonalität = positive_tendency_tonality)
+
+ tonalitatdata <- positive_tendenz_data %>% 
+  bind_rows(negative_tendenz_data)  %>%
+
+  mutate(tendenz_kurz = case_when(
+    # negative_tendency_tonality == "Negative Tendenz/Tonalität vorhanden" & 
+    
+      tonalität == "Negative tendency/tonality present" ~ get_text("negative", lang),
+    
+      tonalität == "Positive tendency/tonality present" ~ get_text("positive", lang),
+    
+    
+    TRUE ~ NA_character_
+  )) %>% 
+    drop_na()
+
+# Assuming tonalitatdata is your data frame
+tonchart <- tonalitatdata %>% 
+  arrange(desc(n)) %>% 
+  apex(type = "bar", mapping = aes(x = tendenz_kurz, y = n)) %>%
+  ax_plotOptions(
+    bar = list(
+      barHeight = "60%", 
+      borderRadius = 5,  # Rounded corners
+      distributed = TRUE  # Enables different colors for each bar
+    )
+  ) %>%
+  ax_colors(c( "#4CAF50","#F44336", "#9E9E9E")) %>%
+  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
+  ax_xaxis(
+    title = list(text = get_text("numberposts", lang))
+  ) %>%
+  ax_yaxis(
+    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
+  ) %>%
+  ax_title(
+    text = get_text("sentiment", lang),
+    align = "center",
+    style = list(fontSize = "18px", fontWeight = "bold")
+  ) %>%
+  ax_tooltip(
+    shared = TRUE,
+    y = list(
+      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
+    )
+  ) %>%
+  ax_legend(
+    position = "bottom",
+    labels = list(colors = "#000")
+  )
+
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(tonchart)
+  )
+)
+```
+
+
+:::
+
+
 <br>
 
 >  `r get_text("positive_negative_content", lang)`
 
 <br>
 
+
+::: {.panel-tabset}
+
+
+### `r get_text("parties_and_politicians", lang)`
 
 ```{r}
 
@@ -1859,6 +1950,147 @@ htmltools::browsable(themechart)
   )
 )
 ```
+
+
+### `r get_text("other_actors", lang)`
+
+
+
+
+```{r}
+
+# --- 1) Map internal keys -> ENGLISH labels found in full_data$topics ---
+topic_map_en <- c(
+  topic_general_election    = "Election in general",
+  topic_politicians         = "Political parties and politicians",
+  topic_election_call       = "Call to vote / get-out-the-vote call",
+  topic_economy_finance     = "Economy and finance",
+  topic_labor_social        = "Labor and social issues",
+  topic_domestic_migration  = "Domestic and migration policy",
+  topic_energy_policy       = "Environmental and energy policy",
+  topic_defense_policy      = "Foreign, security, and defense policy",
+  topic_housing             = "Housing (Crisis)",
+  topic_digital_infra       = "Digital and Infrastructure",
+  topic_europe              = "Europe",
+  topic_education_culture   = "Education and culture",
+  topic_constitution_system = "Constitution of the Political System",
+  topic_civil_rights        = "Civil rights",
+  topic_other_political     = "Other political topic"
+)
+
+# --- 2) Safe get_text() wrapper (fallbacks to key if translation missing/empty) ---
+safe_get <- function(k, lang) {
+  x <- tryCatch(get_text(k, lang), error = function(e) character(0))
+  if (length(x) == 1 && nzchar(x)) x else k
+}
+
+# Localized labels (same order as topic_map_en)
+topic_labels_local <- vapply(names(topic_map_en), function(k) safe_get(k, lang), character(1))
+# Ensure no duplicate/empty names (prevents tibble/pivot issues)
+topic_labels_local <- make.unique(unname(topic_labels_local), sep = "_")
+
+# --- 3) Slice data and pull topics vector to avoid data-mask scoping issues ---
+df <- full_data %>% 
+  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
+  filter(ai == 1)
+stopifnot("topics" %in% names(df))
+topics_vec <- df$topics
+
+# --- 4) Build logical indicators (ENGLISH detection) with names upfront ---
+indicators_list <- setNames(
+  lapply(names(topic_map_en), function(k) {
+    str_detect(topics_vec, fixed(topic_map_en[[k]], ignore_case = TRUE))
+  }),
+  topic_labels_local # localized column names
+)
+
+indicators <- as_tibble(indicators_list)
+
+# --- 5) Long format + counts ---
+topic_data <- indicators %>%
+  pivot_longer(everything(), names_to = "topic", values_to = "value") %>%
+  filter(value) %>%
+  count(topic, sort = TRUE)
+
+# --- 6) Topic colors keyed to LOCALIZED labels (order matches topic_map_en) ---
+topic_colors <- setNames(
+  c(
+    "#EFC050", # Election in general
+    "#D65076", # Political parties & politicians
+    "#45B8AC", # GOTV
+    "#DD4124", # Economy & finance
+    "#009B77", # Labor & social
+    "#B565A7", # Domestic & migration
+    "#955251", # Environmental & energy
+    "#92A8D1", # Foreign/security/defense
+    "#F4A300", # Housing
+    "#6BB7C8", # Digital & infra
+    "#88B04B", # Europe
+    "#6B5B95", # Education & culture
+    "#5C6BC0", # Constitution/system
+    "#9E0059", # Civil rights
+    "#FF6F61"  # Other political topic
+  ),
+  topic_labels_local
+)
+
+# --- (Optional) Diagnostics: which keys fell back due to missing translations ---
+missing_keys <- names(topic_map_en)[vapply(names(topic_map_en), function(k) {
+  x <- tryCatch(get_text(k, lang), error = function(e) character(0))
+  !(length(x) == 1 && nzchar(x))
+}, logical(1))]
+if (length(missing_keys)) {
+  message("Missing get_text() translations for: ", paste(missing_keys, collapse = ", "))
+}
+
+
+# Bar Chart Using Apexcharter
+themechart <- apex(data = topic_data, type = "bar", mapping = aes(x = reorder(topic, n), y = n)) %>%
+  # ax_colors(topic_colors[topic_data$topic]) %>%
+  ax_chart(stacked = FALSE, horizontal = TRUE, height = 800) %>%
+  ax_plotOptions(
+    bar = list(
+      barHeight = "60%",
+      borderRadius = 5
+    )
+  ) %>%
+  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
+  ax_xaxis(
+    title = list(text = get_text("numberposts", lang))
+  ) %>%
+  ax_yaxis(
+    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
+  ) %>%
+  ax_title(
+    text = get_text("topics", lang),
+    align = "center",
+    style = list(fontSize = "18px", fontWeight = "bold")
+  ) %>%
+  ax_tooltip(
+    shared = TRUE,
+    y = list(
+      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
+    )
+  ) %>%
+  ax_legend(
+    position = "bottom",
+    labels = list(colors = "#000")
+  )
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(themechart)
+  )
+)
+```
+
+
+
+
+:::
+
 
 
 <br>
@@ -1989,232 +2221,13 @@ htmltools::tagList(
 ```
 
 
+
+
 ### `r get_text("other_actors", lang)`
 
 
-```{r}
-library(apexcharter)
-library(dplyr)
-
-# Example Data
-negative_tendenz_data <- full_data %>%
-  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
-  filter(ai == 1) %>%
-  count(negative_tendency_tonality) %>% 
-  rename(tonalität = negative_tendency_tonality)
 
 
-# Example Data
-positive_tendenz_data <- full_data %>%
-  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
-  filter(ai == 1) %>%
-  count(positive_tendency_tonality)%>% 
-  rename(tonalität = positive_tendency_tonality)
-
- tonalitatdata <- positive_tendenz_data %>% 
-  bind_rows(negative_tendenz_data)  %>%
-
-  mutate(tendenz_kurz = case_when(
-    # negative_tendency_tonality == "Negative Tendenz/Tonalität vorhanden" & 
-    
-      tonalität == "Negative tendency/tonality present" ~ get_text("negative", lang),
-    
-      tonalität == "Positive tendency/tonality present" ~ get_text("positive", lang),
-    
-    
-    TRUE ~ NA_character_
-  )) %>% 
-    drop_na()
-
-# Assuming tonalitatdata is your data frame
-tonchart <- tonalitatdata %>% 
-  arrange(desc(n)) %>% 
-  apex(type = "bar", mapping = aes(x = tendenz_kurz, y = n)) %>%
-  ax_plotOptions(
-    bar = list(
-      barHeight = "60%", 
-      borderRadius = 5,  # Rounded corners
-      distributed = TRUE  # Enables different colors for each bar
-    )
-  ) %>%
-  ax_colors(c( "#4CAF50","#F44336", "#9E9E9E")) %>%
-  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
-  ax_xaxis(
-    title = list(text = get_text("numberposts", lang))
-  ) %>%
-  ax_yaxis(
-    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
-  ) %>%
-  ax_title(
-    text = get_text("sentiment", lang),
-    align = "center",
-    style = list(fontSize = "18px", fontWeight = "bold")
-  ) %>%
-  ax_tooltip(
-    shared = TRUE,
-    y = list(
-      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
-    )
-  ) %>%
-  ax_legend(
-    position = "bottom",
-    labels = list(colors = "#000")
-  )
-
-
-htmltools::tagList(
-  custom_css,
-  tags$div(
-    class = "apex-container",
-htmltools::browsable(tonchart)
-  )
-)
-```
-
-
-<br>
-
->  `r get_text("positive_negative_content", lang)`
-
-<br>
-
-
-```{r}
-
-# --- 1) Map internal keys -> ENGLISH labels found in full_data$topics ---
-topic_map_en <- c(
-  topic_general_election    = "Election in general",
-  topic_politicians         = "Political parties and politicians",
-  topic_election_call       = "Call to vote / get-out-the-vote call",
-  topic_economy_finance     = "Economy and finance",
-  topic_labor_social        = "Labor and social issues",
-  topic_domestic_migration  = "Domestic and migration policy",
-  topic_energy_policy       = "Environmental and energy policy",
-  topic_defense_policy      = "Foreign, security, and defense policy",
-  topic_housing             = "Housing (Crisis)",
-  topic_digital_infra       = "Digital and Infrastructure",
-  topic_europe              = "Europe",
-  topic_education_culture   = "Education and culture",
-  topic_constitution_system = "Constitution of the Political System",
-  topic_civil_rights        = "Civil rights",
-  topic_other_political     = "Other political topic"
-)
-
-# --- 2) Safe get_text() wrapper (fallbacks to key if translation missing/empty) ---
-safe_get <- function(k, lang) {
-  x <- tryCatch(get_text(k, lang), error = function(e) character(0))
-  if (length(x) == 1 && nzchar(x)) x else k
-}
-
-# Localized labels (same order as topic_map_en)
-topic_labels_local <- vapply(names(topic_map_en), function(k) safe_get(k, lang), character(1))
-# Ensure no duplicate/empty names (prevents tibble/pivot issues)
-topic_labels_local <- make.unique(unname(topic_labels_local), sep = "_")
-
-# --- 3) Slice data and pull topics vector to avoid data-mask scoping issues ---
-df <- full_data %>% 
-  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
-  filter(ai == 1)
-stopifnot("topics" %in% names(df))
-topics_vec <- df$topics
-
-# --- 4) Build logical indicators (ENGLISH detection) with names upfront ---
-indicators_list <- setNames(
-  lapply(names(topic_map_en), function(k) {
-    str_detect(topics_vec, fixed(topic_map_en[[k]], ignore_case = TRUE))
-  }),
-  topic_labels_local # localized column names
-)
-
-indicators <- as_tibble(indicators_list)
-
-# --- 5) Long format + counts ---
-topic_data <- indicators %>%
-  pivot_longer(everything(), names_to = "topic", values_to = "value") %>%
-  filter(value) %>%
-  count(topic, sort = TRUE)
-
-# --- 6) Topic colors keyed to LOCALIZED labels (order matches topic_map_en) ---
-topic_colors <- setNames(
-  c(
-    "#EFC050", # Election in general
-    "#D65076", # Political parties & politicians
-    "#45B8AC", # GOTV
-    "#DD4124", # Economy & finance
-    "#009B77", # Labor & social
-    "#B565A7", # Domestic & migration
-    "#955251", # Environmental & energy
-    "#92A8D1", # Foreign/security/defense
-    "#F4A300", # Housing
-    "#6BB7C8", # Digital & infra
-    "#88B04B", # Europe
-    "#6B5B95", # Education & culture
-    "#5C6BC0", # Constitution/system
-    "#9E0059", # Civil rights
-    "#FF6F61"  # Other political topic
-  ),
-  topic_labels_local
-)
-
-# --- (Optional) Diagnostics: which keys fell back due to missing translations ---
-missing_keys <- names(topic_map_en)[vapply(names(topic_map_en), function(k) {
-  x <- tryCatch(get_text(k, lang), error = function(e) character(0))
-  !(length(x) == 1 && nzchar(x))
-}, logical(1))]
-if (length(missing_keys)) {
-  message("Missing get_text() translations for: ", paste(missing_keys, collapse = ", "))
-}
-
-
-# Bar Chart Using Apexcharter
-themechart <- apex(data = topic_data, type = "bar", mapping = aes(x = reorder(topic, n), y = n)) %>%
-  # ax_colors(topic_colors[topic_data$topic]) %>%
-  ax_chart(stacked = FALSE, horizontal = TRUE, height = 800) %>%
-  ax_plotOptions(
-    bar = list(
-      barHeight = "60%",
-      borderRadius = 5
-    )
-  ) %>%
-  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
-  ax_xaxis(
-    title = list(text = get_text("numberposts", lang))
-  ) %>%
-  ax_yaxis(
-    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
-  ) %>%
-  ax_title(
-    text = get_text("topics", lang),
-    align = "center",
-    style = list(fontSize = "18px", fontWeight = "bold")
-  ) %>%
-  ax_tooltip(
-    shared = TRUE,
-    y = list(
-      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
-    )
-  ) %>%
-  ax_legend(
-    position = "bottom",
-    labels = list(colors = "#000")
-  )
-
-htmltools::tagList(
-  custom_css,
-  tags$div(
-    class = "apex-container",
-htmltools::browsable(themechart)
-  )
-)
-```
-
-
-<br>
-
-> `r get_text("multi_topic_note", lang)`
-
-
-<br>
 
 ```{r}
 # --- 1) Map internal keys -> ENGLISH labels found in full_data$theme_of_the_image_video ---
@@ -2344,6 +2357,8 @@ htmltools::tagList(
 > `r get_text("multi_image_note", lang)`
 
 <br>
+
+
 
 
 

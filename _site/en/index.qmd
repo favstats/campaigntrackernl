@@ -1731,6 +1731,99 @@ htmltools::browsable(tonchart)
 <br>
 
 
+
+```{r}
+library(apexcharter)
+library(dplyr)
+
+# Example Data
+negative_tendenz_data <- full_data %>%
+  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
+  filter(ai == 1) %>%
+  count(negative_tendency_tonality) %>% 
+  rename(tonalität = negative_tendency_tonality)
+
+
+# Example Data
+positive_tendenz_data <- full_data %>%
+  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
+  filter(ai == 1) %>%
+  count(positive_tendency_tonality)%>% 
+  rename(tonalität = positive_tendency_tonality)
+
+ tonalitatdata <- positive_tendenz_data %>% 
+  bind_rows(negative_tendenz_data)  %>%
+
+  mutate(tendenz_kurz = case_when(
+    # negative_tendency_tonality == "Negative Tendenz/Tonalität vorhanden" & 
+    
+      tonalität == "Negative tendency/tonality present" ~ get_text("negative", lang),
+    
+      tonalität == "Positive tendency/tonality present" ~ get_text("positive", lang),
+    
+    
+    TRUE ~ NA_character_
+  )) %>% 
+    drop_na()
+
+# Assuming tonalitatdata is your data frame
+tonchart <- tonalitatdata %>% 
+  arrange(desc(n)) %>% 
+  apex(type = "bar", mapping = aes(x = tendenz_kurz, y = n)) %>%
+  ax_plotOptions(
+    bar = list(
+      barHeight = "60%", 
+      borderRadius = 5,  # Rounded corners
+      distributed = TRUE  # Enables different colors for each bar
+    )
+  ) %>%
+  ax_colors(c( "#4CAF50","#F44336", "#9E9E9E")) %>%
+  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
+  ax_xaxis(
+    title = list(text = get_text("numberposts", lang))
+  ) %>%
+  ax_yaxis(
+    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
+  ) %>%
+  ax_title(
+    text = get_text("sentiment", lang),
+    align = "center",
+    style = list(fontSize = "18px", fontWeight = "bold")
+  ) %>%
+  ax_tooltip(
+    shared = TRUE,
+    y = list(
+      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
+    )
+  ) %>%
+  ax_legend(
+    position = "bottom",
+    labels = list(colors = "#000")
+  )
+
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(tonchart)
+  )
+)
+```
+
+
+<br>
+
+>  `r get_text("positive_negative_content", lang)`
+
+<br>
+
+:::
+
+::: {.panel-tabset}
+
+
+
 ```{r}
 
 # --- 1) Map internal keys -> ENGLISH labels found in full_data$topics ---
@@ -1989,94 +2082,11 @@ htmltools::tagList(
 ```
 
 
+
+
 ### `r get_text("other_actors", lang)`
 
 
-```{r}
-library(apexcharter)
-library(dplyr)
-
-# Example Data
-negative_tendenz_data <- full_data %>%
-  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
-  filter(ai == 1) %>%
-  count(negative_tendency_tonality) %>% 
-  rename(tonalität = negative_tendency_tonality)
-
-
-# Example Data
-positive_tendenz_data <- full_data %>%
-  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
-  filter(ai == 1) %>%
-  count(positive_tendency_tonality)%>% 
-  rename(tonalität = positive_tendency_tonality)
-
- tonalitatdata <- positive_tendenz_data %>% 
-  bind_rows(negative_tendenz_data)  %>%
-
-  mutate(tendenz_kurz = case_when(
-    # negative_tendency_tonality == "Negative Tendenz/Tonalität vorhanden" & 
-    
-      tonalität == "Negative tendency/tonality present" ~ get_text("negative", lang),
-    
-      tonalität == "Positive tendency/tonality present" ~ get_text("positive", lang),
-    
-    
-    TRUE ~ NA_character_
-  )) %>% 
-    drop_na()
-
-# Assuming tonalitatdata is your data frame
-tonchart <- tonalitatdata %>% 
-  arrange(desc(n)) %>% 
-  apex(type = "bar", mapping = aes(x = tendenz_kurz, y = n)) %>%
-  ax_plotOptions(
-    bar = list(
-      barHeight = "60%", 
-      borderRadius = 5,  # Rounded corners
-      distributed = TRUE  # Enables different colors for each bar
-    )
-  ) %>%
-  ax_colors(c( "#4CAF50","#F44336", "#9E9E9E")) %>%
-  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
-  ax_xaxis(
-    title = list(text = get_text("numberposts", lang))
-  ) %>%
-  ax_yaxis(
-    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
-  ) %>%
-  ax_title(
-    text = get_text("sentiment", lang),
-    align = "center",
-    style = list(fontSize = "18px", fontWeight = "bold")
-  ) %>%
-  ax_tooltip(
-    shared = TRUE,
-    y = list(
-      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
-    )
-  ) %>%
-  ax_legend(
-    position = "bottom",
-    labels = list(colors = "#000")
-  )
-
-
-htmltools::tagList(
-  custom_css,
-  tags$div(
-    class = "apex-container",
-htmltools::browsable(tonchart)
-  )
-)
-```
-
-
-<br>
-
->  `r get_text("positive_negative_content", lang)`
-
-<br>
 
 
 ```{r}
@@ -2344,6 +2354,8 @@ htmltools::tagList(
 > `r get_text("multi_image_note", lang)`
 
 <br>
+
+
 
 
 
