@@ -102,32 +102,7 @@ format:
   }
 </style>
 
-<script>
-(function () {
-  function poke() {
-    // fire a few times to catch late layout/ font loads
-    window.dispatchEvent(new Event('resize'));
-    setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
-    setTimeout(() => window.dispatchEvent(new Event('resize')), 300);
-  }
-  document.addEventListener('shown.bs.tab', poke);
-  document.addEventListener('shown.bs.collapse', poke);
-  document.addEventListener('slid.bs.carousel', poke);
-})();
-</script>
 
-<style>
-/* Robust two-column layout without Bootstrap dependence */
-.ac-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 24px;
-  align-items: start;
-}
-/* Make sure htmlwidgets have a real area even when just shown */
-.ac-grid .html-widget { width: 100% !important; min-height: 420px; }
-.ac-grid .apexcharts-canvas { margin: 0 auto; }
-</style>
 
 > WARNING THIS ONLY SHOWS A MOCK-UP THE DATA IS NOT REAL YET! DO NOTE CITE.
 
@@ -1156,7 +1131,23 @@ proportion_without_disclaimer <- round(sum(dislcimaer$no_label_present) / nrow(d
 
 library(apexcharter)
 
+library(htmltools)
 
+tags$style(HTML("
+  /* kill any theme/Widget white backgrounds */
+  .ac-grid > div,
+  .ac-grid .html-widget,
+  .ac-grid .apexcharts-canvas,
+  .ac-grid .apexcharts-svg,
+  .ac-grid .apexcharts-inner {
+    background: transparent !important;
+  }
+  /* keep tooltip readable on light pages */
+  .apexcharts-tooltip {
+    background: rgba(255,255,255,.96) !important;
+    color: #111 !important;
+  }
+"))
 
 # RadialBar Chart with Black Text
 disclaimer_overall <- apex(
@@ -1185,8 +1176,16 @@ disclaimer_overall <- apex(
   ax_stroke(show = TRUE, lineCap = "round") %>%
   ax_title(text = get_text("disclaimer_frequency", lang), align = "center",
            style = list(fontSize = "18px", color = "#000")) %>%
-  ax_theme(mode = "light")  # ensures consistent text/background  [oai_citation:2‡ApexCharts.js](https://apexcharts.com/docs/options/theme/?utm_source=chatgpt.com)
-
+  ax_theme(mode = "light")  %>%
+  ax_chart(
+    height = 420,
+    sparkline = list(enabled = TRUE),
+    background = "transparent",          # ← no white canvas
+    foreColor  = "#000",
+    redrawOnWindowResize  = TRUE,
+    redrawOnParentResize  = TRUE,
+    animations = list(enabled = FALSE)
+  ) 
 
 
 
@@ -1229,10 +1228,68 @@ proportions <- data.frame(
 )
 
 # Create multi-radial bar chart
-woki <- apex(data = proportions, type = "radialBar", mapping = aes(x = name, y = value)) %>%
+# --- pick the default (largest) in R so there is always a label initially ----
+stopifnot(is.numeric(proportions$value))
+imax   <- which.max(proportions$value)
+lab0   <- proportions$name[imax]
+val0   <- round(proportions$value[imax])
+
+woki <- apex(
+  data = proportions, type = "radialBar",
+  mapping = aes(x = name, y = value)
+) %>%
+  ax_labels(proportions$name) %>%           # be explicit about labels
   ax_chart(
-    height = 360,
-    sparkline = list(enabled = TRUE)
+    height = 420,
+    sparkline = list(enabled = TRUE),
+    tooltip = list(enabled = TRUE),
+    events = list(
+      # When chart mounts: store the "largest" as base and show it in the center
+      mounted = JS("
+        function(chart, config){
+          var totals = chart.w.globals.seriesTotals;
+          var labels = chart.w.config.labels;
+          var maxIdx = totals.indexOf(Math.max.apply(null, totals));
+          chart.el.__baseRadial = { idx: maxIdx, label: labels[maxIdx], value: totals[maxIdx] };
+          chart.updateOptions({
+            plotOptions:{ radialBar:{ dataLabels:{ total:{
+              show: true,
+              label: labels[maxIdx],
+              formatter: function(){ return Math.round(chart.el.__baseRadial.value) + '%'; }
+            }}}}
+          }, false, true);
+        }
+      "),
+      # Hover: show hovered slice
+      dataPointMouseEnter = JS("
+        function(event, chart, opts){
+          var i   = opts.seriesIndex;
+          var val = chart.w.globals.seriesTotals[i];
+          var lab = chart.w.config.labels[i];
+          chart.updateOptions({
+            plotOptions:{ radialBar:{ dataLabels:{ total:{
+              show: true,
+              label: lab,
+              formatter: function(){ return Math.round(val) + '%'; }
+            }}}}
+          }, false, true);
+        }
+      "),
+      # Leave: restore the largest slice
+      dataPointMouseLeave = JS("
+        function(event, chart, opts){
+          var b = chart.el.__baseRadial;
+          if(!b) return;
+          chart.updateOptions({
+            plotOptions:{ radialBar:{ dataLabels:{ total:{
+              show: true,
+              label: b.label,
+              formatter: function(){ return Math.round(b.value) + '%'; }
+            }}}}
+          }, false, true);
+        }
+      ")
+    )
   ) %>%
   ax_colors(c("#FF6347", "#4682B4", "#32CD32")) %>%
   ax_plotOptions(
@@ -1241,17 +1298,14 @@ woki <- apex(data = proportions, type = "radialBar", mapping = aes(x = name, y =
       track  = list(margin = 3),
       dataLabels = list(
         name  = list(show = TRUE, style = list(color = "#000", fontSize = "12px", fontWeight = "bold")),
-        value = list(
+        value = list(show = TRUE, formatter = JS("v => v + '%'"),
+                     style = list(color = "#000", fontSize = "16px")),
+        # Fallback initial center (shown before 'mounted' fires)
+        total = list(
           show = TRUE,
-          formatter = JS("function(val){ return val + '%'; }"),
-          style = list(color = "#000", fontSize = "16px")
-        )#,
-        # total = list( # MUST be inside dataLabels (not sibling)  [oai_citation:4‡ApexCharts.js](https://apexcharts.com/docs/options/plotoptions/radialbar/?utm_source=chatgpt.com)
-        #   show = TRUE,
-        #   label = "Gesamt",
-        #   formatter = JS("function(w){ return '100%'; }"),
-        #   style = list(color = "#000", fontSize = "16px", fontWeight = "bold")
-        # )
+          label = lab0,
+          formatter = JS(sprintf("function(){ return %d + '%%'; }", val0))
+        )
       )
     )
   ) %>%
@@ -1260,7 +1314,6 @@ woki <- apex(data = proportions, type = "radialBar", mapping = aes(x = name, y =
   ax_title(text = get_text("how_disclose", lang), align = "center",
            style = list(fontSize = "18px", color = "#000")) %>%
   ax_theme(mode = "light")
-
 # htmltools::tagList(
 #   custom_css,
 #   tags$div(
