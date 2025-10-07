@@ -1254,17 +1254,28 @@ woki <- apex(data = proportions, type = "radialBar", mapping = aes(x = name, y =
 
 
 
-# --- LAYOUT: use apex_grid for side-by-side, with controlled gap/height -------
-# NOTE: apex_grid needs either grid height or individual chart heights set.  [oai_citation:5‡CRAN](https://cran.r-project.org/web/packages/apexcharter/apexcharter.pdf)
-tagList(
-  custom_css,
-  apex_grid(
-    disclaimer_overall, woki,
-    ncol = 2,
-    col_gap = "24px",
-    height = "420px"
+library(htmltools)
+
+ac_two <- tagList(
+  # Minimal CSS grid; works inside tabsets and anywhere Quarto renders HTML
+  tags$style(HTML("
+    .ac-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+    .ac-grid .html-widget { width: 100% !important; }  /* ensure widget fills its cell */
+    .ac-grid .apexcharts-canvas { margin: 0 auto; }     /* tidy centering */
+  ")),
+  tags$div(
+    class = "ac-grid",
+    tags$div(disclaimer_overall),
+    tags$div(woki)
   )
 )
+
+ac_two   # IMPORTANT: return only this, not the individual charts
 ```
 
 
