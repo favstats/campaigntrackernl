@@ -1132,39 +1132,34 @@ library(apexcharter)
 
 
 # RadialBar Chart with Black Text
-disclaimer_overall <- apex(data = NULL, type = "radialBar", mapping = aes(x = get_text("ai_wo_disclaimer", lang), y = proportion_without_disclaimer)) %>%
-  ax_chart(height = 400) %>%  # Increase chart size
+disclaimer_overall <- apex(
+  data = NULL, type = "radialBar",
+  mapping = aes(x = get_text("ai_wo_disclaimer", lang), y = proportion_without_disclaimer)
+) %>%
+  ax_chart(
+    height = 360,
+    sparkline = list(enabled = TRUE)   # removes extra chrome/padding for small multiples
+  ) %>%                                  # docs: apexcharts sparkline  [oai_citation:1‡ApexCharts.js](https://apexcharts.com/docs/options/chart/sparkline/?utm_source=chatgpt.com)
   ax_colors("#FF4500") %>%
   ax_plotOptions(
-    radialBar = list(
-      hollow = list(size = "60%"),  # Adjust hollow size for more text space
+    radialBar = radialBar_opts(
+      hollow = list(size = "58%", margin = 4), # tighten center
+      track  = list(margin = 2),               # reduce outer whitespace
       dataLabels = list(
-        name = list(
-          show = TRUE,
-          # offsetY = 10,  # Adjust vertical position
-          style = list(color = "#000", fontSize = "16px", fontWeight = "bold")  # Black text
-        ),
+        name  = list(show = TRUE, style = list(color = "#000", fontSize = "14px", fontWeight = "bold")),
         value = list(
           show = TRUE,
-          # offsetY = -10,  # Position value closer to center
-          formatter = JS("function(val) { return val + '%'; }"),
-          style = list(color = "#000", fontSize = "20px", fontWeight = "bold")  # Black text
+          formatter = JS("function(val){ return Math.round(val) + '%'; }"),
+          style = list(color = "#000", fontSize = "20px", fontWeight = "bold")
         )
       )
     )
   ) %>%
-  ax_fill(
-    type = "solid"
-  ) %>%
-  ax_stroke(
-    show = TRUE,
-    lineCap = "round"
-  ) %>%
-  ax_title(
-    text = get_text("disclaimer_frequency", lang),
-    align = "center",
-    style = list(fontSize = "18px", color = "#000")
-  )
+  ax_stroke(show = TRUE, lineCap = "round") %>%
+  ax_title(text = get_text("disclaimer_frequency", lang), align = "center",
+           style = list(fontSize = "18px", color = "#000")) %>%
+  ax_theme(mode = "light")  # ensures consistent text/background  [oai_citation:2‡ApexCharts.js](https://apexcharts.com/docs/options/theme/?utm_source=chatgpt.com)
+
 
 
 
@@ -1208,72 +1203,68 @@ proportions <- data.frame(
 
 # Create multi-radial bar chart
 woki <- apex(data = proportions, type = "radialBar", mapping = aes(x = name, y = value)) %>%
-  ax_chart(height = 400) %>%
+  ax_chart(
+    height = 360,
+    sparkline = list(enabled = TRUE)
+  ) %>%
   ax_colors(c("#FF6347", "#4682B4", "#32CD32")) %>%
   ax_plotOptions(
-    radialBar = list(
-      hollow = list(size = "40%"),
+    radialBar = radialBar_opts(
+      hollow = list(size = "48%", margin = 4),
+      track  = list(margin = 3),
       dataLabels = list(
-        name = list(
-          show = TRUE,
-          fontSize = "14px",
-          fontWeight = "bold",
-          color = "#000"
-        ),
+        name  = list(show = TRUE, style = list(color = "#000", fontSize = "12px", fontWeight = "bold")),
         value = list(
           show = TRUE,
-          formatter = JS("function(val) { return val + '%'; }"),
-          fontSize = "16px",
-          color = "#000"
-        )
-      ),
-        total = list(  # This adds a default total value in the center
+          formatter = JS("function(val){ return val + '%'; }"),
+          style = list(color = "#000", fontSize = "16px")
+        ),
+        total = list( # MUST be inside dataLabels (not sibling)  [oai_citation:4‡ApexCharts.js](https://apexcharts.com/docs/options/plotoptions/radialbar/?utm_source=chatgpt.com)
           show = TRUE,
           label = "Gesamt",
-          formatter = JS("function(w) {
-            return '100%';
-          }"),
-          style = list(
-            fontSize = "18px",
-            fontWeight = "bold",
-            color = "#000"
-          )
+          formatter = JS("function(w){ return '100%'; }"),
+          style = list(color = "#000", fontSize = "16px", fontWeight = "bold")
         )
       )
+    )
   ) %>%
-  ax_legend(
-    show = F,
-    position = "bottom",
-    labels = list(colors = "#000")
-  ) %>%
-  ax_stroke(
-    show = TRUE,
-    lineCap = "round"
-  ) %>%
-  ax_title(
-    text = get_text("how_disclose", lang),
-    align = "center",
-    style = list(fontSize = "18px", color = "#000")
-  )
+  ax_legend(show = FALSE) %>%
+  ax_stroke(show = TRUE, lineCap = "round") %>%
+  ax_title(text = get_text("how_disclose", lang), align = "center",
+           style = list(fontSize = "18px", color = "#000")) %>%
+  ax_theme(mode = "light")
 
-htmltools::tagList(
+# htmltools::tagList(
+#   custom_css,
+#   tags$div(
+#     class = "apex-container",
+#     htmltools::tags$div(
+#   style = "
+#     display: flex; 
+#     justify-content: space-between; 
+#     align-items: flex-start; 
+#     gap: 20px;  /* Adds space between boxes */
+#     padding: 10px;
+#   ",
+#   htmltools::tags$div(style = "flex: 1; min-width: 300px;", disclaimer_overall),
+#   htmltools::tags$div(style = "flex: 1; min-width: 300px;", woki)
+# )
+#   )
+# )
+
+
+
+# --- LAYOUT: use apex_grid for side-by-side, with controlled gap/height -------
+# NOTE: apex_grid needs either grid height or individual chart heights set.  [oai_citation:5‡CRAN](https://cran.r-project.org/web/packages/apexcharter/apexcharter.pdf)
+tagList(
   custom_css,
-  tags$div(
-    class = "apex-container",
-    htmltools::tags$div(
-  style = "
-    display: flex; 
-    justify-content: space-between; 
-    align-items: flex-start; 
-    gap: 20px;  /* Adds space between boxes */
-    padding: 10px;
-  ",
-  htmltools::tags$div(style = "flex: 1; min-width: 300px;", disclaimer_overall),
-  htmltools::tags$div(style = "flex: 1; min-width: 300px;", woki)
-)
+  apex_grid(
+    disclaimer_overall, woki,
+    ncol = 2,
+    col_gap = "24px",
+    height = "420px"
   )
 )
-
 ```
 
 
@@ -1353,7 +1344,7 @@ bytype_dis <- dislcimaer %>%
   mutate(detect_text = factor(detect_text)) %>% 
   dplyr::count(detect_ad, detect_bild, detect_text, .drop = FALSE)
 
-intheshadows <- bytype_dis %>% filter(!(detect_bild == "TRUE" & detect_bild == "TRUE" & detect_ad == "TRUE"))
+intheshadows <- bytype_dis %>% filter(!(detect_bild == "TRUE" & detect_text == "TRUE" & detect_ad == "TRUE"))
 
 
 ```
