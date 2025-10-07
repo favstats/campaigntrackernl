@@ -174,7 +174,7 @@ party_colors <- c(
   "Vrede voor Dieren"= "#5496c6",  # vivid progressive violet
     # --- NEW: missing labels from your treemap screenshot ---
   "NCPN"           = "#CC0000", # communist red, distinct from SP/PvdA
-  "Anti-Immigrant" = "#EE6677", # Tol Bright coral (color-blind–safe)
+  "Protest Accounts" = "#EE6677", # Tol Bright coral (color-blind–safe)
   "De Linie"       = "#AA3377"  # Tol Bright purple (distinct & CVD-safe)
 )
 party_colors <- party_colors[!duplicated(names(party_colors), fromLast = TRUE)]
