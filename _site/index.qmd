@@ -124,61 +124,7 @@ htmltools::tags$head(
 # sets <- jsonlite::fromJSON(here::here("settings.json"))
 
 
-party_colors <- c(
-  "50+"                   = "#7F2481", # 50PLUS purple
-  "50PLUS"= "#7F2481",   # alias fixes grey tile
-  "BBB"                   = "#009639", # BoerBurgerBeweging green
-  "BIJ1"                  = "#00FF66", # neon green on black branding
-  "BVNL"                  = "#FF6D00", # orange accent
-  "CDA"                   = "#006F54", # CDA green
-  "CO"                    = "#FF7F00", # Code Oranje orange
-  "CU"                    = "#00A1DE", # ChristenUnie light blue
-  "D66"                   = "#009E60", # D66 green
-  "DENK"                  = "#00A7B3", # DENK turquoise
-  "Daan Versteeg"         = "#7F7F7F", # neutral gray
-  "Formerly CDA"          = "#66A897", # muted CDA green
-  "Formerly FvD"          = "#B35A5A", # muted FvD burgundy
-  "FvD"                   = "#7B1E26", # Forum voor Democratie burgundy
-  "GL"                    = "#00A75A", # GroenLinks green
-  "GL-PvdA"               = "#C00040", # joint list red (blend)
-  "GL/PvdA"               = "#C00040", # alias
-  "Groen Rechts"          = "#228B22", # forest green
-  "GroenLinks"            = "#00A75A", # alias
-  "JA21"                  = "#0C2E6E", # deep navy
-  "JONG"                  = "#00AEEF", # bright cyan-blue
-  "LEF"                   = "#FFD200", # yellow
-  "LP"                    = "#003399", # Libertaire Partij blue
-  "NIDA"                  = "#2DAE9B", # teal-green
-  "NSC"                   = "#009E9D", # Omtzigt teal
-  "Ons Diemen"            = "#8A8A8A", # local/neutral gray
-  "PVV"                   = "#003082", # dark royal blue
-  "Pirat"                 = "#FF8800", # Pirate Party orange
-  "Politieke Partij Delta"= "#00B6F1", # aqua
-  "PvdA"                  = "#D91E36", # PvdA red
-  "PvdD"                  = "#006843", # Partij voor de Dieren dark green
-  "SGP"                   = "#E57200", # SGP orange
-  "SP"                    = "#BE1E2D", # SP red
-  "Splinter"              = "#ED1E79", # magenta/pink
-  "VN"                    = "#1F6FB2", # Vrede & Neutraliteit blue
-  "VVD"                   = "#FF7900", # VVD orange
-  "Volt"                  = "#562883", # Volt purple
-  "Volt Netherlands"      = "#562883",  # alias
-  "Pro-PVV"            = "#B22222", # strong crimson (distinct from PVV blue)
-  "PVV"                = "#003082", # keep party color
-  "VVD"                = "#FF7900", # keep party color
-  "Anti-Wilders"       = "#555555", # neutral/dark gray
-  "D66"                = "#009E60", # keep party color
-  "Satire"   = "#6A5ACD", # slate purple
-  "Pro-Farmer"         = "#2E8B57", # farmer green
-  "Progressive Account"= "#8A2BE2",  # vivid progressive violet
-  "Vrede voor Dieren"= "#5496c6",  # vivid progressive violet
-    # --- NEW: missing labels from your treemap screenshot ---
-  "NCPN"           = "#CC0000", # communist red, distinct from SP/PvdA
-  "Protest Accounts" = "#EE6677", # Tol Bright coral (color-blind–safe)
-  "De Linie"       = "#AA3377"  # Tol Bright purple (distinct & CVD-safe)
-)
-party_colors <- party_colors[!duplicated(names(party_colors), fromLast = TRUE)]
-
+source("../utils.R")
 
 # library(glue)
 # write_csv(aidat, file = "../data/aidat.csv")
@@ -2120,9 +2066,9 @@ theme_map_en <- c(
   theme_media_work           = "Media work",
   theme_personal_background  = "Private background story",
   theme_daily_politics       = "Everyday politics",
-  theme_nostalgic            = "Nostalgic / historical Dutch imagery",
+  theme_nostalgic            = "Nostalgic / Historic",
   theme_humor                = "Humor / Satire",
-  theme_fantasy              = "Fantasy / futuristic scenarios",
+  theme_fantasy              = "Utopia or Dystopia",
   theme_other_image_content  = "Other imagery"
 )
 
