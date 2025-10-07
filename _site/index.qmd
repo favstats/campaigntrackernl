@@ -1131,7 +1131,7 @@ htmltools::tagList(
 ## `r get_text("transparency_title", lang)`
 
 
-::: {.panel-tabset}
+<!-- ::: {.panel-tabset} -->
 
 ### `r get_text("parties_and_politicians", lang)`
 
@@ -1245,13 +1245,13 @@ woki <- apex(data = proportions, type = "radialBar", mapping = aes(x = name, y =
           show = TRUE,
           formatter = JS("function(val){ return val + '%'; }"),
           style = list(color = "#000", fontSize = "16px")
-        ),
-        total = list( # MUST be inside dataLabels (not sibling)  [oai_citation:4‡ApexCharts.js](https://apexcharts.com/docs/options/plotoptions/radialbar/?utm_source=chatgpt.com)
-          show = TRUE,
-          label = "Gesamt",
-          formatter = JS("function(w){ return '100%'; }"),
-          style = list(color = "#000", fontSize = "16px", fontWeight = "bold")
-        )
+        )#,
+        # total = list( # MUST be inside dataLabels (not sibling)  [oai_citation:4‡ApexCharts.js](https://apexcharts.com/docs/options/plotoptions/radialbar/?utm_source=chatgpt.com)
+        #   show = TRUE,
+        #   label = "Gesamt",
+        #   formatter = JS("function(w){ return '100%'; }"),
+        #   style = list(color = "#000", fontSize = "16px", fontWeight = "bold")
+        # )
       )
     )
   ) %>%
@@ -1279,30 +1279,25 @@ woki <- apex(data = proportions, type = "radialBar", mapping = aes(x = name, y =
 #   )
 # )
 
-
-
 library(htmltools)
 
-ac_two <- tagList(
-  # Minimal CSS grid; works inside tabsets and anywhere Quarto renders HTML
-  tags$style(HTML("
-    .ac-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 24px;
-      align-items: start;
-    }
-    .ac-grid .html-widget { width: 100% !important; }  /* ensure widget fills its cell */
-    .ac-grid .apexcharts-canvas { margin: 0 auto; }     /* tidy centering */
-  ")),
+htmltools::tagList(
+  custom_css,
   tags$div(
-    class = "ac-grid",
-    tags$div(disclaimer_overall),
-    tags$div(woki)
+    class = "apex-container",
+    htmltools::tags$div(
+  style = "
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    gap: 20px;  /* Adds space between boxes */
+    padding: 10px;
+  ",
+  htmltools::tags$div(style = "flex: 1; min-width: 300px;", disclaimer_overall),
+  htmltools::tags$div(style = "flex: 1; min-width: 300px;", woki)
+)
   )
 )
-
-ac_two   # IMPORTANT: return only this, not the individual charts
 ```
 
 
@@ -1479,7 +1474,7 @@ htmltools::tagList(
 
 ```
 
-:::
+<!-- ::: -->
 
 
 <br>
