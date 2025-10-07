@@ -773,6 +773,7 @@ htmltools::browsable(tm)
 ```
 
 
+`r get_text("by_platform_descr", lang)`
 
 ## `r get_text("by_type_text", lang)` {#ki-content-by-party2}
 
@@ -824,18 +825,25 @@ cities_data <- data.frame(
   y = sorted_source_data %>% arrange(desc(n)) %>% 
   filter(ai == 1) %>% pull(n)
 )
-
+pol <-  get_text("politicians", lang)
+par <-  get_text("parties", lang) 
+oth <- get_text("other_actors", lang)  
 actor_type_colors <- c(
-  "Politicians" = "#0072B2", # blue
-  "Parties"     = "#D55E00", # vermillion
-  "Fans"        = "#009E73"  # green
-)
+  "#0072B2", # blue
+  "#D55E00", # vermillion
+    "#009E73"  # green
+) %>% 
+  set_names(pol, par, oth)
+
+cities_data$x[cities_data$x == "Politicians"] <- get_text("politicians", lang) 
+cities_data$x[cities_data$x == "Parties"] <- get_text("parties", lang) 
+cities_data$x[cities_data$x == "Fans"] <- get_text("other_actors", lang) 
 
 # Generate the treemap
 tm <- create_political_treemap_ac(
   data = cities_data,
   title = get_text("by_type_text", lang),
-      party_colors = c("Politicians" = "#0072B2", "Parties" = "#D55E00", "Fans" = "#009E73"),
+      party_colors = actor_type_colors,
   height = 400
 )
 
@@ -855,11 +863,15 @@ htmltools::browsable(tm)
 )
 ```
 
+`r get_text("by_type_descr", lang)`
+
+
 ::: 
 
 
 ## `r get_text("rel_ai_by_party", lang)` {#ki-content-by-party2}
 
+`r get_text("rel_ai_by_party_descr", lang)`
 
 
 ::: {.panel-tabset}
@@ -1093,10 +1105,6 @@ htmltools::tagList(
 :::
 
 
-<br>
-
-`r get_text("rel_ai_by_party_descr", lang)`
-
 > `r get_text("disclaimer_note", lang)`
 
 <br>
@@ -1260,7 +1268,16 @@ woki <- apex(data = proportions, type = "radialBar", mapping = aes(x = name, y =
   ax_legend(show = FALSE) %>%
   ax_stroke(show = TRUE, lineCap = "round") %>%
   ax_title(text = get_text('how_disclose', lang), align = 'center',
-           style = list(fontSize = '18px', color = '#000'))
+           style = list(fontSize = '18px', color = '#000')) %>%
+  ax_chart(
+    height = 420,
+    sparkline = list(enabled = TRUE),
+    background = "transparent",          # ← no white canvas
+    foreColor  = "#000",
+    redrawOnWindowResize  = TRUE,
+    redrawOnParentResize  = TRUE,
+    animations = list(enabled = FALSE)
+  ) 
 # htmltools::tagList(
 #   custom_css,
 #   tags$div(
@@ -1458,7 +1475,16 @@ woki <- apex(data = proportions, type = "radialBar", mapping = aes(x = name, y =
   ax_legend(show = FALSE) %>%
   ax_stroke(show = TRUE, lineCap = "round") %>%
   ax_title(text = get_text('how_disclose', lang), align = 'center',
-           style = list(fontSize = '18px', color = '#000'))
+           style = list(fontSize = '18px', color = '#000')) %>%
+  ax_chart(
+    height = 420,
+    sparkline = list(enabled = TRUE),
+    background = "transparent",          # ← no white canvas
+    foreColor  = "#000",
+    redrawOnWindowResize  = TRUE,
+    redrawOnParentResize  = TRUE,
+    animations = list(enabled = FALSE)
+  ) 
 # htmltools::tagList(
 #   custom_css,
 #   tags$div(
@@ -1513,6 +1539,12 @@ htmltools::tagList(
 
 ## `r get_text("media_formats", lang)` {#medienformatte}
 
+<script>
+document.addEventListener('shown.bs.tab', function(){
+  window.dispatchEvent(new Event('resize'));
+  setTimeout(()=>window.dispatchEvent(new Event('resize')), 120);
+});
+</script>
 <!-- ::: {.panel-tabset} -->
 
 ### `r get_text("parties_and_politicians", lang)`
@@ -1528,7 +1560,7 @@ medienformatte <- full_data %>%
     str_detect(image_s_video_s_included, "video") ~ get_text("vid", lang)
   )) %>% 
 
-apex(type = "donut", mapping = aes(x = image_s_video_s_included, y = n)) %>%
+apex(type = "pie", mapping = aes(x = image_s_video_s_included, y = n)) %>%
   ax_colors(c("#FF6347", "#4682B4", "#32CD32")) %>%
   ax_chart(height = 299) %>%  # Increase chart size
   ax_plotOptions(
@@ -1558,7 +1590,16 @@ apex(type = "donut", mapping = aes(x = image_s_video_s_included, y = n)) %>%
   ) %>%
   ax_title(text = get_text("title_type", lang), align = "center",
            style = list(fontSize = "18px", color = "#000"))   %>%
-ax_legend(position = "bottom")
+ax_legend(position = "bottom")%>%
+  ax_chart(
+    height = 420,
+    sparkline = list(enabled = F),
+    background = "transparent",          # ← no white canvas
+    foreColor  = "#000",
+    redrawOnWindowResize  = TRUE,
+    redrawOnParentResize  = TRUE,
+    animations = list(enabled = FALSE)
+  ) 
 
 # htmltools::tagList(
 #   custom_css,
@@ -1574,13 +1615,17 @@ like_real_dat <- full_data %>%  #View()
   filter(list_source %in% c("Politicians", "Parties")) %>% 
 
   filter(ai == 1)  %>% 
+  filter(str_detect(nature_of_the_image_video,  "contains real-looking conten")) %>% 
+
   mutate(nature_of_the_image_video = case_when(
     str_detect(nature_of_the_image_video, "contains real-looking conten") ~ get_text("like_real", lang),
     str_detect(nature_of_the_image_video, "does NOT") ~ get_text("like_unreal", lang)
   )) %>% 
-  count(nature_of_the_image_video)%>% 
 
-apex(type = "donut", mapping = aes(x = nature_of_the_image_video, y = n)) %>%
+  count(nature_of_the_image_video) %>% 
+
+
+apex(type = "radialBar", mapping = aes(x = get_text("like_real", lang), y = n)) %>%
   ax_colors(c("#FA0347", "#AC0999", "#darkblue")) %>%
   ax_chart(height = 299) %>%  # Increase chart size
   ax_plotOptions(
@@ -1610,7 +1655,17 @@ apex(type = "donut", mapping = aes(x = nature_of_the_image_video, y = n)) %>%
   ) %>%
   ax_title(text = get_text("title_real", lang), align = "center",
            style = list(fontSize = "18px", color = "#000"))  %>%
-ax_legend(position = "bottom")
+ax_legend(position = "bottom")%>%
+  ax_chart(
+    height = 420,
+    sparkline = list(enabled = F),
+    background = "transparent",          # ← no white canvas
+    foreColor  = "#000",
+    redrawOnWindowResize  = TRUE,
+    redrawOnParentResize  = TRUE,
+    animations = list(enabled = FALSE)
+  ) 
+
 
 
 
@@ -1620,9 +1675,9 @@ htmltools::tagList(
     class = "apex-container",
     htmltools::tags$div(
   style = "
-    display: flex; 
-    justify-content: space-between; 
-    align-items: flex-start; 
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     gap: 20px;  /* Adds space between boxes */
     padding: 10px;
   ",
@@ -1631,6 +1686,7 @@ htmltools::tagList(
 )
   )
 )
+
 ```
 
 
@@ -1678,7 +1734,16 @@ apex(type = "donut", mapping = aes(x = image_s_video_s_included, y = n)) %>%
   ) %>%
   ax_title(text = get_text("title_type", lang), align = "center",
            style = list(fontSize = "18px", color = "#000"))   %>%
-ax_legend(position = "bottom")
+ax_legend(position = "bottom")%>%
+  ax_chart(
+    height = 420,
+    sparkline = list(enabled = F),
+    background = "transparent",          # ← no white canvas
+    foreColor  = "#000",
+    redrawOnWindowResize  = TRUE,
+    redrawOnParentResize  = TRUE,
+    animations = list(enabled = FALSE)
+  ) 
 
 # htmltools::tagList(
 #   custom_css,
@@ -1731,7 +1796,16 @@ apex(type = "donut", mapping = aes(x = nature_of_the_image_video, y = n)) %>%
   ) %>%
   ax_title(text = get_text("title_real", lang), align = "center",
            style = list(fontSize = "18px", color = "#000"))  %>%
-ax_legend(position = "bottom")
+ax_legend(position = "bottom")%>%
+  ax_chart(
+    height = 420,
+    sparkline = list(enabled = F),
+    background = "transparent",          # ← no white canvas
+    foreColor  = "#000",
+    redrawOnWindowResize  = TRUE,
+    redrawOnParentResize  = TRUE,
+    animations = list(enabled = FALSE)
+  ) 
 
 
 
@@ -1758,8 +1832,6 @@ htmltools::tagList(
 
 <!-- ::: -->
 
-
-<br>
 
 `r get_text("media_formats_descr", lang)`
 
