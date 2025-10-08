@@ -25,9 +25,9 @@ website:
   page-footer:
     background: light # or dark
     left:
-      - text: "Copyright 2025, CampAIgn Tracker (Klick für Impressum)"
+      - text: "Copyright 2025, CampAIgn Tracker (Click for Imprint)"
         href: https://favstats.github.io/campaigntrackernl/impressum.html
-      - text: "Datenschutzerklärung"
+      - text: "Data Privacy Declaration"
         href: https://favstats.github.io/campaigntrackernl/datenschutz.html
     right:
       - text: "Finanziert durch die Baden-Württemberg Stiftung"
