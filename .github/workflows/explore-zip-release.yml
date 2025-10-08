@@ -1,4 +1,4 @@
-name: Explore — timestamped release on demand
+name: "Explore — timestamped release on demand"
 
 on:
   workflow_dispatch:
@@ -38,51 +38,51 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
-import os, json
-from pathlib import Path
+          import os, json
+          from pathlib import Path
 
-IMG_EXTS = {'.jpg','.jpeg','.png','.gif','.webp','.bmp','.svg'}
+          IMG_EXTS = {'.jpg','.jpeg','.png','.gif','.webp','.bmp','.svg'}
 
-now_root  = Path('docs/explore')
-prev_root = Path('prev/unzipped/docs/explore')
+          now_root  = Path('docs/explore')
+          prev_root = Path('prev/unzipped/docs/explore')
 
-def list_relatives(base: Path, sub: str, image_only=False):
-    p = base / sub
-    out = set()
-    if p.exists():
-        for f in p.rglob('*'):
-            if f.is_file():
-                if image_only and f.suffix.lower() not in IMG_EXTS:
-                    continue
-                out.add(str(f.relative_to(base).as_posix()))
-    return out
+          def list_relatives(base: Path, sub: str, image_only=False):
+              p = base / sub
+              out = set()
+              if p.exists():
+                  for f in p.rglob('*'):
+                      if f.is_file():
+                          if image_only and f.suffix.lower() not in IMG_EXTS:
+                              continue
+                          out.add(str(f.relative_to(base).as_posix()))
+              return out
 
-now_frames  = list_relatives(now_root,  'output_frames', image_only=True)
-now_hashes  = list_relatives(now_root,  'hashed_files',  image_only=False)
-prev_frames = list_relatives(prev_root, 'output_frames', image_only=True)
-prev_hashes = list_relatives(prev_root, 'hashed_files',  image_only=False)
+          now_frames  = list_relatives(now_root,  'output_frames', image_only=True)
+          now_hashes  = list_relatives(now_root,  'hashed_files',  image_only=False)
+          prev_frames = list_relatives(prev_root, 'output_frames', image_only=True)
+          prev_hashes = list_relatives(prev_root, 'hashed_files',  image_only=False)
 
-new_frames = sorted(now_frames - prev_frames)
-new_hashes = sorted(now_hashes - prev_hashes)
+          new_frames = sorted(now_frames - prev_frames)
+          new_hashes = sorted(now_hashes - prev_hashes)
 
-summary = {
-  "new_frames_count": len(new_frames),
-  "new_hashes_count": len(new_hashes),
-  "any_new": (len(new_frames) + len(new_hashes)) > 0
-}
+          summary = {
+            "new_frames_count": len(new_frames),
+            "new_hashes_count": len(new_hashes),
+            "any_new": (len(new_frames) + len(new_hashes)) > 0
+          }
 
-Path("new_frames.txt").write_text("\n".join(new_frames), encoding="utf-8")
-Path("new_hashes.txt").write_text("\n".join(new_hashes), encoding="utf-8")
-Path("diff_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+          Path("new_frames.txt").write_text("\n".join(new_frames), encoding="utf-8")
+          Path("new_hashes.txt").write_text("\n".join(new_hashes), encoding="utf-8")
+          Path("diff_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
 
-ts = os.popen("date -u +%Y%m%dT%H%M%SZ").read().strip()
-with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as gh:
-    gh.write(f"any_new={'true' if summary['any_new'] else 'false'}\n")
-    gh.write(f"new_frames_count={summary['new_frames_count']}\n")
-    gh.write(f"new_hashes_count={summary['new_hashes_count']}\n")
-    gh.write(f"ts={ts}\n")
-    gh.write(f"zip_name=explore_{ts}.zip\n")
-PY
+          ts = os.popen("date -u +%Y%m%dT%H%M%SZ").read().strip()
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as gh:
+              gh.write(f"any_new={'true' if summary['any_new'] else 'false'}\n")
+              gh.write(f"new_frames_count={summary['new_frames_count']}\n")
+              gh.write(f"new_hashes_count={summary['new_hashes_count']}\n")
+              gh.write(f"ts={ts}\n")
+              gh.write(f"zip_name=explore_{ts}.zip\n")
+          PY
 
       - name: Stop if nothing new
         if: ${{ steps.detect.outputs.any_new != 'true' }}
@@ -118,7 +118,6 @@ PY
             echo "#### Neue Dateien in hashed_files (erste 50)"
             head -n 50 new_hashes.txt || true
           } > release_body.md
-          sed -n '1,200p' release_body.md
 
       - name: Create NEW timestamped release
         uses: ncipollo/release-action@v1
