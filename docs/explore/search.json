@@ -4,13 +4,13 @@
     "href": "index.html",
     "title": "&nbsp;&nbsp;Dashboard",
     "section": "",
-    "text": "WARNING THIS ONLY SHOWS A MOCK-UP THE DATA IS NOT REAL YET! DO NOTE CITE.\nIn the AI Explorer, all detected AI-generated content can be displayed and sorted according to specific criteria.\nPosts can be filtered by party, post text, platform, post/ad to reveal specific patterns and trends.\nIn addition, post texts can be searched for specific words.\nVia the link, the original post can be accessed on the respective platform."
+    "text": "WARNING THIS ONLY SHOWS A MOCK-UP THE DATA IS NOT REAL YET! DO NOTE CITE.\nAI Explorer\n\nWelcome to the AI Explorer. This view brings together posts that our pipeline flagged as AI-generated and \nlets you investigate patterns across parties, platforms, and message content. Use column filters to slice \nthe data, sort on any header to compare like-for-like, and search the post text to surface specific phrases \nor narratives. The goal is to keep exploration fast and visual while preserving an easy path back to the \noriginal source.\n\n\nWhat to look for: the combined \nTags\n column shows compact topic/theme chips; the \n\n column indicates whether an explicit AI disclosure is present. Click a row’s \nLink\n to open the original post for full context on the platform.\n\n\n\n\n\nSort & search\nClick any column header to sort. Use the search box above the table to find words in the post text (case-insensitive). Combine with filters for focused views.\n\n\n\n\n\nFilter by Actor\nNarrow the list to a party, politician, or actor type. Select “All” to clear the filter and return to the full set.\n\n\n\n\n\nFilter by Platform\nLimit results to Facebook, Instagram, X, or TikTok from the Platform header filter. Use multiple filters together to compare like-for-like content.\n\n\n\n\n\nTags (topics + themes)\nPosts carry compact chips for annotated topics and themes. If a +N chip appears, hover to see the hidden tags;  chips are designed to stay short so the table remains readable.\n\n\n\n\n\nAI label indicator\n\nThe \n\n column marks explicit AI disclosure: \n\n labeled (✓), \n\n no label (×), \n\n unknown (?).\n\n\n\n\n\n\nOpen the original\nUse the Link column to open the post in a new tab on its source platform and verify content in context."
   },
   {
     "objectID": "index.html#explore",
     "href": "index.html#explore",
     "title": "&nbsp;&nbsp;Dashboard",
     "section": "Explore",
-    "text": "Explore"
+    "text": "Explore\n\n\n\n\n\n\n\n\nAI label:\n\n\n\nLabeled\n\n\n\nNo label"
   }
 ]
