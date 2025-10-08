@@ -6,8 +6,8 @@ on:
       - main
     # If you want to run on EVERY push regardless of what changed,
     # delete the following 2 lines:
-    paths:
-      - 'docs/explore/**'
+    # paths:
+    #   - 'docs/explore/**'
 
 permissions:
   contents: write
