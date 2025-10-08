@@ -2,8 +2,8 @@
 title: "CampAIgn Tracker Expands to the Netherlands: Monitoring AI in the 2025 Dutch General Election"
 description-meta: "The CampAIgn Tracker creates transparency around the use of AI in political campaigns on social media. Track the influence of AI-generated content in election campaigns."
 author: "Simon Kruschinski"
-date: "11.10.2025"
-# image: "Foto 2_Preisgeld.jpeg"
+date: "10.10.2025"
+image: "CampaignTrackerFeaturesEN.png"
 lang: en
 format:
   html:
@@ -17,6 +17,7 @@ format:
 <!-- Custom CSS -->
 
 ```{=html}
+
 <style>
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
@@ -70,13 +71,13 @@ blockquote {
 </style>
 ```
 
-# CampAIgn Tracker Expands to the Netherlands: Monitoring AI in the 2025 Dutch General Election
 
-Following successful deployment during Germany's 2025 federal election, the CampAIgn Tracker launches in the Netherlands to monitor AI-generated content across political campaigns ahead of the October 29, 2025 Dutch general election. We joined forces with Stichting Post-X Society, Trollrensics, AI Forensics, and Justice for Prosperity within the Hybrid Election Integrity Observatory Consortium, a collaborative network formed specifically to monitor digital spaces during the Dutch election. This expansion represents a significant step in our mission to bring transparency to digital campaigning across Europe.
+
+Following successful deployment during Germany's 2025 federal election, the [CampAIgn Tracker](https://www.campaigntracker.de/) launches in the Netherlands to monitor AI-generated content across political campaigns ahead of the October 29, 2025 Dutch general election. We joined forces with [Stichting Post-X Society](https://postxsociety.nl/), [Trollrensics](https://trollrensics.com/), [AI Forensics](https://aiforensics.org/), and [Justice for Prosperity](https://justiceforprosperity.org/) within the Hybrid Election Integrity Observatory Consortium, a collaborative network formed specifically to monitor digital spaces during the Dutch election. This expansion represents a significant step in our mission to bring transparency to digital campaigning across Europe.
 
 As the October 29 election approaches, the CampAIgn Tracker will provide ongoing monitoring of how political actors across the Dutch political spectrum employ AI-generated content. The platform will update regularly as new content appears, allowing journalists and researchers to track developments throughout the campaign period.
 
-We invite journalists, researchers, and interested citizens to explore the tracker at https://www.campaigntracker.nl/ and to contact us with questions or observations about patterns they identify in the data.
+We invite journalists, researchers, and interested citizens to explore the tracker at [https://www.campaigntracker.nl/](https://www.campaigntracker.nl/) and to contact us with questions or observations about patterns they identify in the data.
 
 ## What is the CampAIgn Tracker?
 
@@ -86,17 +87,21 @@ The tool serves two primary audiences. Journalists can use the platform to inves
 
 Beyond simple detection, the tracker analyzes patterns in AI usage. We examine which topics are most commonly illustrated with synthetic imagery, whether positive or negative messaging dominates AI-generated content, and how labeling practices vary across parties and platforms. These analyses reveal strategic choices in digital campaigning that would otherwise remain invisible to the public.
 
-Access the Dutch version at: https://www.campaigntracker.nl/
+Access the Dutch version at: [https://www.campaigntracker.nl/](https://www.campaigntracker.nl/)
+
 
 ## New Features for the Dutch Election
 
 The Netherlands deployment introduces several technical and analytical enhancements that substantially expand the tracker's capabilities beyond the German version.
 
+
+![](CampaignTrackerFeaturesEN.png)
+
 **Platform expansion:** The original German tracker monitored Facebook and Instagram, the two platforms that provide the most comprehensive political advertising transparency through Meta's Ad Library. For the Dutch election, we expanded coverage to include TikTok and Twitter/X. This addition reflects the changing landscape of political communication, where younger voters increasingly consume political content on TikTok, and Twitter/X remains a central platform for political discourse despite recent changes to the platform. Monitoring four platforms provides a more complete picture of how AI-generated content circulates across the digital ecosystem.
 
 **Broader actor coverage:** The German version focused exclusively on political parties and their official candidates. However, political communication increasingly occurs through informal channels. For the Dutch tracker, we extended our monitoring to include political commentators who shape public opinion, influencers who bring political messages to younger demographics, fan pages that amplify party messaging, and meme pages that use humor and satire to engage with political topics. This expanded scope recognizes that modern campaigns operate through networks of affiliated actors rather than centralized party accounts alone.
 
-**Enhanced AI Explorer:** We completely redesigned the interface that allows users to browse detected AI-generated content. The new AI Explorer (https://www.campaigntracker.nl/explore/) provides multiple filtering dimensions. Users can filter by specific actors to see how individual parties or commentators use AI. Platform filters allow comparison of content strategies across Facebook, Instagram, TikTok, and Twitter/X. Topic filters enable investigation of which policy issues are most commonly illustrated with synthetic imagery. AI labeling filters distinguish between content that political actors properly marked as AI-generated and content that carries no such disclosure. Users can also search through the text accompanying posts to find specific terms or phrases.
+**Enhanced AI Explorer:** We completely redesigned the interface that allows users to browse detected AI-generated content.  The new AI Explorer ([https://www.campaigntracker.nl/explore/](https://www.campaigntracker.nl/explore/)) provides multiple filtering dimensions. Users can filter by specific actors to see how individual parties or commentators use AI. Platform filters allow comparison of content strategies across Facebook, Instagram, TikTok, and Twitter/X. Topic filters enable investigation of which policy issues are most commonly illustrated with synthetic imagery. AI labeling filters distinguish between content that political actors properly marked as AI-generated and content that carries no such disclosure. Users can also search through the text accompanying posts to find specific terms or phrases.
 
 **Deepfake detection:** One of the most concerning applications of AI in political campaigns involves creating synthetic content that appears to show real persons or real events. The Dutch tracker integrates analysis to identify whether AI-generated images depict recognizable public figures, simulate actual locations, or recreate historical moments. This deepfake detection capability flags content that poses particular risks for misinformation, as viewers may believe they are seeing documentary evidence of something that never occurred.
 
@@ -106,20 +111,18 @@ The expansion to the Netherlands represents a test case for scaling the tracker 
 
 ## Partnership and Funding
 
-This expansion occurs through the Hybrid Election Integrity Observatory Consortium, a collaborative network formed specifically to monitor the Dutch election. The consortium brings together organizations with complementary expertise in different aspects of digital campaigning and election integrity.
+This expansion occurs through the Hybrid Election Integrity Observatory (HEIO) Consortium, a collaborative network formed specifically to monitor the Dutch election. The consortium brings together organizations with complementary expertise in different aspects of digital campaigning and election integrity.
 
-### Consortium members:
-
-Stichting Post-X Society serves as the coordinating organization, providing project management and research infrastructure. Trollrensics contributes expertise in detecting coordinated inauthentic behavior and analyzing network patterns in political communication. AI Forensics specializes in investigating how AI systems operate within political and social contexts, bringing technical depth to content analysis. Justice for Prosperity focuses on the implications of digital campaigning practices for democratic participation and political equality. This combination of technical, analytical, and normative expertise enables comprehensive monitoring that addresses both the mechanics and the democratic implications of AI in campaigns.
 
 ### Funding sources:
 
 Two institutions provide financial support that made this expansion possible.
 
+
 ### University of Amsterdam:
 
-The Research Priority Area "AI & Politics" at the Amsterdam School of Communication Research awarded a seed grant for this project. The RPA represents a five-year initiative examining how AI reconfigures political dynamics, with annual funding of €250,000 supporting interdisciplinary research. The RPA addresses four key dimensions: investigating AI's impact on politics, analyzing the politics of AI governance, examining how AI systems perform traditional administrative functions, and understanding when and why AI use becomes politicized. Our project aligns with the RPA's mission by generating empirical evidence about how AI transforms political communication during elections. The seed grant specifically aims to integrate research across communication science, sociology, political science, and geography that currently remains dispersed across departmental boundaries. By bringing together scholars from these different disciplines, the funding program enables comprehensive analysis of the interconnections between different aspects of the AI-politics relationship.
+> The Research Priority Area "[AI & Politics](https://aissr.uva.nl/our-research/artificial-intelligence-politics.html)" at the Amsterdam School of Communication Research awarded a seed grant for this project. The RPA represents a five-year initiative examining how AI reconfigures political dynamics, with annual funding of €250,000 supporting interdisciplinary research. The RPA addresses four key dimensions: investigating AI's impact on politics, analyzing the politics of AI governance, examining how AI systems perform traditional administrative functions, and understanding when and why AI use becomes politicized. Our project aligns with the RPA's mission by generating empirical evidence about how AI transforms political communication during elections. The seed grant specifically aims to integrate research across communication science, sociology, political science, and geography that currently remains dispersed across departmental boundaries. By bringing together scholars from these different disciplines, the funding program enables comprehensive analysis of the interconnections between different aspects of the AI-politics relationship.
 
 ### SIDN Fund:
 
-The second funding source comes from SIDN Fund, which supports projects contributing to a strong internet, empowered internet users, or research on the internet's significance for public values. SIDN Fund operates in three areas: strengthening the internet as an open, free, and trusted infrastructure; empowering adults, young people, and children with skills for safe and confident internet use; and promoting public values while counteracting negative internet effects. The fund supports initiatives addressing cybersecurity, data autonomy, disinformation, and digital accessibility within Dutch society. Our project fits within SIDN Fund's mission by addressing disinformation risks and promoting digital literacy regarding AI-generated content. The fund specifically prioritizes projects with impact on Dutch society, making the Dutch election tracker a natural fit for their support.
+>The second funding source comes from [SIDN Fund](https://www.sidnfonds.nl/), which supports projects contributing to a strong internet, empowered internet users, or research on the internet's significance for public values. SIDN Fund operates in three areas: strengthening the internet as an open, free, and trusted infrastructure; empowering adults, young people, and children with skills for safe and confident internet use; and promoting public values while counteracting negative internet effects. The fund supports initiatives addressing cybersecurity, data autonomy, disinformation, and digital accessibility within Dutch society. Our project fits within SIDN Fund's mission by addressing disinformation risks and promoting digital literacy regarding AI-generated content. The fund specifically prioritizes projects with impact on Dutch society, making the Dutch election tracker a natural fit for their support.
