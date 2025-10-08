@@ -974,7 +974,7 @@ if (nrow(ai_pct) == 0) {
     ax_grid(xaxis = list(lines = list(show = TRUE)),
             yaxis = list(lines = list(show = FALSE))) %>%
     ax_legend(show = FALSE) %>%
-    ax_title(text = get_text("posts_with_ai", lang),
+    ax_title(text =  get_text("rel_ai_by_party2", lang),
              align = "center",
              style = list(fontSize = "18px", fontWeight = "bold"))
 }
