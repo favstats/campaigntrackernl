@@ -4,9 +4,10 @@ on:
   push:
     branches:
       - main
+    # If you want to run on EVERY push regardless of what changed,
+    # delete the following 2 lines:
     paths:
       - 'docs/explore/**'
-  workflow_dispatch:
 
 permissions:
   contents: write
@@ -22,9 +23,19 @@ jobs:
 
       - name: Create ZIP (docs/explore → explore.zip)
         run: |
-          test -d docs/explore || { echo "docs/explore not found"; exit 1; }
+          if [ ! -d docs/explore ]; then
+            echo "::error::docs/explore not found"
+            exit 1
+          fi
           zip -r -q explore.zip docs/explore
           ls -lh explore.zip
+
+      - name: Ensure tag 'explore-latest' points to this commit
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -f explore-latest
+          git push -f origin refs/tags/explore-latest
 
       - name: Create/Update 'explore-latest' release
         uses: ncipollo/release-action@v1
