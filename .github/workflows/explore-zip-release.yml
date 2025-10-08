@@ -40,6 +40,7 @@ jobs:
           python - <<'PY'
 import os, json
 from pathlib import Path
+
 IMG_EXTS = {'.jpg','.jpeg','.png','.gif','.webp','.bmp','.svg'}
 
 now_root  = Path('docs/explore')
@@ -82,8 +83,6 @@ with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as gh:
     gh.write(f"ts={ts}\n")
     gh.write(f"zip_name=explore_{ts}.zip\n")
 PY
-          echo "New frames: ${{ steps.detect.outputs.new_frames_count || '0' }}"
-          echo "New hashed files: ${{ steps.detect.outputs.new_hashes_count || '0' }}"
 
       - name: Stop if nothing new
         if: ${{ steps.detect.outputs.any_new != 'true' }}
@@ -99,10 +98,11 @@ PY
           ls -lh "${{ steps.detect.outputs.zip_name }}"
 
       - name: Build release notes
+        env:
+          TS: ${{ steps.detect.outputs.ts }}
+          NF: ${{ steps.detect.outputs.new_frames_count }}
+          NH: ${{ steps.detect.outputs.new_hashes_count }}
         run: |
-          TS="${{ steps.detect.outputs.ts }}"
-          NF="${{ steps.detect.outputs.new_frames_count }}"
-          NH="${{ steps.detect.outputs.new_hashes_count }}"
           {
             echo "Automatisch generiertes ZIP von **docs/explore**"
             echo ""
