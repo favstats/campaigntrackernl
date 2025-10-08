@@ -172,10 +172,13 @@ We are currently tracking *`r nrow(full_data)` posts* between `r min(full_data$p
 
 ```{r, echo=F, warning=F, message=F}
 full_data %>% 
-  # count(list_source) %>% 
   mutate(party = case_when(
     str_detect(list_source, "NL Historic|Parties|Polit") ~ party,
     str_detect(list_source, "Fans") ~ "Other Actors"
+  ))  %>% 
+  mutate(party = case_when(
+    str_detect(party, "GL|PvdA|GroenLinks|groenlinks|pvda") ~ "GL-PvdA",
+    T ~party
   )) %>% 
   count(party, sort = T) %>%
   arrange(party) %>% 

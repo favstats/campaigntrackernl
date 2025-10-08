@@ -177,9 +177,7 @@ full_data %>%
     str_detect(list_source, "Fans") ~ "Other Actors"
   ))  %>% 
   mutate(party = case_when(
-    party == "GL" ~ "GL-PvdA",
-    party == "PvdA" ~ "GL-PvdA",
-    str_detect(username, "groenlinks|pvda") ~ "GL-PvdA",
+    str_detect(party, "GL|PvdA|GroenLinks|groenlinks|pvda") ~ "GL-PvdA",
     T ~party
   )) %>% 
   count(party, sort = T) %>%
