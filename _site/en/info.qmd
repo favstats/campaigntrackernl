@@ -172,8 +172,14 @@ We are currently tracking *`r nrow(full_data)` posts* between `r min(full_data$p
 
 ```{r, echo=F, warning=F, message=F}
 full_data %>% 
+  # count(list_source) %>% 
+  mutate(party = case_when(
+    str_detect(list_source, "NL Historic|Parties|Polit") ~ party,
+    str_detect(list_source, "Fans") ~ "Other Actors"
+  )) %>% 
   count(party, sort = T) %>%
-  rename(`Party/Group` = party, Posts = n) %>% 
+  arrange(party) %>% 
+  rename(`Party/Actor` = party, Posts = n) %>% 
   reactable()
 ```
 
