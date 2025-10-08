@@ -2241,7 +2241,7 @@ htmltools::browsable(themechart)
 # --- 1) Map internal keys -> ENGLISH labels found in full_data$theme_of_the_image_video ---
 theme_map_en <- c(
   theme_event_announcement   = "Event announcement/Election call/Candidate presentation",
-  theme_political_positioning= "Political positioning",
+  # theme_political_positioning= "Political positioning",
   theme_negative_content     = "Negative imagery/Negative campaigning",
   theme_positive_content     = "Positive imagery/Acclaims",
   theme_symbolic_image       = "Symbolic image",
@@ -2366,7 +2366,7 @@ htmltools::tagList(
 # --- 1) Map internal keys -> ENGLISH labels found in full_data$theme_of_the_image_video ---
 theme_map_en <- c(
   theme_event_announcement   = "Event announcement/Election call/Candidate presentation",
-  theme_political_positioning= "Political positioning",
+  # theme_political_positioning= "Political positioning",
   theme_negative_content     = "Negative imagery/Negative campaigning",
   theme_positive_content     = "Positive imagery/Acclaims",
   theme_symbolic_image       = "Symbolic image",
