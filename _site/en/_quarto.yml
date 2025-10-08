@@ -31,8 +31,8 @@ website:
       - text: "Data Privacy Declaration"
         href: https://favstats.github.io/campaigntrackernl/datenschutz.html
     right:
-      - text: "Financed through the Baden-Württemberg Stiftung"
-        href: "https://www.bwstiftung.de/"
+      - text: "RPA Grants (UvA) & SIDN Fonds"
+        href: "https://aissr.uva.nl/content/news/2025/01/call-for-ai--politics-seed-grants.html"
 
     
 format:
