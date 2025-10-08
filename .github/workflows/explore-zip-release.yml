@@ -2,7 +2,8 @@ name: Release explore.zip
 
 on:
   push:
-    branches: [main]     # ggf. anpassen
+    branches:
+      - main
     paths:
       - 'docs/explore/**'
   workflow_dispatch:
