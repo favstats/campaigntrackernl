@@ -43,8 +43,8 @@ jobs:
 
           IMG_EXTS = {'.jpg','.jpeg','.png','.gif','.webp','.bmp','.svg'}
 
-          now_root  = Path('docs/explore')
-          prev_root = Path('prev/unzipped/docs/explore')
+          now_root  = Path('staging/explore')
+          prev_root = Path('prev/unzipped/staging/explore')
 
           def list_relatives(base: Path, sub: str, image_only=False):
               p = base / sub
@@ -58,9 +58,9 @@ jobs:
               return out
 
           now_frames  = list_relatives(now_root,  'output_frames', image_only=True)
-          now_hashes  = list_relatives(now_root,  'hashed_files',  image_only=False)
+          now_hashes  = list_relatives(now_root,  'organic/hashed_files',  image_only=False)
           prev_frames = list_relatives(prev_root, 'output_frames', image_only=True)
-          prev_hashes = list_relatives(prev_root, 'hashed_files',  image_only=False)
+          prev_hashes = list_relatives(prev_root, 'organic/hashed_files',  image_only=False)
 
           new_frames = sorted(now_frames - prev_frames)
           new_hashes = sorted(now_hashes - prev_hashes)
@@ -93,8 +93,8 @@ jobs:
       - name: Create timestamped ZIP
         run: |
           set -e
-          test -d docs/explore || { echo "::error::docs/explore not found"; exit 1; }
-          zip -r -q "${{ steps.detect.outputs.zip_name }}" docs/explore
+          test -d staging/explore || { echo "::error::staging/explore not found"; exit 1; }
+          zip -r -q "${{ steps.detect.outputs.zip_name }}" staging/explore
           ls -lh "${{ steps.detect.outputs.zip_name }}"
 
       - name: Build release notes
@@ -104,7 +104,7 @@ jobs:
           NH: ${{ steps.detect.outputs.new_hashes_count }}
         run: |
           {
-            echo "Automatisch generiertes ZIP von **docs/explore**"
+            echo "Automatisch generiertes ZIP von **staging/explore**"
             echo ""
             echo "- Commit: ${{ github.sha }}"
             echo "- Branch: ${{ github.ref_name }}"
@@ -145,7 +145,7 @@ jobs:
           tag: explore-latest
           name: "Explore baseline (latest)"
           body: |
-            Baseline ZIP von docs/explore für Diffs bei zukünftigen Runs.
+            Baseline ZIP von staging/explore für Diffs bei zukünftigen Runs.
             Commit: ${{ github.sha }}
             Branch: ${{ github.ref_name }}
           artifacts: "explore.zip"
