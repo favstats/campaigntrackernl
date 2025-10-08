@@ -1,0 +1,42 @@
+name: Release explore.zip
+
+on:
+  push:
+    branches: [main]     # ggf. anpassen
+    paths:
+      - 'docs/explore/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  zip-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create ZIP (docs/explore → explore.zip)
+        run: |
+          test -d docs/explore || { echo "docs/explore not found"; exit 1; }
+          zip -r -q explore.zip docs/explore
+          ls -lh explore.zip
+
+      - name: Create/Update 'explore-latest' release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: explore-latest
+          name: "Explore latest"
+          body: |
+            Automatisch generiertes ZIP von docs/explore
+            Commit: ${{ github.sha }}
+            Branch: ${{ github.ref_name }}
+          artifacts: "explore.zip"
+          allowUpdates: true
+          removeArtifacts: true
+          artifactErrorsFailBuild: true
+          makeLatest: true
+          prerelease: true
