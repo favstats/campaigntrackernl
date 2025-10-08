@@ -102,42 +102,42 @@
     "href": "index.html#ki-content-by-party2",
     "title": "Overview of Content",
     "section": "Share of Posts with and without AI",
-    "text": "Share of Posts with and without AI\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis graphic shows the relative share of AI-generated content per party. The parties are sorted by the highest share of AI content.\n\nNote: For parties with fewer total posts (including smaller parties), even limited AI use may result in high relative percentages."
+    "text": "Share of Posts with and without AI\nThis graphic shows the relative share of AI-generated content per party. The parties are sorted by the highest share of AI content.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: For actors with fewer total posts (including smaller parties), even limited AI use may result in high relative percentages."
   },
   {
     "objectID": "index.html#ai-transparency",
     "href": "index.html#ai-transparency",
     "title": "Overview of Content",
     "section": "AI Transparency",
-    "text": "AI Transparency\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDisclosure of AI content through party-added disclaimers or platform labels is crucial for transparency. This visualization shows how often AI-generated content was published with/without disclosures and whether the label was applied by the party or Meta."
+    "text": "AI Transparency\n\n\nParties & Politicians\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDisclosure of AI content through disclaimers or platform labels is crucial for transparency. This visualization shows how often AI-generated content was published with/without disclosures and whether the label was applied by the actor (in text or image) or by the platform."
   },
   {
     "objectID": "index.html#medienformatte",
     "href": "index.html#medienformatte",
     "title": "Overview of Content",
     "section": "AI Media Formats",
-    "text": "AI Media Formats\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis graphic shows the percentage share of images and videos in posts identified as AI-generated. This helps reveal which media formats are used more frequently with AI."
+    "text": "AI Media Formats\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis graphic shows the share of images and videos in AI-generated posts, and whether they look real (camera-like or deepfakes) or are drawings/graphics.\n\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis graphic shows the share of images and videos in AI-generated posts, and whether they look real (camera-like or deepfakes) or are drawings/graphics."
   },
   {
     "objectID": "index.html#ai-content-analysis",
     "href": "index.html#ai-content-analysis",
     "title": "Overview of Content",
     "section": "AI Content Analysis",
-    "text": "AI Content Analysis\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: it is possible that a post shows both negative and positive content.\n\n\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single post may cover multiple topics.\n\n\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single image may contain multiple image/video topics."
+    "text": "AI Content Analysis\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: it is possible that a post shows both negative and positive content.\n\n\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single post may cover multiple topics.\n\n\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single image may contain multiple image/video topics."
   },
   {
     "objectID": "index.html#personen",
     "href": "index.html#personen",
     "title": "Overview of Content",
     "section": "People Shown in AI Content",
-    "text": "People Shown in AI Content\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis visualization shows which person (groups) are depicted in how many of the AI-generated images/videos.\n\nNote: A single image may contain multiple people."
+    "text": "People Shown in AI Content\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis visualization shows which person (groups) are depicted in how many of the AI-generated images/videos.\n\nNote: A single image may contain multiple people."
   },
   {
     "objectID": "index.html#ai-over-time",
     "href": "index.html#ai-over-time",
     "title": "Overview of Content",
     "section": "AI Content Over Time",
-    "text": "AI Content Over Time\n\n\n\n\n\n\n\n\n\n\n\nThis chart shows the usage of of AI vs non-AI content over time."
+    "text": "AI Content Over Time\n\n\n\n\n\n\n\n\n\n\n\n\nThis chart shows the usage of of AI vs non-AI content over time."
   },
   {
     "objectID": "info.html",

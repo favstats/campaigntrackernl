@@ -81,7 +81,8 @@ jobs:
               gh.write(f"new_frames_count={summary['new_frames_count']}\n")
               gh.write(f"new_hashes_count={summary['new_hashes_count']}\n")
               gh.write(f"ts={ts}\n")
-              gh.write(f"zip_name=explore_{ts}.zip\n")
+              gh.write(f"delta_zip_name=explore_delta_{ts}.zip\n")
+              gh.write(f"full_zip_name=explore_full_{ts}.zip\n")
           PY
 
       - name: Stop if nothing new
@@ -90,12 +91,48 @@ jobs:
           echo "No new files detected. Exiting without creating a release."
           exit 0
 
-      - name: Create timestamped ZIP
+      - name: Create delta ZIP (only new files)
+        run: |
+          set -e
+          mkdir -p delta_package/staging/explore
+          
+          # Copy new files while preserving directory structure
+          while IFS= read -r file; do
+            if [ -n "$file" ]; then
+              src="staging/explore/$file"
+              dst="delta_package/staging/explore/$file"
+              if [ -f "$src" ]; then
+                mkdir -p "$(dirname "$dst")"
+                cp "$src" "$dst"
+                echo "Added: $file"
+              fi
+            fi
+          done < new_frames.txt
+          
+          while IFS= read -r file; do
+            if [ -n "$file" ]; then
+              src="staging/explore/$file"
+              dst="delta_package/staging/explore/$file"
+              if [ -f "$src" ]; then
+                mkdir -p "$(dirname "$dst")"
+                cp "$src" "$dst"
+                echo "Added: $file"
+              fi
+            fi
+          done < new_hashes.txt
+          
+          # Create the delta ZIP
+          cd delta_package
+          zip -r -q "../${{ steps.detect.outputs.delta_zip_name }}" staging/explore
+          cd ..
+          ls -lh "${{ steps.detect.outputs.delta_zip_name }}"
+
+      - name: Create full ZIP (complete snapshot)
         run: |
           set -e
           test -d staging/explore || { echo "::error::staging/explore not found"; exit 1; }
-          zip -r -q "${{ steps.detect.outputs.zip_name }}" staging/explore
-          ls -lh "${{ steps.detect.outputs.zip_name }}"
+          zip -r -q "${{ steps.detect.outputs.full_zip_name }}" staging/explore
+          ls -lh "${{ steps.detect.outputs.full_zip_name }}"
 
       - name: Build release notes
         env:
@@ -104,7 +141,7 @@ jobs:
           NH: ${{ steps.detect.outputs.new_hashes_count }}
         run: |
           {
-            echo "Automatisch generiertes ZIP von **staging/explore**"
+            echo "**Delta-Release**: Enthält nur neue Dateien seit dem letzten Release"
             echo ""
             echo "- Commit: ${{ github.sha }}"
             echo "- Branch: ${{ github.ref_name }}"
@@ -117,15 +154,18 @@ jobs:
             echo ""
             echo "#### Neue Dateien in hashed_files (erste 50)"
             head -n 50 new_hashes.txt || true
+            echo ""
+            echo "---"
+            echo "💡 Für den vollständigen Snapshot siehe das 'explore-latest' Release"
           } > release_body.md
 
-      - name: Create NEW timestamped release
+      - name: Create NEW timestamped release (delta only)
         uses: ncipollo/release-action@v1
         with:
           tag: explore-${{ steps.detect.outputs.ts }}
-          name: "Explore ${{ steps.detect.outputs.ts }}"
+          name: "Explore Delta ${{ steps.detect.outputs.ts }}"
           bodyFile: release_body.md
-          artifacts: "${{ steps.detect.outputs.zip_name }}"
+          artifacts: "${{ steps.detect.outputs.delta_zip_name }}"
           allowUpdates: false
           artifactErrorsFailBuild: true
           makeLatest: false
@@ -133,7 +173,7 @@ jobs:
 
       - name: Refresh/maintain baseline 'explore-latest'
         run: |
-          cp "${{ steps.detect.outputs.zip_name }}" explore.zip
+          cp "${{ steps.detect.outputs.full_zip_name }}" explore.zip
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git tag -f explore-latest
@@ -143,11 +183,15 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           tag: explore-latest
-          name: "Explore baseline (latest)"
+          name: "Explore baseline (latest) - Full Snapshot"
           body: |
-            Baseline ZIP von staging/explore für Diffs bei zukünftigen Runs.
+            **Vollständiger Snapshot** von staging/explore für Diffs bei zukünftigen Runs.
+            
             Commit: ${{ github.sha }}
             Branch: ${{ github.ref_name }}
+            Timestamp: ${{ steps.detect.outputs.ts }}
+            
+            Dieses Release enthält ALLE Dateien, nicht nur neue.
           artifacts: "explore.zip"
           allowUpdates: true
           removeArtifacts: true
