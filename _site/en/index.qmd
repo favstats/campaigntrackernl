@@ -821,15 +821,27 @@ treemap_all <- full_data %>%
   transmute(x = party, y)
 
 # Create chart
-create_political_treemap_ac(
+p1 <- create_political_treemap_ac(
   data = treemap_all,
   party_colors = party_colors,
   title = get_text("ai_by_party", lang),
   height = 400
 )
+
+htmltools::tagList(
+  custom_css2,
+  tags$div(
+    class = "apex-container2",
+    htmltools::browsable(p1)
+  )
+)
 ```
 
-### Parties
+### `r get_text("parties_and_politicians", lang)`
+
+
+
+
 
 ```{r}
 # Prepare data for "Parties"
@@ -840,15 +852,23 @@ treemap_parties <- full_data %>%
   transmute(x = party, y)
 
 # Create chart
-create_political_treemap_ac(
+p2 <- create_political_treemap_ac(
   data = treemap_parties,
   party_colors = party_colors,
-  title = get_text("ai_by_party", lang),
+  title = get_text("ai_by_party2", lang),
   height = 400
+)
+
+htmltools::tagList(
+  custom_css2,
+  tags$div(
+    class = "apex-container2",
+    htmltools::browsable(p2)
+  )
 )
 ```
 
-### Other Actors
+### `r get_text("other_actors", lang)`
 
 ```{r}
 # Prepare data for "Other Actors"
@@ -859,11 +879,20 @@ treemap_others <- full_data %>%
   transmute(x = party, y)
 
 # Create chart
-create_political_treemap_ac(
+p3 <- create_political_treemap_ac(
   data = treemap_others,
   party_colors = party_colors,
-  title = get_text("ai_by_party", lang),
+  title = get_text("ai_by_party3", lang),
   height = 400
+)
+
+
+htmltools::tagList(
+  custom_css2,
+  tags$div(
+    class = "apex-container2",
+    htmltools::browsable(p3)
+  )
 )
 ```
 

@@ -810,7 +810,7 @@ treemap_df <- full_data %>%
 
 ::: {.panel-tabset}
 
-### All
+### `r get_text("all_actors", lang)`
 
 ```{r}
 # Prepare data for "All"
@@ -837,7 +837,11 @@ htmltools::tagList(
 )
 ```
 
-### Parties
+### `r get_text("parties_and_politicians", lang)`
+
+
+
+
 
 ```{r}
 # Prepare data for "Parties"
@@ -851,7 +855,7 @@ treemap_parties <- full_data %>%
 p2 <- create_political_treemap_ac(
   data = treemap_parties,
   party_colors = party_colors,
-  title = get_text("ai_by_party", lang),
+  title = get_text("ai_by_party2", lang),
   height = 400
 )
 
@@ -864,7 +868,7 @@ htmltools::tagList(
 )
 ```
 
-### Other Actors
+### `r get_text("other_actors", lang)`
 
 ```{r}
 # Prepare data for "Other Actors"
@@ -878,7 +882,7 @@ treemap_others <- full_data %>%
 p3 <- create_political_treemap_ac(
   data = treemap_others,
   party_colors = party_colors,
-  title = get_text("ai_by_party", lang),
+  title = get_text("ai_by_party3", lang),
   height = 400
 )
 
