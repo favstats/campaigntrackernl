@@ -1,0 +1,2964 @@
+---
+title: ""
+format:
+  html:
+    theme: lumen
+    page-layout: full
+    self-contained: true
+    code-fold: true
+    code-overflow: wrap
+    html-math-method: mathjax
+    include-after-body:
+      text: |
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+              var toc = document.createElement("div");
+              toc.id = "custom-toc";
+              toc.style.position = "fixed";
+              toc.style.top = "0";
+              toc.style.right = "-300px";  // Start hidden
+              toc.style.width = "260px";
+              toc.style.height = "100%";
+              toc.style.background = "white";
+              toc.style.padding = "10px";
+              toc.style.boxShadow = "0px 2px 5px rgba(0, 0, 0, 0.2)";
+              toc.style.transition = "right 0.3s ease-in-out";
+              toc.style.overflowY = "auto";
+          
+              var tocTitle = document.createElement("h3");
+              tocTitle.innerText = "Navigation";
+              toc.appendChild(tocTitle);
+          
+              var headers = document.querySelectorAll("h2, h3, h4");
+              headers.forEach(function (header, index) {
+                  if (!header.id) {
+                      header.id = "section-" + index;
+                  }
+          
+                  var link = document.createElement("a");
+                  link.innerText = header.innerText;
+                  link.href = "#" + header.id;
+                  link.style.display = "block";
+                  link.style.padding = "5px 0";
+                  link.style.color = "#007bff";
+                  link.style.textDecoration = "none";
+          
+                  toc.appendChild(link);
+              });
+          
+              document.body.appendChild(toc);
+          
+              // Create toggle button (📑 icon)
+              var button = document.createElement("button");
+              button.id = "toggle-toc";
+              button.innerHTML = "📑";
+              button.style.position = "fixed";
+              button.style.top = "15px";
+              button.style.right = "15px";
+              button.style.backgroundColor = "white";
+              button.style.color = "#333";
+              button.style.border = "2px solid #ccc"; // Slightly thicker border
+              button.style.padding = "10px 12px"; // Increased padding
+              button.style.cursor = "pointer";
+              button.style.borderRadius = "8px"; // More rounded
+              button.style.fontSize = "22px"; // Larger icon
+              button.style.zIndex = "1000";
+              button.style.boxShadow = "0px 3px 6px rgba(0, 0, 0, 0.2)";
+              button.style.width = "50px"; // Increase button size
+              button.style.height = "50px"; // Make it square
+          
+              document.body.appendChild(button);
+          
+              // Click event to toggle the ToC
+              button.addEventListener("click", function () {
+                  if (toc.style.right === "0px") {
+                      toc.style.right = "-300px"; // Hide ToC
+                  } else {
+                      toc.style.right = "0px"; // Show ToC
+                  }
+              });
+          });
+          document.addEventListener("DOMContentLoaded", function () {
+              document.querySelectorAll("a[href='https://favstats.github.io/de25/']").forEach(function(link) {
+                  link.addEventListener("click", function(event) {
+                      event.preventDefault(); // Prevent default behavior
+                      window.open(link.href, "_blank"); // Open in a new tab/window
+                  });
+              });
+          });
+        </script>
+    includes:
+      in-header: |
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+---
+
+
+<style>
+  /* Color all Markdown bold text */
+  main.content strong,
+  main.content b {
+    color: #0d6efd !important;  /* nice blue; override theme if needed */
+    font-weight: 700;           /* keep it bold */
+  }
+</style>
+
+
+
+> WARNING THIS ONLY SHOWS A MOCK-UP THE DATA IS NOT REAL YET! DO NOTE CITE.
+
+
+
+```{r setup, include=FALSE}
+# dir()
+# here::i_am("ep2024.Rproj")
+
+library(tidyverse)
+library(htmltools)
+library(apexcharter)
+library(dplyr)
+htmltools::tags$script(src = "https://cdn.jsdelivr.net/npm/apexcharts")
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+htmltools::tags$head(
+  tags$link(rel = "stylesheet", href = "https://unpkg.com/reactable@0.4.4/reactable.css"),
+  tags$script(src = "https://unpkg.com/react@18/umd/react.production.min.js"),
+  tags$script(src = "https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"),
+  tags$script(src = "https://unpkg.com/reactable@0.4.4/reactable.js")
+)
+# sets <- jsonlite::fromJSON(here::here("settings.json"))
+
+
+source("../../utils.R")
+
+# library(glue)
+# write_csv(aidat, file = "../../data/aidat.csv")
+
+# transl <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1gnJk9uw4e0SGE-cNiE3IqCnB9ag6vIGGTNqjrVH90-U/edit?gid=0#gid=0")
+# 
+# 
+# saveRDS(transl, file = "../../data/transl.rds")
+
+# 
+lang <- "en"
+
+
+transl <- readRDS( "../../data/transl.rds")
+# get_text()
+
+get_text <- function(thtxt, lang) {
+  transl %>% filter(variable == thtxt) %>% pull(lang) 
+}
+
+
+
+  # transl %>% filter(variable == "landingpage") %>% pull("de")
+
+```
+
+```{css}
+/* Modern, Subtle Blockquote Styling */
+blockquote {
+  background: #f9f9f9;  /* Light gray background for subtlety */
+  border-left: 4px solid #6c63ff;  /* Soft purple left border for a modern touch */
+  padding: 1rem 1.5rem;  /* Adequate padding for readability */
+  margin: 1.5rem 0;  /* Space around blockquote */
+  font-style: italic;  /* Classic blockquote style */
+  color: #333;  /* Dark text for good contrast */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);  /* Light shadow for depth */
+  border-radius: 8px;  /* Rounded corners for a modern feel */
+  transition: background-color 0.3s ease, border-color 0.3s ease;  /* Smooth hover transition */
+}
+
+/* Hover effect for subtle interaction */
+blockquote:hover {
+  background: #f0f0ff;  /* Very light purple on hover */
+  border-left-color: #4e47d6;  /* Slightly darker purple on hover */
+}
+```
+
+
+
+
+`r get_text("landingtext", lang)`
+
+
+```{r}
+# setwd("/mnt/storage/campaigntrackernl")
+
+# cleaned_content <- readRDS("../../data/cleaned_content.rds")
+labeled <- readRDS("../../data/labeled.rds")  %>%
+  filter(timevar >= as.Date("2025-09-17")) %>% 
+  filter(timevar <= as.Date("2025-09-26")) %>%
+  mutate(timevar = lubridate::floor_date(timevar, unit = "day"))  %>% 
+  mutate(list_source = ifelse(list_source == "NL Historic", "Parties", list_source)) %>% 
+  mutate(party = case_when(
+    party == "GL" ~ "GL-PvdA",
+    party == "PvdA" ~ "GL-PvdA",
+    str_detect(username, "groenlinks|pvda") ~ "GL-PvdA",
+  #   party == "BüSo – Bürgerrechtsbewegung Solidarität" ~ "BüSo",
+  #   party %in% c("CDU", "CSU") ~ "CDU/CSU",
+  #   party %in% c("MLPD – Marxistisch-Leninistische Partei Deutschlands") ~ "MLPD",
+  #   party %in% c("Piratenpartei Deutschland", "Piratenpartei") ~ "Piratenpartei",
+  #   party %in% c("SSW - Südschleswiger Wählerverband") ~ "SSW",
+  #   party %in% c("V-Partei³ - Partei für Veränderung, Vegetarier und Veganer") ~ "V-Partei³",
+  #   str_detect(party, "ÖDP") ~ "ÖDP",
+  #   str_detect(party, "PdF") ~ "PdF",
+    T ~party
+  )) #%>%
+  # filter(str_detect(page_name, "Stiftung", negate = T))
+
+
+organic_data <- readRDS("../../data/organic_data.rds") %>%
+  filter(timevar >= as.Date("2025-09-17")) %>% 
+  filter(timevar <= as.Date("2025-09-26")) %>%
+  mutate(timevar = lubridate::floor_date(timevar, unit = "day")) %>% 
+  mutate(list_source = ifelse(is.na(list_source), "Fans", list_source))
+
+workwith <- labeled %>% 
+  # count(ki_bild_video) %>% 
+  mutate(ai = ifelse(str_detect(ai_image_video, "COMPLETELY|PARTLY", negate = T) | is.na(ai_image_video), 0, 1)) 
+  # mutate(ai = sample(c(0, 1,1,0,0), nrow(labeled), replace = T)) %>% 
+  # bind_rows(
+  #   ai_dat %>% mutate(ai = ifelse(ai_generated >= 0.5, 1, 0))
+  # )
+
+
+full_data <- workwith %>%
+  bind_rows(
+    organic_data %>% mutate(ai = 0) %>% 
+      mutate(input_url_url = url)
+  ) %>% 
+  as_tibble() %>% 
+  # mutate(id = ifelse(is.na(id), ad_id, id)) %>% 
+  mutate(id = input_url_url) %>%
+  filter(!is.na(id)) %>%
+  distinct(id, .keep_all = T) %>% 
+  mutate(posted_date = timevar)
+
+# saveRDS(full_data, file = "../../data/full_data.rds")
+
+# workwith %>% 
+#   count(ai)
+
+ # write_csv(workwith, "workwith.csv")
+
+# labeled %>% filter(url == "https://www.instagram.com/p/DFVj8lRId-a") %>% 
+#   glimpse()
+
+# full_data %>% 
+#   sample_n(10) %>% 
+#   select(-text) %>% 
+#   dput()
+
+# workwith %>% filter(is.na(posted_date))
+
+ # workwith %>%
+ #  bind_rows(
+ #    ai_dat %>% mutate(ai = 0)
+ #  ) %>% 
+ #  as_tibble() %>% 
+ #  mutate(id = ifelse(is.na(id), ad_id, id)) %>% 
+ #  filter(!is.na(id)) %>% 
+ #  add_count(id, sort = T) %>% View()
+
+# workwith %>% 
+#   filter(is.na(party)) %>% View()
+#   count(party)
+
+# ai_dat %>% 
+#   distinct(id,.keep_all = T)
+
+# full_data %>% #View()
+#   # count(url)
+#   filter(url_eintragen_url == "https://www.instagram.com/p/DFewLt8MPPO")
+
+# workwith %>% count(ai)
+
+# full_data %>% filter(type == "paid") %>% View()
+# ai_dat %>% filter(type == "paid")
+
+# handlesss <- workwith %>% 
+#   # ggplot(aes(as.character(ai), ai_generated)) +
+#   # geom_boxplot() +
+#   # EnvStats::stat_mean_sd_text()
+#   filter(ai == 1) %>% 
+#   count(phandle, sort =T) %>% 
+#   pull(phandle)
+# 
+# 
+# ai_accounts <- workwith %>%
+#    filter(ai == 1) %>% 
+#   filter(phandle %in% handlesss) %>%
+#   mutate(url = case_when(
+#     platform == "Instagram" ~ paste0("https://www.instagram.com/", phandle),
+#     platform == "Facebook" ~ paste0("https://www.facebook.com/", phandle),
+#     )
+#   ) %>%
+#   filter(type == "organic")
+# 
+# readr::write_csv(ai_accounts, "../../data/ai_accounts.csv")
+# 
+# 
+# workwith %>%
+#    filter(ai == 1) %>% 
+#   filter(phandle %in% handlesss) %>% 
+#   # filter(type == "organic") %>% 
+#   select(page_name, page_id, phandle, posted_date, text, url, everything()) %>% 
+#   write_csv("../../data/ai_schatz.csv")
+
+# full_data %>%
+#   filter(ai == 1) %>% 
+#   count(list_source)
+```
+
+```{r, eval = F}
+full_data %>%
+  filter(ai == 1) %>% 
+  filter(party == "Pro-Right Satire") %>% 
+  count(timevar)
+  glimpse()
+  count(party)
+  filter(username == "het.snorretje")
+  
+  
+full_data %>%
+  filter(ai == 1) %>% 
+  count(list_source)
+
+workwith
+
+ workwith %>%
+  bind_rows(
+    organic_data %>% mutate(ai = 0) %>% 
+      mutate(input_url_url = url)
+  ) %>% 
+  as_tibble() %>% 
+  # mutate(id = ifelse(is.na(id), ad_id, id)) %>% 
+  mutate(id = input_url_url) %>%
+  filter(!is.na(id)) %>%
+   filter(id == "https://www.instagram.com/p/DO_ZvvfjAGI")
+  filter(ai == 1) %>% count(id, sort =T)
+```
+
+```{r}
+test <- F
+if(test){
+anchors <- na.omit(full_data$posted_date)
+n_na    <- sum(is.na(full_data$posted_date))
+
+full_data$posted_date[is.na(full_data$posted_date)] <-
+  sample(anchors, n_na, replace = TRUE) + sample(-7:7, n_na, replace = TRUE)
+  
+}
+
+
+# Summary calculations
+total_tracked_posts <- nrow(full_data)
+total_ai_posts <- sum(full_data$ai, na.rm = T)
+
+# Beiträge by platform
+platform_summary <- full_data %>%
+  group_by(platform) %>%
+  summarise(total_posts = n(), ai_posts = sum(ai, na.rm =T), .groups = 'drop')
+
+# Display spark boxes
+# spark_box(title = total_tracked_posts, subtitle = "Insgesamte Beitragssammlung")
+# 
+# spark_box(title = total_ai_posts, subtitle = "AI-Generated Beiträge")
+
+# lapply(1:nrow(platform_summary), function(i) {
+#   spark_box(
+#     title = platform_summary$total_posts[i], 
+#     subtitle = paste("Beiträge on", platform_summary$platform[i]),
+#     color = "#FFF", background = "#2E93fA",
+#     title_style = list(color = "#FFF"),
+#     subtitle_style = list(color = "#FFF")
+#   )
+# })
+
+
+spark_data <- full_data %>%
+  drop_na(posted_date) %>%
+  
+  count(posted_date)
+
+spark_ai <- full_data %>%
+  drop_na(posted_date) %>%
+  count(posted_date, ai) %>% 
+  filter(ai == 1) %>% 
+  select(-ai)
+# full_data %>% filter(is.na(posted_date)) %>% View()
+
+# Display spark boxes
+total_posts <- spark_box(
+  data = spark_data,
+  title = total_tracked_posts,
+  subtitle = get_text("total_anzahl", lang)#ä,
+  # color = "#FFF", background = "#1E90FF",
+  # title_style = list(fontSize = "22px", color = "#FFF"),
+  # subtitle_style = list(fontSize = "14px", color = "#FFF")
+)
+
+total_ai <- spark_box(
+  data = spark_ai,
+  title = sum(spark_ai$n),
+  subtitle = get_text("total_ki", lang),
+  color = "#FFF", background = "#1E90FF",
+  title_style = list(fontSize = "22px", color = "#FFF"),
+  subtitle_style = list(fontSize = "14px", color = "#FFF")
+)
+
+
+
+# library(shiny)
+# fluidPage(
+#   fluidRow(
+#     column(4, total_posts),
+#     column(4, total_ai)
+#   )
+# )
+  # Official German party color mapping
+# Dutch party colors
+# Display in one row using div with CSS Flexbox
+# Display in one row with improved spacing
+htmltools::tags$div(
+  style = "
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    gap: 20px;  /* Adds space between boxes */
+    padding: 10px;
+  ",
+  htmltools::tags$div(style = "flex: 1; min-width: 300px;", total_posts),
+  htmltools::tags$div(style = "flex: 1; min-width: 300px;", total_ai)
+)
+
+# full_data %>% 
+#   filter(ai == 1)
+```
+
+```{r}
+# workwith %>% count(party)
+
+# profile_handle
+# Example: Print the first 10 values
+# head(binary_numbers, 10)
+party_data <- workwith %>%
+  count(ai, party) %>%
+  group_by(party) %>%
+  mutate(total = sum(n)) %>%
+  ungroup() %>%
+  mutate(proportion = n / total * 100)
+
+library(highcharter)
+
+
+# Render both charts
+# overall_chart
+# Sort parties by the proportion of AI = 1 (descending)
+sorted_party_data <- party_data %>%
+  group_by(party) %>%
+  summarize(ai_1_proportion = proportion[ai == 1]) %>%
+  arrange(desc(ai_1_proportion)) %>%
+  left_join(party_data, by = "party")
+
+# Get the sorted party names
+sorted_parties <- unique(sorted_party_data$party)
+
+library(highcharter)
+library(htmltools)
+```
+
+
+<br>
+
+#  `r get_text("overview_text", lang)`
+
+`r get_text("platform_descr", lang)`
+
+::: {.panel-tabset}
+
+
+## `r get_text("ai_by_party", lang)` {#ki-content-by-party2}
+
+
+
+
+```{r, results='asis'}
+custom_css2 <- tags$style(HTML("
+  .apex-container2 {
+    max-width: 100%;
+    height: auto;
+    overflow-x: auto;    /* Horizontal scroll if needed */
+    overflow-y: auto;    /* Vertical scroll if needed */
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #ccc;    /* Subtle border */
+    border-radius: 10px;       /* Rounded corners */
+  }
+"))
+
+
+# Simpler, stricter apexcharter treemap (no custom JS in tooltip)
+create_political_treemap_ac <- function(
+  data,
+  party_colors,
+  title  = "AI Content Distribution by Political Party",
+  height = 400
+) {
+  stopifnot(is.data.frame(data))
+  if (!all(c("x", "y") %in% names(data))) {
+    stop("Data must have columns 'x' and 'y'.")
+  }
+  # Clean inputs
+  data <- data[!is.na(data$x) & !is.na(data$y), ]
+  data$x <- as.character(data$x)
+  data$y <- as.numeric(data$y)
+
+  if (missing(party_colors) || is.null(names(party_colors))) {
+    stop("Provide a *named* color vector 'party_colors', e.g. c('Party'='#123456').")
+  }
+
+  # Map colors by label; fallback gray
+  cols <- unname(party_colors[match(data$x, names(party_colors))])
+  cols[is.na(cols)] <- "#CCCCCC"
+
+  # Build treemap
+  ax <- apexcharter::apex(
+    data    = data,
+    mapping = apexcharter::aes(x = x, y = y),
+    type    = "treemap",
+    height  = height
+  )
+
+  ax |>
+    apexcharter::ax_chart(toolbar = list(show = FALSE)) |>
+    apexcharter::ax_title(
+      text  = title,
+      align = "center",
+      style = list(fontSize = "16px") # fully named list
+    ) |>
+    apexcharter::ax_legend(show = FALSE) |>
+    apexcharter::ax_colors(cols) |>
+    apexcharter::ax_plotOptions(
+      treemap = list(
+        distributed  = TRUE,
+        enableShades = FALSE,
+        dataLabels   = list(
+          enabled = TRUE,                 # make naming explicit to avoid partial names
+          style   = list(fontSize = "12px")
+        )
+      )
+    )
+}
+
+party_data <- full_data %>%
+  # filter(list_source %in% c("Politicians", "Parties")) %>% 
+  count(ai, party) %>%
+  group_by(party) %>%
+  mutate(total = sum(n)) %>%
+  ungroup() %>%
+  mutate(proportion = n / total * 100)
+
+# Render both charts
+# overall_chart
+# Sort parties by the proportion of AI = 1 (descending)
+sorted_party_data <- party_data %>%
+  group_by(party) %>%
+  summarize(ai_1_proportion = proportion[ai == 1]) %>%
+  arrange(desc(ai_1_proportion)) %>%
+  left_join(party_data, by = "party")
+
+
+
+# Create sample data
+cities_data2 <- data.frame(
+  x = sorted_party_data %>% arrange(desc(n)) %>% 
+  filter(ai == 1) %>% pull(party),
+  y = sorted_party_data %>% arrange(desc(n)) %>% 
+  filter(ai == 1) %>% pull(n)
+)
+
+create_political_treemap <- function(
+  data,
+  title = "AI Content Distribution by Political Party",
+  height = 400
+) {
+
+  
+  # Validate data structure
+  if (!all(c("x", "y") %in% names(data))) {
+    stop("Data must contain 'x' and 'y' columns")
+  }
+  
+  # Match colors to parties
+  data_colors <- party_colors[match(data$x, names(party_colors))]
+  data_colors[is.na(data_colors)] <- "#CCCCCC"  # Fallback gray
+  
+  # Convert data to JSON format
+  series_data <- jsonlite::toJSON(
+    lapply(1:nrow(data), function(i) {
+      list(x = data$x[i], y = data$y[i])
+    }),
+    auto_unbox = TRUE
+  )
+  
+    unique_id <- paste0("chart-", sample(1:10000, 1))  # Generate unique ID
+
+  
+  # Create HTML components
+  htmltools::tagList(
+    htmltools::div(id = "custom-treemap"),  # Changed ID to be unique
+    htmltools::tags$script(
+      sprintf(
+        "
+        (function() {
+          // Use unique variable names
+          var treemapOptions = {
+            series: [{ data: %s }],
+            legend: { show: false },
+            chart: {
+              id: 'partyTreemap',
+              height: %d,
+              type: 'treemap',
+              toolbar: { show: false }
+            },
+            title: {
+              text: '%s',
+              align: 'center',
+              style: { fontSize: '16px' }
+            },
+            colors: %s,
+            plotOptions: {
+              treemap: {
+                distributed: true,
+                enableShades: false,
+                dataLabels: {
+                  style: { fontSize: '12px' }
+                }
+              }
+            },
+            tooltip: {
+              style: { fontSize: '14px', color: '#000000' },
+              marker: { show: true, size: 20 }
+            }
+          };
+          
+          // Wait for DOM readiness
+          document.addEventListener('DOMContentLoaded', function() {
+            var treemapChart = new ApexCharts(
+              document.querySelector('#custom-treemap'),
+              treemapOptions
+            );
+            treemapChart.render();
+          });
+        })();
+        ",
+        series_data,
+        height,
+        title,
+        jsonlite::toJSON(as.character(data_colors))
+      )
+    )
+  )
+}
+
+
+# # Generate the treemap
+# tm2 <- create_political_treemap(
+#   data = cities_data2,
+#   title = get_text("ai_by_party", lang),
+#   height = 400
+# )
+
+
+tm2 <- create_political_treemap_ac(
+  data = cities_data2,
+  title = get_text("ai_by_party", lang), party_colors = party_colors,
+  height = 400
+)
+
+# Display in RStudio Viewer or browser
+# htmltools::browsable(tm)
+# htmltools::html_print(tm)
+# htmltools::HTML(as.character(tm))
+
+# htmltools::save_html(as.character(tm), file = "t.html")
+# Embedding Chart into Responsive Container
+htmltools::tagList(
+  custom_css2,
+  tags$div(
+    class = "apex-container2",
+htmltools::browsable(tm2)
+  )
+)
+```
+
+
+
+> `r get_text("ai_by_party_descr", lang)`
+
+
+
+## `r get_text("platform_text", lang)` {#ki-content-by-party2}
+
+
+```{r}
+# Custom CSS for Responsive Container
+custom_css <- tags$style(HTML("
+  .apex-container0 {
+    max-width: 100%;
+    height: auto;
+    overflow-x: auto;    /* Horizontal scroll if needed */
+    overflow-y: auto;    /* Vertical scroll if needed */
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #ccc;    /* Subtle border */
+    border-radius: 10px;       /* Rounded corners */
+  }
+"))
+
+
+
+
+list_data <- full_data %>%
+  count(ai, platform) %>%
+  group_by(ai, platform) %>%
+  mutate(total = sum(n)) %>%
+  ungroup() %>%
+  mutate(proportion = n / total * 100)
+
+## TODO: include list_source somehow
+sorted_source_data <- full_data %>%
+  count(ai, platform) %>%
+  group_by(ai, platform) %>%
+  mutate(total = sum(n)) %>%
+  ungroup() %>%
+  mutate(proportion = n / total * 100) %>%
+  group_by(ai, platform) %>%
+  summarize(ai_1_proportion = proportion[ai == 1]) %>%
+  arrange(desc(ai_1_proportion)) %>%
+  left_join(list_data, by = "platform") %>% 
+  mutate(platform = case_when(
+    platform == "FB" ~ "Facebook",
+    platform == "IG" ~ "Instagram",
+    T ~platform
+  ))
+
+# Create sample data
+cities_data <- data.frame(
+  x = sorted_source_data %>% arrange(desc(n)) %>% 
+  filter(ai.y == 1) %>% pull(platform),
+  y = sorted_source_data %>% arrange(desc(n)) %>% 
+  filter(ai.y == 1) %>% pull(n)
+)
+
+# Generate the treemap
+tm <- create_political_treemap_ac(
+  data = cities_data,
+  title = get_text("platform_text", lang),
+      party_colors = c("Facebook" = "#1877F2", "Instagram" = "#E4405F", "TikTok" = "#69C9D0", "X" = "000000"),
+  height = 400
+)
+
+# Display in RStudio Viewer or browser
+# htmltools::browsable(tm)
+# htmltools::html_print(tm)
+# htmltools::HTML(as.character(tm))
+# tm
+# htmltools::save_html(as.character(tm), file = "t.html")
+# Embedding Chart into Responsive Container
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container0",
+htmltools::browsable(tm)
+  )
+)
+```
+
+
+
+> `r get_text("by_platform_descr", lang)`
+
+## `r get_text("by_type_text", lang)` {#ki-content-by-party2}
+
+
+
+
+```{r, results='asis'}
+# Custom CSS for Responsive Container
+custom_css <- tags$style(HTML("
+  .apex-container {
+    max-width: 100%;
+    height: auto;
+    overflow-x: auto;    /* Horizontal scroll if needed */
+    overflow-y: auto;    /* Vertical scroll if needed */
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #ccc;    /* Subtle border */
+    border-radius: 10px;       /* Rounded corners */
+  }
+"))
+
+
+
+
+
+list_data <- full_data %>% 
+  mutate(list_source = ifelse(list_source == "NL Historic", "Parties", list_source)) %>% 
+  count(ai, list_source) %>%
+  group_by(list_source) %>%
+  mutate(total = sum(n)) %>%
+  ungroup() %>%
+  mutate(proportion = n / total * 100)
+
+## TODO: include list_source somehow
+sorted_source_data <- full_data %>%
+  count(ai, list_source) %>%
+  group_by(list_source) %>%
+  mutate(total = sum(n)) %>%
+  ungroup() %>%
+  mutate(proportion = n / total * 100) %>%
+  group_by(list_source) %>%
+  summarize(ai_1_proportion = proportion[ai == 1]) %>%
+  arrange(desc(ai_1_proportion)) %>%
+  left_join(list_data, by = "list_source") 
+
+# Create sample data
+cities_data <- data.frame(
+  x = sorted_source_data %>% arrange(desc(n)) %>% 
+  filter(ai == 1) %>% pull(list_source),
+  y = sorted_source_data %>% arrange(desc(n)) %>% 
+  filter(ai == 1) %>% pull(n)
+)
+pol <-  get_text("politicians", lang)
+par <-  get_text("parties", lang) 
+oth <- get_text("other_actors", lang)  
+actor_type_colors <- c(
+  "#0072B2", # blue
+  "#D55E00", # vermillion
+    "#009E73"  # green
+) %>% 
+  set_names(pol, par, oth)
+
+cities_data$x[cities_data$x == "Politicians"] <- get_text("politicians", lang) 
+cities_data$x[cities_data$x == "Parties"] <- get_text("parties", lang) 
+cities_data$x[cities_data$x == "Fans"] <- get_text("other_actors", lang) 
+
+# Generate the treemap
+tm <- create_political_treemap_ac(
+  data = cities_data,
+  title = get_text("by_type_text", lang),
+      party_colors = actor_type_colors,
+  height = 400
+)
+
+# Display in RStudio Viewer or browser
+# htmltools::browsable(tm)
+# htmltools::html_print(tm)
+# htmltools::HTML(as.character(tm))
+# tm
+# htmltools::save_html(as.character(tm), file = "t.html")
+# Embedding Chart into Responsive Container
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(tm)
+  )
+)
+```
+
+
+> `r get_text("by_type_descr", lang)`
+
+
+::: 
+
+
+## `r get_text("rel_ai_by_party", lang)` {#ki-content-by-party2}
+
+`r get_text("rel_ai_by_party_descr", lang)`
+
+
+<!-- ::: {.panel-tabset} -->
+
+
+```{r, eval = F}
+# full_data %>%
+#   filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
+#   count(list_source)
+```
+
+
+
+<!-- ### `r get_text("parties_and_politicians", lang)` -->
+
+
+```{r}
+
+library(dplyr)
+library(purrr)
+library(apexcharter)
+
+
+# ai_pct: % with AI per party (only parties with AI)
+ai_pct <- full_data %>%
+  # filter(list_source %in% c("Politicians","Parties")) %>%
+  count(party, name = "total") %>%
+  left_join(full_data %>% 
+                            # filter(list_source %in% c("Politicians","Parties"), ai == 1) %>%
+
+              filter( ai == 1) %>%
+              count(party, name = "n_ai"),
+            by = "party") %>%
+  mutate(n_ai = coalesce(n_ai, 0L),
+         pct  = ifelse(total > 0, 100 * n_ai / total, 0)) %>%
+  filter(n_ai > 0) %>%
+  arrange(desc(pct))
+
+if (nrow(ai_pct) == 0) {
+  apexchart() %>% ax_noData(text = "Geen AI-berichten gevonden")
+} else {
+  # points carry counts for the tooltip
+  pts <- pmap(
+    list(x = ai_pct$party,
+         y = ifelse(ai_pct$pct < 0.5, ai_pct$pct, round(ai_pct$pct)),
+         n = ai_pct$n_ai,
+         total = ai_pct$total),
+    ~ list(x = ..1, y = ..2, n = ..3, total = ..4)
+  )
+
+  cols <- unname(party_colors[ai_pct$party]); cols[is.na(cols)] <- "#17a2b8"
+  H <- max(240, 24 * nrow(ai_pct) + 120)
+
+ ooo <- apexchart() %>%
+    ax_chart(
+      type = "bar",
+      height = H,
+      background = "transparent",
+      foreColor  = "#000",
+      animations = list(enabled = FALSE),
+      redrawOnWindowResize = TRUE,
+      redrawOnParentResize = TRUE,
+      toolbar = list(show = FALSE)
+    ) %>%
+    ax_series(list(name = get_text("posts_with_ai", lang), data = pts)) %>%
+    ax_plotOptions(
+      bar = list(
+        horizontal   = TRUE,
+        barHeight    = "55%",
+        borderRadius = 6,
+        distributed  = TRUE,
+        dataLabels   = list(position = "center")   # <-- center text inside bar
+      )
+    ) %>%
+    ax_colors(cols) %>%
+    ax_dataLabels(
+      enabled = TRUE,
+      style   = list(fontSize = "12px", fontWeight = "bold", colors = list("#ffffff")),
+      formatter = JS(
+        # show centered %; hide on very tiny bars so it doesn't overlap
+        "function(v){ return (v < 2 ? '' : (Math.round(v*10)/10) + '%'); }"
+      )
+    ) %>%
+    ax_tooltip(
+      shared = FALSE,
+      y = list(formatter = JS(
+        # 23.1% (X out of 1,343 posts)
+        "function(val, opts){ 
+           var d  = opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex];
+           var nf = new Intl.NumberFormat();
+           return (Math.round(val*10)/10) + '% (' + d.n + ' / ' + nf.format(d.total) + ')';
+         }"
+      ))
+    ) %>%
+    ax_xaxis(
+      max = 80, tickAmount = 4,
+      labels = list(formatter = JS('v => v + "%"')),
+      title  = list(text = get_text("percent", lang))
+    ) %>%
+    ax_yaxis(
+      labels = list(style = list(fontSize = "13px", fontWeight = "600"))  # party names only
+    ) %>%
+    ax_grid(xaxis = list(lines = list(show = TRUE)),
+            yaxis = list(lines = list(show = FALSE))) %>%
+    ax_legend(show = FALSE) %>%
+    ax_title(text =  get_text("rel_ai_by_party2", lang),
+             align = "center",
+             style = list(fontSize = "18px", fontWeight = "bold"))
+}
+# Embedding Chart into Responsive Container
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+    ooo
+  )
+)
+```
+
+
+
+<!-- ### `r get_text("other_actors", lang)` -->
+
+<!-- ```{r} -->
+
+<!-- # ai_pct: % with AI per party (only parties with AI) -->
+<!-- ai_pct <- full_data %>% -->
+<!--   filter(!(list_source %in% c("Politicians","Parties"))) %>% -->
+<!--   count(party, name = "total") %>% -->
+<!--   left_join(full_data %>% filter(!(list_source %in% c("Politicians","Parties")), ai == 1) %>% -->
+<!--               count(party, name = "n_ai"), -->
+<!--             by = "party") %>% -->
+<!--   mutate(n_ai = coalesce(n_ai, 0L), -->
+<!--          pct  = ifelse(total > 0, 100 * n_ai / total, 0)) %>% -->
+<!--   filter(n_ai > 0) %>% -->
+<!--   arrange(desc(pct)) -->
+
+<!-- if (nrow(ai_pct) == 0) { -->
+<!--   apexchart() %>% ax_noData(text = "Geen AI-berichten gevonden") -->
+<!-- } else { -->
+<!--   # points carry counts for the tooltip -->
+<!--   pts <- pmap( -->
+<!--     list(x = ai_pct$party, -->
+<!--          y = round(ai_pct$pct, 1), -->
+<!--          n = ai_pct$n_ai, -->
+<!--          total = ai_pct$total), -->
+<!--     ~ list(x = ..1, y = ..2, n = ..3, total = ..4) -->
+<!--   ) -->
+
+<!--   cols <- unname(party_colors[ai_pct$party]); cols[is.na(cols)] <- "#17a2b8" -->
+<!--   H <- max(240, 24 * nrow(ai_pct) + 120) -->
+
+<!--  ooo <- apexchart() %>% -->
+<!--     ax_chart( -->
+<!--       type = "bar", -->
+<!--       height = H, -->
+<!--       background = "transparent", -->
+<!--       foreColor  = "#000", -->
+<!--       animations = list(enabled = FALSE), -->
+<!--       redrawOnWindowResize = TRUE, -->
+<!--       redrawOnParentResize = TRUE, -->
+<!--       toolbar = list(show = FALSE) -->
+<!--     ) %>% -->
+<!--     ax_series(list(name = get_text("posts_with_ai", lang), data = pts)) %>% -->
+<!--     ax_plotOptions( -->
+<!--       bar = list( -->
+<!--         horizontal   = TRUE, -->
+<!--         barHeight    = "55%", -->
+<!--         borderRadius = 6, -->
+<!--         distributed  = TRUE, -->
+<!--         dataLabels   = list(position = "center")   # <-- center text inside bar -->
+<!--       ) -->
+<!--     ) %>% -->
+<!--     ax_colors(cols) %>% -->
+<!--     ax_dataLabels( -->
+<!--       enabled = TRUE, -->
+<!--       style   = list(fontSize = "12px", fontWeight = "bold", colors = list("#ffffff")), -->
+<!--       formatter = JS( -->
+<!--         # show centered %; hide on very tiny bars so it doesn't overlap -->
+<!--         "function(v){ return (v < 1 ? '' : (Math.round(v*10)/10) + '%'); }" -->
+<!--       ) -->
+<!--     ) %>% -->
+<!--     ax_tooltip( -->
+<!--       shared = FALSE, -->
+<!--       y = list(formatter = JS( -->
+<!--         # 23.1% (X out of 1,343 posts) -->
+<!--         "function(val, opts){  -->
+<!--            var d  = opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex]; -->
+<!--            var nf = new Intl.NumberFormat(); -->
+<!--            return (Math.round(val*10)/10) + '% (' + d.n + ' / ' + nf.format(d.total) + ')'; -->
+<!--          }" -->
+<!--       )) -->
+<!--     ) %>% -->
+<!--     ax_xaxis( -->
+<!--       max = 80, tickAmount = 4, -->
+<!--       labels = list(formatter = JS('v => v + "%"')), -->
+<!--       title  = list(text = get_text("percent", lang)) -->
+<!--     ) %>% -->
+<!--     ax_yaxis( -->
+<!--       labels = list(style = list(fontSize = "13px", fontWeight = "600"))  # party names only -->
+<!--     ) %>% -->
+<!--     ax_grid(xaxis = list(lines = list(show = TRUE)), -->
+<!--             yaxis = list(lines = list(show = FALSE))) %>% -->
+<!--     ax_legend(show = FALSE) %>% -->
+<!--     ax_title(text = get_text("posts_with_ai", lang), -->
+<!--              align = "center", -->
+<!--              style = list(fontSize = "18px", fontWeight = "bold")) -->
+<!-- } -->
+<!-- # Embedding Chart into Responsive Container -->
+<!-- htmltools::tagList( -->
+<!--   custom_css, -->
+<!--   tags$div( -->
+<!--     class = "apex-container", -->
+<!--     ooo -->
+<!--   ) -->
+<!-- ) -->
+
+
+
+<!-- ``` -->
+
+
+
+
+
+<!-- ::: -->
+
+
+> `r get_text("disclaimer_note", lang)`
+
+<br>
+
+
+
+## `r get_text("transparency_title", lang)`
+
+
+<!-- ::: {.panel-tabset} -->
+
+### `r get_text("parties_and_politicians", lang)`
+
+
+```{r}
+dislcimaer <- full_data %>%
+  filter(list_source %in% c("Politicians", "Parties")) %>% 
+  filter(ai == 1) %>% 
+  mutate(
+    detect_bild = str_detect(coalesce(ai_labeling_in_image_video, ""), "NOT", negate = F),
+    detect_text = str_detect(coalesce(ai_labeling_in_post_text, ""), "NOT", negate = F),
+    detect_ad   = str_detect(coalesce(ai_labeling_in_post_ad, ""), "NOT", negate = F),
+    no_label_present = case_when(
+      !detect_bild | !detect_text | !detect_ad ~ 0,
+      TRUE ~ 1
+    )
+  ) %>% 
+  select(ai_labeling_in_image_video, ai_labeling_in_post_text, ai_labeling_in_post_ad, detect_bild, detect_text, detect_ad, no_label_present) 
+
+proportion_without_disclaimer <- round(sum(dislcimaer$no_label_present) / nrow(dislcimaer) * 100)
+
+
+
+library(apexcharter)
+
+library(htmltools)
+
+tags$style(HTML("
+  /* kill any theme/Widget white backgrounds */
+  .ac-grid > div,
+  .ac-grid .html-widget,
+  .ac-grid .apexcharts-canvas,
+  .ac-grid .apexcharts-svg,
+  .ac-grid .apexcharts-inner {
+    background: transparent !important;
+  }
+  /* keep tooltip readable on light pages */
+  .apexcharts-tooltip {
+    background: rgba(255,255,255,.96) !important;
+    color: #111 !important;
+  }
+"))
+
+# RadialBar Chart with Black Text
+disclaimer_overall <- apex(
+  data = NULL, type = "radialBar",
+  mapping = aes(x = get_text("ai_wo_disclaimer", lang), y = proportion_without_disclaimer)
+) %>%
+  ax_chart(
+    height = 360,
+    sparkline = list(enabled = TRUE)   # removes extra chrome/padding for small multiples
+  ) %>%                                  # docs: apexcharts sparkline  [oai_citation:1‡ApexCharts.js](https://apexcharts.com/docs/options/chart/sparkline/?utm_source=chatgpt.com)
+  ax_colors("#FF4500") %>%
+  ax_plotOptions(
+    radialBar = radialBar_opts(
+      hollow = list(size = "58%", margin = 4), # tighten center
+      track  = list(margin = 2),               # reduce outer whitespace
+      dataLabels = list(
+        name  = list(show = TRUE, style = list(color = "#000", fontSize = "14px", fontWeight = "bold")),
+        value = list(
+          show = TRUE,
+          formatter = JS("function(val){ return Math.round(val) + '%'; }"),
+          style = list(color = "#000", fontSize = "20px", fontWeight = "bold")
+        )
+      )
+    )
+  ) %>%
+  ax_stroke(show = TRUE, lineCap = "round") %>%
+  ax_title(text = get_text("disclaimer_frequency", lang), align = "center",
+           style = list(fontSize = "18px", color = "#000")) %>%
+  ax_theme(mode = "light")  %>%
+  ax_chart(
+    height = 420,
+    sparkline = list(enabled = TRUE),
+    background = "transparent",          # ← no white canvas
+    foreColor  = "#000",
+    redrawOnWindowResize  = TRUE,
+    redrawOnParentResize  = TRUE,
+    animations = list(enabled = FALSE)
+  ) 
+
+
+
+library(apexcharter)
+library(dplyr)
+
+
+# Example proportion without disclaimer
+bytype_dis <- dislcimaer %>% 
+  mutate(detect_ad = factor(detect_ad))%>% 
+  mutate(detect_bild = factor(detect_bild))%>% 
+  mutate(detect_text = factor(detect_text)) %>% 
+  dplyr::count(detect_ad, detect_bild, detect_text, .drop = FALSE)
+
+intheshadows <- bytype_dis %>% filter(!(detect_bild == "TRUE" & detect_bild == "TRUE" & detect_ad == "TRUE"))
+
+
+```
+
+```{r}
+# Calculate total AI-generated content
+total_n <- sum(intheshadows$n)
+
+# bytype_dis %>% 
+#   filter(detect_ad == "TRUE")
+
+# Calculate proportions for each category
+proportions <- data.frame(
+  name = c(get_text("by_party", lang),
+           get_text("by_text", lang),
+           get_text("by_meta", lang)),
+           # get_text("by_meta", lang)),
+  value = c(
+    round(dislcimaer %>% filter(!detect_bild) %>% nrow() / total_n * 100, 1),
+    round(dislcimaer %>% filter(!detect_text) %>% nrow()  / total_n * 100, 1),
+    round(dislcimaer %>% filter(!detect_ad) %>% nrow() / total_n * 100, 1)
+  )
+)
+# 1) Pick one winner (ties -> first max; simple and deterministic)
+stopifnot(is.numeric(proportions$value))
+imax <- which.max(proportions$value)              # tie -> first max, done
+lab0 <- proportions$name[imax]
+
+woki <- apex(data = proportions, type = "radialBar", mapping = aes(x = name, y = value)) %>%
+  ax_chart(height = 420, sparkline = list(enabled = TRUE)) %>%
+  ax_colors(c("#FF6347", "#4682B4", "#32CD32")) %>%
+  ax_plotOptions(
+    radialBar = radialBar_opts(
+      hollow = list(size = "48%", margin = 4),
+      track  = list(margin = 3),
+      dataLabels = list(
+        # These two lines are what change on hover (built-in behavior)
+        name  = list(show = TRUE,  style = list(color = "#000", fontSize = "12px", fontWeight = "bold")),
+        value = list(show = TRUE,  formatter = JS("v => Math.round(v) + '%'"),
+                     style = list(color = "#000", fontSize = "16px")),
+        # Keep "total" as the largest — simple & stable
+        total = list(
+          show  = TRUE,
+          label = lab0,  # largest label
+          formatter = JS("
+            function(w){
+              var t = w.globals.seriesTotals;
+              var m = Math.max.apply(null, t);
+              return Math.round(m) + '%';
+            }
+          ")
+        )
+      )
+    )
+  ) %>%
+  ax_legend(show = FALSE) %>%
+  ax_stroke(show = TRUE, lineCap = "round") %>%
+  ax_title(text = get_text('how_disclose', lang), align = 'center',
+           style = list(fontSize = '18px', color = '#000')) %>%
+  ax_chart(
+    height = 420,
+    sparkline = list(enabled = TRUE),
+    background = "transparent",          # ← no white canvas
+    foreColor  = "#000",
+    redrawOnWindowResize  = TRUE,
+    redrawOnParentResize  = TRUE,
+    animations = list(enabled = FALSE)
+  ) 
+# htmltools::tagList(
+#   custom_css,
+#   tags$div(
+#     class = "apex-container",
+#     htmltools::tags$div(
+#   style = "
+#     display: flex; 
+#     justify-content: space-between; 
+#     align-items: flex-start; 
+#     gap: 20px;  /* Adds space between boxes */
+#     padding: 10px;
+#   ",
+#   htmltools::tags$div(style = "flex: 1; min-width: 300px;", disclaimer_overall),
+#   htmltools::tags$div(style = "flex: 1; min-width: 300px;", woki)
+# )
+#   )
+# )
+
+library(htmltools)
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+    htmltools::tags$div(
+  style = "
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    gap: 20px;  /* Adds space between boxes */
+    padding: 10px;
+  ",
+  htmltools::tags$div(style = "flex: 1; min-width: 300px;", disclaimer_overall),
+  htmltools::tags$div(style = "flex: 1; min-width: 300px;", woki)
+)
+  )
+)
+```
+
+
+
+
+### `r get_text("other_actors", lang)`
+
+
+
+```{r}
+dislcimaer <- full_data %>%
+  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
+  filter(ai == 1) %>% 
+  mutate(
+    detect_bild = str_detect(coalesce(ai_labeling_in_image_video, ""), "NOT", negate = F),
+    detect_text = str_detect(coalesce(ai_labeling_in_post_text, ""), "NOT", negate = F),
+    detect_ad   = str_detect(coalesce(ai_labeling_in_post_ad, ""), "NOT", negate = F),
+    no_label_present = case_when(
+      !detect_bild | !detect_text | !detect_ad ~ 0,
+      TRUE ~ 1
+    )
+  ) %>% 
+  select(ai_labeling_in_image_video, ai_labeling_in_post_text, ai_labeling_in_post_ad, detect_bild, detect_text, detect_ad, no_label_present) 
+
+proportion_without_disclaimer <- round(sum(dislcimaer$no_label_present) / nrow(dislcimaer) * 100)
+
+
+
+library(apexcharter)
+
+library(htmltools)
+
+tags$style(HTML("
+  /* kill any theme/Widget white backgrounds */
+  .ac-grid > div,
+  .ac-grid .html-widget,
+  .ac-grid .apexcharts-canvas,
+  .ac-grid .apexcharts-svg,
+  .ac-grid .apexcharts-inner {
+    background: transparent !important;
+  }
+  /* keep tooltip readable on light pages */
+  .apexcharts-tooltip {
+    background: rgba(255,255,255,.96) !important;
+    color: #111 !important;
+  }
+"))
+
+# RadialBar Chart with Black Text
+disclaimer_overall <- apex(
+  data = NULL, type = "radialBar",
+  mapping = aes(x = get_text("ai_wo_disclaimer", lang), y = proportion_without_disclaimer)
+) %>%
+  ax_chart(
+    height = 360,
+    sparkline = list(enabled = TRUE)   # removes extra chrome/padding for small multiples
+  ) %>%                                  # docs: apexcharts sparkline  [oai_citation:1‡ApexCharts.js](https://apexcharts.com/docs/options/chart/sparkline/?utm_source=chatgpt.com)
+  ax_colors("#FF4500") %>%
+  ax_plotOptions(
+    radialBar = radialBar_opts(
+      hollow = list(size = "58%", margin = 4), # tighten center
+      track  = list(margin = 2),               # reduce outer whitespace
+      dataLabels = list(
+        name  = list(show = TRUE, style = list(color = "#000", fontSize = "14px", fontWeight = "bold")),
+        value = list(
+          show = TRUE,
+          formatter = JS("function(val){ return Math.round(val) + '%'; }"),
+          style = list(color = "#000", fontSize = "20px", fontWeight = "bold")
+        )
+      )
+    )
+  ) %>%
+  ax_stroke(show = TRUE, lineCap = "round") %>%
+  ax_title(text = get_text("disclaimer_frequency", lang), align = "center",
+           style = list(fontSize = "18px", color = "#000")) %>%
+  ax_theme(mode = "light")  %>%
+  ax_chart(
+    height = 420,
+    sparkline = list(enabled = TRUE),
+    background = "transparent",          # ← no white canvas
+    foreColor  = "#000",
+    redrawOnWindowResize  = TRUE,
+    redrawOnParentResize  = TRUE,
+    animations = list(enabled = FALSE)
+  ) 
+
+
+
+library(apexcharter)
+library(dplyr)
+
+
+# Example proportion without disclaimer
+bytype_dis <- dislcimaer %>% 
+  mutate(detect_ad = factor(detect_ad))%>% 
+  mutate(detect_bild = factor(detect_bild))%>% 
+  mutate(detect_text = factor(detect_text)) %>% 
+  dplyr::count(detect_ad, detect_bild, detect_text, .drop = FALSE)
+
+intheshadows <- bytype_dis %>% filter(!(detect_bild == "TRUE" & detect_bild == "TRUE" & detect_ad == "TRUE"))
+
+
+```
+
+```{r}
+# Calculate total AI-generated content
+total_n <- sum(intheshadows$n)
+
+# bytype_dis %>% 
+#   filter(detect_ad == "TRUE")
+
+# Calculate proportions for each category
+proportions <- data.frame(
+  name = c(get_text("by_party", lang),
+           get_text("by_text", lang),
+           get_text("by_meta", lang)),
+           # get_text("by_party", lang), 
+           # "Im Text",
+           # "Meta Disclaimer"),
+           # get_text("by_meta", lang)),
+  value = c(
+    round(dislcimaer %>% filter(!detect_bild) %>% nrow() / total_n * 100, 1),
+    round(dislcimaer %>% filter(!detect_text) %>% nrow()  / total_n * 100, 1),
+    round(dislcimaer %>% filter(!detect_ad) %>% nrow() / total_n * 100, 1)
+  )
+)
+# 1) Pick one winner (ties -> first max; simple and deterministic)
+stopifnot(is.numeric(proportions$value))
+imax <- which.max(proportions$value)              # tie -> first max, done
+lab0 <- proportions$name[imax]
+
+woki <- apex(data = proportions, type = "radialBar", mapping = aes(x = name, y = value)) %>%
+  ax_chart(height = 420, sparkline = list(enabled = TRUE)) %>%
+  ax_colors(c("#FF6347", "#4682B4", "#32CD32")) %>%
+  ax_plotOptions(
+    radialBar = radialBar_opts(
+      hollow = list(size = "48%", margin = 4),
+      track  = list(margin = 3),
+      dataLabels = list(
+        # These two lines are what change on hover (built-in behavior)
+        name  = list(show = TRUE,  style = list(color = "#000", fontSize = "12px", fontWeight = "bold")),
+        value = list(show = TRUE,  formatter = JS("v => Math.round(v) + '%'"),
+                     style = list(color = "#000", fontSize = "16px")),
+        # Keep "total" as the largest — simple & stable
+        total = list(
+          show  = TRUE,
+          label = lab0,  # largest label
+          formatter = JS("
+            function(w){
+              var t = w.globals.seriesTotals;
+              var m = Math.max.apply(null, t);
+              return Math.round(m) + '%';
+            }
+          ")
+        )
+      )
+    )
+  ) %>%
+  ax_legend(show = FALSE) %>%
+  ax_stroke(show = TRUE, lineCap = "round") %>%
+  ax_title(text = get_text('how_disclose', lang), align = 'center',
+           style = list(fontSize = '18px', color = '#000')) %>%
+  ax_chart(
+    height = 420,
+    sparkline = list(enabled = TRUE),
+    background = "transparent",          # ← no white canvas
+    foreColor  = "#000",
+    redrawOnWindowResize  = TRUE,
+    redrawOnParentResize  = TRUE,
+    animations = list(enabled = FALSE)
+  ) 
+# htmltools::tagList(
+#   custom_css,
+#   tags$div(
+#     class = "apex-container",
+#     htmltools::tags$div(
+#   style = "
+#     display: flex; 
+#     justify-content: space-between; 
+#     align-items: flex-start; 
+#     gap: 20px;  /* Adds space between boxes */
+#     padding: 10px;
+#   ",
+#   htmltools::tags$div(style = "flex: 1; min-width: 300px;", disclaimer_overall),
+#   htmltools::tags$div(style = "flex: 1; min-width: 300px;", woki)
+# )
+#   )
+# )
+
+library(htmltools)
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+    htmltools::tags$div(
+  style = "
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    gap: 20px;  /* Adds space between boxes */
+    padding: 10px;
+  ",
+  htmltools::tags$div(style = "flex: 1; min-width: 300px;", disclaimer_overall),
+  htmltools::tags$div(style = "flex: 1; min-width: 300px;", woki)
+)
+  )
+)
+```
+
+
+<!-- ::: -->
+
+
+
+> `r get_text("disclaimer_analysis", lang)` 
+
+<br>
+
+
+
+
+## `r get_text("media_formats", lang)` {#medienformatte}
+
+
+::: {.panel-tabset}
+
+### `r get_text("parties_and_politicians", lang)`
+
+
+```{r}
+
+
+library(dplyr)
+library(apexcharter)
+
+med_df <- full_data %>%
+  filter(list_source %in% c("Politicians","Parties"), ai == 1) %>%
+  mutate(type = case_when(
+    str_detect(image_s_video_s_included, "image") ~ get_text("img", lang),
+    str_detect(image_s_video_s_included, "video") ~ get_text("vid", lang),
+    TRUE ~ NA_character_
+  )) %>%
+  filter(!is.na(type)) %>%
+  count(type, name = "n") %>%
+  mutate(pct = 100 * n / sum(n),
+         label = sprintf("%s (n=%d)", type, n)) %>%
+  arrange(desc(pct))
+
+medienformatte_bar <- med_df %>%
+  apex(type = "bar", mapping = aes(x = label, y = round(pct, 1))) %>%
+  ax_chart(
+    height = 200,
+    background = "transparent",
+    foreColor  = "#000",
+    animations = list(enabled = FALSE),
+    redrawOnWindowResize  = TRUE,
+    redrawOnParentResize  = TRUE,
+    toolbar = list(show = FALSE)
+  ) %>%
+  ax_plotOptions(
+    bar = list(horizontal = TRUE, barHeight = "60%", borderRadius = 6, distributed = TRUE)
+  ) %>%
+  ax_dataLabels(enabled = TRUE,
+    formatter = JS("function(v){ return (Math.round(v*10)/10) + '%'; }")
+  ) %>%
+  ax_xaxis(max = 100,
+    labels = list(formatter = JS("function(v){ return v + '%'; }")),
+    title  = list(text = get_text('percent', lang))
+  ) %>%
+  ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
+  ax_colors(c("#FF6347", "#4682B4")) %>%
+  ax_legend(show = FALSE) %>%
+  ax_title(text = get_text("title_type", lang), align = "center",
+           style = list(fontSize = "18px", fontWeight = "bold"))
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(medienformatte_bar)
+  )
+)
+```
+
+
+### `r get_text("other_actors", lang)`
+
+
+```{r}
+library(dplyr)
+library(apexcharter)
+
+med_df <- full_data %>%
+  filter(!(list_source %in% c("Politicians","Parties")), ai == 1) %>%
+  mutate(type = case_when(
+    str_detect(image_s_video_s_included, "image") ~ get_text("img", lang),
+    str_detect(image_s_video_s_included, "video") ~ get_text("vid", lang),
+    TRUE ~ NA_character_
+  )) %>%
+  filter(!is.na(type)) %>%
+  count(type, name = "n") %>%
+  mutate(pct = 100 * n / sum(n),
+         label = sprintf("%s (n=%d)", type, n)) %>%
+  arrange(desc(pct))
+
+medienformatte_bar <- med_df %>%
+  apex(type = "bar", mapping = aes(x = label, y = round(pct, 1))) %>%
+  ax_chart(
+    height = 200,
+    background = "transparent",
+    foreColor  = "#000",
+    animations = list(enabled = FALSE),
+    redrawOnWindowResize  = TRUE,
+    redrawOnParentResize  = TRUE,
+    toolbar = list(show = FALSE)
+  ) %>%
+  ax_plotOptions(
+    bar = list(horizontal = TRUE, barHeight = "60%", borderRadius = 6, distributed = TRUE)
+  ) %>%
+  ax_dataLabels(enabled = TRUE,
+    formatter = JS("function(v){ return (Math.round(v*10)/10) + '%'; }")
+  ) %>%
+  ax_xaxis(max = 100,
+    labels = list(formatter = JS("function(v){ return v + '%'; }")),
+    title  = list(text = get_text('percent', lang))
+  ) %>%
+  ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
+  ax_colors(c("#FF6347", "#4682B4")) %>%
+  ax_legend(show = FALSE) %>%
+  ax_title(text = get_text("title_type", lang), align = "center",
+           style = list(fontSize = "18px", fontWeight = "bold"))
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(medienformatte_bar)
+  )
+)
+```
+
+
+
+:::
+
+> `r get_text("media_formats_descr", lang)`
+
+
+::: {.panel-tabset}
+
+### `r get_text("parties_and_politicians", lang)`
+
+
+
+```{r}
+real_df <- full_data %>%
+  filter(list_source %in% c("Politicians","Parties"), ai == 1) %>%
+  mutate(kind = case_when(
+    str_detect(nature_of_the_image_video, "contains real-looking") ~ get_text("like_real", lang),
+    str_detect(nature_of_the_image_video, "does NOT")              ~ get_text("like_unreal", lang),
+    TRUE ~ NA_character_
+  )) %>%
+  filter(!is.na(kind)) %>%
+  count(kind, name = "n") %>%
+  mutate(pct = 100 * n / sum(n),
+         label = sprintf("%s (n=%d)", kind, n)) %>%
+  arrange(desc(pct))
+
+like_real_bar <- real_df %>%
+  apex(type = "bar", mapping = aes(x = label, y = round(pct, 1))) %>%
+  ax_chart(
+    height = 200,
+    background = "transparent",
+    foreColor  = "#000",
+    animations = list(enabled = FALSE),
+    redrawOnWindowResize  = TRUE,
+    redrawOnParentResize  = TRUE,
+    toolbar = list(show = FALSE)
+  ) %>%
+  ax_plotOptions(
+    bar = list(horizontal = TRUE, barHeight = "60%", borderRadius = 6, distributed = TRUE)
+  ) %>%
+  ax_dataLabels(enabled = TRUE,
+    formatter = JS("function(v){ return (Math.round(v*10)/10) + '%'; }")
+  ) %>%
+  ax_xaxis(max = 100,
+    labels = list(formatter = JS("function(v){ return v + '%'; }")),
+    title  = list(text = get_text('percent', lang))
+  ) %>%
+  ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
+  ax_colors(c("#1F5A96", "#AC0999")) %>%
+  ax_legend(show = FALSE) %>%
+  ax_title(text = get_text("title_real", lang), align = "center",
+           style = list(fontSize = "18px", fontWeight = "bold"))
+
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(like_real_bar)
+  )
+)
+```
+
+
+
+### `r get_text("other_actors", lang)`
+
+
+
+
+```{r}
+real_df <- full_data %>%
+  filter(!(list_source %in% c("Politicians","Parties")), ai == 1) %>%
+  mutate(kind = case_when(
+    str_detect(nature_of_the_image_video, "contains real-looking") ~ get_text("like_real", lang),
+    str_detect(nature_of_the_image_video, "does NOT")              ~ get_text("like_unreal", lang),
+    TRUE ~ NA_character_
+  )) %>%
+  filter(!is.na(kind)) %>%
+  count(kind, name = "n") %>%
+  mutate(pct = 100 * n / sum(n),
+         label = sprintf("%s (n=%d)", kind, n)) %>%
+  arrange(desc(pct))
+
+like_real_bar <- real_df %>%
+  apex(type = "bar", mapping = aes(x = label, y = round(pct, 1))) %>%
+  ax_chart(
+    height = 200,
+    background = "transparent",
+    foreColor  = "#000",
+    animations = list(enabled = FALSE),
+    redrawOnWindowResize  = TRUE,
+    redrawOnParentResize  = TRUE,
+    toolbar = list(show = FALSE)
+  ) %>%
+  ax_plotOptions(
+    bar = list(horizontal = TRUE, barHeight = "60%", borderRadius = 6, distributed = TRUE)
+  ) %>%
+  ax_dataLabels(enabled = TRUE,
+    formatter = JS("function(v){ return (Math.round(v*10)/10) + '%'; }")
+  ) %>%
+  ax_xaxis(max = 100,
+    labels = list(formatter = JS("function(v){ return v + '%'; }")),
+    title  = list(text = get_text('percent', lang))
+  ) %>%
+  ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
+  ax_colors(c("#1F5A96", "#AC0999")) %>%
+  ax_legend(show = FALSE) %>%
+  ax_title(text = get_text("title_real", lang), align = "center",
+           style = list(fontSize = "18px", fontWeight = "bold"))
+
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(like_real_bar)
+  )
+)
+```
+
+
+
+
+:::
+
+
+
+> `r get_text("media_formats_descr", lang)`
+
+
+
+## `r get_text("tonal_analysis", lang)`
+
+::: {.panel-tabset}
+
+### `r get_text("parties_and_politicians", lang)`
+
+
+
+```{r}
+library(apexcharter)
+library(dplyr)
+
+# Example Data
+negative_tendenz_data <- full_data %>%
+  filter(list_source %in% c("Politicians", "Parties")) %>% 
+  filter(ai == 1) %>%
+  count(negative_tendency_tonality) %>% 
+  rename(tonalität = negative_tendency_tonality)
+
+
+# Example Data
+positive_tendenz_data <- full_data %>%
+  filter(list_source %in% c("Politicians", "Parties")) %>% 
+  filter(ai == 1) %>%
+  count(positive_tendency_tonality) %>% 
+  rename(tonalität = positive_tendency_tonality)
+
+ tonalitatdata <- positive_tendenz_data %>% 
+  bind_rows(negative_tendenz_data)  %>%
+
+  mutate(tendenz_kurz = case_when(
+    # negative_tendency_tonality == "Negative Tendenz/Tonalität vorhanden" & 
+    
+      tonalität == "Negative tendency/tonality present" ~ get_text("negative", lang),
+    
+      tonalität == "Positive tendency/tonality present" ~ get_text("positive", lang),
+    
+    
+    TRUE ~ NA_character_
+  )) %>% 
+    drop_na()
+
+# Assuming tonalitatdata is your data frame
+tonchart <- tonalitatdata %>% 
+  arrange(desc(n)) %>% 
+  apex(type = "bar", mapping = aes(x = tendenz_kurz, y = n)) %>%
+  ax_plotOptions(
+    bar = list(
+      barHeight = "60%", 
+      borderRadius = 5,  # Rounded corners
+      distributed = TRUE  # Enables different colors for each bar
+    )
+  ) %>%
+  ax_colors(c( "#4CAF50","#F44336", "#9E9E9E")) %>%
+  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
+  ax_xaxis(
+    title = list(text = get_text("numberposts", lang))
+  ) %>%
+  ax_yaxis(
+    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
+  ) %>%
+  ax_title(
+    text = get_text("sentiment", lang),
+    align = "center",
+    style = list(fontSize = "18px", fontWeight = "bold")
+  ) %>%
+  ax_tooltip(
+    shared = TRUE,
+    y = list(
+      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
+    )
+  ) %>%
+  ax_legend(
+    position = "bottom",
+    labels = list(colors = "#000")
+  )
+
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(tonchart)
+  )
+)
+```
+
+
+
+### `r get_text("other_actors", lang)`
+
+
+
+```{r}
+library(apexcharter)
+library(dplyr)
+
+# Example Data
+negative_tendenz_data <- full_data %>%
+  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
+  filter(ai == 1) %>%
+  count(negative_tendency_tonality) %>% 
+  rename(tonalität = negative_tendency_tonality)
+
+
+# Example Data
+positive_tendenz_data <- full_data %>%
+  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
+  filter(ai == 1) %>%
+  count(positive_tendency_tonality)%>% 
+  rename(tonalität = positive_tendency_tonality)
+
+ tonalitatdata <- positive_tendenz_data %>% 
+  bind_rows(negative_tendenz_data)  %>%
+
+  mutate(tendenz_kurz = case_when(
+    # negative_tendency_tonality == "Negative Tendenz/Tonalität vorhanden" & 
+    
+      tonalität == "Negative tendency/tonality present" ~ get_text("negative", lang),
+    
+      tonalität == "Positive tendency/tonality present" ~ get_text("positive", lang),
+    
+    
+    TRUE ~ NA_character_
+  )) %>% 
+    drop_na()
+
+# Assuming tonalitatdata is your data frame
+tonchart <- tonalitatdata %>% 
+  arrange(desc(n)) %>% 
+  apex(type = "bar", mapping = aes(x = tendenz_kurz, y = n)) %>%
+  ax_plotOptions(
+    bar = list(
+      barHeight = "60%", 
+      borderRadius = 5,  # Rounded corners
+      distributed = TRUE  # Enables different colors for each bar
+    )
+  ) %>%
+  ax_colors(c( "#4CAF50","#F44336", "#9E9E9E")) %>%
+  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
+  ax_xaxis(
+    title = list(text = get_text("numberposts", lang))
+  ) %>%
+  ax_yaxis(
+    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
+  ) %>%
+  ax_title(
+    text = get_text("sentiment", lang),
+    align = "center",
+    style = list(fontSize = "18px", fontWeight = "bold")
+  ) %>%
+  ax_tooltip(
+    shared = TRUE,
+    y = list(
+      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
+    )
+  ) %>%
+  ax_legend(
+    position = "bottom",
+    labels = list(colors = "#000")
+  )
+
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(tonchart)
+  )
+)
+```
+
+
+
+:::
+
+
+
+>  `r get_text("positive_negative_content", lang)`
+
+<br>
+
+
+::: {.panel-tabset}
+
+
+### `r get_text("parties_and_politicians", lang)`
+
+
+```{r}
+
+# --- 1) Map internal keys -> ENGLISH labels found in full_data$topics ---
+topic_map_en <- c(
+  topic_general_election    = "Election in general",
+  topic_politicians         = "Political parties and politicians",
+  topic_election_call       = "Call to vote / get-out-the-vote call",
+  topic_economy_finance     = "Economy and finance",
+  topic_labor_social        = "Labor and social issues",
+  topic_domestic_migration  = "Domestic and migration policy",
+  topic_energy_policy       = "Environmental and energy policy",
+  topic_defense_policy      = "Foreign, security, and defense policy",
+  topic_housing             = "Housing (Crisis)",
+  topic_digital_infra       = "Digital and Infrastructure",
+  topic_europe              = "Europe",
+  topic_education_culture   = "Education and culture",
+  topic_constitution_system = "Constitution of the Political System",
+  topic_civil_rights        = "Civil rights",
+  topic_other_political     = "Other political topic"
+)
+
+# --- 2) Safe get_text() wrapper (fallbacks to key if translation missing/empty) ---
+safe_get <- function(k, lang) {
+  x <- tryCatch(get_text(k, lang), error = function(e) character(0))
+  if (length(x) == 1 && nzchar(x)) x else k
+}
+
+# Localized labels (same order as topic_map_en)
+topic_labels_local <- vapply(names(topic_map_en), function(k) safe_get(k, lang), character(1))
+# Ensure no duplicate/empty names (prevents tibble/pivot issues)
+topic_labels_local <- make.unique(unname(topic_labels_local), sep = "_")
+
+# --- 3) Slice data and pull topics vector to avoid data-mask scoping issues ---
+df <- full_data %>% 
+  filter(list_source %in% c("Politicians", "Parties")) %>% 
+  filter(ai == 1)
+stopifnot("topics" %in% names(df))
+topics_vec <- df$topics
+
+# --- 4) Build logical indicators (ENGLISH detection) with names upfront ---
+indicators_list <- setNames(
+  lapply(names(topic_map_en), function(k) {
+    str_detect(topics_vec, fixed(topic_map_en[[k]], ignore_case = TRUE))
+  }),
+  topic_labels_local # localized column names
+)
+
+indicators <- as_tibble(indicators_list)
+
+# --- 5) Long format + counts ---
+topic_data <- indicators %>%
+  pivot_longer(everything(), names_to = "topic", values_to = "value") %>%
+  filter(value) %>%
+  count(topic, sort = TRUE)
+
+# --- 6) Topic colors keyed to LOCALIZED labels (order matches topic_map_en) ---
+topic_colors <- setNames(
+  c(
+    "#EFC050", # Election in general
+    "#D65076", # Political parties & politicians
+    "#45B8AC", # GOTV
+    "#DD4124", # Economy & finance
+    "#009B77", # Labor & social
+    "#B565A7", # Domestic & migration
+    "#955251", # Environmental & energy
+    "#92A8D1", # Foreign/security/defense
+    "#F4A300", # Housing
+    "#6BB7C8", # Digital & infra
+    "#88B04B", # Europe
+    "#6B5B95", # Education & culture
+    "#5C6BC0", # Constitution/system
+    "#9E0059", # Civil rights
+    "#FF6F61"  # Other political topic
+  ),
+  topic_labels_local
+)
+
+# --- (Optional) Diagnostics: which keys fell back due to missing translations ---
+missing_keys <- names(topic_map_en)[vapply(names(topic_map_en), function(k) {
+  x <- tryCatch(get_text(k, lang), error = function(e) character(0))
+  !(length(x) == 1 && nzchar(x))
+}, logical(1))]
+if (length(missing_keys)) {
+  message("Missing get_text() translations for: ", paste(missing_keys, collapse = ", "))
+}
+
+
+# Bar Chart Using Apexcharter
+themechart <- apex(data = topic_data, type = "bar", mapping = aes(x = reorder(topic, n), y = n)) %>%
+  # ax_colors(topic_colors[topic_data$topic]) %>%
+  ax_chart(stacked = FALSE, horizontal = TRUE, height = 800) %>%
+  ax_plotOptions(
+    bar = list(
+      barHeight = "60%",
+      borderRadius = 5
+    )
+  ) %>%
+  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
+  ax_xaxis(
+    title = list(text = get_text("numberposts", lang))
+  ) %>%
+  ax_yaxis(
+    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
+  ) %>%
+  ax_title(
+    text = get_text("topics", lang),
+    align = "center",
+    style = list(fontSize = "18px", fontWeight = "bold")
+  ) %>%
+  ax_tooltip(
+    shared = TRUE,
+    y = list(
+      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
+    )
+  ) %>%
+  ax_legend(
+    position = "bottom",
+    labels = list(colors = "#000")
+  )
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(themechart)
+  )
+)
+```
+
+
+
+### `r get_text("other_actors", lang)`
+
+
+
+
+
+```{r}
+
+# --- 1) Map internal keys -> ENGLISH labels found in full_data$topics ---
+topic_map_en <- c(
+  topic_general_election    = "Election in general",
+  topic_politicians         = "Political parties and politicians",
+  topic_election_call       = "Call to vote / get-out-the-vote call",
+  topic_economy_finance     = "Economy and finance",
+  topic_labor_social        = "Labor and social issues",
+  topic_domestic_migration  = "Domestic and migration policy",
+  topic_energy_policy       = "Environmental and energy policy",
+  topic_defense_policy      = "Foreign, security, and defense policy",
+  topic_housing             = "Housing (Crisis)",
+  topic_digital_infra       = "Digital and Infrastructure",
+  topic_europe              = "Europe",
+  topic_education_culture   = "Education and culture",
+  topic_constitution_system = "Constitution of the Political System",
+  topic_civil_rights        = "Civil rights",
+  topic_other_political     = "Other political topic"
+)
+
+# --- 2) Safe get_text() wrapper (fallbacks to key if translation missing/empty) ---
+safe_get <- function(k, lang) {
+  x <- tryCatch(get_text(k, lang), error = function(e) character(0))
+  if (length(x) == 1 && nzchar(x)) x else k
+}
+
+# Localized labels (same order as topic_map_en)
+topic_labels_local <- vapply(names(topic_map_en), function(k) safe_get(k, lang), character(1))
+# Ensure no duplicate/empty names (prevents tibble/pivot issues)
+topic_labels_local <- make.unique(unname(topic_labels_local), sep = "_")
+
+# --- 3) Slice data and pull topics vector to avoid data-mask scoping issues ---
+df <- full_data %>% 
+  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
+  filter(ai == 1)
+stopifnot("topics" %in% names(df))
+topics_vec <- df$topics
+
+# --- 4) Build logical indicators (ENGLISH detection) with names upfront ---
+indicators_list <- setNames(
+  lapply(names(topic_map_en), function(k) {
+    str_detect(topics_vec, fixed(topic_map_en[[k]], ignore_case = TRUE))
+  }),
+  topic_labels_local # localized column names
+)
+
+indicators <- as_tibble(indicators_list)
+
+# --- 5) Long format + counts ---
+topic_data <- indicators %>%
+  pivot_longer(everything(), names_to = "topic", values_to = "value") %>%
+  filter(value) %>%
+  count(topic, sort = TRUE)
+
+# --- 6) Topic colors keyed to LOCALIZED labels (order matches topic_map_en) ---
+topic_colors <- setNames(
+  c(
+    "#EFC050", # Election in general
+    "#D65076", # Political parties & politicians
+    "#45B8AC", # GOTV
+    "#DD4124", # Economy & finance
+    "#009B77", # Labor & social
+    "#B565A7", # Domestic & migration
+    "#955251", # Environmental & energy
+    "#92A8D1", # Foreign/security/defense
+    "#F4A300", # Housing
+    "#6BB7C8", # Digital & infra
+    "#88B04B", # Europe
+    "#6B5B95", # Education & culture
+    "#5C6BC0", # Constitution/system
+    "#9E0059", # Civil rights
+    "#FF6F61"  # Other political topic
+  ),
+  topic_labels_local
+)
+
+# --- (Optional) Diagnostics: which keys fell back due to missing translations ---
+missing_keys <- names(topic_map_en)[vapply(names(topic_map_en), function(k) {
+  x <- tryCatch(get_text(k, lang), error = function(e) character(0))
+  !(length(x) == 1 && nzchar(x))
+}, logical(1))]
+if (length(missing_keys)) {
+  message("Missing get_text() translations for: ", paste(missing_keys, collapse = ", "))
+}
+
+
+# Bar Chart Using Apexcharter
+themechart <- apex(data = topic_data, type = "bar", mapping = aes(x = reorder(topic, n), y = n)) %>%
+  # ax_colors(topic_colors[topic_data$topic]) %>%
+  ax_chart(stacked = FALSE, horizontal = TRUE, height = 800) %>%
+  ax_plotOptions(
+    bar = list(
+      barHeight = "60%",
+      borderRadius = 5
+    )
+  ) %>%
+  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
+  ax_xaxis(
+    title = list(text = get_text("numberposts", lang))
+  ) %>%
+  ax_yaxis(
+    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
+  ) %>%
+  ax_title(
+    text = get_text("topics", lang),
+    align = "center",
+    style = list(fontSize = "18px", fontWeight = "bold")
+  ) %>%
+  ax_tooltip(
+    shared = TRUE,
+    y = list(
+      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
+    )
+  ) %>%
+  ax_legend(
+    position = "bottom",
+    labels = list(colors = "#000")
+  )
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(themechart)
+  )
+)
+```
+
+
+
+
+
+:::
+
+
+
+> `r get_text("multi_topic_note", lang)`
+
+
+<br>
+
+
+::: {.panel-tabset}
+
+
+### `r get_text("parties_and_politicians", lang)`
+
+
+```{r}
+# --- 1) Map internal keys -> ENGLISH labels found in full_data$theme_of_the_image_video ---
+theme_map_en <- c(
+  theme_event_announcement   = "Event announcement/Election call/Candidate presentation",
+  # theme_political_positioning= "Political positioning",
+  theme_negative_content     = "Negative imagery/Negative campaigning",
+  theme_positive_content     = "Positive imagery/Acclaims",
+  theme_symbolic_image       = "Symbolic image",
+  theme_events_scenery       = "Events/Landscape & city scenes",
+  theme_campaign_event       = "Image from a campaign event",
+  theme_voter_contact        = "Individual voter contact",
+  theme_media_work           = "Media work",
+  theme_personal_background  = "Private background story",
+  theme_daily_politics       = "Everyday politics",
+  theme_nostalgic            = "Nostalgic / Historic",
+  theme_humor                = "Humor / Satire",
+  theme_fantasy              = "Utopia or Dystopia",
+  theme_other_image_content  = "Other imagery"
+)
+
+# Localized labels
+theme_labels_local <- vapply(names(theme_map_en), function(k) safe_get(k, lang), character(1))
+theme_labels_local <- make.unique(unname(theme_labels_local), sep = "_")
+
+# --- 3) Slice data and pull theme column ---
+df <- full_data %>% 
+  filter(list_source %in% c("Politicians", "Parties")) %>% 
+  filter(ai == 1)
+stopifnot("theme_of_the_image_video" %in% names(df))
+theme_vec <- df$theme_of_the_image_video
+
+# --- 4) Build logical indicators ---
+theme_indicators_list <- setNames(
+  lapply(names(theme_map_en), function(k) {
+    str_detect(theme_vec, fixed(theme_map_en[[k]], ignore_case = TRUE))
+  }),
+  theme_labels_local
+)
+
+theme_indicators <- as_tibble(theme_indicators_list)
+
+# --- 5) Pivot long + counts ---
+theme_bild_video_data <- theme_indicators %>%
+  pivot_longer(everything(), names_to = "theme", values_to = "value") %>%
+  filter(value) %>%
+  count(theme, sort = TRUE)
+
+# --- 6) Define colors for each theme (order matches theme_map_en) ---
+theme_bild_video_colors <- setNames(
+  c(
+    "#FF6F61", # Event announcement
+    "#6B5B95", # Political positioning
+    "#88B04B", # Negative imagery
+    "#F7CAC9", # Positive imagery
+    "#92A8D1", # Symbolic image
+    "#955251", # Events/Landscape
+    "#B565A7", # Campaign event
+    "#009B77", # Voter contact
+    "#DD4124", # Media work
+    "#45B8AC", # Private background
+    "#D65076", # Everyday politics
+    "#FFD662", # Nostalgic imagery
+    "#5B5EA6", # Humor / Satire
+    "#0096C7", # Fantasy / Futuristic
+    "#EFC050"  # Other imagery
+  ),
+  theme_labels_local
+)
+
+# --- (Optional) Diagnostics: missing translations ---
+missing_keys <- names(theme_map_en)[vapply(names(theme_map_en), function(k) {
+  x <- tryCatch(get_text(k, lang), error = function(e) character(0))
+  !(length(x) == 1 && nzchar(x))
+}, logical(1))]
+if (length(missing_keys)) {
+  message("Missing get_text() translations for: ", paste(missing_keys, collapse = ", "))
+}
+
+# Bar Chart Using Apexcharter
+theme_bild_video_chart <- apex(data = theme_bild_video_data, type = "bar", mapping = aes(x = reorder(theme, n), y = n)) %>%
+  ax_chart(stacked = FALSE, horizontal = TRUE, height = 800) %>%
+  ax_plotOptions(
+    bar = list(
+      barHeight = "60%",
+      borderRadius = 5
+    )
+  ) %>%
+  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
+  ax_xaxis(
+    title = list(text = get_text("numberposts", lang))
+  ) %>%
+  ax_yaxis(
+    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
+  ) %>%
+  ax_title(
+    text = get_text("topics_media", lang),
+    align = "center",
+    style = list(fontSize = "18px", fontWeight = "bold")
+  ) %>%
+  ax_tooltip(
+    shared = TRUE,
+    y = list(
+      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
+    )
+  ) %>%
+  ax_legend(
+    position = "bottom",
+    labels = list(colors = "#000")
+  )
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+    htmltools::browsable(theme_bild_video_chart)
+  )
+)
+
+```
+
+
+
+
+### `r get_text("other_actors", lang)`
+
+
+
+```{r}
+# --- 1) Map internal keys -> ENGLISH labels found in full_data$theme_of_the_image_video ---
+theme_map_en <- c(
+  theme_event_announcement   = "Event announcement/Election call/Candidate presentation",
+  # theme_political_positioning= "Political positioning",
+  theme_negative_content     = "Negative imagery/Negative campaigning",
+  theme_positive_content     = "Positive imagery/Acclaims",
+  theme_symbolic_image       = "Symbolic image",
+  theme_events_scenery       = "Events/Landscape & city scenes",
+  theme_campaign_event       = "Image from a campaign event",
+  theme_voter_contact        = "Individual voter contact",
+  theme_media_work           = "Media work",
+  theme_personal_background  = "Private background story",
+  theme_daily_politics       = "Everyday politics",
+  theme_nostalgic            = "Nostalgic / historical Dutch imagery",
+  theme_humor                = "Humor / Satire",
+  theme_fantasy              = "Fantasy / futuristic scenarios",
+  theme_other_image_content  = "Other imagery"
+)
+
+# Localized labels
+theme_labels_local <- vapply(names(theme_map_en), function(k) safe_get(k, lang), character(1))
+theme_labels_local <- make.unique(unname(theme_labels_local), sep = "_")
+
+# --- 3) Slice data and pull theme column ---
+df <- full_data %>% 
+  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
+  filter(ai == 1)
+stopifnot("theme_of_the_image_video" %in% names(df))
+theme_vec <- df$theme_of_the_image_video
+
+# --- 4) Build logical indicators ---
+theme_indicators_list <- setNames(
+  lapply(names(theme_map_en), function(k) {
+    str_detect(theme_vec, fixed(theme_map_en[[k]], ignore_case = TRUE))
+  }),
+  theme_labels_local
+)
+
+theme_indicators <- as_tibble(theme_indicators_list)
+
+# --- 5) Pivot long + counts ---
+theme_bild_video_data <- theme_indicators %>%
+  pivot_longer(everything(), names_to = "theme", values_to = "value") %>%
+  filter(value) %>%
+  count(theme, sort = TRUE)
+
+# --- 6) Define colors for each theme (order matches theme_map_en) ---
+theme_bild_video_colors <- setNames(
+  c(
+    "#FF6F61", # Event announcement
+    "#6B5B95", # Political positioning
+    "#88B04B", # Negative imagery
+    "#F7CAC9", # Positive imagery
+    "#92A8D1", # Symbolic image
+    "#955251", # Events/Landscape
+    "#B565A7", # Campaign event
+    "#009B77", # Voter contact
+    "#DD4124", # Media work
+    "#45B8AC", # Private background
+    "#D65076", # Everyday politics
+    "#FFD662", # Nostalgic imagery
+    "#5B5EA6", # Humor / Satire
+    "#0096C7", # Fantasy / Futuristic
+    "#EFC050"  # Other imagery
+  ),
+  theme_labels_local
+)
+
+# --- (Optional) Diagnostics: missing translations ---
+missing_keys <- names(theme_map_en)[vapply(names(theme_map_en), function(k) {
+  x <- tryCatch(get_text(k, lang), error = function(e) character(0))
+  !(length(x) == 1 && nzchar(x))
+}, logical(1))]
+if (length(missing_keys)) {
+  message("Missing get_text() translations for: ", paste(missing_keys, collapse = ", "))
+}
+
+# Bar Chart Using Apexcharter
+theme_bild_video_chart <- apex(data = theme_bild_video_data, type = "bar", mapping = aes(x = reorder(theme, n), y = n)) %>%
+  ax_chart(stacked = FALSE, horizontal = TRUE, height = 800) %>%
+  ax_plotOptions(
+    bar = list(
+      barHeight = "60%",
+      borderRadius = 5
+    )
+  ) %>%
+  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
+  ax_xaxis(
+    title = list(text = get_text("numberposts", lang))
+  ) %>%
+  ax_yaxis(
+    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
+  ) %>%
+  ax_title(
+    text = get_text("topics_media", lang),
+    align = "center",
+    style = list(fontSize = "18px", fontWeight = "bold")
+  ) %>%
+  ax_tooltip(
+    shared = TRUE,
+    y = list(
+      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
+    )
+  ) %>%
+  ax_legend(
+    position = "bottom",
+    labels = list(colors = "#000")
+  )
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+    htmltools::browsable(theme_bild_video_chart)
+  )
+)
+
+```
+
+
+
+:::
+
+
+> `r get_text("multi_image_note", lang)`
+
+<br>
+
+
+
+
+
+## `r get_text("person_groups", lang)` {#personen}
+
+::: {.panel-tabset}
+
+### `r get_text("parties_and_politicians", lang)`
+
+
+```{r}
+
+people_in_the_image_video_data <- full_data %>%
+  filter(list_source %in% c("Politicians", "Parties")) %>% 
+  filter(ai == 1) %>%
+  mutate(
+    # Generic actor groups
+    !!get_text("people_ordinary",  lang) := str_detect(people_in_the_image_video,
+      fixed("Ordinary people / average citizens / ordinary supporters", ignore_case = TRUE)
+    ),
+    !!get_text("people_minorities", lang) := str_detect(people_in_the_image_video,
+      fixed("(Members of) minorities", ignore_case = TRUE)
+    ),
+    !!get_text("people_criminals",  lang) := str_detect(people_in_the_image_video,
+      fixed("Illegal actors, criminals, offenders, terrorists, extremists", ignore_case = TRUE)
+    ),
+
+    # CDA
+    `CDA: Henri Bontenbal` = str_detect(people_in_the_image_video, fixed("CDA: Henri Bontenbal")),
+    `CDA: Hanneke Steen`   = str_detect(people_in_the_image_video, fixed("CDA: Hanneke Steen")),
+    # !!get_text("people_cda_other", lang) := str_detect(people_in_the_image_video, fixed("Other CDA politicians")),
+
+    # GL-PvdA
+    `GL-PvdA: Frans Timmermans`   = str_detect(people_in_the_image_video, fixed("GL-PvdA: Frans Timmermans")),
+    `GL-PvdA: Esmah Lahlah`       = str_detect(people_in_the_image_video, fixed("GL-PvdA: Esmah Lahlah")),
+    `GL-PvdA: Jesse Klaver`       = str_detect(people_in_the_image_video, fixed("GL-PvdA: Jesse Klaver")),
+    `GL-PvdA: Marjolein Moorman`  = str_detect(people_in_the_image_video, fixed("GL-PvdA: Marjolein Moorman")),
+    `GL-PvdA: Mei Li Vos`         = str_detect(people_in_the_image_video, fixed("GL-PvdA: Mei Li Vos")),
+    `GL-PvdA: Femke Halsema`      = str_detect(people_in_the_image_video, fixed("GL-PvdA: Femke Halsema")),
+    # !!get_text("people_glpvda_other", lang) := str_detect(people_in_the_image_video, fixed("Other GL-PvdA politicians")),
+
+    # PVV
+    `PVV: Geert Wilders`    = str_detect(people_in_the_image_video, fixed("PVV: Geert Wilders")),
+    `PVV: Fleur Agema`      = str_detect(people_in_the_image_video, fixed("PVV: Fleur Agema")),
+    `PVV: Dirk Beljaarts`   = str_detect(people_in_the_image_video, fixed("PVV: Dirk Beljaarts")),
+    `PVV: Barry Madlener`   = str_detect(people_in_the_image_video, fixed("PVV: Barry Madlener")),
+    `PVV: Marjolein Faber`  = str_detect(people_in_the_image_video, fixed("PVV: Marjolein Faber")),
+    `PVV: Reinette Klever`  = str_detect(people_in_the_image_video, fixed("PVV: Reinette Klever")),
+    `PVV: Zsolt Szabó`      = str_detect(people_in_the_image_video, fixed("PVV: Zsolt Szabó")),
+    `PVV: Vicky Maeijer`    = str_detect(people_in_the_image_video, fixed("PVV: Vicky Maeijer")),
+    `PVV: Chris Jansen`     = str_detect(people_in_the_image_video, fixed("PVV: Chris Jansen")),
+    `PVV: Martin Bosma`     = str_detect(people_in_the_image_video, fixed("PVV: Martin Bosma")),
+    # !!get_text("people_pvv_other", lang) := str_detect(people_in_the_image_video, fixed("Other PVV politicians")),
+
+    # VVD
+    `VVD: Dilan Yeşilgöz`   = str_detect(people_in_the_image_video, fixed("VVD: Dilan Yeşilgöz")),
+    `VVD: Sophie Hermans`   = str_detect(people_in_the_image_video, fixed("VVD: Sophie Hermans")),
+    `VVD: Eelco Heinen`     = str_detect(people_in_the_image_video, fixed("VVD: Eelco Heinen")),
+    `VVD: Ruben Brekelmans` = str_detect(people_in_the_image_video, fixed("VVD: Ruben Brekelmans")),
+    `VVD: David van Weel`   = str_detect(people_in_the_image_video, fixed("VVD: David van Weel")),
+    `VVD: Mariëlle Paul`    = str_detect(people_in_the_image_video, fixed("VVD: Mariëlle Paul")),
+    `VVD: Vincent Karremans`= str_detect(people_in_the_image_video, fixed("VVD: Vincent Karremans")),
+    `VVD: Jurgen Nobel`     = str_detect(people_in_the_image_video, fixed("VVD: Jurgen Nobel")),
+    # !!get_text("people_vvd_other", lang) := str_detect(people_in_the_image_video, fixed("Other VVD politicians")),
+
+    # D66
+    `D66: Rob Jetten`       = str_detect(people_in_the_image_video, fixed("D66: Rob Jetten")),
+    `D66: Jan Paternotte`   = str_detect(people_in_the_image_video, fixed("D66: Jan Paternotte")),
+    `D66: Hans Vijlbrief`   = str_detect(people_in_the_image_video, fixed("D66: Hans Vijlbrief")),
+    `D66: Paul van Meenen`  = str_detect(people_in_the_image_video, fixed("D66: Paul van Meenen")),
+    # !!get_text("people_d66_other", lang) := str_detect(people_in_the_image_video, fixed("Other D66 politicians")),
+
+    # BBB
+    `BBB: Caroline van der Plas` = str_detect(people_in_the_image_video, fixed("BBB: Caroline van der Plas")),
+    `BBB: Mona Keijzer`          = str_detect(people_in_the_image_video, fixed("BBB: Mona Keijzer")),
+    `BBB: Eddie van Marum`       = str_detect(people_in_the_image_video, fixed("BBB: Eddie van Marum")),
+    `BBB: Jean Rummenie`         = str_detect(people_in_the_image_video, fixed("BBB: Jean Rummenie")),
+    `BBB: Gijs Tuinman`          = str_detect(people_in_the_image_video, fixed("BBB: Gijs Tuinman")),
+    `BBB: Femke Wiersma`         = str_detect(people_in_the_image_video, fixed("BBB: Femke Wiersma")),
+    # !!get_text("people_bbb_other", lang) := str_detect(people_in_the_image_video, fixed("Other BBB politicians")),
+
+    # SP
+    `SP: Jimmy Dijk`             = str_detect(people_in_the_image_video, fixed("SP: Jimmy Dijk")),
+    # !!get_text("people_sp_other", lang) := str_detect(people_in_the_image_video, fixed("Other SP politicians")),
+
+    # FVD
+    `FVD: Thierry Baudet`        = str_detect(people_in_the_image_video, fixed("FVD: Thierry Baudet")),
+    `FVD: Gideon van Meijeren`   = str_detect(people_in_the_image_video, fixed("FVD: Gideon van Meijeren")),
+    # !!get_text("people_fvd_other", lang) := str_detect(people_in_the_image_video, fixed("Other FVD politicians")),
+
+    # CU
+    `CU: Mirjam Bikker`          = str_detect(people_in_the_image_video, fixed("CU: Mirjam Bikker")),
+    `CU: Pieter Grinwis`         = str_detect(people_in_the_image_video, fixed("CU: Pieter Grinwis")),
+    # !!get_text("people_cu_other",  lang) := str_detect(people_in_the_image_video, fixed("Other CU politicians")),
+
+    # JA21
+    `JA21: Joost Eerdmans`       = str_detect(people_in_the_image_video, fixed("JA21: Joost Eerdmans")),
+    `JA21: Annabel Nanninga`     = str_detect(people_in_the_image_video, fixed("JA21: Annabel Nanninga")),
+    `JA21: Ingrid Coenradie`     = str_detect(people_in_the_image_video, fixed("JA21: Ingrid Coenradie")),
+    # !!get_text("people_ja21_other", lang) := str_detect(people_in_the_image_video, fixed("Other JA21 politicians")),
+
+    # Volt
+    `Volt: Laurens Dassen`       = str_detect(people_in_the_image_video, fixed("Volt: Laurens Dassen")),
+    `Volt: Marieke Koekkoek`     = str_detect(people_in_the_image_video, fixed("Volt: Marieke Koekkoek")),
+    # !!get_text("people_volt_other", lang) := str_detect(people_in_the_image_video, fixed("Other Volt politicians")),
+
+    # SGP
+    `SGP: Chris Stoffer`         = str_detect(people_in_the_image_video, fixed("SGP: Chris Stoffer")),
+    # !!get_text("people_sgp_other",  lang) := str_detect(people_in_the_image_video, fixed("Other SGP politicians")),
+
+    # Denk
+    `Denk: Stephan van Baarle`   = str_detect(people_in_the_image_video, fixed("Denk: Stephan van Baarle")),
+    `Denk: Tunahan Kuzu`         = str_detect(people_in_the_image_video, fixed("Denk: Tunahan Kuzu")),
+    # !!get_text("people_denk_other", lang) := str_detect(people_in_the_image_video, fixed("Other Denk politicians")),
+
+    # NSC
+    `NSC: Eddy van Hijum`            = str_detect(people_in_the_image_video, fixed("NSC: Eddy van Hijum")),
+    `NSC: Nicolien van Vroonhoven`   = str_detect(people_in_the_image_video, fixed("NSC: Nicolien van Vroonhoven")),
+    `NSC: Eppo Bruins`               = str_detect(people_in_the_image_video, fixed("NSC: Eppo Bruins")),
+    `NSC: Tjebbe van Oostenbruggen`  = str_detect(people_in_the_image_video, fixed("NSC: Tjebbe van Oostenbruggen")),
+    `NSC: Teun Struycken`            = str_detect(people_in_the_image_video, fixed("NSC: Teun Struycken")),
+    `NSC: Judith Uitermark`          = str_detect(people_in_the_image_video, fixed("NSC: Judith Uitermark")),
+    `NSC: Caspar Veldkamp`           = str_detect(people_in_the_image_video, fixed("NSC: Caspar Veldkamp")),
+    `NSC: Daniëlle Jansen`           = str_detect(people_in_the_image_video, fixed("NSC: Daniëlle Jansen")),
+    # !!get_text("people_nsc_other",   lang) := str_detect(people_in_the_image_video, fixed("Other NSC politicians")),
+
+    # PvdD
+    `PvdD: Esther Ouwehand`      = str_detect(people_in_the_image_video, fixed("PvdD: Esther Ouwehand")),
+    `PvdD: Ines Kostić`          = str_detect(people_in_the_image_video, fixed("PvdD: Ines Kostić")),
+    # !!get_text("people_pvdd_other", lang) := str_detect(people_in_the_image_video, fixed("Other PvdD politicians")),
+
+    # Other Dutch/independent
+    !!get_text("people_other_parties",     lang) := str_detect(people_in_the_image_video, fixed("Other politicians from Dutch parties", ignore_case = TRUE)),
+    !!get_text("people_other_politicians", lang) := str_detect(people_in_the_image_video, fixed("Other politicians from Dutch parties / independent politicians", ignore_case = TRUE)),
+
+    # Foreign / institutions / orgs / media / etc.
+    !!get_text("people_foreign_non_eu",       lang) := str_detect(people_in_the_image_video, fixed("Foreign politicians (ALL EXCEPT from EU, UN, NATO)", ignore_case = TRUE)),
+    !!get_text("people_foreign_eu",           lang) := str_detect(people_in_the_image_video, fixed("Foreign politicians from EU, UN, NATO", ignore_case = TRUE)),
+    !!get_text("people_non_pol_institutions", lang) := str_detect(people_in_the_image_video, fixed("Representatives of non-political institutions", ignore_case = TRUE)),
+    !!get_text("people_interest_groups",      lang) := str_detect(people_in_the_image_video, fixed("Representatives of interest groups / NGOs", ignore_case = TRUE)),
+    !!get_text("people_social_movements",     lang) := str_detect(people_in_the_image_video, fixed("Representatives of social movements", ignore_case = TRUE)),
+    !!get_text("people_business",             lang) := str_detect(people_in_the_image_video, fixed("Entrepreneurs / business leaders", ignore_case = TRUE)),
+    !!get_text("people_celebrities",          lang) := str_detect(people_in_the_image_video, fixed("Celebrities and/or opinion leaders", ignore_case = TRUE)),
+    !!get_text("people_media",                lang) := str_detect(people_in_the_image_video, fixed("Journalists, representatives of news media", ignore_case = TRUE)),
+    !!get_text("people_others",               lang) := str_detect(people_in_the_image_video, fixed("Other persons", ignore_case = TRUE))
+  ) %>%
+  select(get_text("people_ordinary", lang):get_text("people_others", lang)) %>%
+  tidyr::gather(key = "people_in_the_image_video", value = "value") %>%
+  filter(value)
+
+
+
+
+people_in_the_image_video_chart <- apex(people_in_the_image_video_data %>% add_count(people_in_the_image_video, sort = T) %>% mutate(people_in_the_image_video = fct_reorder(people_in_the_image_video, n)) %>% arrange(people_in_the_image_video), aes(x = people_in_the_image_video ), "treemap") %>% 
+  ax_colors("#547D01")   %>%
+  ax_dataLabels(
+    style = list(
+      colors = list("#000000") # Setzt die Schriftfarbe auf Schwarz
+    ))%>%
+  # ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
+  ax_xaxis(
+    title = list(text = get_text("numberposts", lang))
+  ) %>%
+  ax_yaxis(
+    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
+  ) %>%
+  ax_title(
+    text = get_text("peoples", lang),
+    align = "center",
+    style = list(fontSize = "18px", fontWeight = "bold")
+  )
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+    htmltools::browsable(people_in_the_image_video_chart)
+  )
+)
+```
+
+
+
+
+### `r get_text("other_actors", lang)`
+
+
+
+
+```{r}
+
+people_in_the_image_video_data <- full_data %>%
+  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
+  filter(ai == 1) %>%
+  mutate(
+    # Generic actor groups
+    !!get_text("people_ordinary",  lang) := str_detect(people_in_the_image_video,
+      fixed("Ordinary people / average citizens / ordinary supporters", ignore_case = TRUE)
+    ),
+    !!get_text("people_minorities", lang) := str_detect(people_in_the_image_video,
+      fixed("(Members of) minorities", ignore_case = TRUE)
+    ),
+    !!get_text("people_criminals",  lang) := str_detect(people_in_the_image_video,
+      fixed("Illegal actors, criminals, offenders, terrorists, extremists", ignore_case = TRUE)
+    ),
+
+    # CDA
+    `CDA: Henri Bontenbal` = str_detect(people_in_the_image_video, fixed("CDA: Henri Bontenbal")),
+    `CDA: Hanneke Steen`   = str_detect(people_in_the_image_video, fixed("CDA: Hanneke Steen")),
+    # !!get_text("people_cda_other", lang) := str_detect(people_in_the_image_video, fixed("Other CDA politicians")),
+
+    # GL-PvdA
+    `GL-PvdA: Frans Timmermans`   = str_detect(people_in_the_image_video, fixed("GL-PvdA: Frans Timmermans")),
+    `GL-PvdA: Esmah Lahlah`       = str_detect(people_in_the_image_video, fixed("GL-PvdA: Esmah Lahlah")),
+    `GL-PvdA: Jesse Klaver`       = str_detect(people_in_the_image_video, fixed("GL-PvdA: Jesse Klaver")),
+    `GL-PvdA: Marjolein Moorman`  = str_detect(people_in_the_image_video, fixed("GL-PvdA: Marjolein Moorman")),
+    `GL-PvdA: Mei Li Vos`         = str_detect(people_in_the_image_video, fixed("GL-PvdA: Mei Li Vos")),
+    `GL-PvdA: Femke Halsema`      = str_detect(people_in_the_image_video, fixed("GL-PvdA: Femke Halsema")),
+    # !!get_text("people_glpvda_other", lang) := str_detect(people_in_the_image_video, fixed("Other GL-PvdA politicians")),
+
+    # PVV
+    `PVV: Geert Wilders`    = str_detect(people_in_the_image_video, fixed("PVV: Geert Wilders")),
+    `PVV: Fleur Agema`      = str_detect(people_in_the_image_video, fixed("PVV: Fleur Agema")),
+    `PVV: Dirk Beljaarts`   = str_detect(people_in_the_image_video, fixed("PVV: Dirk Beljaarts")),
+    `PVV: Barry Madlener`   = str_detect(people_in_the_image_video, fixed("PVV: Barry Madlener")),
+    `PVV: Marjolein Faber`  = str_detect(people_in_the_image_video, fixed("PVV: Marjolein Faber")),
+    `PVV: Reinette Klever`  = str_detect(people_in_the_image_video, fixed("PVV: Reinette Klever")),
+    `PVV: Zsolt Szabó`      = str_detect(people_in_the_image_video, fixed("PVV: Zsolt Szabó")),
+    `PVV: Vicky Maeijer`    = str_detect(people_in_the_image_video, fixed("PVV: Vicky Maeijer")),
+    `PVV: Chris Jansen`     = str_detect(people_in_the_image_video, fixed("PVV: Chris Jansen")),
+    `PVV: Martin Bosma`     = str_detect(people_in_the_image_video, fixed("PVV: Martin Bosma")),
+    # !!get_text("people_pvv_other", lang) := str_detect(people_in_the_image_video, fixed("Other PVV politicians")),
+
+    # VVD
+    `VVD: Dilan Yeşilgöz`   = str_detect(people_in_the_image_video, fixed("VVD: Dilan Yeşilgöz")),
+    `VVD: Sophie Hermans`   = str_detect(people_in_the_image_video, fixed("VVD: Sophie Hermans")),
+    `VVD: Eelco Heinen`     = str_detect(people_in_the_image_video, fixed("VVD: Eelco Heinen")),
+    `VVD: Ruben Brekelmans` = str_detect(people_in_the_image_video, fixed("VVD: Ruben Brekelmans")),
+    `VVD: David van Weel`   = str_detect(people_in_the_image_video, fixed("VVD: David van Weel")),
+    `VVD: Mariëlle Paul`    = str_detect(people_in_the_image_video, fixed("VVD: Mariëlle Paul")),
+    `VVD: Vincent Karremans`= str_detect(people_in_the_image_video, fixed("VVD: Vincent Karremans")),
+    `VVD: Jurgen Nobel`     = str_detect(people_in_the_image_video, fixed("VVD: Jurgen Nobel")),
+    # !!get_text("people_vvd_other", lang) := str_detect(people_in_the_image_video, fixed("Other VVD politicians")),
+
+    # D66
+    `D66: Rob Jetten`       = str_detect(people_in_the_image_video, fixed("D66: Rob Jetten")),
+    `D66: Jan Paternotte`   = str_detect(people_in_the_image_video, fixed("D66: Jan Paternotte")),
+    `D66: Hans Vijlbrief`   = str_detect(people_in_the_image_video, fixed("D66: Hans Vijlbrief")),
+    `D66: Paul van Meenen`  = str_detect(people_in_the_image_video, fixed("D66: Paul van Meenen")),
+    # !!get_text("people_d66_other", lang) := str_detect(people_in_the_image_video, fixed("Other D66 politicians")),
+
+    # BBB
+    `BBB: Caroline van der Plas` = str_detect(people_in_the_image_video, fixed("BBB: Caroline van der Plas")),
+    `BBB: Mona Keijzer`          = str_detect(people_in_the_image_video, fixed("BBB: Mona Keijzer")),
+    `BBB: Eddie van Marum`       = str_detect(people_in_the_image_video, fixed("BBB: Eddie van Marum")),
+    `BBB: Jean Rummenie`         = str_detect(people_in_the_image_video, fixed("BBB: Jean Rummenie")),
+    `BBB: Gijs Tuinman`          = str_detect(people_in_the_image_video, fixed("BBB: Gijs Tuinman")),
+    `BBB: Femke Wiersma`         = str_detect(people_in_the_image_video, fixed("BBB: Femke Wiersma")),
+    # !!get_text("people_bbb_other", lang) := str_detect(people_in_the_image_video, fixed("Other BBB politicians")),
+
+    # SP
+    `SP: Jimmy Dijk`             = str_detect(people_in_the_image_video, fixed("SP: Jimmy Dijk")),
+    # !!get_text("people_sp_other", lang) := str_detect(people_in_the_image_video, fixed("Other SP politicians")),
+
+    # FVD
+    `FVD: Thierry Baudet`        = str_detect(people_in_the_image_video, fixed("FVD: Thierry Baudet")),
+    `FVD: Gideon van Meijeren`   = str_detect(people_in_the_image_video, fixed("FVD: Gideon van Meijeren")),
+    # !!get_text("people_fvd_other", lang) := str_detect(people_in_the_image_video, fixed("Other FVD politicians")),
+
+    # CU
+    `CU: Mirjam Bikker`          = str_detect(people_in_the_image_video, fixed("CU: Mirjam Bikker")),
+    `CU: Pieter Grinwis`         = str_detect(people_in_the_image_video, fixed("CU: Pieter Grinwis")),
+    # !!get_text("people_cu_other",  lang) := str_detect(people_in_the_image_video, fixed("Other CU politicians")),
+
+    # JA21
+    `JA21: Joost Eerdmans`       = str_detect(people_in_the_image_video, fixed("JA21: Joost Eerdmans")),
+    `JA21: Annabel Nanninga`     = str_detect(people_in_the_image_video, fixed("JA21: Annabel Nanninga")),
+    `JA21: Ingrid Coenradie`     = str_detect(people_in_the_image_video, fixed("JA21: Ingrid Coenradie")),
+    # !!get_text("people_ja21_other", lang) := str_detect(people_in_the_image_video, fixed("Other JA21 politicians")),
+
+    # Volt
+    `Volt: Laurens Dassen`       = str_detect(people_in_the_image_video, fixed("Volt: Laurens Dassen")),
+    `Volt: Marieke Koekkoek`     = str_detect(people_in_the_image_video, fixed("Volt: Marieke Koekkoek")),
+    # !!get_text("people_volt_other", lang) := str_detect(people_in_the_image_video, fixed("Other Volt politicians")),
+
+    # SGP
+    `SGP: Chris Stoffer`         = str_detect(people_in_the_image_video, fixed("SGP: Chris Stoffer")),
+    # !!get_text("people_sgp_other",  lang) := str_detect(people_in_the_image_video, fixed("Other SGP politicians")),
+
+    # Denk
+    `Denk: Stephan van Baarle`   = str_detect(people_in_the_image_video, fixed("Denk: Stephan van Baarle")),
+    `Denk: Tunahan Kuzu`         = str_detect(people_in_the_image_video, fixed("Denk: Tunahan Kuzu")),
+    # !!get_text("people_denk_other", lang) := str_detect(people_in_the_image_video, fixed("Other Denk politicians")),
+
+    # NSC
+    `NSC: Eddy van Hijum`            = str_detect(people_in_the_image_video, fixed("NSC: Eddy van Hijum")),
+    `NSC: Nicolien van Vroonhoven`   = str_detect(people_in_the_image_video, fixed("NSC: Nicolien van Vroonhoven")),
+    `NSC: Eppo Bruins`               = str_detect(people_in_the_image_video, fixed("NSC: Eppo Bruins")),
+    `NSC: Tjebbe van Oostenbruggen`  = str_detect(people_in_the_image_video, fixed("NSC: Tjebbe van Oostenbruggen")),
+    `NSC: Teun Struycken`            = str_detect(people_in_the_image_video, fixed("NSC: Teun Struycken")),
+    `NSC: Judith Uitermark`          = str_detect(people_in_the_image_video, fixed("NSC: Judith Uitermark")),
+    `NSC: Caspar Veldkamp`           = str_detect(people_in_the_image_video, fixed("NSC: Caspar Veldkamp")),
+    `NSC: Daniëlle Jansen`           = str_detect(people_in_the_image_video, fixed("NSC: Daniëlle Jansen")),
+    # !!get_text("people_nsc_other",   lang) := str_detect(people_in_the_image_video, fixed("Other NSC politicians")),
+
+    # PvdD
+    `PvdD: Esther Ouwehand`      = str_detect(people_in_the_image_video, fixed("PvdD: Esther Ouwehand")),
+    `PvdD: Ines Kostić`          = str_detect(people_in_the_image_video, fixed("PvdD: Ines Kostić")),
+    # !!get_text("people_pvdd_other", lang) := str_detect(people_in_the_image_video, fixed("Other PvdD politicians")),
+
+    # Other Dutch/independent
+    !!get_text("people_other_parties",     lang) := str_detect(people_in_the_image_video, fixed("Other politicians from Dutch parties", ignore_case = TRUE)),
+    !!get_text("people_other_politicians", lang) := str_detect(people_in_the_image_video, fixed("Other politicians from Dutch parties / independent politicians", ignore_case = TRUE)),
+
+    # Foreign / institutions / orgs / media / etc.
+    !!get_text("people_foreign_non_eu",       lang) := str_detect(people_in_the_image_video, fixed("Foreign politicians (ALL EXCEPT from EU, UN, NATO)", ignore_case = TRUE)),
+    !!get_text("people_foreign_eu",           lang) := str_detect(people_in_the_image_video, fixed("Foreign politicians from EU, UN, NATO", ignore_case = TRUE)),
+    !!get_text("people_non_pol_institutions", lang) := str_detect(people_in_the_image_video, fixed("Representatives of non-political institutions", ignore_case = TRUE)),
+    !!get_text("people_interest_groups",      lang) := str_detect(people_in_the_image_video, fixed("Representatives of interest groups / NGOs", ignore_case = TRUE)),
+    !!get_text("people_social_movements",     lang) := str_detect(people_in_the_image_video, fixed("Representatives of social movements", ignore_case = TRUE)),
+    !!get_text("people_business",             lang) := str_detect(people_in_the_image_video, fixed("Entrepreneurs / business leaders", ignore_case = TRUE)),
+    !!get_text("people_celebrities",          lang) := str_detect(people_in_the_image_video, fixed("Celebrities and/or opinion leaders", ignore_case = TRUE)),
+    !!get_text("people_media",                lang) := str_detect(people_in_the_image_video, fixed("Journalists, representatives of news media", ignore_case = TRUE)),
+    !!get_text("people_others",               lang) := str_detect(people_in_the_image_video, fixed("Other persons", ignore_case = TRUE))
+  ) %>%
+  select(get_text("people_ordinary", lang):get_text("people_others", lang)) %>%
+  tidyr::gather(key = "people_in_the_image_video", value = "value") %>%
+  filter(value)
+
+
+
+
+people_in_the_image_video_chart <- apex(people_in_the_image_video_data %>% add_count(people_in_the_image_video, sort = T) %>% mutate(people_in_the_image_video = fct_reorder(people_in_the_image_video, n)) %>% arrange(people_in_the_image_video), aes(x = people_in_the_image_video ), "treemap") %>% 
+  ax_colors("#547D01")   %>%
+  ax_dataLabels(
+    style = list(
+      colors = list("#000000") # Setzt die Schriftfarbe auf Schwarz
+    ))%>%
+  # ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
+  ax_xaxis(
+    title = list(text = get_text("numberposts", lang))
+  ) %>%
+  ax_yaxis(
+    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
+  ) %>%
+  ax_title(
+    text = get_text("peoples", lang),
+    align = "center",
+    style = list(fontSize = "18px", fontWeight = "bold")
+  )
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+    htmltools::browsable(people_in_the_image_video_chart)
+  )
+)
+```
+
+
+
+
+:::
+
+`r get_text("people_chart_desc", lang)`
+
+> `r get_text("multi_people_note", lang)`
+
+
+<br>
+
+
+
+## `r get_text("time_evolution", lang)` {#ai-over-time}
+
+
+```{r, eval = T}
+
+
+# AI Usage Over Time
+ai_over_time <- full_data %>%
+  mutate(posted_date = as.Date(posted_date)) %>%
+  group_by(posted_date, ai) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  pivot_wider(names_from = ai, values_from = count, values_fill = 0) %>% 
+  drop_na(posted_date)
+
+ai_time_chart <- highchart() %>%
+  hc_chart(type = "line") %>%
+  hc_xAxis(categories = ai_over_time$posted_date) %>%
+  hc_yAxis(title = list(text = get_text("numberposts", lang))) %>%
+  hc_add_series(name = get_text("posts_with_ai", lang), data = ai_over_time$`1`, color = "#FF6F61") %>%
+  hc_add_series(name = get_text("posts_non_ai", lang), data = ai_over_time$`0`, color = "#6B5B95") %>%
+  hc_tooltip(pointFormat = "<b>{series.name}</b>: {point.y}") %>%
+  hc_title(text = get_text("ai_over_time", lang))
+
+# AI Content by Party
+ai_by_party <- full_data %>%
+  filter(!is.na(party)) %>%  # Exclude NA parties
+  group_by(party, ai) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  pivot_wider(names_from = ai, values_from = count, values_fill = 0) %>%
+  mutate(total = `0` + `1`, ai_proportion = (`1` / total) * 100) %>%
+  arrange(desc(ai_proportion))
+
+
+# Render Charts
+# ai_topic_chart
+
+
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(ai_time_chart)
+  )
+)
+
+```
+
+
+<br>
+
+> `r get_text("time_chart_desc", lang)`
+
+<br>
+
+<br>
+<center>
+  <a href="https://favstats.github.io/campaigntrackernl">
+    <img src="logobelow.png" width="50%">
+  </a>
+</center>
+
+
