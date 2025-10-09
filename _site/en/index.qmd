@@ -981,7 +981,7 @@ treemap_parties <- full_data %>%
 p2 <- create_political_treemap_ac(
   data = treemap_parties,
   party_colors = platform_colors,
-  title = get_text("by_platform_all", lang),
+  title = get_text("by_platform_parties", lang),
   height = 400
 )
 
@@ -1013,7 +1013,7 @@ treemap_others <- full_data %>%
 p3 <- create_political_treemap_ac(
   data = treemap_others,
   party_colors = platform_colors,
-  title = "",
+  title = get_text("by_platform_other_actors", lang),
   height = 400
 )
 
