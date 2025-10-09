@@ -912,25 +912,47 @@ htmltools::tagList(
 ### `r get_text("all_actors", lang)`
 
 ```{r}
+custom_css <- tags$style(HTML("
+  .apex-container0 {
+    max-width: 100%;
+    height: auto;
+    overflow-x: auto;    /* Horizontal scroll if needed */
+    overflow-y: auto;    /* Vertical scroll if needed */
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #ccc;    /* Subtle border */
+    border-radius: 10px;       /* Rounded corners */
+  }
+"))
+
+
+
+ platform_colors = c("Facebook" = "#1877F2", "Instagram" = "#E4405F", "TikTok" = "#69C9D0", "X" = "000000")
 # Prepare data for "All"
 treemap_all <- full_data %>%
   filter(ai == 1) %>%
   count(platform, name = "y") %>%
-  arrange(desc(y)) %>%
-  transmute(x = platform, y)
+  arrange(desc(y))  %>% 
+  mutate(platform = case_when(
+    platform == "FB" ~ "Facebook",
+    platform == "IG" ~ "Instagram",
+    T ~platform
+  ))%>%
+  transmute(x = platform, y) 
+
 
 # Create chart
 p1 <- create_political_treemap_ac(
   data = treemap_all,
-  platform_colors = platform_colors,
-  title = get_text("ai_by_platform", lang),
+  party_colors = platform_colors,
+  title = "",
   height = 400
 )
 
 htmltools::tagList(
-  custom_css2,
+  custom_css,
   tags$div(
-    class = "apex-container2",
+    class = "apex-container0",
     htmltools::browsable(p1)
   )
 )
@@ -947,21 +969,26 @@ htmltools::tagList(
 treemap_parties <- full_data %>%
   filter(ai == 1, list_source %in% c("Parties", "Politicians")) %>%
   count(platform, name = "y") %>%
-  arrange(desc(y)) %>%
-  transmute(x = platform, y)
+  arrange(desc(y)) %>% 
+  mutate(platform = case_when(
+    platform == "FB" ~ "Facebook",
+    platform == "IG" ~ "Instagram",
+    T ~platform
+  ))%>%
+  transmute(x = platform, y) 
 
 # Create chart
 p2 <- create_political_treemap_ac(
   data = treemap_parties,
-  platform_colors = platform_colors,
-  title = get_text("ai_by_platform2", lang),
+  party_colors = platform_colors,
+  title = "",
   height = 400
 )
 
 htmltools::tagList(
-  custom_css2,
+  custom_css,
   tags$div(
-    class = "apex-container2",
+    class = "apex-container0",
     htmltools::browsable(p2)
   )
 )
@@ -974,22 +1001,27 @@ htmltools::tagList(
 treemap_others <- full_data %>%
   filter(ai == 1, !list_source %in% c("Parties", "Politicians")) %>%
   count(platform, name = "y") %>%
-  arrange(desc(y)) %>%
-  transmute(x = platform, y)
+  arrange(desc(y)) %>% 
+  mutate(platform = case_when(
+    platform == "FB" ~ "Facebook",
+    platform == "IG" ~ "Instagram",
+    T ~platform
+  ))%>%
+  transmute(x = platform, y) 
 
 # Create chart
 p3 <- create_political_treemap_ac(
   data = treemap_others,
-  platform_colors = platform_colors,
-  title = get_text("ai_by_platform3", lang),
+  party_colors = platform_colors,
+  title = "",
   height = 400
 )
 
 
 htmltools::tagList(
-  custom_css2,
+  custom_css,
   tags$div(
-    class = "apex-container2",
+    class = "apex-container0",
     htmltools::browsable(p3)
   )
 )
@@ -1003,7 +1035,7 @@ htmltools::tagList(
 
 
 
-```{r, eval 0 F}
+```{r, eval = F}
 # Custom CSS for Responsive Container
 custom_css <- tags$style(HTML("
   .apex-container0 {

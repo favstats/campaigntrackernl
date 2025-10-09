@@ -950,7 +950,7 @@ p1 <- create_political_treemap_ac(
 )
 
 htmltools::tagList(
-  custom_css2,
+  custom_css,
   tags$div(
     class = "apex-container0",
     htmltools::browsable(p1)
@@ -986,7 +986,7 @@ p2 <- create_political_treemap_ac(
 )
 
 htmltools::tagList(
-  custom_css2,
+  custom_css,
   tags$div(
     class = "apex-container0",
     htmltools::browsable(p2)
@@ -1019,7 +1019,7 @@ p3 <- create_political_treemap_ac(
 
 
 htmltools::tagList(
-  custom_css2,
+  custom_css,
   tags$div(
     class = "apex-container0",
     htmltools::browsable(p3)
