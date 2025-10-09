@@ -590,21 +590,19 @@ create_political_treemap_ac2 <- function(
     })
   )
   
-  # Wrapper container to prevent height issues
-  wrapper_style <- sprintf(
-    "position: relative; height: %spx; overflow: hidden;",
-    height
-  )
+  # Wrapper with relative positioning only
+  wrapper_style <- "position: relative;"
   
-  # Create chart containers with absolute positioning to prevent stacking
+  # Create chart containers - only hidden ones get position:absolute to avoid taking space
   chart_divs <- lapply(names(charts), function(val) {
     tags$div(
       id = paste0("chart-", container_id, "-", val),
       class = paste0("chart-", container_id),
-      style = sprintf(
-        "%s position: absolute; top: 0; left: 0; width: 100%%;",
-        if(val != "all") "display: none;" else ""
-      ),
+      style = if(val != "all") {
+        "display: none; position: absolute; top: 0; left: 0; width: 100%; visibility: hidden;"
+      } else {
+        "display: block;"
+      },
       charts[[val]]
     )
   })
