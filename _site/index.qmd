@@ -479,6 +479,134 @@ library(htmltools)
 
 ## `r get_text("ai_by_party", lang)` {#ki-content-by-party2}
 
+```{r}
+# Simpler, stricter apexcharter treemap with optional list_source filter buttons
+create_political_treemap_ac2 <- function(
+  data,
+  party_colors,
+  title  = "AI Content Distribution by Political Party",
+  height = 400,
+  filter_var = NULL,
+  filter_labels = NULL
+) {
+  stopifnot(is.data.frame(data))
+  if (!all(c("x", "y") %in% names(data))) {
+    stop("Data must have columns 'x' and 'y'.")
+  }
+  
+  # Clean inputs
+  data <- data[!is.na(data$x) & !is.na(data$y), ]
+  data$x <- as.character(data$x)
+  data$y <- as.numeric(data$y)
+
+  if (missing(party_colors) || is.null(names(party_colors))) {
+    stop("Provide a *named* color vector 'party_colors', e.g. c('Party'='#123456').")
+  }
+
+  # Helper function to create a single chart
+  make_chart <- function(chart_data) {
+    # Sort by y (descending) so largest chunks are on the left
+    chart_data <- chart_data[order(-chart_data$y), ]
+    
+    cols <- unname(party_colors[match(chart_data$x, names(party_colors))])
+    cols[is.na(cols)] <- "#CCCCCC"
+    
+    apexcharter::apex(
+      data    = chart_data,
+      mapping = apexcharter::aes(x = x, y = y),
+      type    = "treemap",
+      height  = height
+    ) |>
+      apexcharter::ax_chart(toolbar = list(show = FALSE)) |>
+      apexcharter::ax_title(
+        text  = title,
+        align = "center",
+        style = list(fontSize = "16px")
+      ) |>
+      apexcharter::ax_legend(show = FALSE) |>
+      apexcharter::ax_colors(cols) |>
+      apexcharter::ax_plotOptions(
+        treemap = list(
+          distributed  = TRUE,
+          enableShades = FALSE,
+          dataLabels   = list(
+            enabled = TRUE,
+            style   = list(fontSize = "12px")
+          )
+        )
+      )
+  }
+  
+  # Check if filtering is enabled
+  enable_filter <- !is.null(filter_var) && filter_var %in% names(data)
+  
+  if (!enable_filter) {
+    # Return plain chart (backwards compatible) - sorted
+    return(make_chart(data))
+  }
+  
+  # Filtering enabled - create multiple charts
+  data$filter_group <- as.character(data[[filter_var]])
+  filter_values <- unique(data$filter_group)
+  
+  if (is.null(filter_labels)) {
+    filter_labels <- setNames(
+      c("All", filter_values),
+      c("all", filter_values)
+    )
+  }
+  
+  # Generate unique IDs
+  container_id <- paste0("treemap_", sample(10000:99999, 1))
+  
+  # Create charts for each filter (each will be sorted internally by make_chart)
+  charts <- list()
+  charts[["all"]] <- make_chart(data)
+  for (val in filter_values) {
+    charts[[val]] <- make_chart(data[data$filter_group == val, ])
+  }
+  
+  # Create button HTML with simpler show/hide logic
+  button_html <- tags$div(
+    class = "treemap-filter-buttons",
+    style = "text-align: center; margin-bottom: 15px;",
+    lapply(names(filter_labels), function(val) {
+      tags$button(
+        class = paste0("filter-btn-", container_id, if(val == "all") " active" else ""),
+        onclick = sprintf(
+          "document.querySelectorAll('.chart-%s').forEach(el => el.style.display='none'); document.getElementById('chart-%s-%s').style.display='block'; document.querySelectorAll('.filter-btn-%s').forEach(btn => {btn.classList.remove('active'); btn.style.background='#fff'; btn.style.color='#333';}); this.classList.add('active'); this.style.background='#007bff'; this.style.color='#fff';",
+          container_id, container_id, val, container_id
+        ),
+        style = paste0(
+          "margin: 0 5px; padding: 8px 16px; ",
+          "border: 1px solid #ddd; border-radius: 4px; ",
+          "background: ", if(val == "all") "#007bff" else "#fff", "; ",
+          "color: ", if(val == "all") "#fff" else "#333", "; ",
+          "cursor: pointer; font-size: 14px; ",
+          "transition: all 0.3s;"
+        ),
+        filter_labels[[val]]
+      )
+    })
+  )
+  
+  # Create chart containers
+  chart_divs <- lapply(names(charts), function(val) {
+    tags$div(
+      id = paste0("chart-", container_id, "-", val),
+      class = paste0("chart-", container_id),
+      style = if(val != "all") "display: none;" else "",
+      charts[[val]]
+    )
+  })
+  
+  # Return combined widget
+  htmltools::tagList(
+    button_html,
+    chart_divs
+  )
+}
+```
 
 
 ```{r, results='asis'}
@@ -576,89 +704,7 @@ cities_data2 <- data.frame(
   filter(ai == 1) %>% pull(n)
 )
 
-create_political_treemap <- function(
-  data,
-  title = "AI Content Distribution by Political Party",
-  height = 400
-) {
 
-  
-  # Validate data structure
-  if (!all(c("x", "y") %in% names(data))) {
-    stop("Data must contain 'x' and 'y' columns")
-  }
-  
-  # Match colors to parties
-  data_colors <- party_colors[match(data$x, names(party_colors))]
-  data_colors[is.na(data_colors)] <- "#CCCCCC"  # Fallback gray
-  
-  # Convert data to JSON format
-  series_data <- jsonlite::toJSON(
-    lapply(1:nrow(data), function(i) {
-      list(x = data$x[i], y = data$y[i])
-    }),
-    auto_unbox = TRUE
-  )
-  
-    unique_id <- paste0("chart-", sample(1:10000, 1))  # Generate unique ID
-
-  
-  # Create HTML components
-  htmltools::tagList(
-    htmltools::div(id = "custom-treemap"),  # Changed ID to be unique
-    htmltools::tags$script(
-      sprintf(
-        "
-        (function() {
-          // Use unique variable names
-          var treemapOptions = {
-            series: [{ data: %s }],
-            legend: { show: false },
-            chart: {
-              id: 'partyTreemap',
-              height: %d,
-              type: 'treemap',
-              toolbar: { show: false }
-            },
-            title: {
-              text: '%s',
-              align: 'center',
-              style: { fontSize: '16px' }
-            },
-            colors: %s,
-            plotOptions: {
-              treemap: {
-                distributed: true,
-                enableShades: false,
-                dataLabels: {
-                  style: { fontSize: '12px' }
-                }
-              }
-            },
-            tooltip: {
-              style: { fontSize: '14px', color: '#000000' },
-              marker: { show: true, size: 20 }
-            }
-          };
-          
-          // Wait for DOM readiness
-          document.addEventListener('DOMContentLoaded', function() {
-            var treemapChart = new ApexCharts(
-              document.querySelector('#custom-treemap'),
-              treemapOptions
-            );
-            treemapChart.render();
-          });
-        })();
-        ",
-        series_data,
-        height,
-        title,
-        jsonlite::toJSON(as.character(data_colors))
-      )
-    )
-  )
-}
 
 
 # # Generate the treemap
@@ -682,11 +728,50 @@ tm2 <- create_political_treemap_ac(
 
 # htmltools::save_html(as.character(tm), file = "t.html")
 # Embedding Chart into Responsive Container
+# htmltools::tagList(
+#   custom_css2,
+#   tags$div(
+#     class = "apex-container2",
+# htmltools::browsable(tm2)
+#   )
+# )
+
+# Example aggregation: count AI==1 posts by party, keeping list_source
+treemap_df <- full_data %>%
+  filter(ai == 1) %>%
+  mutate(list_source = if_else(list_source %in% c("Parties","Politicians"),
+                               "Parties", "Other Actors")) %>%
+  count(party, list_source, name = "y") %>%
+  transmute(x = party, y, list_source)
+
+# tm2 <- create_political_treemap_ac(
+#   data  = treemap_df,
+#   party_colors = party_colors,
+#   title = get_text("ai_by_party", lang),
+#   height = 400,
+#   list_source_filter = "buttons"     # <- add buttons; omit for old behavior
+# )
+# htmltools::browsable(tm2)
+
+tm2_filtered <- create_political_treemap_ac2(
+  data = treemap_df,
+  title = get_text("ai_by_party", lang),
+  party_colors = party_colors,
+  height = 400,
+  filter_var = "list_source",  # Enable filtering on this column
+  filter_labels = c(
+    "all" = "All",
+    "Parties" = "Parties",
+    "Other Actors" = "Other Actors"
+  )
+)
+
+# Display
 htmltools::tagList(
   custom_css2,
   tags$div(
     class = "apex-container2",
-htmltools::browsable(tm2)
+    htmltools::browsable(tm2_filtered)
   )
 )
 ```
