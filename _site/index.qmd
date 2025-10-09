@@ -590,20 +590,32 @@ create_political_treemap_ac2 <- function(
     })
   )
   
-  # Create chart containers
+  # Wrapper container to prevent height issues
+  wrapper_style <- sprintf(
+    "position: relative; height: %spx; overflow: hidden;",
+    height
+  )
+  
+  # Create chart containers with absolute positioning to prevent stacking
   chart_divs <- lapply(names(charts), function(val) {
     tags$div(
       id = paste0("chart-", container_id, "-", val),
       class = paste0("chart-", container_id),
-      style = if(val != "all") "display: none;" else "",
+      style = sprintf(
+        "%s position: absolute; top: 0; left: 0; width: 100%%;",
+        if(val != "all") "display: none;" else ""
+      ),
       charts[[val]]
     )
   })
   
-  # Return combined widget
+  # Return combined widget with wrapper
   htmltools::tagList(
     button_html,
-    chart_divs
+    tags$div(
+      style = wrapper_style,
+      chart_divs
+    )
   )
 }
 ```
