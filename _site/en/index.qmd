@@ -810,7 +810,7 @@ treemap_df <- full_data %>%
 
 ::: {.panel-tabset}
 
-### All
+### `r get_text("all_actors", lang)`
 
 ```{r}
 # Prepare data for "All"
@@ -903,9 +903,107 @@ htmltools::tagList(
 
 
 
+
 ## `r get_text("platform_text", lang)` {#ki-content-by-party2}
 
+
+::: {.panel-tabset}
+
+### `r get_text("all_actors", lang)`
+
 ```{r}
+# Prepare data for "All"
+treemap_all <- full_data %>%
+  filter(ai == 1) %>%
+  count(platform, name = "y") %>%
+  arrange(desc(y)) %>%
+  transmute(x = platform, y)
+
+# Create chart
+p1 <- create_political_treemap_ac(
+  data = treemap_all,
+  platform_colors = platform_colors,
+  title = get_text("ai_by_platform", lang),
+  height = 400
+)
+
+htmltools::tagList(
+  custom_css2,
+  tags$div(
+    class = "apex-container2",
+    htmltools::browsable(p1)
+  )
+)
+```
+
+### `r get_text("parties_and_politicians", lang)`
+
+
+
+
+
+```{r}
+# Prepare data for "Parties"
+treemap_parties <- full_data %>%
+  filter(ai == 1, list_source %in% c("Parties", "Politicians")) %>%
+  count(platform, name = "y") %>%
+  arrange(desc(y)) %>%
+  transmute(x = platform, y)
+
+# Create chart
+p2 <- create_political_treemap_ac(
+  data = treemap_parties,
+  platform_colors = platform_colors,
+  title = get_text("ai_by_platform2", lang),
+  height = 400
+)
+
+htmltools::tagList(
+  custom_css2,
+  tags$div(
+    class = "apex-container2",
+    htmltools::browsable(p2)
+  )
+)
+```
+
+### `r get_text("other_actors", lang)`
+
+```{r}
+# Prepare data for "Other Actors"
+treemap_others <- full_data %>%
+  filter(ai == 1, !list_source %in% c("Parties", "Politicians")) %>%
+  count(platform, name = "y") %>%
+  arrange(desc(y)) %>%
+  transmute(x = platform, y)
+
+# Create chart
+p3 <- create_political_treemap_ac(
+  data = treemap_others,
+  platform_colors = platform_colors,
+  title = get_text("ai_by_platform3", lang),
+  height = 400
+)
+
+
+htmltools::tagList(
+  custom_css2,
+  tags$div(
+    class = "apex-container2",
+    htmltools::browsable(p3)
+  )
+)
+```
+
+:::
+
+
+> `r get_text("ai_by_platform_descr", lang)`
+
+
+
+
+```{r, eval 0 F}
 # Custom CSS for Responsive Container
 custom_css <- tags$style(HTML("
   .apex-container0 {
@@ -959,7 +1057,7 @@ cities_data <- data.frame(
 tm <- create_political_treemap_ac(
   data = cities_data,
   title = get_text("platform_text", lang),
-      party_colors = c("Facebook" = "#1877F2", "Instagram" = "#E4405F", "TikTok" = "#69C9D0", "X" = "000000"),
+      platform_colors = c("Facebook" = "#1877F2", "Instagram" = "#E4405F", "TikTok" = "#69C9D0", "X" = "000000"),
   height = 400
 )
 
@@ -980,7 +1078,11 @@ htmltools::browsable(tm)
 ```
 
 
-> `r get_text("by_platform_descr", lang)`
+<!-- > `r get_text("by_platform_descr", lang)` -->
+
+
+
+
 
 ## `r get_text("by_type_text", lang)` {#ki-content-by-party2}
 
