@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "",
+    "text": "WARNING THIS ONLY SHOWS A MOCK-UP THE DATA IS NOT REAL YET! DO NOTE CITE.\nWelcome to the AI Explorer. This view brings together posts that our pipeline flagged as AI-generated and \nlets you investigate patterns across actors, platforms, and message content. Use column filters to slice \nthe data, sort on any header, and search the post text to surface specific phrases.\n\n\n\n\n\nSort & Search\nClick any column header to sort. Use the search box above the table to find words in the post text (case-insensitive).\n\n\n\n\n\nFilter by Actor\nNarrow the list to a party or actor type. Select “All” (default) to clear the filter and return to the full set of images.\n\n\n\n\n\nFilter by Platform\nLimit results to all the platforms we are tracking: Facebook, Instagram, X, or TikTok.\n\n\n\n\n\nTags (topics + themes)\nExplore posts with our annotated topics and themes. If a +N chip appears on a post with many tags, you can hover over the chip to see the remaining tags.\n\n\n\n\n\nAI Label Indicator\n\nThe \n\n column marks AI disclosure (either in text, image, or by the platform): \n\n labeled (✓), \n\n no label (×), \n\n\n\n\n\n\nOpen the Original\n\nUse the \n\n column to open the post in a new tab on its source platform and verify content in context."
+  },
+  {
+    "objectID": "index.html#explore",
+    "href": "index.html#explore",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "Explore",
+    "text": "Explore\n\n\n\n\n\n\n\n\nAI label present:\n\n\n\nLabeled as AI\n\n\n\nNo AI label"
+  }
+]
