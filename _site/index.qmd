@@ -566,17 +566,38 @@ create_political_treemap_ac2 <- function(
     charts[[val]] <- make_chart(data[data$filter_group == val, ])
   }
   
-  # Create button HTML with simpler show/hide logic
+  # Updated onclick that handles positioning properly
+  make_onclick <- function(val) {
+    sprintf(
+      "document.querySelectorAll('.chart-%s').forEach(el => {
+        el.style.display='none'; 
+        el.style.position='absolute'; 
+        el.style.visibility='hidden';
+      }); 
+      var targetChart = document.getElementById('chart-%s-%s');
+      targetChart.style.display='block'; 
+      targetChart.style.position='relative'; 
+      targetChart.style.visibility='visible';
+      document.querySelectorAll('.filter-btn-%s').forEach(btn => {
+        btn.classList.remove('active'); 
+        btn.style.background='#fff'; 
+        btn.style.color='#333';
+      }); 
+      this.classList.add('active'); 
+      this.style.background='#007bff'; 
+      this.style.color='#fff';",
+      container_id, container_id, val, container_id
+    )
+  }
+  
+  # Create button HTML with improved show/hide logic
   button_html <- tags$div(
     class = "treemap-filter-buttons",
     style = "text-align: center; margin-bottom: 15px;",
     lapply(names(filter_labels), function(val) {
       tags$button(
         class = paste0("filter-btn-", container_id, if(val == "all") " active" else ""),
-        onclick = sprintf(
-          "document.querySelectorAll('.chart-%s').forEach(el => el.style.display='none'); document.getElementById('chart-%s-%s').style.display='block'; document.querySelectorAll('.filter-btn-%s').forEach(btn => {btn.classList.remove('active'); btn.style.background='#fff'; btn.style.color='#333';}); this.classList.add('active'); this.style.background='#007bff'; this.style.color='#fff';",
-          container_id, container_id, val, container_id
-        ),
+        onclick = make_onclick(val),
         style = paste0(
           "margin: 0 5px; padding: 8px 16px; ",
           "border: 1px solid #ddd; border-radius: 4px; ",
@@ -590,18 +611,19 @@ create_political_treemap_ac2 <- function(
     })
   )
   
-  # Wrapper with relative positioning only
+  # Wrapper with relative positioning
   wrapper_style <- "position: relative;"
   
-  # Create chart containers - only hidden ones get position:absolute to avoid taking space
+  # Create chart containers - initially all absolute except the first
   chart_divs <- lapply(names(charts), function(val) {
+    is_first <- (val == "all")
     tags$div(
       id = paste0("chart-", container_id, "-", val),
       class = paste0("chart-", container_id),
-      style = if(val != "all") {
+      style = if(!is_first) {
         "display: none; position: absolute; top: 0; left: 0; width: 100%; visibility: hidden;"
       } else {
-        "display: block;"
+        "display: block; position: relative; visibility: visible;"
       },
       charts[[val]]
     )
@@ -763,28 +785,114 @@ treemap_df <- full_data %>%
 # )
 # htmltools::browsable(tm2)
 
-tm2_filtered <- create_political_treemap_ac2(
-  data = treemap_df,
-  title = get_text("ai_by_party", lang),
+# tm2_filtered <- create_political_treemap_ac2(
+#   data = treemap_df,
+#   title = get_text("ai_by_party", lang),
+#   party_colors = party_colors,
+#   height = 400,
+#   filter_var = "list_source",  # Enable filtering on this column
+#   filter_labels = c(
+#     "all" = "All",
+#     "Parties" = "Parties",
+#     "Other Actors" = "Other Actors"
+#   )
+# )
+# 
+# # Display
+# htmltools::tagList(
+#   custom_css2,
+#   tags$div(
+#     class = "apex-container2",
+#     htmltools::browsable(tm2_filtered)
+#   )
+# )
+```
+
+::: {.panel-tabset}
+
+### All
+
+```{r}
+# Prepare data for "All"
+treemap_all <- full_data %>%
+  filter(ai == 1) %>%
+  count(party, name = "y") %>%
+  arrange(desc(y)) %>%
+  transmute(x = party, y)
+
+# Create chart
+p1 <- create_political_treemap_ac(
+  data = treemap_all,
   party_colors = party_colors,
-  height = 400,
-  filter_var = "list_source",  # Enable filtering on this column
-  filter_labels = c(
-    "all" = "All",
-    "Parties" = "Parties",
-    "Other Actors" = "Other Actors"
-  )
+  title = get_text("ai_by_party", lang),
+  height = 400
 )
 
-# Display
 htmltools::tagList(
   custom_css2,
   tags$div(
     class = "apex-container2",
-    htmltools::browsable(tm2_filtered)
+    htmltools::browsable(p1)
   )
 )
 ```
+
+### Parties
+
+```{r}
+# Prepare data for "Parties"
+treemap_parties <- full_data %>%
+  filter(ai == 1, list_source %in% c("Parties", "Politicians")) %>%
+  count(party, name = "y") %>%
+  arrange(desc(y)) %>%
+  transmute(x = party, y)
+
+# Create chart
+p2 <- create_political_treemap_ac(
+  data = treemap_parties,
+  party_colors = party_colors,
+  title = get_text("ai_by_party", lang),
+  height = 400
+)
+
+htmltools::tagList(
+  custom_css2,
+  tags$div(
+    class = "apex-container2",
+    htmltools::browsable(p2)
+  )
+)
+```
+
+### Other Actors
+
+```{r}
+# Prepare data for "Other Actors"
+treemap_others <- full_data %>%
+  filter(ai == 1, !list_source %in% c("Parties", "Politicians")) %>%
+  count(party, name = "y") %>%
+  arrange(desc(y)) %>%
+  transmute(x = party, y)
+
+# Create chart
+p3 <- create_political_treemap_ac(
+  data = treemap_others,
+  party_colors = party_colors,
+  title = get_text("ai_by_party", lang),
+  height = 400
+)
+
+
+htmltools::tagList(
+  custom_css2,
+  tags$div(
+    class = "apex-container2",
+    htmltools::browsable(p3)
+  )
+)
+```
+
+:::
 
 
 > `r get_text("ai_by_party_descr", lang)`
