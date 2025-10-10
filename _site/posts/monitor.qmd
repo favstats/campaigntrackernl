@@ -65,19 +65,29 @@ format:
 <div class="blog-post-content">
 ```
 
-> How Confident are People in the Netherlands in their Ability to Detect AI?
+
+
+> How Confident are people in the Netherlands in their ability to detect AI?
+
+
+![](monitor_title.png){fig-align="center"}
 
 While the CampAIgn Tracker sheds light on what kind of AI-generated images and videos circulate ahead of the 2025 Parliamentary election, the [AI Opinion Monitor](https://monitor.algosoc.org/en/) (developed by the [AlgoSoc Consortium](https://algosoc.org/)) reveals how citizens themselves experience and understand this shift. The monitor adds important context to the CampAIgn Tracker by showing how people in the Netherlands perceive and navigate the growing presence of AI in public life. For the past two years, it has followed among other things, changes in how often people encounter AI-generated content, how confident they feel in recognizing it, and who they think should be held responsible for it.
 
+
+
 ::: {#fig-exposure}
-![Figure 1: Exposure to AI-generated content (March 2024–May 2025).](monitor0.png){fig-align="center"}
+![Exposure to AI-generated content (March 2024–May 2025).](monitor0.png){fig-align="center"}
 :::
+
+
 
 
 Our most recent findings show a sharp rise in exposure to AI-generated video—technology that was until recently niche but is now widely accessible, for example via OpenAI's [Sora text-to-video model](https://www.washingtonpost.com/technology/2025/10/07/sora-cameo-deepfake-consent/). In our AI Opinion Monitor we find that the share of people who say they *often* see AI-generated videos nearly doubled, from **25% in March 2024 to 44% in May 2025** (@fig-exposure). For AI-generated images, the increase is even sharper, from **24% to 53%**. Encounters are most common among younger citizens: **76%** of those aged 16–29 report frequently seeing AI-generated content. Political orientation also plays a role, with **61% of left-leaning** respondents versus **53% of right-leaning** respondents saying they see such material often.
 
+
 ::: {#fig-confidence}
-![Figure 2: People's confidence in themselves to detect AI-generated content (March 2024–May 2025).](monitor2.png){fig-align="center"}
+![](monitor2.png){fig-align="center" fig-cap="Figure 2: People's confidence in themselves to detect AI-generated content (March 2024–May 2025)."}
 :::
 
 
@@ -94,7 +104,7 @@ Still, skepticism about others' ability remains widespread. **Journalists** are 
 
 
 ::: {#fig-responsible}
-![Figure 4: Who is responsible for harmful AI content? (May 2025).](monitor.4png){fig-align="center"}
+![Figure 4: Who is responsible for harmful AI content? (May 2025).](monitor4.png){fig-align="center"}
 :::
 
 
