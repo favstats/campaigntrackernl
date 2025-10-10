@@ -76,44 +76,46 @@ While the CampAIgn Tracker sheds light on what kind of AI-generated images and v
 
 
 
-::: {#fig-exposure}
 ![](monitor0.png){fig-align="center"}
 
 <center>
 Figure 1: Exposure to AI-generated content (March 2024–May 2025)
 </center>
-:::
 
 
 
 
-Our most recent findings show a sharp rise in exposure to AI-generated video—technology that was until recently niche but is now widely accessible, for example via OpenAI's [Sora text-to-video model](https://www.washingtonpost.com/technology/2025/10/07/sora-cameo-deepfake-consent/). In our AI Opinion Monitor we find that the share of people who say they *often* see AI-generated videos nearly doubled, from **25% in March 2024 to 44% in May 2025** (@fig-exposure). For AI-generated images, the increase is even sharper, from **24% to 53%**. Encounters are most common among younger citizens: **76%** of those aged 16–29 report frequently seeing AI-generated content. Political orientation also plays a role, with **61% of left-leaning** respondents versus **53% of right-leaning** respondents saying they see such material often.
+Our most recent findings show a sharp rise in exposure to AI-generated video—technology that was until recently niche but is now widely accessible, for example via OpenAI's [Sora text-to-video model](https://www.washingtonpost.com/technology/2025/10/07/sora-cameo-deepfake-consent/). In our AI Opinion Monitor we find that the share of people who say they *often* see AI-generated videos nearly doubled, from **25% in March 2024 to 44% in May 2025** (*Figure 1*). For AI-generated images, the increase is even sharper, from **24% to 53%**. Encounters are most common among younger citizens: **76%** of those aged 16–29 report frequently seeing AI-generated content. Political orientation also plays a role, with **61% of left-leaning** respondents versus **53% of right-leaning** respondents saying they see such material often.
 
 
-::: {#fig-confidence}
-![](monitor2.png){fig-align="center" fig-cap="Figure 2: People's confidence in themselves to detect AI-generated content (March 2024–May 2025)."}
-:::
+![](monitor2.png){fig-align="center"}
 
+<center>
+Figure 2: People's confidence in themselves to detect AI-generated content (March 2024–May 2025).
+</center>
 
-As shown in @fig-confidence, while exposure has grown, people's *confidence* in spotting AI content has not collapsed in the way many would have feared, in fact the opposite seems to be the case: people have increasingly become more confident in their ability to detect AI-generated content. In 2024, a large majority of **68%** said they were *not confident* in their ability to detect AI. By mid-2025, that figure dropped to **52%**.
-
-
-::: {#fig-confidence2}
-![Figure 3: Confidence in detecting AI-generated content (May 2025).](monitor3.png){fig-align="center"}
-:::
+As shown in *Figure 2*, while exposure has grown, people's *confidence* in spotting AI content has not collapsed in the way many would have feared, in fact the opposite seems to be the case: people have increasingly become more confident in their ability to detect AI-generated content. In 2024, a large majority of **68%** said they were *not confident* in their ability to detect AI. By mid-2025, that figure dropped to **52%**.
 
 
 
-Still, skepticism about others' ability remains widespread. **Journalists** are the most trusted group to recognize AI content, but even here, only **27%** of respondents express confidence. Trust is lowest in the general public: **76%** say they don't trust ordinary people to detect AI—followed by **friends and family (69%)**.
+![](monitor3.png){fig-align="center"}
+
+<center>
+Figure 3: Confidence in detecting AI-generated content (May 2025).
+</center>
 
 
-::: {#fig-responsible}
-![Figure 4: Who is responsible for harmful AI content? (May 2025).](monitor4.png){fig-align="center"}
-:::
+Still, skepticism about others' ability remains widespread. **Journalists** are the most trusted group to recognize AI content, but even here, only **27%** of respondents express confidence (Figure 3). Trust is lowest in the general public: **76%** say they don't trust ordinary people to detect AI—followed by **friends and family (69%)**.
 
 
 
-And when it comes to accountability (@fig-responsible), most Dutch citizens point the finger at *those who create the content*: **74%** believe the individual who made the AI-generated material should be held responsible. Still, **67%** also blame *social media platforms* for allowing such content to spread, and **59%** say the *government* bears some responsibility for not preventing or regulating it.
+![](monitor4.png){fig-align="center"}
+
+<center>
+Figure 4: Who is responsible for harmful AI content? (May 2025).
+</center>
+
+And when it comes to accountability (Figure 4), most Dutch citizens point the finger at *those who create the content*: **74%** believe the individual who made the AI-generated material should be held responsible. Still, **67%** also blame *social media platforms* for allowing such content to spread, and **59%** say the *government* bears some responsibility for not preventing or regulating it.
 
 Check out and follow the Dutch [AI Opinion Monitor](https://monitor.algosoc.org/en/) to play around with the data and get more in-depth insights yourself!
 
