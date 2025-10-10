@@ -230,7 +230,7 @@ full_data <- workwith %>%
   distinct(id, .keep_all = T) %>% 
   mutate(posted_date = timevar)
 
-# saveRDS(full_data, file = "../data/full_data.rds")
+saveRDS(full_data, file = "../data/full_data.rds")
 
 # workwith %>% 
 #   count(ai)
@@ -1874,113 +1874,141 @@ htmltools::tagList(
 ### `r get_text("parties_and_politicians", lang)`
 
 ```{r}
-
-
-library(dplyr)
 library(apexcharter)
+library(dplyr)
+library(stringr)
+library(htmltools)
 
-med_df <- full_data %>%
-  filter(list_source %in% c("Politicians","Parties"), ai == 1) %>%
-  mutate(type = case_when(
-    str_detect(image_s_video_s_included, "image") ~ get_text("img", lang),
-    str_detect(image_s_video_s_included, "video") ~ get_text("vid", lang),
-    TRUE ~ NA_character_
-  )) %>%
-  filter(!is.na(type)) %>%
-  count(type, name = "n") %>%
-  mutate(pct = 100 * n / sum(n),
-         label = sprintf("%s (n=%d)", type, n)) %>%
-  arrange(desc(pct))
-
-medienformatte_bar <- med_df %>%
-  apex(type = "bar", mapping = aes(x = label, y = round(pct, 1))) %>%
-  ax_chart(
-    height = 200,
-    background = "transparent",
-    foreColor  = "#000",
-    animations = list(enabled = FALSE),
-    redrawOnWindowResize  = TRUE,
-    redrawOnParentResize  = TRUE,
-    toolbar = list(show = FALSE)
-  ) %>%
-  ax_plotOptions(
-    bar = list(horizontal = TRUE, barHeight = "60%", borderRadius = 6, distributed = TRUE)
-  ) %>%
-  ax_dataLabels(enabled = TRUE,
-    formatter = JS("function(v){ return (Math.round(v*10)/10) + '%'; }")
-  ) %>%
-  ax_xaxis(max = 100,
-    labels = list(formatter = JS("function(v){ return v + '%'; }")),
-    title  = list(text = get_text('percent', lang))
-  ) %>%
-  ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
-  ax_colors(c("#FF6347", "#4682B4")) %>%
-  ax_legend(show = FALSE) %>%
-  ax_title(text = get_text("title_type", lang), align = "center",
-           style = list(fontSize = "18px", fontWeight = "bold"))
-
-htmltools::tagList(
-  custom_css,
-  tags$div(
-    class = "apex-container",
-htmltools::browsable(medienformatte_bar)
+#' Create a media format (image/video) chart
+#'
+#' @param data Full dataset (will be filtered internally as needed)
+#' @param lang Language code for translations (passed to get_text)
+#' @param chart_height Height of the chart in pixels (default: 200)
+#' @param img_color Color for image bars (default: "#FF6347")
+#' @param vid_color Color for video bars (default: "#4682B4")
+#' @param custom_css Optional CSS for styling
+#'
+#' @return An apexcharter plot wrapped in HTML tags
+create_media_format_chart <- function(data, 
+                                       lang, 
+                                       chart_height = 200,
+                                       img_color = "#FF6347",
+                                       vid_color = "#4682B4",
+                                       custom_css = NULL) {
+  
+  # Cache localized labels
+  img_lbl <- get_text("img", lang)
+  vid_lbl <- get_text("vid", lang)
+  
+  # Prepare data
+  med_df <- data %>%
+    mutate(type = case_when(
+      str_detect(image_s_video_s_included, "image") ~ img_lbl,
+      str_detect(image_s_video_s_included, "video") ~ vid_lbl,
+      TRUE ~ NA_character_
+    )) %>%
+    filter(!is.na(type)) %>%
+    count(type, name = "n") %>%
+    mutate(
+      pct = 100 * n / sum(n),
+      label = sprintf("%s (n=%d)", type, n)
+    ) %>%
+    arrange(desc(pct))
+  
+  # CHANGED: Map colors by actual type content (not order)
+  cats <- med_df$type
+  colors_vec <- ifelse(cats == img_lbl, img_color,
+                 ifelse(cats == vid_lbl, vid_color, "#9E9E9E"))
+  
+  # Create the chart
+  medienformatte_bar <- med_df %>%
+    apex(type = "bar", mapping = aes(x = label, y = round(pct, 1))) %>%
+    ax_chart(
+      height = chart_height,
+      background = "transparent",
+      foreColor  = "#000",
+      animations = list(enabled = FALSE),
+      redrawOnWindowResize  = TRUE,
+      redrawOnParentResize  = TRUE,
+      toolbar = list(show = FALSE)
+    ) %>%
+    ax_plotOptions(
+      bar = list(horizontal = TRUE, barHeight = "60%", borderRadius = 6, distributed = TRUE)
+    ) %>%
+    ax_dataLabels(
+      enabled = TRUE,
+      formatter = JS("function(v){ return (Math.round(v*10)/10) + '%'; }")
+    ) %>%
+    ax_xaxis(
+      max = 100,
+      labels = list(formatter = JS("function(v){ return v + '%'; }")),
+      title  = list(text = get_text('percent', lang))
+    ) %>%
+    ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
+    ax_colors(colors_vec) %>%  # CHANGED: per-point colors mapped by label
+    ax_legend(
+      show = TRUE,
+      position = "bottom",
+      customLegendItems = c(img_lbl, vid_lbl),
+      markers = list(fillColors = c(img_color, vid_color)),
+      labels = list(colors = "#000")
+    ) %>%
+    ax_title(
+      text = get_text("title_type", lang), 
+      align = "center",
+      style = list(fontSize = "18px", fontWeight = "bold")
+    ) %>%
+    ax_tooltip(
+      shared = FALSE,
+      custom = JS(sprintf("
+        function({series, seriesIndex, dataPointIndex, w}) {
+          var lab = w.globals.labels[dataPointIndex];
+          var type = lab.split(' (n=')[0];
+          var col = (type === %s) ? '%s' : (type === %s ? '%s' : '#9E9E9E');
+          var val = series[seriesIndex][dataPointIndex];
+          return '<div style=\"padding:6px 8px\">' +
+                 '<div style=\"display:flex;align-items:center;gap:6px\">' +
+                 '<span style=\"width:10px;height:10px;border-radius:50%%;background:'+col+'\"></span>' +
+                 '<b>'+type+'</b></div>' +
+                 '<div>'+Math.round(val*10)/10+'%%</div></div>';
+        }",
+        jsonlite::toJSON(img_lbl, auto_unbox = TRUE),
+        img_color,
+        jsonlite::toJSON(vid_lbl, auto_unbox = TRUE),
+        vid_color
+      ))
+    )
+  
+  # Return wrapped chart
+  tagList(
+    custom_css,
+    tags$div(
+      class = "apex-container",
+      browsable(medienformatte_bar)
+    )
   )
-)
+}
+
+
+full_data %>%
+  filter(list_source %in% c("Politicians","Parties")) %>% 
+  filter(ai == 1) %>%
+  create_media_format_chart(lang = lang)
+
+
+
+
 ```
+
 
 ### `r get_text("other_actors", lang)`
 
 ```{r}
-library(dplyr)
-library(apexcharter)
 
-med_df <- full_data %>%
-  filter(!(list_source %in% c("Politicians","Parties")), ai == 1) %>%
-  mutate(type = case_when(
-    str_detect(image_s_video_s_included, "image") ~ get_text("img", lang),
-    str_detect(image_s_video_s_included, "video") ~ get_text("vid", lang),
-    TRUE ~ NA_character_
-  )) %>%
-  filter(!is.na(type)) %>%
-  count(type, name = "n") %>%
-  mutate(pct = 100 * n / sum(n),
-         label = sprintf("%s (n=%d)", type, n)) %>%
-  arrange(desc(pct))
-
-medienformatte_bar <- med_df %>%
-  apex(type = "bar", mapping = aes(x = label, y = round(pct, 1))) %>%
-  ax_chart(
-    height = 200,
-    background = "transparent",
-    foreColor  = "#000",
-    animations = list(enabled = FALSE),
-    redrawOnWindowResize  = TRUE,
-    redrawOnParentResize  = TRUE,
-    toolbar = list(show = FALSE)
-  ) %>%
-  ax_plotOptions(
-    bar = list(horizontal = TRUE, barHeight = "60%", borderRadius = 6, distributed = TRUE)
-  ) %>%
-  ax_dataLabels(enabled = TRUE,
-    formatter = JS("function(v){ return (Math.round(v*10)/10) + '%'; }")
-  ) %>%
-  ax_xaxis(max = 100,
-    labels = list(formatter = JS("function(v){ return v + '%'; }")),
-    title  = list(text = get_text('percent', lang))
-  ) %>%
-  ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
-  ax_colors(c("#FF6347", "#4682B4")) %>%
-  ax_legend(show = FALSE) %>%
-  ax_title(text = get_text("title_type", lang), align = "center",
-           style = list(fontSize = "18px", fontWeight = "bold"))
-
-htmltools::tagList(
-  custom_css,
-  tags$div(
-    class = "apex-container",
-htmltools::browsable(medienformatte_bar)
-  )
-)
+full_data %>%
+  filter(!(list_source %in% c("Politicians","Parties"))) %>% 
+  filter(ai == 1) %>%
+  create_media_format_chart(lang = lang)
 ```
 
 
@@ -2113,172 +2141,143 @@ htmltools::browsable(like_real_bar)
 
 ## `r get_text("tonal_analysis", lang)`
 
+```{r}
+library(apexcharter)
+library(dplyr)
+library(htmltools)
+
+#' Create a tonality sentiment chart
+#'
+#' @param data Full dataset (will be filtered internally for ai == 1)
+#' @param lang Language code for translations (passed to get_text)
+#' @param exclude_sources Character vector of list_source values to exclude (default: c("Politicians", "Parties"))
+#' @param custom_css Optional CSS for styling
+#'
+#' @return An apexcharter plot wrapped in HTML tags
+create_tonality_chart <- function(data, 
+                                   lang, 
+                                   exclude_sources = c("Politicians", "Parties"),
+                                   custom_css = NULL) {
+  
+  # Filter data
+  filtered_data <- data 
+  # Prepare negative tendency data
+  negative_data <- filtered_data %>%
+    count(negative_tendency_tonality) %>% 
+    rename(tonalität = negative_tendency_tonality)
+  
+  # Prepare positive tendency data
+  positive_data <- filtered_data %>%
+    count(positive_tendency_tonality) %>% 
+    rename(tonalität = positive_tendency_tonality)
+  
+  # Combine and clean data
+  tonalitatdata <- positive_data %>% 
+    bind_rows(negative_data) %>%
+    mutate(tendenz_kurz = case_when(
+      tonalität == "Negative tendency/tonality present" ~ get_text("negative", lang),
+      tonalität == "Positive tendency/tonality present" ~ get_text("positive", lang),
+      TRUE ~ NA_character_
+    )) %>% 
+    drop_na()
+  
+  # Cache localized labels
+  neg_lbl <- get_text("negative", lang)
+  pos_lbl <- get_text("positive", lang)
+  
+  # Define colors
+  green <- "#4CAF50"
+  red <- "#F44336"
+  gray <- "#9E9E9E"
+  
+  # Create color vector based on categories
+  cats <- tonalitatdata$tendenz_kurz
+  colors_vec <- ifelse(cats == pos_lbl, green,
+                 ifelse(cats == neg_lbl, red, gray))
+  
+  # Create the chart
+  tonchart <- tonalitatdata %>% 
+    apex(type = "bar", mapping = aes(x = tendenz_kurz, y = n)) %>%
+    ax_plotOptions(bar = list(barHeight = "60%", borderRadius = 5, distributed = TRUE)) %>%
+    ax_colors(colors_vec) %>%
+    ax_dataLabels(
+      enabled = TRUE, 
+      formatter = JS(paste0("function(val){return val+' ", get_text("theposts", lang),"';}"))
+    ) %>%
+    ax_xaxis(title = list(text = get_text("numberposts", lang))) %>%
+    ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
+    ax_title(
+      text = get_text("sentiment", lang), 
+      align = "center",
+      style = list(fontSize = "18px", fontWeight = "bold")
+    ) %>%
+    ax_tooltip(
+      shared = FALSE,
+      custom = JS(sprintf("
+        function({series, seriesIndex, dataPointIndex, w}) {
+          var lab = w.globals.labels[dataPointIndex];
+          var col = (lab === %s) ? '#F44336' : (lab === %s ? '#4CAF50' : '#9E9E9E');
+          var val = series[seriesIndex][dataPointIndex];
+          return '<div style=\"padding:6px 8px\">' +
+                 '<div style=\"display:flex;align-items:center;gap:6px\">' +
+                 '<span style=\"width:10px;height:10px;border-radius:50%%;background:'+col+'\"></span>' +
+                 '<b>'+lab+'</b></div>' +
+                 '<div>n: '+val+' %s</div></div>';
+        }",
+        jsonlite::toJSON(neg_lbl, auto_unbox = TRUE),
+        jsonlite::toJSON(pos_lbl, auto_unbox = TRUE),
+        get_text("theposts", lang)
+      ))
+    ) %>%
+    ax_legend(
+      position = "bottom",
+      customLegendItems = c(pos_lbl, neg_lbl),
+      markers = list(fillColors = c(green, red)),
+      labels = list(colors = "#000")
+    )
+  
+  # Return wrapped chart
+  tagList(
+    custom_css,
+    tags$div(
+      class = "apex-container",
+      browsable(tonchart)
+    )
+  )
+}
+
+```
+
+
 ::: {.panel-tabset}
 
 ### `r get_text("parties_and_politicians", lang)`
 
 
 ```{r}
-library(apexcharter)
-library(dplyr)
 
-# Example Data
-negative_tendenz_data <- full_data %>%
-  filter(list_source %in% c("Politicians", "Parties")) %>% 
-  filter(ai == 1) %>%
-  count(negative_tendency_tonality) %>% 
-  rename(tonalität = negative_tendency_tonality)
+tondat <- full_data %>%
+  filter(list_source %in% c("Politicians", "Parties")) %>%
+    filter(ai == 1)
+  
 
-
-# Example Data
-positive_tendenz_data <- full_data %>%
-  filter(list_source %in% c("Politicians", "Parties")) %>% 
-  filter(ai == 1) %>%
-  count(positive_tendency_tonality) %>% 
-  rename(tonalität = positive_tendency_tonality)
-
- tonalitatdata <- positive_tendenz_data %>% 
-  bind_rows(negative_tendenz_data)  %>%
-
-  mutate(tendenz_kurz = case_when(
-    # negative_tendency_tonality == "Negative Tendenz/Tonalität vorhanden" & 
-    
-      tonalität == "Negative tendency/tonality present" ~ get_text("negative", lang),
-    
-      tonalität == "Positive tendency/tonality present" ~ get_text("positive", lang),
-    
-    
-    TRUE ~ NA_character_
-  )) %>% 
-    drop_na()
-
-# Assuming tonalitatdata is your data frame
-tonchart <- tonalitatdata %>% 
-  arrange(desc(n)) %>% 
-  apex(type = "bar", mapping = aes(x = tendenz_kurz, y = n)) %>%
-  ax_plotOptions(
-    bar = list(
-      barHeight = "60%", 
-      borderRadius = 5,  # Rounded corners
-      distributed = TRUE  # Enables different colors for each bar
-    )
-  ) %>%
-  ax_colors(c( "#4CAF50","#F44336", "#9E9E9E")) %>%
-  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
-  ax_xaxis(
-    title = list(text = get_text("numberposts", lang))
-  ) %>%
-  ax_yaxis(
-    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
-  ) %>%
-  ax_title(
-    text = get_text("sentiment", lang),
-    align = "center",
-    style = list(fontSize = "18px", fontWeight = "bold")
-  ) %>%
-  ax_tooltip(
-    shared = TRUE,
-    y = list(
-      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
-    )
-  ) %>%
-  ax_legend(
-    position = "bottom",
-    labels = list(colors = "#000")
-  )
-
-
-htmltools::tagList(
-  custom_css,
-  tags$div(
-    class = "apex-container",
-htmltools::browsable(tonchart)
-  )
-)
+create_tonality_chart(tondat, lang = lang, custom_css = custom_css)
 ```
 
 
 ### `r get_text("other_actors", lang)`
 
-
 ```{r}
-library(apexcharter)
-library(dplyr)
 
-# Example Data
-negative_tendenz_data <- full_data %>%
-  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
-  filter(ai == 1) %>%
-  count(negative_tendency_tonality) %>% 
-  rename(tonalität = negative_tendency_tonality)
+tondat <- full_data %>%
+  filter(!(list_source %in% c("Politicians", "Parties"))) %>%
+    filter(ai == 1)
+  
 
-
-# Example Data
-positive_tendenz_data <- full_data %>%
-  filter(!(list_source %in% c("Politicians", "Parties"))) %>% 
-  filter(ai == 1) %>%
-  count(positive_tendency_tonality)%>% 
-  rename(tonalität = positive_tendency_tonality)
-
- tonalitatdata <- positive_tendenz_data %>% 
-  bind_rows(negative_tendenz_data)  %>%
-
-  mutate(tendenz_kurz = case_when(
-    # negative_tendency_tonality == "Negative Tendenz/Tonalität vorhanden" & 
-    
-      tonalität == "Negative tendency/tonality present" ~ get_text("negative", lang),
-    
-      tonalität == "Positive tendency/tonality present" ~ get_text("positive", lang),
-    
-    
-    TRUE ~ NA_character_
-  )) %>% 
-    drop_na()
-
-# Assuming tonalitatdata is your data frame
-tonchart <- tonalitatdata %>% 
-  arrange(desc(n)) %>% 
-  apex(type = "bar", mapping = aes(x = tendenz_kurz, y = n)) %>%
-  ax_plotOptions(
-    bar = list(
-      barHeight = "60%", 
-      borderRadius = 5,  # Rounded corners
-      distributed = TRUE  # Enables different colors for each bar
-    )
-  ) %>%
-  ax_colors(c( "#4CAF50","#F44336", "#9E9E9E")) %>%
-  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
-  ax_xaxis(
-    title = list(text = get_text("numberposts", lang))
-  ) %>%
-  ax_yaxis(
-    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
-  ) %>%
-  ax_title(
-    text = get_text("sentiment", lang),
-    align = "center",
-    style = list(fontSize = "18px", fontWeight = "bold")
-  ) %>%
-  ax_tooltip(
-    shared = TRUE,
-    y = list(
-      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
-    )
-  ) %>%
-  ax_legend(
-    position = "bottom",
-    labels = list(colors = "#000")
-  )
-
-
-htmltools::tagList(
-  custom_css,
-  tags$div(
-    class = "apex-container",
-htmltools::browsable(tonchart)
-  )
-)
+create_tonality_chart(tondat, lang = lang, custom_css = custom_css)
 ```
+
+
 
 
 :::
@@ -2313,6 +2312,7 @@ topic_map_en <- c(
   topic_education_culture   = "Education and culture",
   topic_constitution_system = "Constitution of the Political System",
   topic_civil_rights        = "Civil rights",
+  topic_constitution = "Constitutional Order",
   topic_other_political     = "Other political topic"
 )
 
@@ -2367,6 +2367,7 @@ topic_colors <- setNames(
     "#6B5B95", # Education & culture
     "#5C6BC0", # Constitution/system
     "#9E0059", # Civil rights
+    "#D9E6F2",
     "#FF6F61"  # Other political topic
   ),
   topic_labels_local
