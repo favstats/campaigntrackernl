@@ -77,7 +77,11 @@ While the CampAIgn Tracker sheds light on what kind of AI-generated images and v
 
 
 ::: {#fig-exposure}
-![Exposure to AI-generated content (March 2024–May 2025).](monitor0.png){fig-align="center"}
+![](monitor0.png){fig-align="center"}
+
+<center>
+Figure 1: Exposure to AI-generated content (March 2024–May 2025)
+</center>
 :::
 
 
