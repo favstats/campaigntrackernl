@@ -17,58 +17,53 @@ format:
 <!-- Custom CSS -->
 
 ```{=html}
-
 <style>
-body {
+.blog-post-content {
   font-family: "Helvetica Neue", Arial, sans-serif;
   line-height: 1.6;
   color: #333;
   background-color: #f9f9f9;
   padding: 20px;
 }
-
-h1, h2, h3 {
+.blog-post-content h1, .blog-post-content h2, .blog-post-content h3 {
   text-align: center;
   color: #004080;
   margin-bottom: 0.5em;
 }
-
-p {
+.blog-post-content p {
   text-align: justify;
   margin: 1em 0;
 }
-
-img {
+.blog-post-content img {
   display: block;
   margin: 20px auto;
   max-width: 100%;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-
-blockquote {
+.blog-post-content blockquote {
   font-style: italic;
   background: #f0f8ff;
   padding: 15px;
   border-left: 4px solid #004080;
   margin: 20px 0;
 }
-
-.callout {
+.blog-post-content .callout {
   background-color: #e7f3fe;
   padding: 15px;
   border-left: 5px solid #2196F3;
   margin: 20px 0;
   border-radius: 5px;
 }
-
-.credit {
+.blog-post-content .credit {
   font-size: 0.9em;
   color: #555;
   text-align: center;
   margin-top: -10px;
 }
 </style>
+
+<div class="blog-post-content">
 ```
 
 
@@ -126,3 +121,8 @@ Two institutions provide financial support that made this expansion possible.
 ### SIDN Fund:
 
 >The second funding source comes from [SIDN Fund](https://www.sidnfonds.nl/), which supports projects contributing to a strong internet, empowered internet users, or research on the internet's significance for public values. SIDN Fund operates in three areas: strengthening the internet as an open, free, and trusted infrastructure; empowering adults, young people, and children with skills for safe and confident internet use; and promoting public values while counteracting negative internet effects. The fund supports initiatives addressing cybersecurity, data autonomy, disinformation, and digital accessibility within Dutch society. Our project fits within SIDN Fund's mission by addressing disinformation risks and promoting digital literacy regarding AI-generated content. The fund specifically prioritizes projects with impact on Dutch society, making the Dutch election tracker a natural fit for their support.
+
+
+```{=html}
+</div>
+```
