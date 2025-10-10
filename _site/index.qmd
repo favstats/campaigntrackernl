@@ -104,7 +104,6 @@ format:
 
 
 
-> WARNING THIS ONLY SHOWS A MOCK-UP THE DATA IS NOT REAL YET! DO NOTE CITE.
 
 
 ```{r setup, include=FALSE}
