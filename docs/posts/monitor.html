@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ernesto de León">
+<meta name="dcterms.date" content="2025-10-11">
+<meta name="description" content="The AlgoSoc Consortium has been tracking public opinion on AI in the Netherlands for the last 2 years. Find out more in this blog post.">
 
-<title>&nbsp;&nbsp;Dashboard - Blog</title>
+<title>&nbsp;&nbsp;Dashboard - Findings from the AI Opinion Monitor (2024–2025)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +26,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./RoundLogoSchriftzug_blue.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../RoundLogoSchriftzug_blue.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -51,50 +52,20 @@ ul.task-list li input[type="checkbox"] {
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "Keine Treffer",
-    "search-matching-documents-text": "Treffer",
-    "search-copy-link-title": "Link in die Suche kopieren",
-    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
-    "search-more-match-text": "weitere Treffer in diesem Dokument",
-    "search-more-matches-text": "weitere Treffer in diesem Dokument",
-    "search-clear-button-title": "Zurücksetzen",
-    "search-detached-cancel-button-title": "Abbrechen",
-    "search-submit-button-title": "Abschicken",
-    "search-label": "Suchen"
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-<script>
+<style>html{ scroll-behavior: smooth; }</style>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -105,21 +76,21 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./LogoSchriftzug.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../LogoSchriftzug.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">&nbsp;&nbsp;Dashboard</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Suchen"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navigation umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
+    <a class="nav-link" href="../index.html" rel="" target="">
  <span class="menu-text"><iconify-icon inline="" icon="ph:star-four-light" aria-label="Icon star-four-light from ph Iconify.design set." title="Icon star-four-light from ph Iconify.design set."></iconify-icon> AI Tracker</span></a>
   </li>  
   <li class="nav-item">
@@ -127,11 +98,11 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><iconify-icon inline="" icon="ph:binoculars-light" aria-label="Icon binoculars-light from ph Iconify.design set." title="Icon binoculars-light from ph Iconify.design set."></iconify-icon> AI Explorer</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../blog.html" rel="" target="">
  <span class="menu-text"><iconify-icon inline="" icon="ph:newspaper-light" aria-label="Icon newspaper-light from ph Iconify.design set." title="Icon newspaper-light from ph Iconify.design set."></iconify-icon> Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./info.html" rel="" target="">
+    <a class="nav-link" href="../info.html" rel="" target="">
  <span class="menu-text"><iconify-icon inline="" icon="ph:info-light" aria-label="Icon info-light from ph Iconify.design set." title="Icon info-light from ph Iconify.design set."></iconify-icon> Info</span></a>
   </li>  
 </ul>
@@ -152,23 +123,37 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Blog</h1>
+<h1 class="title">Findings from the AI Opinion Monitor (2024–2025)</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ernesto de León </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 11, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -176,186 +161,73 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<style>
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+h1, h2, h3 {
+  text-align: center;
+  color: #004080;
+  margin-bottom: 0.5em;
+}
+p {
+  text-align: justify;
+  margin: 1em 0;
+}
+img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+blockquote {
+  font-style: italic;
+  background: #f0f8ff;
+  padding: 15px;
+  border-left: 4px solid #004080;
+  margin: 20px 0;
+}
+.callout {
+  background-color: #e7f3fe;
+  padding: 15px;
+  border-left: 5px solid #2196F3;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+.credit {
+  font-size: 0.9em;
+  color: #555;
+  text-align: center;
+  margin-top: -10px;
+}
+</style>
+<blockquote class="blockquote">
+<p>How Confident are People in the Netherlands in their Ability to Detect AI?</p>
+</blockquote>
+<p>The AI Opinion Monitor (developed by the AlgoSoc Consortium) adds crucial context to the CampAIgn Tracker by showing how people in the Netherlands perceive and navigate the growing presence of AI in public life. While the CampAIgn Tracks sheds light on what kind of AI-generated images and videos circulate ahead of the 2025 election, the Opinion Monitor reveals how citizens themselves experience and understand this shift. For the past two years, it has followed changes in how often people encounter AI-generated content, how confident they feel in recognizing it, and who they think should be held responsible for it.</p>
+<div id="fig-exposure" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="monitor1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Our most recent findings show a sharp rise in exposure to AI-generated video—technology that was until recently niche but is now widely accessible, for example via OpenAI’s <a href="https://www.washingtonpost.com/technology/2025/10/07/sora-cameo-deepfake-consent/">Sora text-to-video model</a>. See <strong>?@fig-exposure</strong>. In our AI Opinion Monitor we find that the share of people who say they <em>often</em> see AI-generated videos nearly doubled, from <strong>25% in March 2024 to 44% in May 2025</strong>. For AI-generated images, the increase is even sharper, from <strong>24% to 53%</strong>. Encounters are most common among younger citizens: <strong>76%</strong> of those aged 16–29 report frequently seeing AI-generated content. Political orientation also plays a role, with <strong>61% of left-leaning</strong> respondents versus <strong>53% of right-leaning</strong> respondents saying they see such material often.</p>
+<div id="fig-confidence" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="monitor2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>As shown in <strong>?@fig-confidence</strong>, while exposure has grown, people’s <em>confidence</em> in spotting AI content has not collapsed in the way many feared. In 2024, <strong>68%</strong> said they were <em>not confident</em> in their ability to detect AI; by mid-2025, that figure dropped to <strong>52%</strong>. Still, skepticism about others’ ability remains widespread. <strong>Journalists</strong> are the most trusted group to recognize AI content, but even here, only <strong>27%</strong> of respondents express confidence. Trust is lowest in the general public—<strong>76%</strong> say they don’t trust ordinary people to detect AI—followed by <strong>friends and family (69%)</strong>.</p>
+<p>And when it comes to accountability, most Dutch citizens point the finger at <em>those who create the content</em>: <strong>74%</strong> believe the individual who made the AI-generated material should be held responsible. Still, <strong>67%</strong> also blame <em>social media platforms</em> for allowing such content to spread, and <strong>59%</strong> say the <em>government</em> bears some responsibility for not preventing or regulating it.</p>
+<p>Check out and follow the Dutch AI Opinion Monitor to play around with the data and get more in-depth insights yourself!</p>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1760140800000" data-listing-file-modified-sort="1760118830458" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/monitor.html"> <img src="./posts/CampaignTrackerFeaturesEnglish.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/monitor.html">
-<h3 class="no-anchor listing-title">
-Findings from the AI Opinion Monitor (2024–2025)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-How Confident are People in the Netherlands in their Ability to Detect AI?
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/monitor.html">
-<div class="listing-date">
-11.10.2025
-</div>
-<div class="listing-author">
-Ernesto de León
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1760054400000" data-listing-file-modified-sort="1760117594816" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
-<div class="thumbnail">
-<p><a href="./posts/nl.html"> <img src="./posts/CampaignTrackerFeaturesEnglish.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/nl.html">
-<h3 class="no-anchor listing-title">
-CampAIgn Tracker Expands to the Netherlands: Monitoring AI in the 2025 Dutch General Election
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-Following successful deployment during Germany’s 2025 federal election, the CampAIgn Tracker launches in the Netherlands to monitor AI-generated content across political…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/nl.html">
-<div class="listing-date">
-10.10.2025
-</div>
-<div class="listing-author">
-Simon Kruschinski
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1739923200000" data-listing-file-modified-sort="1759574341432" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/verantwortung.html"> <img src="./posts/aJ9S4GL.jpeg" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/verantwortung.html">
-<h3 class="no-anchor listing-title">
-Responsible Use of AI in Political Campaigns
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-Artificial intelligence is changing…<strong></strong>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/verantwortung.html">
-<div class="listing-date">
-19.02.2025
-</div>
-<div class="listing-author">
-Jakob Scherer
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1739750400000" data-listing-file-modified-sort="1759574269339" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/erkennung.html"> <img src="./posts/yPrk02y.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/erkennung.html">
-<h3 class="no-anchor listing-title">
-How to Recognize AI-Generated Images and Strengthen Your AI Literacy
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-The ability to recognize AI-generated images is essential to preventing disinformation and manipulation in…<strong></strong>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/erkennung.html">
-<div class="listing-date">
-17.02.2025
-</div>
-<div class="listing-author">
-Jakob Scherer
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1739577600000" data-listing-file-modified-sort="1759574313844" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
-<div class="thumbnail">
-<p><a href="./posts/llms.html"> <img src="./posts/XFCdE4j.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/llms.html">
-<h3 class="no-anchor listing-title">
-Artificial Intelligence in Politics: Opportunities, Risks, and Perception
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-A recent study by Dr.&nbsp;Simon Kruschinski, Dr.&nbsp;Pablo Jost, Tobias Scherer, and Hannah Fecher takes a detailed look, for the first time, at how the German…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/llms.html">
-<div class="listing-date">
-15.02.2025
-</div>
-<div class="listing-author">
-Jakob Scherer
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1739318400000" data-listing-file-modified-sort="1759574212131" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
-<div class="thumbnail">
-<p><a href="./posts/anfang.html"> <img src="./posts/Foto 2_Preisgeld.jpeg" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/anfang.html">
-<h3 class="no-anchor listing-title">
-How it all Began: The CampAIgn Tracker for more Transparency in AI Use
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-Saturday morning, 9:00 a.m. in gray Berlin: full of expectations and anticipation, we each arrive at the festively lit Baden-Württemberg State Representation.<br>
-We are <strong>Dr.&nbsp;Simon…</strong><strong></strong><strong></strong><strong></strong><strong></strong>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/anfang.html">
-<div class="listing-date">
-12.02.2025
-</div>
-<div class="listing-author">
-Theresa Schültken
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-Keine Treffer
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -410,12 +282,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Kopiert");
+    button.setAttribute("title", "Copied!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Kopiert");
+      button.setAttribute("data-bs-title", "Copied!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -617,4 +489,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
