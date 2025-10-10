@@ -8513,6 +8513,274 @@ color: #0d6efd !important;
 font-weight: 700; 
 }
 </style>
+<script>// GoatCounter: https://www.goatcounter.com
+// This file is released under the ISC license: https://opensource.org/licenses/ISC
+;(function() {
+	'use strict';
+
+	window.goatcounter = window.goatcounter || {}
+
+	// Load settings from data-goatcounter-settings.
+	var s = document.querySelector('script[data-goatcounter]')
+	if (s && s.dataset.goatcounterSettings) {
+		try         { var set = JSON.parse(s.dataset.goatcounterSettings) }
+		catch (err) { console.error('invalid JSON in data-goatcounter-settings: ' + err) }
+		for (var k in set)
+			if (['no_onload', 'no_events', 'allow_local', 'allow_frame', 'path', 'title', 'referrer', 'event'].indexOf(k) > -1)
+				window.goatcounter[k] = set[k]
+	}
+
+	var enc = encodeURIComponent
+
+	// Get all data we're going to send off to the counter endpoint.
+	window.goatcounter.get_data = function(vars) {
+		vars = vars || {}
+		var data = {
+			p: (vars.path     === undefined ? goatcounter.path     : vars.path),
+			r: (vars.referrer === undefined ? goatcounter.referrer : vars.referrer),
+			t: (vars.title    === undefined ? goatcounter.title    : vars.title),
+			e: !!(vars.event || goatcounter.event),
+			s: window.screen.width,
+			b: is_bot(),
+			q: location.search,
+		}
+
+		var rcb, pcb, tcb  // Save callbacks to apply later.
+		if (typeof(data.r) === 'function') rcb = data.r
+		if (typeof(data.t) === 'function') tcb = data.t
+		if (typeof(data.p) === 'function') pcb = data.p
+
+		if (is_empty(data.r)) data.r = document.referrer
+		if (is_empty(data.t)) data.t = document.title
+		if (is_empty(data.p)) data.p = get_path()
+
+		if (rcb) data.r = rcb(data.r)
+		if (tcb) data.t = tcb(data.t)
+		if (pcb) data.p = pcb(data.p)
+		return data
+	}
+
+	// Check if a value is "empty" for the purpose of get_data().
+	var is_empty = function(v) { return v === null || v === undefined || typeof(v) === 'function' }
+
+	// See if this looks like a bot; there is some additional filtering on the
+	// backend, but these properties can't be fetched from there.
+	var is_bot = function() {
+		// Headless browsers are probably a bot.
+		var w = window, d = document
+		if (w.callPhantom || w._phantom || w.phantom)
+			return 150
+		if (w.__nightmare)
+			return 151
+		if (d.__selenium_unwrapped || d.__webdriver_evaluate || d.__driver_evaluate)
+			return 152
+		if (navigator.webdriver)
+			return 153
+		return 0
+	}
+
+	// Object to urlencoded string, starting with a ?.
+	var urlencode = function(obj) {
+		var p = []
+		for (var k in obj)
+			if (obj[k] !== '' && obj[k] !== null && obj[k] !== undefined && obj[k] !== false)
+				p.push(enc(k) + '=' + enc(obj[k]))
+		return '?' + p.join('&')
+	}
+
+	// Show a warning in the console.
+	var warn = function(msg) {
+		if (console && 'warn' in console)
+			console.warn('goatcounter: ' + msg)
+	}
+
+	// Get the endpoint to send requests to.
+	var get_endpoint = function() {
+		var s = document.querySelector('script[data-goatcounter]')
+		return (s && s.dataset.goatcounter) ? s.dataset.goatcounter : goatcounter.endpoint
+	}
+
+	// Get current path.
+	var get_path = function() {
+		var loc = location,
+			c = document.querySelector('link[rel="canonical"][href]')
+		if (c) {  // May be relative or point to different domain.
+			var a = document.createElement('a')
+			a.href = c.href
+			if (a.hostname.replace(/^www\./, '') === location.hostname.replace(/^www\./, ''))
+				loc = a
+		}
+		return (loc.pathname + loc.search) || '/'
+	}
+
+	// Run function after DOM is loaded.
+	var on_load = function(f) {
+		if (document.body === null)
+			document.addEventListener('DOMContentLoaded', function() { f() }, false)
+		else
+			f()
+	}
+
+	// Filter some requests that we (probably) don't want to count.
+	window.goatcounter.filter = function() {
+		if ('visibilityState' in document && document.visibilityState === 'prerender')
+			return 'visibilityState'
+		if (!goatcounter.allow_frame && location !== parent.location)
+			return 'frame'
+		if (!goatcounter.allow_local && location.hostname.match(/(localhost$|^127\.|^10\.|^172\.(1[6-9]|2[0-9]|3[0-1])\.|^192\.168\.|^0\.0\.0\.0$)/))
+			return 'localhost'
+		if (!goatcounter.allow_local && location.protocol === 'file:')
+			return 'localfile'
+		if (localStorage && localStorage.getItem('skipgc') === 't')
+			return 'disabled with #toggle-goatcounter'
+		return false
+	}
+
+	// Get URL to send to GoatCounter.
+	window.goatcounter.url = function(vars) {
+		var data = window.goatcounter.get_data(vars || {})
+		if (data.p === null)  // null from user callback.
+			return
+		data.rnd = Math.random().toString(36).substr(2, 5)  // Browsers don't always listen to Cache-Control.
+
+		var endpoint = get_endpoint()
+		if (!endpoint)
+			return warn('no endpoint found')
+
+		return endpoint + urlencode(data)
+	}
+
+	// Count a hit.
+	window.goatcounter.count = function(vars) {
+		var f = goatcounter.filter()
+		if (f)
+			return warn('not counting because of: ' + f)
+		var url = goatcounter.url(vars)
+		if (!url)
+			return warn('not counting because path callback returned null')
+
+		if (!navigator.sendBeacon(url)) {
+			// This mostly fails due to being blocked by CSP; try again with an
+			// image-based fallback.
+			var img = document.createElement('img')
+			img.src = url
+			img.style.position = 'absolute'  // Affect layout less.
+			img.style.bottom = '0px'
+			img.style.width = '1px'
+			img.style.height = '1px'
+			img.loading = 'eager'
+			img.setAttribute('alt', '')
+			img.setAttribute('aria-hidden', 'true')
+
+			var rm = function() { if (img && img.parentNode) img.parentNode.removeChild(img) }
+			img.addEventListener('load', rm, false)
+			document.body.appendChild(img)
+		}
+	}
+
+	// Get a query parameter.
+	window.goatcounter.get_query = function(name) {
+		var s = location.search.substr(1).split('&')
+		for (var i = 0; i < s.length; i++)
+			if (s[i].toLowerCase().indexOf(name.toLowerCase() + '=') === 0)
+				return s[i].substr(name.length + 1)
+	}
+
+	// Track click events.
+	window.goatcounter.bind_events = function() {
+		if (!document.querySelectorAll)  // Just in case someone uses an ancient browser.
+			return
+
+		var send = function(elem) {
+			return function() {
+				goatcounter.count({
+					event:    true,
+					path:     (elem.dataset.goatcounterClick || elem.name || elem.id || ''),
+					title:    (elem.dataset.goatcounterTitle || elem.title || (elem.innerHTML || '').substr(0, 200) || ''),
+					referrer: (elem.dataset.goatcounterReferrer || elem.dataset.goatcounterReferral || ''),
+				})
+			}
+		}
+
+		Array.prototype.slice.call(document.querySelectorAll("*[data-goatcounter-click]")).forEach(function(elem) {
+			if (elem.dataset.goatcounterBound)
+				return
+			var f = send(elem)
+			elem.addEventListener('click', f, false)
+			elem.addEventListener('auxclick', f, false)  // Middle click.
+			elem.dataset.goatcounterBound = 'true'
+		})
+	}
+
+	// Add a "visitor counter" frame or image.
+	window.goatcounter.visit_count = function(opt) {
+		on_load(function() {
+			opt        = opt        || {}
+			opt.type   = opt.type   || 'html'
+			opt.append = opt.append || 'body'
+			opt.path   = opt.path   || get_path()
+			opt.attr   = opt.attr   || {width: '200', height: (opt.no_branding ? '60' : '80')}
+
+			opt.attr['src'] = get_endpoint() + 'er/' + enc(opt.path) + '.' + enc(opt.type) + '?'
+			if (opt.no_branding) opt.attr['src'] += '&no_branding=1'
+			if (opt.style)       opt.attr['src'] += '&style=' + enc(opt.style)
+			if (opt.start)       opt.attr['src'] += '&start=' + enc(opt.start)
+			if (opt.end)         opt.attr['src'] += '&end='   + enc(opt.end)
+
+			var tag = {png: 'img', svg: 'img', html: 'iframe'}[opt.type]
+			if (!tag)
+				return warn('visit_count: unknown type: ' + opt.type)
+
+			if (opt.type === 'html') {
+				opt.attr['frameborder'] = '0'
+				opt.attr['scrolling']   = 'no'
+			}
+
+			var d = document.createElement(tag)
+			for (var k in opt.attr)
+				d.setAttribute(k, opt.attr[k])
+
+			var p = document.querySelector(opt.append)
+			if (!p)
+				return warn('visit_count: element to append to not found: ' + opt.append)
+			p.appendChild(d)
+		})
+	}
+
+	// Make it easy to skip your own views.
+	if (location.hash === '#toggle-goatcounter') {
+		if (localStorage.getItem('skipgc') === 't') {
+			localStorage.removeItem('skipgc', 't')
+			alert('GoatCounter tracking is now ENABLED in this browser.')
+		}
+		else {
+			localStorage.setItem('skipgc', 't')
+			alert('GoatCounter tracking is now DISABLED in this browser until ' + location + ' is loaded again.')
+		}
+	}
+
+	if (!goatcounter.no_onload)
+		on_load(function() {
+			// 1. Page is visible, count request.
+			// 2. Page is not yet visible; wait until it switches to 'visible' and count.
+			// See #487
+			if (!('visibilityState' in document) || document.visibilityState === 'visible')
+				goatcounter.count()
+			else {
+				var f = function(e) {
+					if (document.visibilityState !== 'visible')
+						return
+					document.removeEventListener('visibilitychange', f)
+					goatcounter.count()
+				}
+				document.addEventListener('visibilitychange', f)
+			}
+
+			if (!goatcounter.no_events)
+				goatcounter.bind_events()
+		})
+})();
+</script>
 <div class="cell">
 <style type="text/css">
 
@@ -8547,12 +8815,12 @@ border-left-color: #4e47d6;
     padding: 10px;
   ">
 <div style="flex: 1; min-width: 300px;">
-<div id="htmlwidget-9ca06767a4220227ea99" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9ca06767a4220227ea99">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"n","type":"area","data":[[1758067200000,809],[1758153600000,792],[1758240000000,684],[1758326400000,643],[1758412800000,524],[1758499200000,711],[1758585600000,798],[1758672000000,762],[1758758400000,846]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#2E93fA"],"title":{"text":6569,"style":{"fontSize":"24px"}},"subtitle":{"text":"Total Tracked Posts","style":{"fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#2E93fA","background":"#FFF"},"xaxis":{"min":"2025-09-17T00:00:00Z","max":"2025-09-25T00:00:00Z"},"type":"area"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-eed043bf8dd153ba9050" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eed043bf8dd153ba9050">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"n","type":"area","data":[[1758067200000,809],[1758153600000,792],[1758240000000,684],[1758326400000,643],[1758412800000,524],[1758499200000,711],[1758585600000,798],[1758672000000,762],[1758758400000,846]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#2E93fA"],"title":{"text":6569,"style":{"fontSize":"24px"}},"subtitle":{"text":"Total Tracked Posts","style":{"fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#2E93fA","background":"#FFF"},"xaxis":{"min":"2025-09-17T00:00:00Z","max":"2025-09-25T00:00:00Z"},"type":"area"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div style="flex: 1; min-width: 300px;">
-<div id="htmlwidget-eb9e9157fdbf40eeaf15" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-eb9e9157fdbf40eeaf15">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"n","type":"area","data":[[1758067200000,8],[1758153600000,15],[1758240000000,18],[1758326400000,24],[1758412800000,19],[1758499200000,22],[1758585600000,22],[1758672000000,14],[1758758400000,21]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#FFF"],"title":{"text":163,"style":{"fontSize":"22px","color":"#FFF"}},"subtitle":{"text":"Total Number of Identified AI Posts","style":{"fontSize":"14px","color":"#FFF"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#FFF","background":"#1E90FF"},"xaxis":{"min":"2025-09-17T00:00:00Z","max":"2025-09-25T00:00:00Z"},"type":"area"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-42f117d42e95d06709cf" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-42f117d42e95d06709cf">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"n","type":"area","data":[[1758067200000,8],[1758153600000,15],[1758240000000,18],[1758326400000,24],[1758412800000,19],[1758499200000,22],[1758585600000,22],[1758672000000,14],[1758758400000,21]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#FFF"],"title":{"text":163,"style":{"fontSize":"22px","color":"#FFF"}},"subtitle":{"text":"Total Number of Identified AI Posts","style":{"fontSize":"14px","color":"#FFF"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#FFF","background":"#1E90FF"},"xaxis":{"min":"2025-09-17T00:00:00Z","max":"2025-09-25T00:00:00Z"},"type":"area"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -8585,8 +8853,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container2">
-<div id="htmlwidget-d7fc725687bbb96fdaec" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d7fc725687bbb96fdaec">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"PVV","y":47},{"x":"Pro-Right","y":32},{"x":"Satire","y":29},{"x":"Pro-PVV","y":14},{"x":"VVD","y":10},{"x":"Pro-FvD","y":8},{"x":"GL-PvdA","y":4},{"x":"50PLUS","y":3},{"x":"De Linie","y":3},{"x":"NCPN","y":3},{"x":"DENK","y":2},{"x":"FvD","y":2},{"x":"SP","y":2},{"x":"BBB","y":1},{"x":"BVNL","y":1},{"x":"LP","y":1},{"x":"Vrede voor Dieren","y":1}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"By Party / Actor","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#003082","#8C6D1F","#6A5ACD","#B22222","#FF7900","#7E2342","#C00040","#7F2481","#AA3377","#CC0000","#00A7B3","#7B1E26","#BE1E2D","#009639","#132141","#003399","#5496c6"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"50PLUS","max":"VVD"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9851c915794c7d9a0e0d" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9851c915794c7d9a0e0d">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"PVV","y":47},{"x":"Pro-Right","y":32},{"x":"Satire","y":29},{"x":"Pro-PVV","y":14},{"x":"VVD","y":10},{"x":"Pro-FvD","y":8},{"x":"GL-PvdA","y":4},{"x":"50PLUS","y":3},{"x":"De Linie","y":3},{"x":"NCPN","y":3},{"x":"DENK","y":2},{"x":"FvD","y":2},{"x":"SP","y":2},{"x":"BBB","y":1},{"x":"BVNL","y":1},{"x":"LP","y":1},{"x":"Vrede voor Dieren","y":1}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"By Party / Actor","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#003082","#8C6D1F","#6A5ACD","#B22222","#FF7900","#7E2342","#C00040","#7F2481","#AA3377","#CC0000","#00A7B3","#7B1E26","#BE1E2D","#009639","#132141","#003399","#5496c6"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"50PLUS","max":"VVD"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -8607,8 +8875,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container2">
-<div id="htmlwidget-3d9eb79a7223eca0b4d5" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3d9eb79a7223eca0b4d5">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"PVV","y":47},{"x":"VVD","y":10},{"x":"GL-PvdA","y":4},{"x":"50PLUS","y":3},{"x":"De Linie","y":3},{"x":"NCPN","y":3},{"x":"DENK","y":2},{"x":"FvD","y":2},{"x":"SP","y":2},{"x":"BBB","y":1},{"x":"BVNL","y":1},{"x":"LP","y":1},{"x":"Vrede voor Dieren","y":1}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"By Party","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#003082","#FF7900","#C00040","#7F2481","#AA3377","#CC0000","#00A7B3","#7B1E26","#BE1E2D","#009639","#132141","#003399","#5496c6"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"50PLUS","max":"VVD"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e80c49fdf983a3139822" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e80c49fdf983a3139822">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"PVV","y":47},{"x":"VVD","y":10},{"x":"GL-PvdA","y":4},{"x":"50PLUS","y":3},{"x":"De Linie","y":3},{"x":"NCPN","y":3},{"x":"DENK","y":2},{"x":"FvD","y":2},{"x":"SP","y":2},{"x":"BBB","y":1},{"x":"BVNL","y":1},{"x":"LP","y":1},{"x":"Vrede voor Dieren","y":1}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"By Party","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#003082","#FF7900","#C00040","#7F2481","#AA3377","#CC0000","#00A7B3","#7B1E26","#BE1E2D","#009639","#132141","#003399","#5496c6"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"50PLUS","max":"VVD"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -8629,8 +8897,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container2">
-<div id="htmlwidget-9b0a92e8e1a555d26f22" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9b0a92e8e1a555d26f22">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"Pro-Right","y":32},{"x":"Satire","y":29},{"x":"Pro-PVV","y":14},{"x":"Pro-FvD","y":8}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"By Actor","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#8C6D1F","#6A5ACD","#B22222","#7E2342"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Pro-FvD","max":"Satire"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-2fcd5777fa84f53a6d4b" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2fcd5777fa84f53a6d4b">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"Pro-Right","y":32},{"x":"Satire","y":29},{"x":"Pro-PVV","y":14},{"x":"Pro-FvD","y":8}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"By Actor","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#8C6D1F","#6A5ACD","#B22222","#7E2342"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Pro-FvD","max":"Satire"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -8661,8 +8929,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container0">
-<div id="htmlwidget-01f3af0f2e4fbdf582d2" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-01f3af0f2e4fbdf582d2">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"Facebook","y":75},{"x":"TikTok","y":45},{"x":"Instagram","y":43}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"AI Content by Platform","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#1877F2","#69C9D0","#E4405F"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Facebook","max":"TikTok"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-3ba6f9e2d65d2a0ce09a" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3ba6f9e2d65d2a0ce09a">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"Facebook","y":75},{"x":"TikTok","y":45},{"x":"Instagram","y":43}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"AI Content by Platform","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#1877F2","#69C9D0","#E4405F"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Facebook","max":"TikTok"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -8683,8 +8951,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container0">
-<div id="htmlwidget-a30b600094c66117d196" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a30b600094c66117d196">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"Facebook","y":63},{"x":"Instagram","y":16},{"x":"TikTok","y":1}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"AI Content by Platform (Only Parties)","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#1877F2","#E4405F","#69C9D0"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Facebook","max":"TikTok"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8331f318dbedcd9b6d6a" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8331f318dbedcd9b6d6a">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"Facebook","y":63},{"x":"Instagram","y":16},{"x":"TikTok","y":1}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"AI Content by Platform (Only Parties)","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#1877F2","#E4405F","#69C9D0"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Facebook","max":"TikTok"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -8705,8 +8973,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container0">
-<div id="htmlwidget-05a694f6abe971ca8521" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-05a694f6abe971ca8521">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"TikTok","y":44},{"x":"Instagram","y":27},{"x":"Facebook","y":12}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"AI Content by Platform (Only Non-Party Actors)","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#69C9D0","#E4405F","#1877F2"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Facebook","max":"TikTok"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-62b5e9cd6506b49a6019" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-62b5e9cd6506b49a6019">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"TikTok","y":44},{"x":"Instagram","y":27},{"x":"Facebook","y":12}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"AI Content by Platform (Only Non-Party Actors)","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#69C9D0","#E4405F","#1877F2"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Facebook","max":"TikTok"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -8733,8 +9001,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container">
-<div id="htmlwidget-f33f0920d8c02ea0601b" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f33f0920d8c02ea0601b">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"Other Actors","y":83},{"x":"Parties","y":76},{"x":"Politicians","y":4}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"By Actor Type","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#009E73","#D55E00","#0072B2"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Other Actors","max":"Politicians"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1eae1ba117e30c9c956b" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1eae1ba117e30c9c956b">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"Other Actors","y":83},{"x":"Parties","y":76},{"x":"Politicians","y":4}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"By Actor Type","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#009E73","#D55E00","#0072B2"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Other Actors","max":"Politicians"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <blockquote class="blockquote">
@@ -8763,8 +9031,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-4149dbaf0e3bcfbf6535" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-4149dbaf0e3bcfbf6535">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":528,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"Posts with AI","data":[{"x":"De Linie","y":60,"n":3,"total":5},{"x":"Satire","y":52,"n":29,"total":56},{"x":"Pro-PVV","y":29,"n":14,"total":48},{"x":"50PLUS","y":27,"n":3,"total":11},{"x":"NCPN","y":23,"n":3,"total":13},{"x":"PVV","y":11,"n":47,"total":441},{"x":"Vrede voor Dieren","y":9,"n":1,"total":11},{"x":"Pro-Right","y":5,"n":32,"total":674},{"x":"Pro-FvD","y":5,"n":8,"total":169},{"x":"LP","y":4,"n":1,"total":24},{"x":"BVNL","y":2,"n":1,"total":42},{"x":"VVD","y":2,"n":10,"total":439},{"x":"DENK","y":2,"n":2,"total":106},{"x":"GL-PvdA","y":1,"n":4,"total":482},{"x":"FvD","y":1,"n":2,"total":245},{"x":"SP","y":1,"n":2,"total":385},{"x":"BBB","y":0.4424778761061947,"n":1,"total":226}]}],"plotOptions":{"bar":{"horizontal":true,"barHeight":"55%","borderRadius":6,"distributed":true,"dataLabels":{"position":"center"}}},"colors":["#AA3377","#6A5ACD","#B22222","#7F2481","#CC0000","#003082","#5496c6","#8C6D1F","#7E2342","#003399","#132141","#FF7900","#00A7B3","#C00040","#7B1E26","#BE1E2D","#009639"],"dataLabels":{"enabled":true,"style":{"fontSize":"12px","fontWeight":"bold","colors":["#ffffff"]},"formatter":"function(v){ return (v < 2 ? '' : (Math.round(v*10)/10) + '%'); }"},"tooltip":{"shared":false,"y":{"formatter":"function(val, opts){ \n           var d  = opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex];\n           var nf = new Intl.NumberFormat();\n           return (Math.round(val*10)/10) + '% (' + d.n + ' / ' + nf.format(d.total) + ')';\n         }"}},"xaxis":{"labels":{"formatter":"v => v + \"%\""},"tickAmount":4,"max":80,"title":{"text":[]}},"yaxis":{"labels":{"style":{"fontSize":"13px","fontWeight":"600"}}},"grid":{"xaxis":{"lines":{"show":true}},"yaxis":{"lines":{"show":false}}},"legend":{"show":false},"title":{"text":"Share of Posts with AI","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.y.formatter","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-085ef1a5c1863471e3b0" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-085ef1a5c1863471e3b0">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":528,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"Posts with AI","data":[{"x":"De Linie","y":60,"n":3,"total":5},{"x":"Satire","y":52,"n":29,"total":56},{"x":"Pro-PVV","y":29,"n":14,"total":48},{"x":"50PLUS","y":27,"n":3,"total":11},{"x":"NCPN","y":23,"n":3,"total":13},{"x":"PVV","y":11,"n":47,"total":441},{"x":"Vrede voor Dieren","y":9,"n":1,"total":11},{"x":"Pro-Right","y":5,"n":32,"total":674},{"x":"Pro-FvD","y":5,"n":8,"total":169},{"x":"LP","y":4,"n":1,"total":24},{"x":"BVNL","y":2,"n":1,"total":42},{"x":"VVD","y":2,"n":10,"total":439},{"x":"DENK","y":2,"n":2,"total":106},{"x":"GL-PvdA","y":1,"n":4,"total":482},{"x":"FvD","y":1,"n":2,"total":245},{"x":"SP","y":1,"n":2,"total":385},{"x":"BBB","y":0.4424778761061947,"n":1,"total":226}]}],"plotOptions":{"bar":{"horizontal":true,"barHeight":"55%","borderRadius":6,"distributed":true,"dataLabels":{"position":"center"}}},"colors":["#AA3377","#6A5ACD","#B22222","#7F2481","#CC0000","#003082","#5496c6","#8C6D1F","#7E2342","#003399","#132141","#FF7900","#00A7B3","#C00040","#7B1E26","#BE1E2D","#009639"],"dataLabels":{"enabled":true,"style":{"fontSize":"12px","fontWeight":"bold","colors":["#ffffff"]},"formatter":"function(v){ return (v < 2 ? '' : (Math.round(v*10)/10) + '%'); }"},"tooltip":{"shared":false,"y":{"formatter":"function(val, opts){ \n           var d  = opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex];\n           var nf = new Intl.NumberFormat();\n           return (Math.round(val*10)/10) + '% (' + d.n + ' / ' + nf.format(d.total) + ')';\n         }"}},"xaxis":{"labels":{"formatter":"v => v + \"%\""},"tickAmount":4,"max":80,"title":{"text":[]}},"yaxis":{"labels":{"style":{"fontSize":"13px","fontWeight":"600"}}},"grid":{"xaxis":{"lines":{"show":true}},"yaxis":{"lines":{"show":false}}},"legend":{"show":false},"title":{"text":"Share of Posts with AI","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.y.formatter","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -8912,12 +9180,12 @@ border-radius: 10px;
     padding: 10px;
   ">
 <div style="flex: 1; min-width: 300px;">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-2d8a12c6a2d05fd6658b" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-2d8a12c6a2d05fd6658b">{"x":{"ax_opts":{"chart":{"type":"radialBar","sparkline":{"enabled":true},"height":420,"animations":{"enabled":false},"background":"transparent","foreColor":"#000","redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[60],"labels":["AI WITHOUT Dislaimer"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"colors":["#FF4500"],"plotOptions":{"radialBar":{"hollow":{"size":"58%","margin":4},"track":{"margin":2},"dataLabels":{"name":{"show":true,"style":{"color":"#000","fontSize":"14px","fontWeight":"bold"}},"value":{"show":true,"formatter":"function(val){ return Math.round(val) + '%'; }","style":{"color":"#000","fontSize":"20px","fontWeight":"bold"}}}}},"stroke":{"show":true,"lineCap":"round"},"title":{"text":"Was the AI content (not) disclosed with a disclaimer?\n","align":"center","style":{"fontSize":"18px","color":"#000"}},"theme":{"mode":"light"}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"AI WITHOUT Dislaimer","max":"AI WITHOUT Dislaimer"},"type":"radialBar"},"evals":["ax_opts.plotOptions.radialBar.dataLabels.value.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-7b1ecc051ca2246aa660" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-7b1ecc051ca2246aa660">{"x":{"ax_opts":{"chart":{"type":"radialBar","sparkline":{"enabled":true},"height":420,"animations":{"enabled":false},"background":"transparent","foreColor":"#000","redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[60],"labels":["AI WITHOUT Dislaimer"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"colors":["#FF4500"],"plotOptions":{"radialBar":{"hollow":{"size":"58%","margin":4},"track":{"margin":2},"dataLabels":{"name":{"show":true,"style":{"color":"#000","fontSize":"14px","fontWeight":"bold"}},"value":{"show":true,"formatter":"function(val){ return Math.round(val) + '%'; }","style":{"color":"#000","fontSize":"20px","fontWeight":"bold"}}}}},"stroke":{"show":true,"lineCap":"round"},"title":{"text":"Was the AI content (not) disclosed with a disclaimer?\n","align":"center","style":{"fontSize":"18px","color":"#000"}},"theme":{"mode":"light"}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"AI WITHOUT Dislaimer","max":"AI WITHOUT Dislaimer"},"type":"radialBar"},"evals":["ax_opts.plotOptions.radialBar.dataLabels.value.formatter"],"jsHooks":[]}</script>
 </div>
 <div style="flex: 1; min-width: 300px;">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-10363d50ca15290b4598" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-10363d50ca15290b4598">{"x":{"ax_opts":{"chart":{"type":"radialBar","sparkline":{"enabled":true},"height":420,"animations":{"enabled":false},"background":"transparent","foreColor":"#000","redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[3.1,0,96.90000000000001],"labels":["In Image","In Text","By Platform"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"colors":["#FF6347","#4682B4","#32CD32"],"plotOptions":{"radialBar":{"hollow":{"size":"48%","margin":4},"track":{"margin":3},"dataLabels":{"name":{"show":true,"style":{"color":"#000","fontSize":"12px","fontWeight":"bold"}},"value":{"show":true,"formatter":"v => Math.round(v) + '%'","style":{"color":"#000","fontSize":"16px"}},"total":{"show":true,"label":"By Platform","formatter":"\n            function(w){\n              var t = w.globals.seriesTotals;\n              var m = Math.max.apply(null, t);\n              return Math.round(m) + '%';\n            }\n          "}}}},"legend":{"show":false},"stroke":{"show":true,"lineCap":"round"},"title":{"text":"How was the use of AI disclosed?","align":"center","style":{"fontSize":"18px","color":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"By Platform","max":"In Text"},"type":"radialBar"},"evals":["ax_opts.plotOptions.radialBar.dataLabels.value.formatter","ax_opts.plotOptions.radialBar.dataLabels.total.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-f81d8a7a967693bb1993" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-f81d8a7a967693bb1993">{"x":{"ax_opts":{"chart":{"type":"radialBar","sparkline":{"enabled":true},"height":420,"animations":{"enabled":false},"background":"transparent","foreColor":"#000","redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[3.1,0,96.90000000000001],"labels":["In Image","In Text","By Platform"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"colors":["#FF6347","#4682B4","#32CD32"],"plotOptions":{"radialBar":{"hollow":{"size":"48%","margin":4},"track":{"margin":3},"dataLabels":{"name":{"show":true,"style":{"color":"#000","fontSize":"12px","fontWeight":"bold"}},"value":{"show":true,"formatter":"v => Math.round(v) + '%'","style":{"color":"#000","fontSize":"16px"}},"total":{"show":true,"label":"By Platform","formatter":"\n            function(w){\n              var t = w.globals.seriesTotals;\n              var m = Math.max.apply(null, t);\n              return Math.round(m) + '%';\n            }\n          "}}}},"legend":{"show":false},"stroke":{"show":true,"lineCap":"round"},"title":{"text":"How was the use of AI disclosed?","align":"center","style":{"fontSize":"18px","color":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"By Platform","max":"In Text"},"type":"radialBar"},"evals":["ax_opts.plotOptions.radialBar.dataLabels.value.formatter","ax_opts.plotOptions.radialBar.dataLabels.total.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -8968,12 +9236,12 @@ border-radius: 10px;
     padding: 10px;
   ">
 <div style="flex: 1; min-width: 300px;">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-11790187167289f6fbaa" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-11790187167289f6fbaa">{"x":{"ax_opts":{"chart":{"type":"radialBar","sparkline":{"enabled":true},"height":420,"animations":{"enabled":false},"background":"transparent","foreColor":"#000","redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[49],"labels":["AI WITHOUT Dislaimer"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"colors":["#FF4500"],"plotOptions":{"radialBar":{"hollow":{"size":"58%","margin":4},"track":{"margin":2},"dataLabels":{"name":{"show":true,"style":{"color":"#000","fontSize":"14px","fontWeight":"bold"}},"value":{"show":true,"formatter":"function(val){ return Math.round(val) + '%'; }","style":{"color":"#000","fontSize":"20px","fontWeight":"bold"}}}}},"stroke":{"show":true,"lineCap":"round"},"title":{"text":"Was the AI content (not) disclosed with a disclaimer?\n","align":"center","style":{"fontSize":"18px","color":"#000"}},"theme":{"mode":"light"}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"AI WITHOUT Dislaimer","max":"AI WITHOUT Dislaimer"},"type":"radialBar"},"evals":["ax_opts.plotOptions.radialBar.dataLabels.value.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-ed3a512db4078b134188" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-ed3a512db4078b134188">{"x":{"ax_opts":{"chart":{"type":"radialBar","sparkline":{"enabled":true},"height":420,"animations":{"enabled":false},"background":"transparent","foreColor":"#000","redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[49],"labels":["AI WITHOUT Dislaimer"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"colors":["#FF4500"],"plotOptions":{"radialBar":{"hollow":{"size":"58%","margin":4},"track":{"margin":2},"dataLabels":{"name":{"show":true,"style":{"color":"#000","fontSize":"14px","fontWeight":"bold"}},"value":{"show":true,"formatter":"function(val){ return Math.round(val) + '%'; }","style":{"color":"#000","fontSize":"20px","fontWeight":"bold"}}}}},"stroke":{"show":true,"lineCap":"round"},"title":{"text":"Was the AI content (not) disclosed with a disclaimer?\n","align":"center","style":{"fontSize":"18px","color":"#000"}},"theme":{"mode":"light"}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"AI WITHOUT Dislaimer","max":"AI WITHOUT Dislaimer"},"type":"radialBar"},"evals":["ax_opts.plotOptions.radialBar.dataLabels.value.formatter"],"jsHooks":[]}</script>
 </div>
 <div style="flex: 1; min-width: 300px;">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-74e418a01abe60636e00" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-74e418a01abe60636e00">{"x":{"ax_opts":{"chart":{"type":"radialBar","sparkline":{"enabled":true},"height":420,"animations":{"enabled":false},"background":"transparent","foreColor":"#000","redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[0,11.9,100],"labels":["In Image","In Text","By Platform"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"colors":["#FF6347","#4682B4","#32CD32"],"plotOptions":{"radialBar":{"hollow":{"size":"48%","margin":4},"track":{"margin":3},"dataLabels":{"name":{"show":true,"style":{"color":"#000","fontSize":"12px","fontWeight":"bold"}},"value":{"show":true,"formatter":"v => Math.round(v) + '%'","style":{"color":"#000","fontSize":"16px"}},"total":{"show":true,"label":"By Platform","formatter":"\n            function(w){\n              var t = w.globals.seriesTotals;\n              var m = Math.max.apply(null, t);\n              return Math.round(m) + '%';\n            }\n          "}}}},"legend":{"show":false},"stroke":{"show":true,"lineCap":"round"},"title":{"text":"How was the use of AI disclosed?","align":"center","style":{"fontSize":"18px","color":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"By Platform","max":"In Text"},"type":"radialBar"},"evals":["ax_opts.plotOptions.radialBar.dataLabels.value.formatter","ax_opts.plotOptions.radialBar.dataLabels.total.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-d6b4a3a9f423cfcb2a7a" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-d6b4a3a9f423cfcb2a7a">{"x":{"ax_opts":{"chart":{"type":"radialBar","sparkline":{"enabled":true},"height":420,"animations":{"enabled":false},"background":"transparent","foreColor":"#000","redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[0,11.9,100],"labels":["In Image","In Text","By Platform"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"colors":["#FF6347","#4682B4","#32CD32"],"plotOptions":{"radialBar":{"hollow":{"size":"48%","margin":4},"track":{"margin":3},"dataLabels":{"name":{"show":true,"style":{"color":"#000","fontSize":"12px","fontWeight":"bold"}},"value":{"show":true,"formatter":"v => Math.round(v) + '%'","style":{"color":"#000","fontSize":"16px"}},"total":{"show":true,"label":"By Platform","formatter":"\n            function(w){\n              var t = w.globals.seriesTotals;\n              var m = Math.max.apply(null, t);\n              return Math.round(m) + '%';\n            }\n          "}}}},"legend":{"show":false},"stroke":{"show":true,"lineCap":"round"},"title":{"text":"How was the use of AI disclosed?","align":"center","style":{"fontSize":"18px","color":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"By Platform","max":"In Text"},"type":"radialBar"},"evals":["ax_opts.plotOptions.radialBar.dataLabels.value.formatter","ax_opts.plotOptions.radialBar.dataLabels.total.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -8995,8 +9263,8 @@ border-radius: 10px;
 <div class="cell">
 <div class="cell-output-display">
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-6548c663a69c21d2d6c3" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-6548c663a69c21d2d6c3">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Image(s) (n=71)","y":88.8},{"x":"Video(s) (n=9)","y":11.2}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":false,"intersect":false,"followCursor":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          var lab = w.globals.labels[dataPointIndex];\n          var type = lab.split(' (n=')[0];\n          var col = (type === \"Image(s)\") ? '#FF6347' : (type === \"Video(s)\" ? '#4682B4' : '#9E9E9E');\n          var val = series[seriesIndex][dataPointIndex];\n          return '<div style=\"padding:6px 8px\">' +\n                 '<div style=\"display:flex;align-items:center;gap:6px\">' +\n                 '<span style=\"width:10px;height:10px;border-radius:50%;background:'+col+'\"><\/span>' +\n                 '<b>'+type+'<\/b><\/div>' +\n                 '<div>'+Math.round(val*10)/10+'%<\/div><\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#FF6347","#4682B4"],"legend":{"show":true,"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#FF6347","#4682B4"]},"customLegendItems":["Image(s)","Video(s)"]},"title":{"text":"AI Image or Video?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Image(s) (n=71)","max":"Video(s) (n=9)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-d368ab0a2de08f24a226" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-d368ab0a2de08f24a226">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Image(s) (n=71)","y":88.8},{"x":"Video(s) (n=9)","y":11.2}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":false,"intersect":false,"followCursor":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          var lab = w.globals.labels[dataPointIndex];\n          var type = lab.split(' (n=')[0];\n          var col = (type === \"Image(s)\") ? '#FF6347' : (type === \"Video(s)\" ? '#4682B4' : '#9E9E9E');\n          var val = series[seriesIndex][dataPointIndex];\n          return '<div style=\"padding:6px 8px\">' +\n                 '<div style=\"display:flex;align-items:center;gap:6px\">' +\n                 '<span style=\"width:10px;height:10px;border-radius:50%;background:'+col+'\"><\/span>' +\n                 '<b>'+type+'<\/b><\/div>' +\n                 '<div>'+Math.round(val*10)/10+'%<\/div><\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#FF6347","#4682B4"],"legend":{"show":true,"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#FF6347","#4682B4"]},"customLegendItems":["Image(s)","Video(s)"]},"title":{"text":"AI Image or Video?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Image(s) (n=71)","max":"Video(s) (n=9)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9005,8 +9273,8 @@ border-radius: 10px;
 <div class="cell">
 <div class="cell-output-display">
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-40f61161d16a853af431" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-40f61161d16a853af431">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Video(s) (n=63)","y":75.90000000000001},{"x":"Image(s) (n=20)","y":24.1}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":false,"intersect":false,"followCursor":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          var lab = w.globals.labels[dataPointIndex];\n          var type = lab.split(' (n=')[0];\n          var col = (type === \"Image(s)\") ? '#FF6347' : (type === \"Video(s)\" ? '#4682B4' : '#9E9E9E');\n          var val = series[seriesIndex][dataPointIndex];\n          return '<div style=\"padding:6px 8px\">' +\n                 '<div style=\"display:flex;align-items:center;gap:6px\">' +\n                 '<span style=\"width:10px;height:10px;border-radius:50%;background:'+col+'\"><\/span>' +\n                 '<b>'+type+'<\/b><\/div>' +\n                 '<div>'+Math.round(val*10)/10+'%<\/div><\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#4682B4","#FF6347"],"legend":{"show":true,"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#FF6347","#4682B4"]},"customLegendItems":["Image(s)","Video(s)"]},"title":{"text":"AI Image or Video?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Image(s) (n=20)","max":"Video(s) (n=63)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-6358cfc23c711a0c2239" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-6358cfc23c711a0c2239">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Video(s) (n=63)","y":75.90000000000001},{"x":"Image(s) (n=20)","y":24.1}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":false,"intersect":false,"followCursor":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          var lab = w.globals.labels[dataPointIndex];\n          var type = lab.split(' (n=')[0];\n          var col = (type === \"Image(s)\") ? '#FF6347' : (type === \"Video(s)\" ? '#4682B4' : '#9E9E9E');\n          var val = series[seriesIndex][dataPointIndex];\n          return '<div style=\"padding:6px 8px\">' +\n                 '<div style=\"display:flex;align-items:center;gap:6px\">' +\n                 '<span style=\"width:10px;height:10px;border-radius:50%;background:'+col+'\"><\/span>' +\n                 '<b>'+type+'<\/b><\/div>' +\n                 '<div>'+Math.round(val*10)/10+'%<\/div><\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#4682B4","#FF6347"],"legend":{"show":true,"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#FF6347","#4682B4"]},"customLegendItems":["Image(s)","Video(s)"]},"title":{"text":"AI Image or Video?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Image(s) (n=20)","max":"Video(s) (n=63)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9035,8 +9303,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-3d8b99cf2d7c255d243f" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-3d8b99cf2d7c255d243f">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Real-looking (deepfake) (n=64)","y":80},{"x":"Not real-looking (graphic/cartoon) (n=16)","y":20}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":true,"intersect":false,"followCursor":true},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#1F5A96","#AC0999"],"legend":{"show":false},"title":{"text":"Is the AI content realistic?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Not real-looking (graphic/cartoon) (n=16)","max":"Real-looking (deepfake) (n=64)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-6f18f13a8dd92b59360d" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-6f18f13a8dd92b59360d">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Real-looking (deepfake) (n=64)","y":80},{"x":"Not real-looking (graphic/cartoon) (n=16)","y":20}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":true,"intersect":false,"followCursor":true},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#1F5A96","#AC0999"],"legend":{"show":false},"title":{"text":"Is the AI content realistic?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Not real-looking (graphic/cartoon) (n=16)","max":"Real-looking (deepfake) (n=64)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9057,8 +9325,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-57b468735e914e55214a" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-57b468735e914e55214a">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Real-looking (deepfake) (n=73)","y":89},{"x":"Not real-looking (graphic/cartoon) (n=9)","y":11}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":true,"intersect":false,"followCursor":true},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#1F5A96","#AC0999"],"legend":{"show":false},"title":{"text":"Is the AI content realistic?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Not real-looking (graphic/cartoon) (n=9)","max":"Real-looking (deepfake) (n=73)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-d0706b51173ae162cb67" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-d0706b51173ae162cb67">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Real-looking (deepfake) (n=73)","y":89},{"x":"Not real-looking (graphic/cartoon) (n=9)","y":11}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":true,"intersect":false,"followCursor":true},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#1F5A96","#AC0999"],"legend":{"show":false},"title":{"text":"Is the AI content realistic?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Not real-looking (graphic/cartoon) (n=9)","max":"Real-looking (deepfake) (n=73)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9090,8 +9358,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-c9313451d4812e0f191e" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-c9313451d4812e0f191e">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Positive","y":72},{"x":"Negative","y":43}]}],"dataLabels":{"enabled":true,"formatter":"function(val){return val+' Posts';}"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5,"distributed":true}},"tooltip":{"shared":false,"intersect":false,"followCursor":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          var lab = w.globals.labels[dataPointIndex];\n          var col = (lab === \"Negative\") ? '#F44336' : (lab === \"Positive\" ? '#4CAF50' : '#9E9E9E');\n          var val = series[seriesIndex][dataPointIndex];\n          return '<div style=\"padding:6px 8px\">' +\n                 '<div style=\"display:flex;align-items:center;gap:6px\">' +\n                 '<span style=\"width:10px;height:10px;border-radius:50%;background:'+col+'\"><\/span>' +\n                 '<b>'+lab+'<\/b><\/div>' +\n                 '<div>n: '+val+' Posts<\/div><\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#4CAF50","#F44336"],"title":{"text":"Distribution of Tone in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#4CAF50","#F44336"]},"customLegendItems":["Positive","Negative"]}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Negative","max":"Positive"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-ee7c46adac1c175aaedd" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-ee7c46adac1c175aaedd">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Positive","y":72},{"x":"Negative","y":43}]}],"dataLabels":{"enabled":true,"formatter":"function(val){return val+' Posts';}"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5,"distributed":true}},"tooltip":{"shared":false,"intersect":false,"followCursor":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          var lab = w.globals.labels[dataPointIndex];\n          var col = (lab === \"Negative\") ? '#F44336' : (lab === \"Positive\" ? '#4CAF50' : '#9E9E9E');\n          var val = series[seriesIndex][dataPointIndex];\n          return '<div style=\"padding:6px 8px\">' +\n                 '<div style=\"display:flex;align-items:center;gap:6px\">' +\n                 '<span style=\"width:10px;height:10px;border-radius:50%;background:'+col+'\"><\/span>' +\n                 '<b>'+lab+'<\/b><\/div>' +\n                 '<div>n: '+val+' Posts<\/div><\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#4CAF50","#F44336"],"title":{"text":"Distribution of Tone in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#4CAF50","#F44336"]},"customLegendItems":["Positive","Negative"]}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Negative","max":"Positive"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9112,8 +9380,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-f556c1f984788b1cfe67" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-f556c1f984788b1cfe67">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Positive","y":38},{"x":"Negative","y":69}]}],"dataLabels":{"enabled":true,"formatter":"function(val){return val+' Posts';}"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5,"distributed":true}},"tooltip":{"shared":false,"intersect":false,"followCursor":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          var lab = w.globals.labels[dataPointIndex];\n          var col = (lab === \"Negative\") ? '#F44336' : (lab === \"Positive\" ? '#4CAF50' : '#9E9E9E');\n          var val = series[seriesIndex][dataPointIndex];\n          return '<div style=\"padding:6px 8px\">' +\n                 '<div style=\"display:flex;align-items:center;gap:6px\">' +\n                 '<span style=\"width:10px;height:10px;border-radius:50%;background:'+col+'\"><\/span>' +\n                 '<b>'+lab+'<\/b><\/div>' +\n                 '<div>n: '+val+' Posts<\/div><\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#4CAF50","#F44336"],"title":{"text":"Distribution of Tone in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#4CAF50","#F44336"]},"customLegendItems":["Positive","Negative"]}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Negative","max":"Positive"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-72c923f352b3fca1768d" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-72c923f352b3fca1768d">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Positive","y":38},{"x":"Negative","y":69}]}],"dataLabels":{"enabled":true,"formatter":"function(val){return val+' Posts';}"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5,"distributed":true}},"tooltip":{"shared":false,"intersect":false,"followCursor":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          var lab = w.globals.labels[dataPointIndex];\n          var col = (lab === \"Negative\") ? '#F44336' : (lab === \"Positive\" ? '#4CAF50' : '#9E9E9E');\n          var val = series[seriesIndex][dataPointIndex];\n          return '<div style=\"padding:6px 8px\">' +\n                 '<div style=\"display:flex;align-items:center;gap:6px\">' +\n                 '<span style=\"width:10px;height:10px;border-radius:50%;background:'+col+'\"><\/span>' +\n                 '<b>'+lab+'<\/b><\/div>' +\n                 '<div>n: '+val+' Posts<\/div><\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#4CAF50","#F44336"],"title":{"text":"Distribution of Tone in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#4CAF50","#F44336"]},"customLegendItems":["Positive","Negative"]}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Negative","max":"Positive"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9143,8 +9411,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-41a0f080451ba004d522" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-41a0f080451ba004d522">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Political Parties & Politicians","y":44},{"x":"Vote Appeal","y":44},{"x":"Domestic & Migration Policy","y":34},{"x":"Election (General)","y":17},{"x":"Labor & Social Affairs","y":16},{"x":"Economy & Finance","y":13},{"x":"Housing (Crisis)","y":12},{"x":"Defense Policy","y":10},{"x":"Digital & Infrastructure","y":8},{"x":"Education & Culture","y":7},{"x":"Energy Policy","y":6},{"x":"Civil Rights","y":4},{"x":"Other Political Topics","y":2},{"x":"Europe","y":1}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"y":{"formatter":"function(val) { return val + ' Posts'; }"}},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Topics in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.y.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-4fcd78bb21827f7f006e" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-4fcd78bb21827f7f006e">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Political Parties & Politicians","y":44},{"x":"Vote Appeal","y":44},{"x":"Domestic & Migration Policy","y":34},{"x":"Election (General)","y":17},{"x":"Labor & Social Affairs","y":16},{"x":"Economy & Finance","y":13},{"x":"Housing (Crisis)","y":12},{"x":"Defense Policy","y":10},{"x":"Digital & Infrastructure","y":8},{"x":"Education & Culture","y":7},{"x":"Energy Policy","y":6},{"x":"Civil Rights","y":4},{"x":"Other Political Topics","y":2},{"x":"Europe","y":1}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"y":{"formatter":"function(val) { return val + ' Posts'; }"}},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Topics in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.y.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9165,8 +9433,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-8e40e6880f1dce90b232" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-8e40e6880f1dce90b232">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Domestic & Migration Policy","y":41},{"x":"Political Parties & Politicians","y":35},{"x":"Housing (Crisis)","y":16},{"x":"Other Political Topics","y":14},{"x":"Vote Appeal","y":14},{"x":"Civil Rights","y":11},{"x":"Europe","y":11},{"x":"Defense Policy","y":8},{"x":"Energy Policy","y":6},{"x":"Economy & Finance","y":5},{"x":"Education & Culture","y":5},{"x":"topic_constitution_system","y":5},{"x":"Labor & Social Affairs","y":4},{"x":"Election (General)","y":1}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"y":{"formatter":"function(val) { return val + ' Posts'; }"}},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Topics in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.y.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-f38477af41bdc50b9ce8" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-f38477af41bdc50b9ce8">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Domestic & Migration Policy","y":41},{"x":"Political Parties & Politicians","y":35},{"x":"Housing (Crisis)","y":16},{"x":"Other Political Topics","y":14},{"x":"Vote Appeal","y":14},{"x":"Civil Rights","y":11},{"x":"Europe","y":11},{"x":"Defense Policy","y":8},{"x":"Energy Policy","y":6},{"x":"Economy & Finance","y":5},{"x":"Education & Culture","y":5},{"x":"topic_constitution_system","y":5},{"x":"Labor & Social Affairs","y":4},{"x":"Election (General)","y":1}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"y":{"formatter":"function(val) { return val + ' Posts'; }"}},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Topics in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.y.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9196,8 +9464,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-595aaea304f80f078832" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-595aaea304f80f078832">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Symbolic Image (Front-Facing People)","y":57},{"x":"Positive Imagery/Acclaims","y":56},{"x":"Negative Imagery/Campaigning","y":31},{"x":"Event Announcement/Election Appeal/Candidate Intro","y":20},{"x":"Humor / Satire","y":9},{"x":"Campaign Event Imagery","y":6},{"x":"Day-to-Day Politics","y":5},{"x":"Nostalgic / Historic","y":5},{"x":"Media Work (incl. TV Debates)","y":4},{"x":"Other Image Content","y":1}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"y":{"formatter":"function(val) { return val + ' Posts'; }"}},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Image/Video Content in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.y.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-b19e8efaa83e70da6583" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-b19e8efaa83e70da6583">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Symbolic Image (Front-Facing People)","y":57},{"x":"Positive Imagery/Acclaims","y":56},{"x":"Negative Imagery/Campaigning","y":31},{"x":"Event Announcement/Election Appeal/Candidate Intro","y":20},{"x":"Humor / Satire","y":9},{"x":"Campaign Event Imagery","y":6},{"x":"Day-to-Day Politics","y":5},{"x":"Nostalgic / Historic","y":5},{"x":"Media Work (incl. TV Debates)","y":4},{"x":"Other Image Content","y":1}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"y":{"formatter":"function(val) { return val + ' Posts'; }"}},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Image/Video Content in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.y.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9218,8 +9486,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-f959375d78c1718f3809" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-f959375d78c1718f3809">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Symbolic Image (Front-Facing People)","y":61},{"x":"Negative Imagery/Campaigning","y":55},{"x":"Humor / Satire","y":36},{"x":"Positive Imagery/Acclaims","y":25},{"x":"Event Announcement/Election Appeal/Candidate Intro","y":13},{"x":"Media Work (incl. TV Debates)","y":10},{"x":"Nostalgic / Historic","y":10},{"x":"Utopie of dystopie","y":4},{"x":"Day-to-Day Politics","y":3},{"x":"Campaign Event Imagery","y":1},{"x":"Other Image Content","y":1}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"y":{"formatter":"function(val) { return val + ' Posts'; }"}},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Image/Video Content in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.y.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-d024686da7b2570cc4b9" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-d024686da7b2570cc4b9">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Symbolic Image (Front-Facing People)","y":61},{"x":"Negative Imagery/Campaigning","y":55},{"x":"Humor / Satire","y":36},{"x":"Positive Imagery/Acclaims","y":25},{"x":"Event Announcement/Election Appeal/Candidate Intro","y":13},{"x":"Media Work (incl. TV Debates)","y":10},{"x":"Nostalgic / Historic","y":10},{"x":"Utopie of dystopie","y":4},{"x":"Day-to-Day Politics","y":3},{"x":"Campaign Event Imagery","y":1},{"x":"Other Image Content","y":1}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"y":{"formatter":"function(val) { return val + ' Posts'; }"}},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Image/Video Content in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.y.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9252,8 +9520,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-9b5d3c10551f8d0ee9af" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-9b5d3c10551f8d0ee9af">{"x":{"ax_opts":{"chart":{"type":"treemap"},"series":[{"name":[],"data":[{"x":"Social Movement Representatives","y":1},{"x":"GL-PvdA: Frans Timmermans","y":3},{"x":"Non-Political Institution Representatives","y":6},{"x":"Illegals/Criminals/Extremists","y":9},{"x":"PVV: Geert Wilders","y":10},{"x":"Minorities","y":16},{"x":"Ordinary People","y":52}]}],"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#547D01"],"dataLabels":{"style":{"colors":["#000000"]}},"title":{"text":"Distribution of People in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"GL-PvdA: Frans Timmermans","max":"Social Movement Representatives"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-0dca1374929aec844c55" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-0dca1374929aec844c55">{"x":{"ax_opts":{"chart":{"type":"treemap"},"series":[{"name":[],"data":[{"x":"Social Movement Representatives","y":1},{"x":"GL-PvdA: Frans Timmermans","y":3},{"x":"Non-Political Institution Representatives","y":6},{"x":"Illegals/Criminals/Extremists","y":9},{"x":"PVV: Geert Wilders","y":10},{"x":"Minorities","y":16},{"x":"Ordinary People","y":52}]}],"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#547D01"],"dataLabels":{"style":{"colors":["#000000"]}},"title":{"text":"Distribution of People in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"GL-PvdA: Frans Timmermans","max":"Social Movement Representatives"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9274,8 +9542,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-1647175a46aea56969c3" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-1647175a46aea56969c3">{"x":{"ax_opts":{"chart":{"type":"treemap"},"series":[{"name":[],"data":[{"x":"Foreign Politicians (Non-EU, UN, NATO)","y":1},{"x":"Other People","y":1},{"x":"Social Movement Representatives","y":2},{"x":"GL-PvdA: Jesse Klaver","y":3},{"x":"JA21: Joost Eerdmans","y":3},{"x":"Denk: Stephan van Baarle","y":4},{"x":"CDA: Henri Bontenbal","y":5},{"x":"BBB: Caroline van der Plas","y":6},{"x":"Illegals/Criminals/Extremists","y":6},{"x":"Non-Political Institution Representatives","y":6},{"x":"Other Parties","y":6},{"x":"Other Politicians","y":6},{"x":"VVD: Dilan Yeşilgöz","y":6},{"x":"GL-PvdA: Frans Timmermans","y":7},{"x":"PvdD: Esther Ouwehand","y":7},{"x":"PVV: Geert Wilders","y":7},{"x":"Journalists/News Media","y":8},{"x":"D66: Rob Jetten","y":9},{"x":"Minorities","y":13},{"x":"Celebrities/Opinion Leaders","y":14},{"x":"Foreign Politicians (EU, UN, NATO)","y":24},{"x":"Ordinary People","y":50}]}],"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#547D01"],"dataLabels":{"style":{"colors":["#000000"]}},"title":{"text":"Distribution of People in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"BBB: Caroline van der Plas","max":"VVD: Dilan Yeşilgöz"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-79636dc9275b1f2b6bb1" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-79636dc9275b1f2b6bb1">{"x":{"ax_opts":{"chart":{"type":"treemap"},"series":[{"name":[],"data":[{"x":"Foreign Politicians (Non-EU, UN, NATO)","y":1},{"x":"Other People","y":1},{"x":"Social Movement Representatives","y":2},{"x":"GL-PvdA: Jesse Klaver","y":3},{"x":"JA21: Joost Eerdmans","y":3},{"x":"Denk: Stephan van Baarle","y":4},{"x":"CDA: Henri Bontenbal","y":5},{"x":"BBB: Caroline van der Plas","y":6},{"x":"Illegals/Criminals/Extremists","y":6},{"x":"Non-Political Institution Representatives","y":6},{"x":"Other Parties","y":6},{"x":"Other Politicians","y":6},{"x":"VVD: Dilan Yeşilgöz","y":6},{"x":"GL-PvdA: Frans Timmermans","y":7},{"x":"PvdD: Esther Ouwehand","y":7},{"x":"PVV: Geert Wilders","y":7},{"x":"Journalists/News Media","y":8},{"x":"D66: Rob Jetten","y":9},{"x":"Minorities","y":13},{"x":"Celebrities/Opinion Leaders","y":14},{"x":"Foreign Politicians (EU, UN, NATO)","y":24},{"x":"Ordinary People","y":50}]}],"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#547D01"],"dataLabels":{"style":{"colors":["#000000"]}},"title":{"text":"Distribution of People in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"BBB: Caroline van der Plas","max":"VVD: Dilan Yeşilgöz"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9306,8 +9574,8 @@ border-radius: 10px;
 }
 </style>
 <div class="apex-container">
-<div class="highchart html-widget html-fill-item" id="htmlwidget-fdde0f0514aebfadd2dd" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-fdde0f0514aebfadd2dd">{"x":{"hc_opts":{"chart":{"reflow":true,"type":"line"},"title":{"text":"AI Posts Over Time"},"yAxis":{"title":{"text":"Number of Posts"}},"credits":{"enabled":false},"exporting":{"enabled":false},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"}},"xAxis":{"categories":["2025-09-17","2025-09-18","2025-09-19","2025-09-20","2025-09-21","2025-09-22","2025-09-23","2025-09-24","2025-09-25"]},"series":[{"data":[8,15,18,24,19,22,22,14,21],"name":"Posts with AI","color":"#FF6F61"},{"data":[801,777,666,619,505,689,776,748,825],"name":"Posts without AI","color":"#6B5B95"}],"tooltip":{"pointFormat":"<b>{series.name}<\/b>: {point.y}"}},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
+<div class="highchart html-widget html-fill-item" id="htmlwidget-d1037bfce1765a0f2480" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-d1037bfce1765a0f2480">{"x":{"hc_opts":{"chart":{"reflow":true,"type":"line"},"title":{"text":"AI Posts Over Time"},"yAxis":{"title":{"text":"Number of Posts"}},"credits":{"enabled":false},"exporting":{"enabled":false},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"}},"xAxis":{"categories":["2025-09-17","2025-09-18","2025-09-19","2025-09-20","2025-09-21","2025-09-22","2025-09-23","2025-09-24","2025-09-25"]},"series":[{"data":[8,15,18,24,19,22,22,14,21],"name":"Posts with AI","color":"#FF6F61"},{"data":[801,777,666,619,505,689,776,748,825],"name":"Posts without AI","color":"#6B5B95"}],"tooltip":{"pointFormat":"<b>{series.name}<\/b>: {point.y}"}},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>

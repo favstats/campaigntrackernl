@@ -102,6 +102,8 @@ format:
   }
 </style>
 
+<script data-goatcounter="https://favstats.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
 
 
