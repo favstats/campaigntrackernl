@@ -2,8 +2,8 @@
 title: "The Prompts behind the Propaganda"
 description-meta: "De Groene Amsterdammer's investigation into AI-generated political content reveals the prompts used for many of the AI images we monitor with the CampAIgn Tracker. © Beeldwerking De Groene Amsterdammer"
 author: "Fabio Votta"
-date: "11.10.2025"
-image: "https://www.groene.nl/uploads/image/file/000/047/291/large_ai_web_beeld.jpg"
+date: "10.11.2025"
+image: "geen_title.png"
 lang: en
 format:
   html:
@@ -68,15 +68,16 @@ format:
 <div class="blog-post-content">
 ```
 
-**Read the full investigation:** [*De Groene Amsterdammer* - "Maak haar blond, onschuldig en knap"](https://www.groene.nl/artikel/maak-haar-blond-onschuldig-en-knap)
+
+
+
+Investigative journalism by [*De Groene Amsterdammer*](https://www.groene.nl/artikel/maak-haar-blond-onschuldig-en-knap) has documented coordinated use of photorealistic AI imagery in Dutch political messaging, tracing the practice to members of parliament. The investigation is particularly valuable because it goes beyond visible outputs and recovers **the actual prompts used to generate these images**, offering rare insight into how synthetic media is engineered for political messaging.
 
 ![](geen3.png){fig-align="center"}
 
 <center>
-*Prompting revealed by the Groene Amsterdammer in their article © Beeldwerking De Groene Amsterdammer*
+*Prompting revealed by the Groene Amsterdammer in their article. Translated by CampAIgn Tracker.
 </center>
-
-Investigative journalism by *De Groene Amsterdammer* has documented coordinated use of photorealistic AI imagery in Dutch political messaging, tracing the practice to members of parliament. The investigation is particularly valuable because it goes beyond visible outputs and recovers **the actual prompts used to generate these images**, offering rare insight into how synthetic media is engineered for political messaging.
 
 Our research team identified the main PVV-aligned page responsible for this content as **one of the most active generators of AI campaign material we have tracked across platforms**. On Facebook, the page consistently ranks among the **top five most engaged accounts**, with engagement several times higher than most national politicians and just shy of engagement on **Geert Wilders's page**. Indeed, what is notable is not just the volume but the distribution as well: images likely originating from this source appear across multiple other far-right-leaning accounts on Facebook, Instagram, and TikTok. This reflects both the success of AI-generated political content at scale and the strong networking effects within the far-right online sphere.
 
