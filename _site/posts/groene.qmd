@@ -71,7 +71,7 @@ format:
 
 
 
-Investigative journalism by [*De Groene Amsterdammer*](https://www.groene.nl/artikel/maak-haar-blond-onschuldig-en-knap) has documented coordinated use of photorealistic AI imagery in Dutch political messaging, tracing the practice to members of parliament. The investigation is particularly valuable because it goes beyond visible outputs and recovers **the actual prompts used to generate these images**, offering rare insight into how synthetic media is engineered for political messaging. With support from the CampAIgn Tracker, we provided additional evidence on where this content travels and how it is amplified.  
+Investigative journalism by [*De Groene Amsterdammer*](https://www.groene.nl/artikel/maak-haar-blond-onschuldig-en-knap) has documented coordinated use of photorealistic AI imagery in Dutch political messaging, tracing the campaign to political candidates and members of parliament. The investigation is particularly valuable because it recovers **the actual prompts used to generate these images**, offering rare insight into how synthetic media is engineered for political messaging. With support from the CampAIgn Tracker, we provided additional evidence on where this content travels and how it is amplified.  
 
 ![](geen3.png){fig-align="center"}
 
@@ -84,7 +84,7 @@ Our research team identified the main PVV-aligned page responsible for this cont
 ![](geen4.png){fig-align="center"}
 
 <center>
-*Pages with most total Engagement on Facebook as monitored by the CampAIgn Tracker.*
+*Pages with most total engagement on Facebook as monitored by the CampAIgn Tracker.*
 </center>
 
 
