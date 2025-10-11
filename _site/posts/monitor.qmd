@@ -2,7 +2,7 @@
 title: "Findings from the AlgoSoc AI Opinion Monitor"
 description-meta: "The AlgoSoc Consortium has been tracking public opinion on AI in the Netherlands for the last 2 years. Find out more in this blog post."
 author: "Ernesto de León"
-date: "10.11.2025"
+date: "10.10.2025"
 image: "monitor_title.png"
 lang: en
 format:

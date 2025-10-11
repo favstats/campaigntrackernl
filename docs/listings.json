@@ -2,8 +2,8 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/posts/monitor.html",
       "/posts/groene.html",
+      "/posts/monitor.html",
       "/posts/nl.html",
       "/posts/verantwortung.html",
       "/posts/erkennung.html",

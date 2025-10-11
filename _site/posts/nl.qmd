@@ -2,7 +2,7 @@
 title: "CampAIgn Tracker Expands to the Netherlands: Monitoring AI in the 2025 Dutch General Election"
 description-meta: "The CampAIgn Tracker creates transparency around the use of AI in political campaigns on social media. Track the influence of AI-generated content in election campaigns."
 author: "Simon Kruschinski"
-date: "10.10.2025"
+date: "10.09.2025"
 image: "CampaignTrackerFeaturesEnglish.png"
 lang: en
 format:

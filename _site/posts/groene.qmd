@@ -3,7 +3,7 @@ title: "The Prompts behind the Propaganda"
 description-meta: "De Groene Amsterdammer's investigation into AI-generated political content reveals the prompts used for many of the AI images we monitor with the CampAIgn Tracker. © Beeldwerking De Groene Amsterdammer"
 author: "Fabio Votta"
 date: "10.11.2025"
-image: "geen_title.png"
+image: "geen_title.jpg"
 lang: en
 format:
   html:
@@ -71,15 +71,24 @@ format:
 
 
 
-Investigative journalism by [*De Groene Amsterdammer*](https://www.groene.nl/artikel/maak-haar-blond-onschuldig-en-knap) has documented coordinated use of photorealistic AI imagery in Dutch political messaging, tracing the practice to members of parliament. The investigation is particularly valuable because it goes beyond visible outputs and recovers **the actual prompts used to generate these images**, offering rare insight into how synthetic media is engineered for political messaging.
+Investigative journalism by [*De Groene Amsterdammer*](https://www.groene.nl/artikel/maak-haar-blond-onschuldig-en-knap) has documented coordinated use of photorealistic AI imagery in Dutch political messaging, tracing the practice to members of parliament. The investigation is particularly valuable because it goes beyond visible outputs and recovers **the actual prompts used to generate these images**, offering rare insight into how synthetic media is engineered for political messaging. With support from the CampAIgn Tracker, we provided additional evidence on where this content travels and how it is amplified.  
 
 ![](geen3.png){fig-align="center"}
 
 <center>
-*Prompting revealed by the Groene Amsterdammer in their article. Translated by CampAIgn Tracker.
+*Prompting revealed by the Groene Amsterdammer in their article. Translated by CampAIgn Tracker.*
 </center>
 
-Our research team identified the main PVV-aligned page responsible for this content as **one of the most active generators of AI campaign material we have tracked across platforms**. On Facebook, the page consistently ranks among the **top five most engaged accounts**, with engagement several times higher than most national politicians and just shy of engagement on **Geert Wilders's page**. Indeed, what is notable is not just the volume but the distribution as well: images likely originating from this source appear across multiple other far-right-leaning accounts on Facebook, Instagram, and TikTok. This reflects both the success of AI-generated political content at scale and the strong networking effects within the far-right online sphere.
+Our research team identified the main PVV-aligned page responsible for this content (GeenAangifte) as **one of the most active generators of AI campaign material we have tracked across platforms**. On Facebook, the page consistently ranks among the **top most engaged accounts**, with engagement comparable to many national politician and party pages and just shy of the total engagement on **Geert Wilders's page**. 
+
+![](geen4.png){fig-align="center"}
+
+<center>
+*Pages with most total Engagement on Facebook as monitored by the CampAIgn Tracker.*
+</center>
+
+
+Indeed, what is notable is not just the volume but the **distribution** as well: images likely originating from this source appear across multiple other far-right-leaning accounts on Facebook, Instagram, and TikTok. This reflects both the success of AI-generated political content at scale and the strong networking effects within the far-right online sphere.
 
 ![](geen2.png){fig-align="center"}
 
