@@ -109,28 +109,28 @@
     "href": "index.html#ai-transparency",
     "title": "Overview of Content",
     "section": "AI Transparency",
-    "text": "AI Transparency\n\n\nParties & Politicians\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDisclosure of AI content through disclaimers or platform labels is crucial for transparency. This visualization shows how often AI-generated content was published with/without disclosures and whether the label was applied by the actor (in text or image) or by the platform."
+    "text": "AI Transparency\n\nParties & Politicians\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDisclosure of AI content through disclaimers or platform labels is crucial for transparency. This visualization shows how often AI-generated content was published with/without disclosures and whether the label was applied by the actor (in text or image) or by the platform."
   },
   {
     "objectID": "index.html#medienformatte",
     "href": "index.html#medienformatte",
     "title": "Overview of Content",
     "section": "AI Media Formats",
-    "text": "AI Media Formats\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis graphic shows the share of images and videos in AI-generated posts, and whether they look real (camera-like or deepfakes) or are drawings/graphics.\n\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis graphic shows the share of images and videos in AI-generated posts, and whether they look real (camera-like or deepfakes) or are drawings/graphics."
+    "text": "AI Media Formats\n\nAllParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis graphic shows the share of images and videos in AI-generated posts, and whether they look real (camera-like or deepfakes) or are drawings/graphics.\n\n\nAllParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis graphic shows the share of images and videos in AI-generated posts, and whether they look real (camera-like or deepfakes) or are drawings/graphics."
   },
   {
     "objectID": "index.html#ai-content-analysis",
     "href": "index.html#ai-content-analysis",
     "title": "Overview of Content",
     "section": "AI Content Analysis",
-    "text": "AI Content Analysis\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: it is possible that a post shows both negative and positive content.\n\n\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single post may cover multiple topics.\n\n\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single image may contain multiple image/video topics."
+    "text": "AI Content Analysis\n\nAllParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: it is possible that a post shows both negative and positive content.\n\n\n\nAllParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single post may cover multiple topics.\n\n\n\nAllParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single image may contain multiple image/video topics."
   },
   {
     "objectID": "index.html#personen",
     "href": "index.html#personen",
     "title": "Overview of Content",
     "section": "People Shown in AI Content",
-    "text": "People Shown in AI Content\n\nParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis visualization shows which person (groups) are depicted in how many of the AI-generated images/videos.\n\nNote: A single image may contain multiple people."
+    "text": "People Shown in AI Content\n\nAllParties & PoliticiansOther Actors\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis visualization shows which person (groups) are depicted in how many of the AI-generated images/videos.\n\nNote: A single image may contain multiple people."
   },
   {
     "objectID": "index.html#ai-over-time",
@@ -173,5 +173,12 @@
     "title": "&nbsp;&nbsp;Dashboard",
     "section": "",
     "text": "With the CampAIgn Tracker, we aim to help citizens and journalists understand where AI has been used and in what context. To achieve this, we have developed a two-stage process to reliably identify and code AI-generated images.\n\n\nWe capture all posts from over 4000 accounts of parties, leading candidates, political commentators and influencers. We consider party accounts at the national, provincial, and local levels.\nWe are currently tracking 6569 posts between 2025-09-17 and 2025-09-25.\n\n\n\n\n\n\n\nThe classification of accounts is based on the work of our research assistants as well as dedicated volunteer work of Who Targets Me, an organization committed to transparency in digital campaigning. They track the online advertising spending of over 100,000 advertisers from 650+ parties in over 50 countries.\n\n\n\nOur AI detection is a two-stage process that combines automatic classification using an AI model with manual annotation.\n1. Automatic Review: - All collected images and video stills are checked for AI generation using the AI detection model from SightEngine.\n2. Human Validation: - If the classification probability is above 0.1, trained research assisstants manually review the image. - This ensures that automatic AI classification is always validated by human expertise.\nAdditionally, for all identified AI posts, coders classify the following features:\n\nThe labeling of AI use\nThe actors in the image or video\nThe theme of the image or video\nThe actors in the entire post\nThe use of negativity, e.g., through attacks on parties\nThe use of acclaims, e.g., through references to a party’s successes\n\nThis comprehensive information is available on our platform campaigntracker.nl in simple visualizations.\nOur hope is that this enables citizens and journalists to learn how AI is being used in election campaigns and to hold a public debate about the use of AI in politics."
+  },
+  {
+    "objectID": "index.html#rel-ai-by-party",
+    "href": "index.html#rel-ai-by-party",
+    "title": "Overview of Content",
+    "section": "Share of Posts with and without AI",
+    "text": "Share of Posts with and without AI\nThis graphic shows the relative share of AI-generated content per party. The parties are sorted by the highest share of AI content.\n\n\n\n\n\n\n\n\n\n\nNote: For actors with fewer total posts (including smaller parties), even limited AI use may result in high relative percentages."
   }
 ]

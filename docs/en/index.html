@@ -8786,6 +8786,15 @@ main.content b {
 color: #0d6efd !important; 
 font-weight: 700; 
 }
+
+.apexcharts-tooltip strong,
+.apexcharts-tooltip b,
+.apexcharts-tooltip-series strong,
+.apexcharts-tooltip-series b,
+div[class*="apexcharts-tooltip"] strong,
+div[class*="apexcharts-tooltip"] b {
+color: #FFFFFF !important; 
+}
 </style>
 <div class="cell">
 <style type="text/css">
@@ -8821,12 +8830,12 @@ border-left-color: #4e47d6;
     padding: 10px;
   ">
 <div style="flex: 1; min-width: 300px;">
-<div id="htmlwidget-60a8b62914c02257ab0b" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-60a8b62914c02257ab0b">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"n","type":"area","data":[[1758067200000,809],[1758153600000,792],[1758240000000,684],[1758326400000,643],[1758412800000,524],[1758499200000,711],[1758585600000,798],[1758672000000,762],[1758758400000,846]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#2E93fA"],"title":{"text":6569,"style":{"fontSize":"24px"}},"subtitle":{"text":"Total Tracked Posts","style":{"fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#2E93fA","background":"#FFF"},"xaxis":{"min":"2025-09-17T00:00:00Z","max":"2025-09-25T00:00:00Z"},"type":"area"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a128c52b80e46144b6e9" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a128c52b80e46144b6e9">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true},"group":"spark_tooltips"},"series":[{"name":"n","type":"area","data":[[1758067200000,823],[1758153600000,810],[1758240000000,699],[1758326400000,667],[1758412800000,539],[1758499200000,731],[1758585600000,819],[1758672000000,778],[1758758400000,865]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#2E93fA"],"title":{"text":6731,"style":{"fontSize":"24px"}},"subtitle":{"text":"Total Tracked Posts","style":{"fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#2E93fA","background":"#FFF"},"xaxis":{"min":"2025-09-17T00:00:00Z","max":"2025-09-25T00:00:00Z"},"type":"area"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div style="flex: 1; min-width: 300px;">
-<div id="htmlwidget-178228c1b8d343c38489" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-178228c1b8d343c38489">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"n","type":"area","data":[[1758067200000,8],[1758153600000,15],[1758240000000,18],[1758326400000,24],[1758412800000,19],[1758499200000,21],[1758585600000,22],[1758672000000,14],[1758758400000,20]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#FFF"],"title":{"text":161,"style":{"fontSize":"22px","color":"#FFF"}},"subtitle":{"text":"Total Number of Identified AI Posts","style":{"fontSize":"14px","color":"#FFF"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#FFF","background":"#1E90FF"},"xaxis":{"min":"2025-09-17T00:00:00Z","max":"2025-09-25T00:00:00Z"},"type":"area"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6c575805e389b16818e3" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6c575805e389b16818e3">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true},"group":"spark_tooltips"},"series":[{"name":"n","type":"area","data":[[1758067200000,8],[1758153600000,15],[1758240000000,18],[1758326400000,24],[1758412800000,19],[1758499200000,21],[1758585600000,22],[1758672000000,14],[1758758400000,20]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#FFF"],"title":{"text":161,"style":{"fontSize":"22px","color":"#FFF"}},"subtitle":{"text":"Total Number of Identified AI Posts","style":{"fontSize":"14px","color":"#FFF"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#FFF","background":"#1E90FF"},"xaxis":{"min":"2025-09-17T00:00:00Z","max":"2025-09-25T00:00:00Z"},"type":"area"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -8847,20 +8856,36 @@ border-left-color: #4e47d6;
 <div class="cell">
 <div class="cell-output-display">
 <style>
+
+.apex-container,
+.apex-container0,
 .apex-container2 {
 max-width: 100%;
 height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
+overflow-x: auto;
+overflow-y: auto;
 padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
 }
 </style>
 <div class="apex-container2">
-<div id="htmlwidget-48fba3744dae47585ea2" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-48fba3744dae47585ea2">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"PVV","y":47},{"x":"Pro-Right","y":32},{"x":"Satire","y":29},{"x":"Pro-PVV","y":14},{"x":"VVD","y":10},{"x":"Pro-FvD","y":8},{"x":"50PLUS","y":3},{"x":"De Linie","y":3},{"x":"NCPN","y":3},{"x":"DENK","y":2},{"x":"FvD","y":2},{"x":"GL-PvdA","y":2},{"x":"SP","y":2},{"x":"BBB","y":1},{"x":"BVNL","y":1},{"x":"LP","y":1},{"x":"Vrede voor Dieren","y":1}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"By Party / Actor","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#003082","#8C6D1F","#6A5ACD","#B22222","#FF7900","#7E2342","#7F2481","#AA3377","#CC0000","#00A7B3","#7B1E26","#C00040","#BE1E2D","#009639","#132141","#003399","#5496c6"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"50PLUS","max":"VVD"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-78c71db1086a6834f01f" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-78c71db1086a6834f01f">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"PVV","y":47},{"x":"Pro-Right","y":32},{"x":"Satire","y":29},{"x":"Pro-PVV","y":14},{"x":"VVD","y":10},{"x":"Pro-FvD","y":8},{"x":"50PLUS","y":3},{"x":"De Linie","y":3},{"x":"NCPN","y":3},{"x":"DENK","y":2},{"x":"FvD","y":2},{"x":"GL-PvdA","y":2},{"x":"SP","y":2},{"x":"BBB","y":1},{"x":"BVNL","y":1},{"x":"LP","y":1},{"x":"Vrede voor Dieren","y":1}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"By Party / Actor","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#003082","#8C6D1F","#6A5ACD","#B22222","#FF7900","#7E2342","#7F2481","#AA3377","#CC0000","#00A7B3","#7B1E26","#C00040","#BE1E2D","#009639","#132141","#003399","#5496c6"],"tooltip":{"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const data = [{\"x\":\"PVV\",\"y\":47,\"color\":\"#003082\"},{\"x\":\"Pro-Right\",\"y\":32,\"color\":\"#8C6D1F\"},{\"x\":\"Satire\",\"y\":29,\"color\":\"#6A5ACD\"},{\"x\":\"Pro-PVV\",\"y\":14,\"color\":\"#B22222\"},{\"x\":\"VVD\",\"y\":10,\"color\":\"#FF7900\"},{\"x\":\"Pro-FvD\",\"y\":8,\"color\":\"#7E2342\"},{\"x\":\"50PLUS\",\"y\":3,\"color\":\"#7F2481\"},{\"x\":\"De Linie\",\"y\":3,\"color\":\"#AA3377\"},{\"x\":\"NCPN\",\"y\":3,\"color\":\"#CC0000\"},{\"x\":\"DENK\",\"y\":2,\"color\":\"#00A7B3\"},{\"x\":\"FvD\",\"y\":2,\"color\":\"#7B1E26\"},{\"x\":\"GL-PvdA\",\"y\":2,\"color\":\"#C00040\"},{\"x\":\"SP\",\"y\":2,\"color\":\"#BE1E2D\"},{\"x\":\"BBB\",\"y\":1,\"color\":\"#009639\"},{\"x\":\"BVNL\",\"y\":1,\"color\":\"#132141\"},{\"x\":\"LP\",\"y\":1,\"color\":\"#003399\"},{\"x\":\"Vrede voor Dieren\",\"y\":1,\"color\":\"#5496c6\"}];\n          const colors = [\"#003082\",\"#8C6D1F\",\"#6A5ACD\",\"#B22222\",\"#FF7900\",\"#7E2342\",\"#7F2481\",\"#AA3377\",\"#CC0000\",\"#00A7B3\",\"#7B1E26\",\"#C00040\",\"#BE1E2D\",\"#009639\",\"#132141\",\"#003399\",\"#5496c6\"];\n          const item = data[dataPointIndex];\n          const label = item ? item.x : 'Unknown';\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const color = colors[dataPointIndex] || '#CCCCCC';\n          const total = 161;\n          const percentage = Math.round(count / total * 100 * 10) / 10;\n          \n          // Use white text for better contrast on colorful backgrounds\n          const textColor = '#FFFFFF';\n          \n          return '<div style=\"padding: 12px; background: ' + color + '; color: ' + textColor + '; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + label + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> AI posts (' + percentage + '% of total)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + total + '<\/strong> total AI posts analyzed<\/div>' +\n          '<\/div>';\n        }"},"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"50PLUS","max":"VVD"},"type":"treemap"},"evals":["ax_opts.tooltip.custom"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -8869,20 +8894,36 @@ border-radius: 10px;
 <div class="cell">
 <div class="cell-output-display">
 <style>
+
+.apex-container,
+.apex-container0,
 .apex-container2 {
 max-width: 100%;
 height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
+overflow-x: auto;
+overflow-y: auto;
 padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
 }
 </style>
 <div class="apex-container2">
-<div id="htmlwidget-8d5f46e84040d03bf5c1" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8d5f46e84040d03bf5c1">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"PVV","y":47},{"x":"VVD","y":10},{"x":"50PLUS","y":3},{"x":"De Linie","y":3},{"x":"NCPN","y":3},{"x":"DENK","y":2},{"x":"FvD","y":2},{"x":"GL-PvdA","y":2},{"x":"SP","y":2},{"x":"BBB","y":1},{"x":"BVNL","y":1},{"x":"LP","y":1},{"x":"Vrede voor Dieren","y":1}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"By Party","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#003082","#FF7900","#7F2481","#AA3377","#CC0000","#00A7B3","#7B1E26","#C00040","#BE1E2D","#009639","#132141","#003399","#5496c6"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"50PLUS","max":"VVD"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-94e735cbe521be9019a5" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-94e735cbe521be9019a5">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"PVV","y":47},{"x":"VVD","y":10},{"x":"50PLUS","y":3},{"x":"De Linie","y":3},{"x":"NCPN","y":3},{"x":"DENK","y":2},{"x":"FvD","y":2},{"x":"GL-PvdA","y":2},{"x":"SP","y":2},{"x":"BBB","y":1},{"x":"BVNL","y":1},{"x":"LP","y":1},{"x":"Vrede voor Dieren","y":1}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"By Party","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#003082","#FF7900","#7F2481","#AA3377","#CC0000","#00A7B3","#7B1E26","#C00040","#BE1E2D","#009639","#132141","#003399","#5496c6"],"tooltip":{"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const data = [{\"x\":\"PVV\",\"y\":47,\"color\":\"#003082\"},{\"x\":\"VVD\",\"y\":10,\"color\":\"#FF7900\"},{\"x\":\"50PLUS\",\"y\":3,\"color\":\"#7F2481\"},{\"x\":\"De Linie\",\"y\":3,\"color\":\"#AA3377\"},{\"x\":\"NCPN\",\"y\":3,\"color\":\"#CC0000\"},{\"x\":\"DENK\",\"y\":2,\"color\":\"#00A7B3\"},{\"x\":\"FvD\",\"y\":2,\"color\":\"#7B1E26\"},{\"x\":\"GL-PvdA\",\"y\":2,\"color\":\"#C00040\"},{\"x\":\"SP\",\"y\":2,\"color\":\"#BE1E2D\"},{\"x\":\"BBB\",\"y\":1,\"color\":\"#009639\"},{\"x\":\"BVNL\",\"y\":1,\"color\":\"#132141\"},{\"x\":\"LP\",\"y\":1,\"color\":\"#003399\"},{\"x\":\"Vrede voor Dieren\",\"y\":1,\"color\":\"#5496c6\"}];\n          const colors = [\"#003082\",\"#FF7900\",\"#7F2481\",\"#AA3377\",\"#CC0000\",\"#00A7B3\",\"#7B1E26\",\"#C00040\",\"#BE1E2D\",\"#009639\",\"#132141\",\"#003399\",\"#5496c6\"];\n          const item = data[dataPointIndex];\n          const label = item ? item.x : 'Unknown';\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const color = colors[dataPointIndex] || '#CCCCCC';\n          const total = 78;\n          const percentage = Math.round(count / total * 100 * 10) / 10;\n          \n          // Use white text for better contrast on colorful backgrounds\n          const textColor = '#FFFFFF';\n          \n          return '<div style=\"padding: 12px; background: ' + color + '; color: ' + textColor + '; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + label + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> AI posts (' + percentage + '% of total)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + total + '<\/strong> total AI posts analyzed<\/div>' +\n          '<\/div>';\n        }"},"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"50PLUS","max":"VVD"},"type":"treemap"},"evals":["ax_opts.tooltip.custom"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -8891,20 +8932,36 @@ border-radius: 10px;
 <div class="cell">
 <div class="cell-output-display">
 <style>
+
+.apex-container,
+.apex-container0,
 .apex-container2 {
 max-width: 100%;
 height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
+overflow-x: auto;
+overflow-y: auto;
 padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
 }
 </style>
 <div class="apex-container2">
-<div id="htmlwidget-cb7017016d8db0622095" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cb7017016d8db0622095">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"Pro-Right","y":32},{"x":"Satire","y":29},{"x":"Pro-PVV","y":14},{"x":"Pro-FvD","y":8}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"By Actor","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#8C6D1F","#6A5ACD","#B22222","#7E2342"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Pro-FvD","max":"Satire"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-db607495535fc5fc49ab" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-db607495535fc5fc49ab">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"Pro-Right","y":32},{"x":"Satire","y":29},{"x":"Pro-PVV","y":14},{"x":"Pro-FvD","y":8}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"By Actor","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#8C6D1F","#6A5ACD","#B22222","#7E2342"],"tooltip":{"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const data = [{\"x\":\"Pro-Right\",\"y\":32,\"color\":\"#8C6D1F\"},{\"x\":\"Satire\",\"y\":29,\"color\":\"#6A5ACD\"},{\"x\":\"Pro-PVV\",\"y\":14,\"color\":\"#B22222\"},{\"x\":\"Pro-FvD\",\"y\":8,\"color\":\"#7E2342\"}];\n          const colors = [\"#8C6D1F\",\"#6A5ACD\",\"#B22222\",\"#7E2342\"];\n          const item = data[dataPointIndex];\n          const label = item ? item.x : 'Unknown';\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const color = colors[dataPointIndex] || '#CCCCCC';\n          const total = 83;\n          const percentage = Math.round(count / total * 100 * 10) / 10;\n          \n          // Use white text for better contrast on colorful backgrounds\n          const textColor = '#FFFFFF';\n          \n          return '<div style=\"padding: 12px; background: ' + color + '; color: ' + textColor + '; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + label + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> AI posts (' + percentage + '% of total)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + total + '<\/strong> total AI posts analyzed<\/div>' +\n          '<\/div>';\n        }"},"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Pro-FvD","max":"Satire"},"type":"treemap"},"evals":["ax_opts.tooltip.custom"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -8923,230 +8980,19 @@ border-radius: 10px;
 <div class="cell">
 <div class="cell-output-display">
 <style>
-.apex-container0 {
-max-width: 100%;
-height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
-padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
-}
-</style>
-<div class="apex-container0">
-<div id="htmlwidget-f901883c2b44206b4ddb" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f901883c2b44206b4ddb">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"Facebook","y":75},{"x":"TikTok","y":45},{"x":"Instagram","y":41}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"AI Content by Platform","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#1877F2","#69C9D0","#E4405F"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Facebook","max":"TikTok"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<div class="cell">
-<div class="cell-output-display">
-<style>
-.apex-container0 {
-max-width: 100%;
-height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
-padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
-}
-</style>
-<div class="apex-container0">
-<div id="htmlwidget-5cc162ddd0a43cb4588c" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5cc162ddd0a43cb4588c">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"Facebook","y":63},{"x":"Instagram","y":14},{"x":"TikTok","y":1}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"AI Content by Platform (Only Parties)","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#1877F2","#E4405F","#69C9D0"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Facebook","max":"TikTok"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
-<div class="cell">
-<div class="cell-output-display">
-<style>
-.apex-container0 {
-max-width: 100%;
-height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
-padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
-}
-</style>
-<div class="apex-container0">
-<div id="htmlwidget-1c6b48d4cde80f688a68" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1c6b48d4cde80f688a68">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"TikTok","y":44},{"x":"Instagram","y":27},{"x":"Facebook","y":12}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"AI Content by Platform (Only Non-Party Actors)","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#69C9D0","#E4405F","#1877F2"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Facebook","max":"TikTok"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<blockquote class="blockquote">
 
-</blockquote>
-<!-- > This visualization shows how much AI-generated content we found on each platform. Tile size corresponds to the number of identified posts. Larger tiles indicate more AI-generated posts on that platform. -->
-</div>
-<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
-<div class="cell-output-display">
-<style>
-.apex-container {
+.apex-container,
+.apex-container0,
+.apex-container2 {
 max-width: 100%;
 height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
+overflow-x: auto;
+overflow-y: auto;
 padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
 }
-</style>
-<div class="apex-container">
-<div id="htmlwidget-f4eaa1c04c1f3e1b469c" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f4eaa1c04c1f3e1b469c">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"Other Actors","y":83},{"x":"Parties","y":74},{"x":"Politicians","y":4}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"By Actor Type","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#009E73","#D55E00","#0072B2"],"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Other Actors","max":"Politicians"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<blockquote class="blockquote">
-<p>This visualization shows how much AI-generated content we found by actor type (e.g., parties, politicians, other actors). Tile size corresponds to the number of identified posts. Larger tiles indicate more AI-generated posts from that actor type.</p>
-</blockquote>
-</div>
-</div>
-</div>
-<section id="ki-content-by-party2" class="level2">
-<h2 class="anchored" data-anchor-id="ki-content-by-party2">Share of Posts with and without AI</h2>
-<p>This graphic shows the <em>relative</em> share of AI-generated content per party. The parties are sorted by the highest share of AI content.</p>
-<!-- ::: {.panel-tabset} -->
-<!-- ### Parties & Politicians -->
-<div class="cell">
-<div class="cell-output-display">
-<style>
-.apex-container {
-max-width: 100%;
-height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
-padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
-}
-</style>
-<div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-65b45c2943cc3e1d29c6" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-65b45c2943cc3e1d29c6">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":528,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"Posts with AI","data":[{"x":"De Linie","y":60,"n":3,"total":5},{"x":"Satire","y":52,"n":29,"total":56},{"x":"Pro-PVV","y":29,"n":14,"total":48},{"x":"50PLUS","y":27,"n":3,"total":11},{"x":"NCPN","y":23,"n":3,"total":13},{"x":"PVV","y":11,"n":47,"total":441},{"x":"Vrede voor Dieren","y":9,"n":1,"total":11},{"x":"Pro-Right","y":5,"n":32,"total":674},{"x":"Pro-FvD","y":5,"n":8,"total":169},{"x":"LP","y":4,"n":1,"total":24},{"x":"BVNL","y":2,"n":1,"total":42},{"x":"VVD","y":2,"n":10,"total":439},{"x":"DENK","y":2,"n":2,"total":106},{"x":"FvD","y":1,"n":2,"total":245},{"x":"SP","y":1,"n":2,"total":385},{"x":"BBB","y":0.4424778761061947,"n":1,"total":226},{"x":"GL-PvdA","y":0.4149377593360996,"n":2,"total":482}]}],"plotOptions":{"bar":{"horizontal":true,"barHeight":"55%","borderRadius":6,"distributed":true,"dataLabels":{"position":"center"}}},"colors":["#AA3377","#6A5ACD","#B22222","#7F2481","#CC0000","#003082","#5496c6","#8C6D1F","#7E2342","#003399","#132141","#FF7900","#00A7B3","#7B1E26","#BE1E2D","#009639","#C00040"],"dataLabels":{"enabled":true,"style":{"fontSize":"12px","fontWeight":"bold","colors":["#ffffff"]},"formatter":"function(v){ return (v < 2 ? '' : (Math.round(v*10)/10) + '%'); }"},"tooltip":{"shared":false,"y":{"formatter":"function(val, opts){ \n           var d  = opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex];\n           var nf = new Intl.NumberFormat();\n           return (Math.round(val*10)/10) + '% (' + d.n + ' / ' + nf.format(d.total) + ')';\n         }"}},"xaxis":{"labels":{"formatter":"v => v + \"%\""},"tickAmount":4,"max":80,"title":{"text":[]}},"yaxis":{"labels":{"style":{"fontSize":"13px","fontWeight":"600"}}},"grid":{"xaxis":{"lines":{"show":true}},"yaxis":{"lines":{"show":false}}},"legend":{"show":false},"title":{"text":"Share of Posts with AI","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.y.formatter","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
-</div>
-</div>
-</div>
-<!-- ### Other Actors -->
-<!-- ```{r} -->
-<!-- # ai_pct: % with AI per party (only parties with AI) -->
-<!-- ai_pct <- full_data %>% -->
-<!--   filter(!(list_source %in% c("Politicians","Parties"))) %>% -->
-<!--   count(party, name = "total") %>% -->
-<!--   left_join(full_data %>% filter(!(list_source %in% c("Politicians","Parties")), ai == 1) %>% -->
-<!--               count(party, name = "n_ai"), -->
-<!--             by = "party") %>% -->
-<!--   mutate(n_ai = coalesce(n_ai, 0L), -->
-<!--          pct  = ifelse(total > 0, 100 * n_ai / total, 0)) %>% -->
-<!--   filter(n_ai > 0) %>% -->
-<!--   arrange(desc(pct)) -->
-<!-- if (nrow(ai_pct) == 0) { -->
-<!--   apexchart() %>% ax_noData(text = "Geen AI-berichten gevonden") -->
-<!-- } else { -->
-<!--   # points carry counts for the tooltip -->
-<!--   pts <- pmap( -->
-<!--     list(x = ai_pct$party, -->
-<!--          y = round(ai_pct$pct, 1), -->
-<!--          n = ai_pct$n_ai, -->
-<!--          total = ai_pct$total), -->
-<!--     ~ list(x = ..1, y = ..2, n = ..3, total = ..4) -->
-<!--   ) -->
-<!--   cols <- unname(party_colors[ai_pct$party]); cols[is.na(cols)] <- "#17a2b8" -->
-<!--   H <- max(240, 24 * nrow(ai_pct) + 120) -->
-<!--  ooo <- apexchart() %>% -->
-<!--     ax_chart( -->
-<!--       type = "bar", -->
-<!--       height = H, -->
-<!--       background = "transparent", -->
-<!--       foreColor  = "#000", -->
-<!--       animations = list(enabled = FALSE), -->
-<!--       redrawOnWindowResize = TRUE, -->
-<!--       redrawOnParentResize = TRUE, -->
-<!--       toolbar = list(show = FALSE) -->
-<!--     ) %>% -->
-<!--     ax_series(list(name = get_text("posts_with_ai", lang), data = pts)) %>% -->
-<!--     ax_plotOptions( -->
-<!--       bar = list( -->
-<!--         horizontal   = TRUE, -->
-<!--         barHeight    = "55%", -->
-<!--         borderRadius = 6, -->
-<!--         distributed  = TRUE, -->
-<!--         dataLabels   = list(position = "center")   # <-- center text inside bar -->
-<!--       ) -->
-<!--     ) %>% -->
-<!--     ax_colors(cols) %>% -->
-<!--     ax_dataLabels( -->
-<!--       enabled = TRUE, -->
-<!--       style   = list(fontSize = "12px", fontWeight = "bold", colors = list("#ffffff")), -->
-<!--       formatter = JS( -->
-<!--         # show centered %; hide on very tiny bars so it doesn't overlap -->
-<!--         "function(v){ return (v < 1 ? '' : (Math.round(v*10)/10) + '%'); }" -->
-<!--       ) -->
-<!--     ) %>% -->
-<!--     ax_tooltip( -->
-<!--       shared = FALSE, -->
-<!--       y = list(formatter = JS( -->
-<!--         # 23.1% (X out of 1,343 posts) -->
-<!--         "function(val, opts){  -->
-<!--            var d  = opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex]; -->
-<!--            var nf = new Intl.NumberFormat(); -->
-<!--            return (Math.round(val*10)/10) + '% (' + d.n + ' / ' + nf.format(d.total) + ')'; -->
-<!--          }" -->
-<!--       )) -->
-<!--     ) %>% -->
-<!--     ax_xaxis( -->
-<!--       max = 80, tickAmount = 4, -->
-<!--       labels = list(formatter = JS('v => v + "%"')), -->
-<!--       title  = list(text = get_text("percent", lang)) -->
-<!--     ) %>% -->
-<!--     ax_yaxis( -->
-<!--       labels = list(style = list(fontSize = "13px", fontWeight = "600"))  # party names only -->
-<!--     ) %>% -->
-<!--     ax_grid(xaxis = list(lines = list(show = TRUE)), -->
-<!--             yaxis = list(lines = list(show = FALSE))) %>% -->
-<!--     ax_legend(show = FALSE) %>% -->
-<!--     ax_title(text = get_text("posts_with_ai", lang), -->
-<!--              align = "center", -->
-<!--              style = list(fontSize = "18px", fontWeight = "bold")) -->
-<!-- } -->
-<!-- # Embedding Chart into Responsive Container -->
-<!-- htmltools::tagList( -->
-<!--   custom_css, -->
-<!--   tags$div( -->
-<!--     class = "apex-container", -->
-<!--     ooo -->
-<!--   ) -->
-<!-- ) -->
-<!-- ``` -->
-<!-- ::: -->
-<blockquote class="blockquote">
-<p>Note: For actors with fewer total posts (including smaller parties), even limited AI use may result in high relative percentages.</p>
-</blockquote>
-<p><br></p>
-</section>
-<section id="ai-transparency" class="level2">
-<h2 class="anchored" data-anchor-id="ai-transparency">AI Transparency</h2>
-<!-- ::: {.panel-tabset} -->
-<section id="parties-politicians-2" class="level3">
-<h3 class="anchored" data-anchor-id="parties-politicians-2">Parties &amp; Politicians</h3>
-<div class="cell">
-<div class="cell-output-display">
-<style>
 
 .ac-grid > div,
 .ac-grid .html-widget,
@@ -9161,37 +9007,223 @@ background: rgba(255,255,255,.96) !important;
 color: #111 !important;
 }
 </style>
+<div class="apex-container0">
+<div id="htmlwidget-ff3b63c6546ace6e20b9" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ff3b63c6546ace6e20b9">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"Facebook","y":75},{"x":"TikTok","y":45},{"x":"Instagram","y":41}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"AI Content by Platform","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#1877F2","#69C9D0","#E4405F"],"tooltip":{"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const data = [{\"x\":\"Facebook\",\"y\":75,\"color\":\"#1877F2\"},{\"x\":\"TikTok\",\"y\":45,\"color\":\"#69C9D0\"},{\"x\":\"Instagram\",\"y\":41,\"color\":\"#E4405F\"}];\n          const colors = [\"#1877F2\",\"#69C9D0\",\"#E4405F\"];\n          const item = data[dataPointIndex];\n          const label = item ? item.x : 'Unknown';\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const color = colors[dataPointIndex] || '#CCCCCC';\n          const total = 161;\n          const percentage = Math.round(count / total * 100 * 10) / 10;\n          \n          // Use white text for better contrast on colorful backgrounds\n          const textColor = '#FFFFFF';\n          \n          return '<div style=\"padding: 12px; background: ' + color + '; color: ' + textColor + '; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + label + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> AI posts (' + percentage + '% of total)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + total + '<\/strong> total AI posts analyzed<\/div>' +\n          '<\/div>';\n        }"},"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Facebook","max":"TikTok"},"type":"treemap"},"evals":["ax_opts.tooltip.custom"],"jsHooks":[]}</script>
 </div>
 </div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div class="cell">
 <div class="cell-output-display">
 <style>
-.apex-container {
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
 max-width: 100%;
 height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
+overflow-x: auto;
+overflow-y: auto;
 padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
+}
+</style>
+<div class="apex-container0">
+<div id="htmlwidget-771e9f0ce9255e90f051" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-771e9f0ce9255e90f051">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"Facebook","y":63},{"x":"Instagram","y":14},{"x":"TikTok","y":1}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"AI Content by Platform (Only Parties)","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#1877F2","#E4405F","#69C9D0"],"tooltip":{"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const data = [{\"x\":\"Facebook\",\"y\":63,\"color\":\"#1877F2\"},{\"x\":\"Instagram\",\"y\":14,\"color\":\"#E4405F\"},{\"x\":\"TikTok\",\"y\":1,\"color\":\"#69C9D0\"}];\n          const colors = [\"#1877F2\",\"#E4405F\",\"#69C9D0\"];\n          const item = data[dataPointIndex];\n          const label = item ? item.x : 'Unknown';\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const color = colors[dataPointIndex] || '#CCCCCC';\n          const total = 78;\n          const percentage = Math.round(count / total * 100 * 10) / 10;\n          \n          // Use white text for better contrast on colorful backgrounds\n          const textColor = '#FFFFFF';\n          \n          return '<div style=\"padding: 12px; background: ' + color + '; color: ' + textColor + '; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + label + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> AI posts (' + percentage + '% of total)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + total + '<\/strong> total AI posts analyzed<\/div>' +\n          '<\/div>';\n        }"},"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Facebook","max":"TikTok"},"type":"treemap"},"evals":["ax_opts.tooltip.custom"],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<style>
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
+max-width: 100%;
+height: auto;
+overflow-x: auto;
+overflow-y: auto;
+padding: 20px;
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
+}
+</style>
+<div class="apex-container0">
+<div id="htmlwidget-662afe0cd17118c4168a" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-662afe0cd17118c4168a">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"TikTok","y":44},{"x":"Instagram","y":27},{"x":"Facebook","y":12}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"AI Content by Platform (Only Non-Party Actors)","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#69C9D0","#E4405F","#1877F2"],"tooltip":{"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const data = [{\"x\":\"TikTok\",\"y\":44,\"color\":\"#69C9D0\"},{\"x\":\"Instagram\",\"y\":27,\"color\":\"#E4405F\"},{\"x\":\"Facebook\",\"y\":12,\"color\":\"#1877F2\"}];\n          const colors = [\"#69C9D0\",\"#E4405F\",\"#1877F2\"];\n          const item = data[dataPointIndex];\n          const label = item ? item.x : 'Unknown';\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const color = colors[dataPointIndex] || '#CCCCCC';\n          const total = 83;\n          const percentage = Math.round(count / total * 100 * 10) / 10;\n          \n          // Use white text for better contrast on colorful backgrounds\n          const textColor = '#FFFFFF';\n          \n          return '<div style=\"padding: 12px; background: ' + color + '; color: ' + textColor + '; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + label + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> AI posts (' + percentage + '% of total)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + total + '<\/strong> total AI posts analyzed<\/div>' +\n          '<\/div>';\n        }"},"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Facebook","max":"TikTok"},"type":"treemap"},"evals":["ax_opts.tooltip.custom"],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+
+</blockquote>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<div class="cell-output-display">
+<style>
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
+max-width: 100%;
+height: auto;
+overflow-x: auto;
+overflow-y: auto;
+padding: 20px;
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
+}
+</style>
+<div class="apex-container2">
+<div id="htmlwidget-0549f5554dab73442369" style="width:100%;height:400px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0549f5554dab73442369">{"x":{"ax_opts":{"chart":{"type":"treemap","toolbar":{"show":false}},"series":[{"name":"y","data":[{"x":"Other Actors","y":83},{"x":"Parties","y":74},{"x":"Politicians","y":4}]}],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"title":{"text":"By Actor Type","align":"center","style":{"fontSize":"16px"}},"legend":{"show":false},"colors":["#009E73","#D55E00","#0072B2"],"tooltip":{"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const data = [{\"x\":\"Other Actors\",\"y\":83,\"color\":\"#009E73\"},{\"x\":\"Parties\",\"y\":74,\"color\":\"#D55E00\"},{\"x\":\"Politicians\",\"y\":4,\"color\":\"#0072B2\"}];\n          const colors = [\"#009E73\",\"#D55E00\",\"#0072B2\"];\n          const item = data[dataPointIndex];\n          const label = item ? item.x : 'Unknown';\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const color = colors[dataPointIndex] || '#CCCCCC';\n          const total = 161;\n          const percentage = Math.round(count / total * 100 * 10) / 10;\n          \n          // Use white text for better contrast on colorful backgrounds\n          const textColor = '#FFFFFF';\n          \n          return '<div style=\"padding: 12px; background: ' + color + '; color: ' + textColor + '; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + label + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> AI posts (' + percentage + '% of total)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + total + '<\/strong> total AI posts analyzed<\/div>' +\n          '<\/div>';\n        }"},"plotOptions":{"treemap":{"distributed":true,"enableShades":false,"dataLabels":{"enabled":true,"style":{"fontSize":"12px"}}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Other Actors","max":"Politicians"},"type":"treemap"},"evals":["ax_opts.tooltip.custom"],"jsHooks":[]}</script>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>This visualization shows how much AI-generated content we found by actor type (e.g., parties, politicians, other actors). Tile size corresponds to the number of identified posts. Larger tiles indicate more AI-generated posts from that actor type.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<section id="rel-ai-by-party" class="level2">
+<h2 class="anchored" data-anchor-id="rel-ai-by-party">Share of Posts with and without AI</h2>
+<p>This graphic shows the <em>relative</em> share of AI-generated content per party. The parties are sorted by the highest share of AI content.</p>
+<div class="cell">
+<div class="cell-output-display">
+<style>
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
+max-width: 100%;
+height: auto;
+overflow-x: auto;
+overflow-y: auto;
+padding: 20px;
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
 }
 </style>
 <div class="apex-container">
-<div style="
-    display: flex; 
-    justify-content: space-between; 
-    align-items: flex-start; 
-    gap: 20px;  /* Adds space between boxes */
-    padding: 10px;
-  ">
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-f758d15f1bb3a2a036ea" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-f758d15f1bb3a2a036ea">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":528,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"Posts with AI","data":[{"x":"De Linie","y":60,"n":3,"total":5},{"x":"Satire","y":52,"n":29,"total":56},{"x":"Pro-PVV","y":29,"n":14,"total":48},{"x":"50PLUS","y":27,"n":3,"total":11},{"x":"NCPN","y":23,"n":3,"total":13},{"x":"PVV","y":10,"n":47,"total":455},{"x":"Vrede voor Dieren","y":9,"n":1,"total":11},{"x":"Pro-FvD","y":5,"n":8,"total":169},{"x":"Pro-Right","y":5,"n":32,"total":678},{"x":"LP","y":3,"n":1,"total":30},{"x":"BVNL","y":2,"n":1,"total":42},{"x":"VVD","y":2,"n":10,"total":446},{"x":"DENK","y":2,"n":2,"total":107},{"x":"FvD","y":1,"n":2,"total":284},{"x":"SP","y":1,"n":2,"total":388},{"x":"BBB","y":0.4132231404958678,"n":1,"total":242},{"x":"GL-PvdA","y":0.4123711340206185,"n":2,"total":485}]}],"plotOptions":{"bar":{"horizontal":true,"barHeight":"55%","borderRadius":6,"distributed":true,"dataLabels":{"position":"center"}}},"colors":["#AA3377","#6A5ACD","#B22222","#7F2481","#CC0000","#003082","#5496c6","#7E2342","#8C6D1F","#003399","#132141","#FF7900","#00A7B3","#7B1E26","#BE1E2D","#009639","#C00040"],"dataLabels":{"enabled":true,"style":{"fontSize":"12px","fontWeight":"bold","colors":["#ffffff"]},"formatter":"function(v){ return (v < 2 ? '' : (Math.round(v*10)/10) + '%'); }"},"tooltip":{"shared":false,"y":{"formatter":"function(val, opts){ \n           var d  = opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex];\n           var nf = new Intl.NumberFormat();\n           return (Math.round(val*10)/10) + '% (' + d.n + ' / ' + nf.format(d.total) + ')';\n         }"}},"xaxis":{"labels":{"formatter":"v => v + \"%\""},"tickAmount":4,"max":80,"title":{"text":[]}},"yaxis":{"labels":{"style":{"fontSize":"13px","fontWeight":"600"}}},"grid":{"xaxis":{"lines":{"show":true}},"yaxis":{"lines":{"show":false}}},"legend":{"show":false},"title":{"text":"Share of Posts with AI","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.y.formatter","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Note: For actors with fewer total posts (including smaller parties), even limited AI use may result in high relative percentages.</p>
+</blockquote>
+<p><br></p>
+</section>
+<section id="ai-transparency" class="level2">
+<h2 class="anchored" data-anchor-id="ai-transparency">AI Transparency</h2>
+<section id="parties-politicians-2" class="level3">
+<h3 class="anchored" data-anchor-id="parties-politicians-2">Parties &amp; Politicians</h3>
+<div class="cell">
+<div class="cell-output-display">
+<style>
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
+max-width: 100%;
+height: auto;
+overflow-x: auto;
+overflow-y: auto;
+padding: 20px;
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
+}
+</style>
+<div class="apex-container">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding: 10px;">
 <div style="flex: 1; min-width: 300px;">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-8d7279853647d8fc4d54" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-8d7279853647d8fc4d54">{"x":{"ax_opts":{"chart":{"type":"radialBar","sparkline":{"enabled":true},"height":420,"animations":{"enabled":false},"background":"transparent","foreColor":"#000","redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[59],"labels":["AI WITHOUT Dislaimer"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"colors":["#FF4500"],"plotOptions":{"radialBar":{"hollow":{"size":"58%","margin":4},"track":{"margin":2},"dataLabels":{"name":{"show":true,"style":{"color":"#000","fontSize":"14px","fontWeight":"bold"}},"value":{"show":true,"formatter":"function(val){ return Math.round(val) + '%'; }","style":{"color":"#000","fontSize":"20px","fontWeight":"bold"}}}}},"stroke":{"show":true,"lineCap":"round"},"title":{"text":"Was the AI content (not) disclosed with a disclaimer?\n","align":"center","style":{"fontSize":"18px","color":"#000"}},"theme":{"mode":"light"}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"AI WITHOUT Dislaimer","max":"AI WITHOUT Dislaimer"},"type":"radialBar"},"evals":["ax_opts.plotOptions.radialBar.dataLabels.value.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-43e8679406e1bc624fe7" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-43e8679406e1bc624fe7">{"x":{"ax_opts":{"chart":{"type":"radialBar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","sparkline":{"enabled":true},"height":420,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[59],"labels":["AI WITHOUT Dislaimer"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"tooltip":{"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const total = 78;\n          const without = 46;\n          const with_disclaimers = 32;\n          const percentage = Math.round(without / total * 100);\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">AI WITHOUT Dislaimer<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + without + '<\/strong> posts without disclaimers (' + percentage + '% of AI posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + total + '<\/strong> posts with disclaimers<\/div>' +\n          '<\/div>';\n        }"},"colors":["#FF4500"],"plotOptions":{"radialBar":{"hollow":{"size":"58%","margin":4},"track":{"margin":2},"dataLabels":{"name":{"show":true,"style":{"color":"#000","fontSize":"14px","fontWeight":"bold"}},"value":{"show":true,"formatter":"function(val){ return Math.round(val) + '%'; }","style":{"color":"#000","fontSize":"20px","fontWeight":"bold"}}}}},"stroke":{"show":true,"lineCap":"round"},"title":{"text":"Was the AI content (not) disclosed with a disclaimer?\n","align":"center","style":{"fontSize":"18px","color":"#000"}},"theme":{"mode":"light"}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"AI WITHOUT Dislaimer","max":"AI WITHOUT Dislaimer"},"type":"radialBar"},"evals":["ax_opts.tooltip.custom","ax_opts.plotOptions.radialBar.dataLabels.value.formatter"],"jsHooks":[]}</script>
 </div>
 <div style="flex: 1; min-width: 300px;">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-63665f3debf2888b9d7b" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-63665f3debf2888b9d7b">{"x":{"ax_opts":{"chart":{"type":"radialBar","sparkline":{"enabled":true},"height":420,"animations":{"enabled":false},"background":"transparent","foreColor":"#000","redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[3.1,0,96.90000000000001],"labels":["In Image","In Text","By Platform"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"colors":["#FF6347","#4682B4","#32CD32"],"plotOptions":{"radialBar":{"hollow":{"size":"48%","margin":4},"track":{"margin":3},"dataLabels":{"name":{"show":true,"style":{"color":"#000","fontSize":"12px","fontWeight":"bold"}},"value":{"show":true,"formatter":"v => Math.round(v) + '%'","style":{"color":"#000","fontSize":"16px"}},"total":{"show":true,"label":"By Platform","formatter":"\n            function(w){\n              var t = w.globals.seriesTotals;\n              var m = Math.max.apply(null, t);\n              return Math.round(m) + '%';\n            }\n          "}}}},"legend":{"show":false},"stroke":{"show":true,"lineCap":"round"},"title":{"text":"How was the use of AI disclosed?","align":"center","style":{"fontSize":"18px","color":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"By Platform","max":"In Text"},"type":"radialBar"},"evals":["ax_opts.plotOptions.radialBar.dataLabels.value.formatter","ax_opts.plotOptions.radialBar.dataLabels.total.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-bc63e24aab3a703b00ea" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-bc63e24aab3a703b00ea">{"x":{"ax_opts":{"chart":{"type":"radialBar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","sparkline":{"enabled":true},"height":420,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[3.1,0,96.90000000000001],"labels":["In Image","In Text","By Platform"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"tooltip":{"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const data = [{\"name\":\"In Image\",\"value\":3.1,\"description\":\"Disclaimers embedded in the image/video content itself\",\"count\":1},{\"name\":\"In Text\",\"value\":0,\"description\":\"Disclaimers mentioned in the post text content\",\"count\":0},{\"name\":\"By Platform\",\"value\":96.9,\"description\":\"Disclaimers in post metadata/advertising labels\",\"count\":31}];\n          const totalWithDisclaimers = 32;\n          \n          // In radialBar, each ring is a separate series\n          // seriesIndex corresponds to our data array index\n          const item = data[seriesIndex];\n          const method = item ? item.name : 'Unknown';\n          const percentage = item ? item.value : 0;\n          const count = Math.round(totalWithDisclaimers * percentage / 100);\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + method + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> Posts (' + Math.round(percentage * 10) / 10 + '%% of AI posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + totalWithDisclaimers + '<\/strong> total AI posts analyzed<\/div>' +\n          '<\/div>';\n        }"},"colors":["#FF6347","#4682B4","#32CD32"],"plotOptions":{"radialBar":{"hollow":{"size":"48%","margin":4},"track":{"margin":3},"dataLabels":{"name":{"show":true,"style":{"color":"#000","fontSize":"12px","fontWeight":"bold"}},"value":{"show":true,"formatter":"v => Math.round(v) + '%'","style":{"color":"#000","fontSize":"16px"}},"total":{"show":true,"label":"By Platform","formatter":"function(w){ var t = w.globals.seriesTotals; var m = Math.max.apply(null, t); return Math.round(m) + '%'; }"}}}},"legend":{"show":false},"stroke":{"show":true,"lineCap":"round"},"title":{"text":"How was the use of AI disclosed?","align":"center","style":{"fontSize":"18px","color":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"By Platform","max":"In Text"},"type":"radialBar"},"evals":["ax_opts.tooltip.custom","ax_opts.plotOptions.radialBar.dataLabels.value.formatter","ax_opts.plotOptions.radialBar.dataLabels.total.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9204,6 +9236,19 @@ border-radius: 10px;
 <div class="cell-output-display">
 <style>
 
+.apex-container,
+.apex-container0,
+.apex-container2 {
+max-width: 100%;
+height: auto;
+overflow-x: auto;
+overflow-y: auto;
+padding: 20px;
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
 .ac-grid > div,
 .ac-grid .html-widget,
 .ac-grid .apexcharts-canvas,
@@ -9217,43 +9262,20 @@ background: rgba(255,255,255,.96) !important;
 color: #111 !important;
 }
 </style>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<style>
-.apex-container {
-max-width: 100%;
-height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
-padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
-}
-</style>
 <div class="apex-container">
-<div style="
-    display: flex; 
-    justify-content: space-between; 
-    align-items: flex-start; 
-    gap: 20px;  /* Adds space between boxes */
-    padding: 10px;
-  ">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding: 10px;">
 <div style="flex: 1; min-width: 300px;">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-3549ad05336540d96670" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-3549ad05336540d96670">{"x":{"ax_opts":{"chart":{"type":"radialBar","sparkline":{"enabled":true},"height":420,"animations":{"enabled":false},"background":"transparent","foreColor":"#000","redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[49],"labels":["AI WITHOUT Dislaimer"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"colors":["#FF4500"],"plotOptions":{"radialBar":{"hollow":{"size":"58%","margin":4},"track":{"margin":2},"dataLabels":{"name":{"show":true,"style":{"color":"#000","fontSize":"14px","fontWeight":"bold"}},"value":{"show":true,"formatter":"function(val){ return Math.round(val) + '%'; }","style":{"color":"#000","fontSize":"20px","fontWeight":"bold"}}}}},"stroke":{"show":true,"lineCap":"round"},"title":{"text":"Was the AI content (not) disclosed with a disclaimer?\n","align":"center","style":{"fontSize":"18px","color":"#000"}},"theme":{"mode":"light"}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"AI WITHOUT Dislaimer","max":"AI WITHOUT Dislaimer"},"type":"radialBar"},"evals":["ax_opts.plotOptions.radialBar.dataLabels.value.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-e5eec74fb278be707e3f" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-e5eec74fb278be707e3f">{"x":{"ax_opts":{"chart":{"type":"radialBar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","sparkline":{"enabled":true},"height":420,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[49],"labels":["AI WITHOUT Dislaimer"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"tooltip":{"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const total = 83;\n          const without = 41;\n          const with_disclaimers = 42;\n          const percentage = Math.round(without / total * 100);\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">AI WITHOUT Dislaimer<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + without + '<\/strong> posts without disclaimers (' + percentage + '% of AI posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + total + '<\/strong> posts with disclaimers<\/div>' +\n          '<\/div>';\n        }"},"colors":["#FF4500"],"plotOptions":{"radialBar":{"hollow":{"size":"58%","margin":4},"track":{"margin":2},"dataLabels":{"name":{"show":true,"style":{"color":"#000","fontSize":"14px","fontWeight":"bold"}},"value":{"show":true,"formatter":"function(val){ return Math.round(val) + '%'; }","style":{"color":"#000","fontSize":"20px","fontWeight":"bold"}}}}},"stroke":{"show":true,"lineCap":"round"},"title":{"text":"Was the AI content (not) disclosed with a disclaimer?\n","align":"center","style":{"fontSize":"18px","color":"#000"}},"theme":{"mode":"light"}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"AI WITHOUT Dislaimer","max":"AI WITHOUT Dislaimer"},"type":"radialBar"},"evals":["ax_opts.tooltip.custom","ax_opts.plotOptions.radialBar.dataLabels.value.formatter"],"jsHooks":[]}</script>
 </div>
 <div style="flex: 1; min-width: 300px;">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-9828f1c7e8a3e6081a41" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-9828f1c7e8a3e6081a41">{"x":{"ax_opts":{"chart":{"type":"radialBar","sparkline":{"enabled":true},"height":420,"animations":{"enabled":false},"background":"transparent","foreColor":"#000","redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[0,11.9,100],"labels":["In Image","In Text","By Platform"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"colors":["#FF6347","#4682B4","#32CD32"],"plotOptions":{"radialBar":{"hollow":{"size":"48%","margin":4},"track":{"margin":3},"dataLabels":{"name":{"show":true,"style":{"color":"#000","fontSize":"12px","fontWeight":"bold"}},"value":{"show":true,"formatter":"v => Math.round(v) + '%'","style":{"color":"#000","fontSize":"16px"}},"total":{"show":true,"label":"By Platform","formatter":"\n            function(w){\n              var t = w.globals.seriesTotals;\n              var m = Math.max.apply(null, t);\n              return Math.round(m) + '%';\n            }\n          "}}}},"legend":{"show":false},"stroke":{"show":true,"lineCap":"round"},"title":{"text":"How was the use of AI disclosed?","align":"center","style":{"fontSize":"18px","color":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"By Platform","max":"In Text"},"type":"radialBar"},"evals":["ax_opts.plotOptions.radialBar.dataLabels.value.formatter","ax_opts.plotOptions.radialBar.dataLabels.total.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-9e47703a3d14605653c5" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-9e47703a3d14605653c5">{"x":{"ax_opts":{"chart":{"type":"radialBar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","sparkline":{"enabled":true},"height":420,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[0,11.9,100],"labels":["In Image","In Text","By Platform"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"tooltip":{"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const data = [{\"name\":\"In Image\",\"value\":0,\"description\":\"Disclaimers embedded in the image/video content itself\",\"count\":0},{\"name\":\"In Text\",\"value\":11.9,\"description\":\"Disclaimers mentioned in the post text content\",\"count\":5},{\"name\":\"By Platform\",\"value\":100,\"description\":\"Disclaimers in post metadata/advertising labels\",\"count\":42}];\n          const totalWithDisclaimers = 42;\n          \n          // In radialBar, each ring is a separate series\n          // seriesIndex corresponds to our data array index\n          const item = data[seriesIndex];\n          const method = item ? item.name : 'Unknown';\n          const percentage = item ? item.value : 0;\n          const count = Math.round(totalWithDisclaimers * percentage / 100);\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + method + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> Posts (' + Math.round(percentage * 10) / 10 + '%% of AI posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + totalWithDisclaimers + '<\/strong> total AI posts analyzed<\/div>' +\n          '<\/div>';\n        }"},"colors":["#FF6347","#4682B4","#32CD32"],"plotOptions":{"radialBar":{"hollow":{"size":"48%","margin":4},"track":{"margin":3},"dataLabels":{"name":{"show":true,"style":{"color":"#000","fontSize":"12px","fontWeight":"bold"}},"value":{"show":true,"formatter":"v => Math.round(v) + '%'","style":{"color":"#000","fontSize":"16px"}},"total":{"show":true,"label":"By Platform","formatter":"function(w){ var t = w.globals.seriesTotals; var m = Math.max.apply(null, t); return Math.round(m) + '%'; }"}}}},"legend":{"show":false},"stroke":{"show":true,"lineCap":"round"},"title":{"text":"How was the use of AI disclosed?","align":"center","style":{"fontSize":"18px","color":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"By Platform","max":"In Text"},"type":"radialBar"},"evals":["ax_opts.tooltip.custom","ax_opts.plotOptions.radialBar.dataLabels.value.formatter","ax_opts.plotOptions.radialBar.dataLabels.total.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
 </div>
 </div>
-<!-- ::: -->
 <blockquote class="blockquote">
 <p>Disclosure of AI content through disclaimers or platform labels is crucial for transparency. This visualization shows how often AI-generated content was published with/without disclosures and whether the label was applied by the actor (in text or image) or by the platform.</p>
 </blockquote>
@@ -9263,14 +9285,42 @@ border-radius: 10px;
 <section id="medienformatte" class="level2">
 <h2 class="anchored" data-anchor-id="medienformatte">AI Media Formats</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Parties &amp; Politicians</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Other Actors</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">All</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Parties &amp; Politicians</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">Other Actors</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="cell">
 <div class="cell-output-display">
+<style>
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
+max-width: 100%;
+height: auto;
+overflow-x: auto;
+overflow-y: auto;
+padding: 20px;
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
+}
+</style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-bdebca5bae5c776e2a6c" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-bdebca5bae5c776e2a6c">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Image(s) (n=69)","y":88.5},{"x":"Video(s) (n=9)","y":11.5}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":false,"intersect":false,"followCursor":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          var lab = w.globals.labels[dataPointIndex];\n          var type = lab.split(' (n=')[0];\n          var col = (type === \"Image(s)\") ? '#FF6347' : (type === \"Video(s)\" ? '#4682B4' : '#9E9E9E');\n          var val = series[seriesIndex][dataPointIndex];\n          return '<div style=\"padding:6px 8px\">' +\n                 '<div style=\"display:flex;align-items:center;gap:6px\">' +\n                 '<span style=\"width:10px;height:10px;border-radius:50%;background:'+col+'\"><\/span>' +\n                 '<b>'+type+'<\/b><\/div>' +\n                 '<div>'+Math.round(val*10)/10+'%<\/div><\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#FF6347","#4682B4"],"legend":{"show":true,"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#FF6347","#4682B4"]},"customLegendItems":["Image(s)","Video(s)"]},"title":{"text":"AI Image or Video?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Image(s) (n=69)","max":"Video(s) (n=9)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-e0dafe3ad9901b20db21" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-e0dafe3ad9901b20db21">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Image(s) (n=89)","y":55.3},{"x":"Video(s) (n=72)","y":44.7}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const label = w.globals.labels[dataPointIndex];\n          const percentage = Math.round(w.globals.series[seriesIndex][dataPointIndex] * 10) / 10;\n          const data = [{\"label\":\"Image(s) (n=89)\",\"n\":89,\"description\":\"Image content\"},{\"label\":\"Video(s) (n=72)\",\"n\":72,\"description\":\"Video content\"}];\n          const item = data.find(d => d.label === label);\n          const count = item ? item.n : 0;\n          const description = item ? item.description : '';\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + description + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> of AI posts (' + percentage + '% Posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>161<\/strong> total AI posts analyzed (All)<\/div>' +\n            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + description + '<\/div>' +\n          '<\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#FF6347","#4682B4"],"legend":{"show":true,"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#FF6347","#4682B4"]},"customLegendItems":["Image(s)","Video(s)"]},"title":{"text":"AI Image or Video?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Image(s) (n=89)","max":"Video(s) (n=72)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9278,9 +9328,75 @@ border-radius: 10px;
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <div class="cell">
 <div class="cell-output-display">
+<style>
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
+max-width: 100%;
+height: auto;
+overflow-x: auto;
+overflow-y: auto;
+padding: 20px;
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
+}
+</style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-f9e0e617fe07dcf61524" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-f9e0e617fe07dcf61524">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Video(s) (n=63)","y":75.90000000000001},{"x":"Image(s) (n=20)","y":24.1}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":false,"intersect":false,"followCursor":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          var lab = w.globals.labels[dataPointIndex];\n          var type = lab.split(' (n=')[0];\n          var col = (type === \"Image(s)\") ? '#FF6347' : (type === \"Video(s)\" ? '#4682B4' : '#9E9E9E');\n          var val = series[seriesIndex][dataPointIndex];\n          return '<div style=\"padding:6px 8px\">' +\n                 '<div style=\"display:flex;align-items:center;gap:6px\">' +\n                 '<span style=\"width:10px;height:10px;border-radius:50%;background:'+col+'\"><\/span>' +\n                 '<b>'+type+'<\/b><\/div>' +\n                 '<div>'+Math.round(val*10)/10+'%<\/div><\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#4682B4","#FF6347"],"legend":{"show":true,"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#FF6347","#4682B4"]},"customLegendItems":["Image(s)","Video(s)"]},"title":{"text":"AI Image or Video?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Image(s) (n=20)","max":"Video(s) (n=63)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-6a7d1ad01f61f9e04312" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-6a7d1ad01f61f9e04312">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Image(s) (n=69)","y":88.5},{"x":"Video(s) (n=9)","y":11.5}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const label = w.globals.labels[dataPointIndex];\n          const percentage = Math.round(w.globals.series[seriesIndex][dataPointIndex] * 10) / 10;\n          const data = [{\"label\":\"Image(s) (n=69)\",\"n\":69,\"description\":\"Image content\"},{\"label\":\"Video(s) (n=9)\",\"n\":9,\"description\":\"Video content\"}];\n          const item = data.find(d => d.label === label);\n          const count = item ? item.n : 0;\n          const description = item ? item.description : '';\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + description + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> of AI posts (' + percentage + '% Posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>78<\/strong> total AI posts analyzed (Parties & Politicians)<\/div>' +\n            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + description + '<\/div>' +\n          '<\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#FF6347","#4682B4"],"legend":{"show":true,"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#FF6347","#4682B4"]},"customLegendItems":["Image(s)","Video(s)"]},"title":{"text":"AI Image or Video?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Image(s) (n=69)","max":"Video(s) (n=9)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<style>
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
+max-width: 100%;
+height: auto;
+overflow-x: auto;
+overflow-y: auto;
+padding: 20px;
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
+}
+</style>
+<div class="apex-container">
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-28d3899e8c6f31e4b52f" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-28d3899e8c6f31e4b52f">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Video(s) (n=63)","y":75.90000000000001},{"x":"Image(s) (n=20)","y":24.1}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const label = w.globals.labels[dataPointIndex];\n          const percentage = Math.round(w.globals.series[seriesIndex][dataPointIndex] * 10) / 10;\n          const data = [{\"label\":\"Video(s) (n=63)\",\"n\":63,\"description\":\"Video content\"},{\"label\":\"Image(s) (n=20)\",\"n\":20,\"description\":\"Image content\"}];\n          const item = data.find(d => d.label === label);\n          const count = item ? item.n : 0;\n          const description = item ? item.description : '';\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + description + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> of AI posts (' + percentage + '% Posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>83<\/strong> total AI posts analyzed (Other Actors)<\/div>' +\n            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + description + '<\/div>' +\n          '<\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#4682B4","#FF6347"],"legend":{"show":true,"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#FF6347","#4682B4"]},"customLegendItems":["Image(s)","Video(s)"]},"title":{"text":"AI Image or Video?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Image(s) (n=20)","max":"Video(s) (n=63)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9291,26 +9407,42 @@ border-radius: 10px;
 <p>This graphic shows the share of images and videos in AI-generated posts, and whether they look real (camera-like or deepfakes) or are drawings/graphics.</p>
 </blockquote>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Parties &amp; Politicians</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Other Actors</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">All</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Parties &amp; Politicians</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false">Other Actors</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <style>
-.apex-container {
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
 max-width: 100%;
 height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
+overflow-x: auto;
+overflow-y: auto;
 padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-d791122c139c205bfad2" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-d791122c139c205bfad2">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Real-looking (deepfake) (n=64)","y":82.09999999999999},{"x":"Not real-looking (graphic/cartoon) (n=14)","y":17.9}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":true,"intersect":false,"followCursor":true},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#1F5A96","#AC0999"],"legend":{"show":false},"title":{"text":"Is the AI content realistic?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Not real-looking (graphic/cartoon) (n=14)","max":"Real-looking (deepfake) (n=64)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-dc6dc847e9cd95968690" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-dc6dc847e9cd95968690">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Real-looking (deepfake) (n=137)","y":85.59999999999999},{"x":"Not real-looking (graphic/cartoon) (n=23)","y":14.4}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const label = w.globals.labels[dataPointIndex];\n          const percentage = Math.round(w.globals.series[seriesIndex][dataPointIndex] * 10) / 10;\n          const data = [{\"label\":\"Real-looking (deepfake) (n=137)\",\"n\":137,\"description\":\"Realistic-looking content\"},{\"label\":\"Not real-looking (graphic/cartoon) (n=23)\",\"n\":23,\"description\":\"Unrealistic-looking content\"}];\n          const item = data.find(d => d.label === label);\n          const count = item ? item.n : 0;\n          const description = item ? item.description : '';\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + description + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> Posts (' + percentage + '% of AI posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>161<\/strong> total AI posts analyzed (All)<\/div>' +\n            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + description + '<\/div>' +\n          '<\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#1F5A96","#AC0999"],"legend":{"show":false},"title":{"text":"Is the AI content realistic?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Not real-looking (graphic/cartoon) (n=23)","max":"Real-looking (deepfake) (n=137)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9319,20 +9451,74 @@ border-radius: 10px;
 <div class="cell">
 <div class="cell-output-display">
 <style>
-.apex-container {
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
 max-width: 100%;
 height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
+overflow-x: auto;
+overflow-y: auto;
 padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-9ddfc2782479d1e4059d" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-9ddfc2782479d1e4059d">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Real-looking (deepfake) (n=73)","y":89},{"x":"Not real-looking (graphic/cartoon) (n=9)","y":11}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":true,"intersect":false,"followCursor":true},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#1F5A96","#AC0999"],"legend":{"show":false},"title":{"text":"Is the AI content realistic?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Not real-looking (graphic/cartoon) (n=9)","max":"Real-looking (deepfake) (n=73)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-18d964e580dbb7b96722" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-18d964e580dbb7b96722">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Real-looking (deepfake) (n=64)","y":82.09999999999999},{"x":"Not real-looking (graphic/cartoon) (n=14)","y":17.9}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const label = w.globals.labels[dataPointIndex];\n          const percentage = Math.round(w.globals.series[seriesIndex][dataPointIndex] * 10) / 10;\n          const data = [{\"label\":\"Real-looking (deepfake) (n=64)\",\"n\":64,\"description\":\"Realistic-looking content\"},{\"label\":\"Not real-looking (graphic/cartoon) (n=14)\",\"n\":14,\"description\":\"Unrealistic-looking content\"}];\n          const item = data.find(d => d.label === label);\n          const count = item ? item.n : 0;\n          const description = item ? item.description : '';\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + description + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> Posts (' + percentage + '% of AI posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>78<\/strong> total AI posts analyzed (Parties & Politicians)<\/div>' +\n            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + description + '<\/div>' +\n          '<\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#1F5A96","#AC0999"],"legend":{"show":false},"title":{"text":"Is the AI content realistic?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Not real-looking (graphic/cartoon) (n=14)","max":"Real-looking (deepfake) (n=64)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<style>
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
+max-width: 100%;
+height: auto;
+overflow-x: auto;
+overflow-y: auto;
+padding: 20px;
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
+}
+</style>
+<div class="apex-container">
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-64d93eaff446e180ae21" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-64d93eaff446e180ae21">{"x":{"ax_opts":{"chart":{"type":"bar","animations":{"enabled":false},"background":"transparent","foreColor":"#000","toolbar":{"show":false},"height":200,"redrawOnWindowResize":true,"redrawOnParentResize":true},"series":[{"name":"round(pct, 1)","data":[{"x":"Real-looking (deepfake) (n=73)","y":89},{"x":"Not real-looking (graphic/cartoon) (n=9)","y":11}]}],"dataLabels":{"enabled":true,"formatter":"function(v){ return (Math.round(v*10)/10) + '%'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":6,"distributed":true}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const label = w.globals.labels[dataPointIndex];\n          const percentage = Math.round(w.globals.series[seriesIndex][dataPointIndex] * 10) / 10;\n          const data = [{\"label\":\"Real-looking (deepfake) (n=73)\",\"n\":73,\"description\":\"Realistic-looking content\"},{\"label\":\"Not real-looking (graphic/cartoon) (n=9)\",\"n\":9,\"description\":\"Unrealistic-looking content\"}];\n          const item = data.find(d => d.label === label);\n          const count = item ? item.n : 0;\n          const description = item ? item.description : '';\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + description + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> Posts (' + percentage + '% of AI posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>83<\/strong> total AI posts analyzed (Other Actors)<\/div>' +\n            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + description + '<\/div>' +\n          '<\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"},"formatter":"function(v){ return v + '%'; }"},"max":100,"title":{"text":[]}},"colors":["#1F5A96","#AC0999"],"legend":{"show":false},"title":{"text":"Is the AI content realistic?","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Not real-looking (graphic/cartoon) (n=9)","max":"Real-looking (deepfake) (n=73)"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom","ax_opts.xaxis.labels.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9346,26 +9532,42 @@ border-radius: 10px;
 <section id="ai-content-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="ai-content-analysis">AI Content Analysis</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Parties &amp; Politicians</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Other Actors</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">All</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Parties &amp; Politicians</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false">Other Actors</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <style>
-.apex-container {
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
 max-width: 100%;
 height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
+overflow-x: auto;
+overflow-y: auto;
 padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-0482d7df7c8e3c26dfac" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-0482d7df7c8e3c26dfac">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Positive","y":71},{"x":"Negative","y":42}]}],"dataLabels":{"enabled":true,"formatter":"function(val){return val+' Posts';}"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5,"distributed":true}},"tooltip":{"shared":false,"intersect":false,"followCursor":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          var lab = w.globals.labels[dataPointIndex];\n          var col = (lab === \"Negative\") ? '#F44336' : (lab === \"Positive\" ? '#4CAF50' : '#9E9E9E');\n          var val = series[seriesIndex][dataPointIndex];\n          return '<div style=\"padding:6px 8px\">' +\n                 '<div style=\"display:flex;align-items:center;gap:6px\">' +\n                 '<span style=\"width:10px;height:10px;border-radius:50%;background:'+col+'\"><\/span>' +\n                 '<b>'+lab+'<\/b><\/div>' +\n                 '<div>n: '+val+' Posts<\/div><\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#4CAF50","#F44336"],"title":{"text":"Distribution of Tone in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#4CAF50","#F44336"]},"customLegendItems":["Positive","Negative"]}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Negative","max":"Positive"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-b0ee74d3dcbdb02e60f9" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-b0ee74d3dcbdb02e60f9">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Positive","y":109},{"x":"Negative","y":111}]}],"dataLabels":{"enabled":true,"formatter":"function(val){return val+' Posts';}"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5,"distributed":true}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const label = w.globals.labels[dataPointIndex];\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const data = [{\"tendenz_kurz\":\"Positive\",\"percentage\":67.7,\"description\":\"Posts with positive tone, praise, or optimistic messaging\"},{\"tendenz_kurz\":\"Negative\",\"percentage\":68.9,\"description\":\"Posts with negative tone, criticism, or pessimistic messaging\"}];\n          const item = data.find(d => d.tendenz_kurz === label);\n          const percentage = item ? item.percentage : 0;\n          const description = item ? item.description : '';\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + description + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> Posts (' + percentage + '% of AI posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>161<\/strong> total AI posts analyzed (All)<\/div>' +\n            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + description + '<\/div>' +\n          '<\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#4CAF50","#F44336"],"title":{"text":"Distribution of Tone in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#4CAF50","#F44336"]},"customLegendItems":["Positive","Negative"]}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Negative","max":"Positive"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9374,20 +9576,74 @@ border-radius: 10px;
 <div class="cell">
 <div class="cell-output-display">
 <style>
-.apex-container {
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
 max-width: 100%;
 height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
+overflow-x: auto;
+overflow-y: auto;
 padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-08bdaf74b9b770473f64" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-08bdaf74b9b770473f64">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Positive","y":38},{"x":"Negative","y":69}]}],"dataLabels":{"enabled":true,"formatter":"function(val){return val+' Posts';}"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5,"distributed":true}},"tooltip":{"shared":false,"intersect":false,"followCursor":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          var lab = w.globals.labels[dataPointIndex];\n          var col = (lab === \"Negative\") ? '#F44336' : (lab === \"Positive\" ? '#4CAF50' : '#9E9E9E');\n          var val = series[seriesIndex][dataPointIndex];\n          return '<div style=\"padding:6px 8px\">' +\n                 '<div style=\"display:flex;align-items:center;gap:6px\">' +\n                 '<span style=\"width:10px;height:10px;border-radius:50%;background:'+col+'\"><\/span>' +\n                 '<b>'+lab+'<\/b><\/div>' +\n                 '<div>n: '+val+' Posts<\/div><\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#4CAF50","#F44336"],"title":{"text":"Distribution of Tone in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#4CAF50","#F44336"]},"customLegendItems":["Positive","Negative"]}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Negative","max":"Positive"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-9f5da4fd9ff1119c6d43" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-9f5da4fd9ff1119c6d43">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Positive","y":71},{"x":"Negative","y":42}]}],"dataLabels":{"enabled":true,"formatter":"function(val){return val+' Posts';}"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5,"distributed":true}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const label = w.globals.labels[dataPointIndex];\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const data = [{\"tendenz_kurz\":\"Positive\",\"percentage\":91,\"description\":\"Posts with positive tone, praise, or optimistic messaging\"},{\"tendenz_kurz\":\"Negative\",\"percentage\":53.8,\"description\":\"Posts with negative tone, criticism, or pessimistic messaging\"}];\n          const item = data.find(d => d.tendenz_kurz === label);\n          const percentage = item ? item.percentage : 0;\n          const description = item ? item.description : '';\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + description + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> Posts (' + percentage + '% of AI posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>78<\/strong> total AI posts analyzed (Parties & Politicians)<\/div>' +\n            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + description + '<\/div>' +\n          '<\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#4CAF50","#F44336"],"title":{"text":"Distribution of Tone in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#4CAF50","#F44336"]},"customLegendItems":["Positive","Negative"]}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Negative","max":"Positive"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom"],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<style>
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
+max-width: 100%;
+height: auto;
+overflow-x: auto;
+overflow-y: auto;
+padding: 20px;
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
+}
+</style>
+<div class="apex-container">
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-ec16c2ac83475719d2c9" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-ec16c2ac83475719d2c9">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Positive","y":38},{"x":"Negative","y":69}]}],"dataLabels":{"enabled":true,"formatter":"function(val){return val+' Posts';}"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5,"distributed":true}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const label = w.globals.labels[dataPointIndex];\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const data = [{\"tendenz_kurz\":\"Positive\",\"percentage\":45.8,\"description\":\"Posts with positive tone, praise, or optimistic messaging\"},{\"tendenz_kurz\":\"Negative\",\"percentage\":83.1,\"description\":\"Posts with negative tone, criticism, or pessimistic messaging\"}];\n          const item = data.find(d => d.tendenz_kurz === label);\n          const percentage = item ? item.percentage : 0;\n          const description = item ? item.description : '';\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + description + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> Posts (' + percentage + '% of AI posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>83<\/strong> total AI posts analyzed (Other Actors)<\/div>' +\n            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + description + '<\/div>' +\n          '<\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#4CAF50","#F44336"],"title":{"text":"Distribution of Tone in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"},"markers":{"fillColors":["#4CAF50","#F44336"]},"customLegendItems":["Positive","Negative"]}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Negative","max":"Positive"},"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9399,26 +9655,42 @@ border-radius: 10px;
 </blockquote>
 <p><br></p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">Parties &amp; Politicians</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Other Actors</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">All</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Parties &amp; Politicians</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false">Other Actors</a></li></ul>
 <div class="tab-content">
 <div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <style>
-.apex-container {
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
 max-width: 100%;
 height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
+overflow-x: auto;
+overflow-y: auto;
 padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-a2059f25e667c3dd435a" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-a2059f25e667c3dd435a">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Political Parties & Politicians","y":45},{"x":"Vote Appeal","y":44},{"x":"Domestic & Migration Policy","y":32},{"x":"Labor & Social Affairs","y":17},{"x":"Election (General)","y":16},{"x":"Economy & Finance","y":13},{"x":"Housing (Crisis)","y":12},{"x":"Defense Policy","y":10},{"x":"Education & Culture","y":8},{"x":"Digital & Infrastructure","y":7},{"x":"Energy Policy","y":6},{"x":"Civil Rights","y":4},{"x":"Other Political Topics","y":3},{"x":"Europe","y":1}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"y":{"formatter":"function(val) { return val + ' Posts'; }"}},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Topics in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.y.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-6a0979d869d010a74da0" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-6a0979d869d010a74da0">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Political Parties & Politicians","y":81},{"x":"Domestic & Migration Policy","y":72},{"x":"Vote Appeal","y":58},{"x":"Housing (Crisis)","y":28},{"x":"Labor & Social Affairs","y":21},{"x":"Defense Policy","y":18},{"x":"Economy & Finance","y":18},{"x":"Other Political Topics","y":18},{"x":"Election (General)","y":17},{"x":"Civil Rights","y":16},{"x":"Education & Culture","y":12},{"x":"Energy Policy","y":12},{"x":"Europe","y":12},{"x":"Digital & Infrastructure","y":7},{"x":"topic_constitution_system","y":5}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const topic = w.globals.labels[dataPointIndex];\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const data = [{\"topic\":\"Political Parties & Politicians\",\"percentage\":50.3,\"description\":\"Posts featuring political figures and parties\"},{\"topic\":\"Domestic & Migration Policy\",\"percentage\":44.7,\"description\":\"Posts about immigration, domestic policy\"},{\"topic\":\"Vote Appeal\",\"percentage\":36,\"description\":\"Posts encouraging people to vote\"},{\"topic\":\"Housing (Crisis)\",\"percentage\":17.4,\"description\":\"Posts about housing crisis, real estate, construction\"},{\"topic\":\"Labor & Social Affairs\",\"percentage\":13,\"description\":\"Posts about employment, social welfare, workers rights\"},{\"topic\":\"Defense Policy\",\"percentage\":11.2,\"description\":\"Posts about military, security, foreign affairs\"},{\"topic\":\"Economy & Finance\",\"percentage\":11.2,\"description\":\"Posts about economic issues, budgets, financial policy\"},{\"topic\":\"Other Political Topics\",\"percentage\":11.2,\"description\":\"Posts about other political issues not categorized\"},{\"topic\":\"Election (General)\",\"percentage\":10.6,\"description\":\"Posts about elections, voting, democracy\"},{\"topic\":\"Civil Rights\",\"percentage\":9.9,\"description\":\"Posts about human rights, equality, discrimination\"},{\"topic\":\"Education & Culture\",\"percentage\":7.5,\"description\":\"Posts about schools, universities, arts, culture\"},{\"topic\":\"Energy Policy\",\"percentage\":7.5,\"description\":\"Posts about climate, environment, energy transition\"},{\"topic\":\"Europe\",\"percentage\":7.5,\"description\":\"Posts about EU, European politics, international cooperation\"},{\"topic\":\"Digital & Infrastructure\",\"percentage\":4.3,\"description\":\"Posts about technology, internet, infrastructure\"},{\"topic\":\"topic_constitution_system\",\"percentage\":3.1,\"description\":\"Posts about political system, governance structure\"}];\n          const item = data.find(d => d.topic === topic);\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + topic + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> Posts (' + item.percentage + '% of AI posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>161<\/strong> total AI posts analyzed (All)<\/div>' +\n            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + item.description + '<\/div>' +\n          '<\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Topics in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9427,20 +9699,74 @@ border-radius: 10px;
 <div class="cell">
 <div class="cell-output-display">
 <style>
-.apex-container {
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
 max-width: 100%;
 height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
+overflow-x: auto;
+overflow-y: auto;
 padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-b70836d9cca0b100721e" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-b70836d9cca0b100721e">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Domestic & Migration Policy","y":40},{"x":"Political Parties & Politicians","y":36},{"x":"Housing (Crisis)","y":16},{"x":"Other Political Topics","y":15},{"x":"Vote Appeal","y":14},{"x":"Civil Rights","y":12},{"x":"Europe","y":11},{"x":"Defense Policy","y":8},{"x":"Energy Policy","y":6},{"x":"Economy & Finance","y":5},{"x":"topic_constitution_system","y":5},{"x":"Education & Culture","y":4},{"x":"Labor & Social Affairs","y":4},{"x":"Election (General)","y":1}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"y":{"formatter":"function(val) { return val + ' Posts'; }"}},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Topics in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.y.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-09ff4cf7f6d0e3489e4f" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-09ff4cf7f6d0e3489e4f">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Political Parties & Politicians","y":45},{"x":"Vote Appeal","y":44},{"x":"Domestic & Migration Policy","y":32},{"x":"Labor & Social Affairs","y":17},{"x":"Election (General)","y":16},{"x":"Economy & Finance","y":13},{"x":"Housing (Crisis)","y":12},{"x":"Defense Policy","y":10},{"x":"Education & Culture","y":8},{"x":"Digital & Infrastructure","y":7},{"x":"Energy Policy","y":6},{"x":"Civil Rights","y":4},{"x":"Other Political Topics","y":3},{"x":"Europe","y":1}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const topic = w.globals.labels[dataPointIndex];\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const data = [{\"topic\":\"Political Parties & Politicians\",\"percentage\":57.7,\"description\":\"Posts featuring political figures and parties\"},{\"topic\":\"Vote Appeal\",\"percentage\":56.4,\"description\":\"Posts encouraging people to vote\"},{\"topic\":\"Domestic & Migration Policy\",\"percentage\":41,\"description\":\"Posts about immigration, domestic policy\"},{\"topic\":\"Labor & Social Affairs\",\"percentage\":21.8,\"description\":\"Posts about employment, social welfare, workers rights\"},{\"topic\":\"Election (General)\",\"percentage\":20.5,\"description\":\"Posts about elections, voting, democracy\"},{\"topic\":\"Economy & Finance\",\"percentage\":16.7,\"description\":\"Posts about economic issues, budgets, financial policy\"},{\"topic\":\"Housing (Crisis)\",\"percentage\":15.4,\"description\":\"Posts about housing crisis, real estate, construction\"},{\"topic\":\"Defense Policy\",\"percentage\":12.8,\"description\":\"Posts about military, security, foreign affairs\"},{\"topic\":\"Education & Culture\",\"percentage\":10.3,\"description\":\"Posts about schools, universities, arts, culture\"},{\"topic\":\"Digital & Infrastructure\",\"percentage\":9,\"description\":\"Posts about technology, internet, infrastructure\"},{\"topic\":\"Energy Policy\",\"percentage\":7.7,\"description\":\"Posts about climate, environment, energy transition\"},{\"topic\":\"Civil Rights\",\"percentage\":5.1,\"description\":\"Posts about human rights, equality, discrimination\"},{\"topic\":\"Other Political Topics\",\"percentage\":3.8,\"description\":\"Posts about other political issues not categorized\"},{\"topic\":\"Europe\",\"percentage\":1.3,\"description\":\"Posts about EU, European politics, international cooperation\"}];\n          const item = data.find(d => d.topic === topic);\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + topic + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> Posts (' + item.percentage + '% of AI posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>78<\/strong> total AI posts analyzed (Parties & Politicians)<\/div>' +\n            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + item.description + '<\/div>' +\n          '<\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Topics in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom"],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<style>
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
+max-width: 100%;
+height: auto;
+overflow-x: auto;
+overflow-y: auto;
+padding: 20px;
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
+}
+</style>
+<div class="apex-container">
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-9d01b157ed91b7ef9a12" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-9d01b157ed91b7ef9a12">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Domestic & Migration Policy","y":40},{"x":"Political Parties & Politicians","y":36},{"x":"Housing (Crisis)","y":16},{"x":"Other Political Topics","y":15},{"x":"Vote Appeal","y":14},{"x":"Civil Rights","y":12},{"x":"Europe","y":11},{"x":"Defense Policy","y":8},{"x":"Energy Policy","y":6},{"x":"Economy & Finance","y":5},{"x":"topic_constitution_system","y":5},{"x":"Education & Culture","y":4},{"x":"Labor & Social Affairs","y":4},{"x":"Election (General)","y":1}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const topic = w.globals.labels[dataPointIndex];\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const data = [{\"topic\":\"Domestic & Migration Policy\",\"percentage\":48.2,\"description\":\"Posts about immigration, domestic policy\"},{\"topic\":\"Political Parties & Politicians\",\"percentage\":43.4,\"description\":\"Posts featuring political figures and parties\"},{\"topic\":\"Housing (Crisis)\",\"percentage\":19.3,\"description\":\"Posts about housing crisis, real estate, construction\"},{\"topic\":\"Other Political Topics\",\"percentage\":18.1,\"description\":\"Posts about other political issues not categorized\"},{\"topic\":\"Vote Appeal\",\"percentage\":16.9,\"description\":\"Posts encouraging people to vote\"},{\"topic\":\"Civil Rights\",\"percentage\":14.5,\"description\":\"Posts about human rights, equality, discrimination\"},{\"topic\":\"Europe\",\"percentage\":13.3,\"description\":\"Posts about EU, European politics, international cooperation\"},{\"topic\":\"Defense Policy\",\"percentage\":9.6,\"description\":\"Posts about military, security, foreign affairs\"},{\"topic\":\"Energy Policy\",\"percentage\":7.2,\"description\":\"Posts about climate, environment, energy transition\"},{\"topic\":\"Economy & Finance\",\"percentage\":6,\"description\":\"Posts about economic issues, budgets, financial policy\"},{\"topic\":\"topic_constitution_system\",\"percentage\":6,\"description\":\"Posts about political system, governance structure\"},{\"topic\":\"Education & Culture\",\"percentage\":4.8,\"description\":\"Posts about schools, universities, arts, culture\"},{\"topic\":\"Labor & Social Affairs\",\"percentage\":4.8,\"description\":\"Posts about employment, social welfare, workers rights\"},{\"topic\":\"Election (General)\",\"percentage\":1.2,\"description\":\"Posts about elections, voting, democracy\"}];\n          const item = data.find(d => d.topic === topic);\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + topic + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> Posts (' + item.percentage + '% of AI posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>83<\/strong> total AI posts analyzed (Other Actors)<\/div>' +\n            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + item.description + '<\/div>' +\n          '<\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Topics in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9452,26 +9778,42 @@ border-radius: 10px;
 </blockquote>
 <p><br></p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">Parties &amp; Politicians</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Other Actors</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">All</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Parties &amp; Politicians</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-3" role="tab" aria-controls="tabset-8-3" aria-selected="false">Other Actors</a></li></ul>
 <div class="tab-content">
 <div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <style>
-.apex-container {
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
 max-width: 100%;
 height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
+overflow-x: auto;
+overflow-y: auto;
 padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-2f563fc4685e6e6fdebc" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-2f563fc4685e6e6fdebc">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Symbolic Image (Front-Facing People)","y":57},{"x":"Positive Imagery/Acclaims","y":56},{"x":"Negative Imagery/Campaigning","y":30},{"x":"Event Announcement/Election Appeal/Candidate Intro","y":21},{"x":"Humor / Satire","y":9},{"x":"Campaign Event Imagery","y":6},{"x":"Day-to-Day Politics","y":6},{"x":"Nostalgic / Historic","y":5},{"x":"Media Work (incl. TV Debates)","y":4},{"x":"Other Image Content","y":1}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"y":{"formatter":"function(val) { return val + ' Posts'; }"}},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Image/Video Content in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.y.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-f17c7624ece150de491a" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-f17c7624ece150de491a">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Symbolic Image (Front-Facing People)","y":118},{"x":"Negative Imagery/Campaigning","y":85},{"x":"Positive Imagery/Acclaims","y":81},{"x":"Humor / Satire","y":45},{"x":"Event Announcement/Election Appeal/Candidate Intro","y":34},{"x":"Nostalgic / Historic","y":16},{"x":"Media Work (incl. TV Debates)","y":15},{"x":"Day-to-Day Politics","y":9},{"x":"Campaign Event Imagery","y":7},{"x":"Other Image Content","y":2}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const theme = w.globals.labels[dataPointIndex];\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const data = [{\"theme\":\"Symbolic Image (Front-Facing People)\",\"percentage\":73.3,\"description\":\"Posts using symbolic imagery, logos, or abstract concepts\"},{\"theme\":\"Negative Imagery/Campaigning\",\"percentage\":52.8,\"description\":\"Posts with negative imagery or attack campaigning\"},{\"theme\":\"Positive Imagery/Acclaims\",\"percentage\":50.3,\"description\":\"Posts with positive imagery or celebratory content\"},{\"theme\":\"Humor / Satire\",\"percentage\":28,\"description\":\"Posts using humor, satire, or comedic elements\"},{\"theme\":\"Event Announcement/Election Appeal/Candidate Intro\",\"percentage\":21.1,\"description\":\"Posts announcing events, elections, or introducing candidates\"},{\"theme\":\"Nostalgic / Historic\",\"percentage\":9.9,\"description\":\"Posts with historical references or nostalgic imagery\"},{\"theme\":\"Media Work (incl. TV Debates)\",\"percentage\":9.3,\"description\":\"Posts about media appearances, interviews, or press coverage\"},{\"theme\":\"Day-to-Day Politics\",\"percentage\":5.6,\"description\":\"Posts about routine political activities and governance\"},{\"theme\":\"Campaign Event Imagery\",\"percentage\":4.3,\"description\":\"Posts from campaign rallies, meetings, or political events\"},{\"theme\":\"Other Image Content\",\"percentage\":1.2,\"description\":\"Posts with other types of visual content\"}];\n          const item = data.find(d => d.theme === theme);\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + theme + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> of AI posts (' + item.percentage + '% Posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>161<\/strong> total AI posts analyzed (All)<\/div>' +\n            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + item.description + '<\/div>' +\n          '<\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Image/Video Content in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9480,20 +9822,74 @@ border-radius: 10px;
 <div class="cell">
 <div class="cell-output-display">
 <style>
-.apex-container {
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
 max-width: 100%;
 height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
+overflow-x: auto;
+overflow-y: auto;
 padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-7e4cec5168728dcbd611" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-7e4cec5168728dcbd611">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Symbolic Image (Front-Facing People)","y":61},{"x":"Negative Imagery/Campaigning","y":55},{"x":"Humor / Satire","y":36},{"x":"Positive Imagery/Acclaims","y":25},{"x":"Event Announcement/Election Appeal/Candidate Intro","y":13},{"x":"Media Work (incl. TV Debates)","y":11},{"x":"Nostalgic / Historic","y":11},{"x":"Day-to-Day Politics","y":3},{"x":"Utopie of dystopie","y":3},{"x":"Campaign Event Imagery","y":1},{"x":"Other Image Content","y":1}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"y":{"formatter":"function(val) { return val + ' Posts'; }"}},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Image/Video Content in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.y.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-ef67907be70c384e0e03" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-ef67907be70c384e0e03">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Symbolic Image (Front-Facing People)","y":57},{"x":"Positive Imagery/Acclaims","y":56},{"x":"Negative Imagery/Campaigning","y":30},{"x":"Event Announcement/Election Appeal/Candidate Intro","y":21},{"x":"Humor / Satire","y":9},{"x":"Campaign Event Imagery","y":6},{"x":"Day-to-Day Politics","y":6},{"x":"Nostalgic / Historic","y":5},{"x":"Media Work (incl. TV Debates)","y":4},{"x":"Other Image Content","y":1}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const theme = w.globals.labels[dataPointIndex];\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const data = [{\"theme\":\"Symbolic Image (Front-Facing People)\",\"percentage\":73.1,\"description\":\"Posts using symbolic imagery, logos, or abstract concepts\"},{\"theme\":\"Positive Imagery/Acclaims\",\"percentage\":71.8,\"description\":\"Posts with positive imagery or celebratory content\"},{\"theme\":\"Negative Imagery/Campaigning\",\"percentage\":38.5,\"description\":\"Posts with negative imagery or attack campaigning\"},{\"theme\":\"Event Announcement/Election Appeal/Candidate Intro\",\"percentage\":26.9,\"description\":\"Posts announcing events, elections, or introducing candidates\"},{\"theme\":\"Humor / Satire\",\"percentage\":11.5,\"description\":\"Posts using humor, satire, or comedic elements\"},{\"theme\":\"Campaign Event Imagery\",\"percentage\":7.7,\"description\":\"Posts from campaign rallies, meetings, or political events\"},{\"theme\":\"Day-to-Day Politics\",\"percentage\":7.7,\"description\":\"Posts about routine political activities and governance\"},{\"theme\":\"Nostalgic / Historic\",\"percentage\":6.4,\"description\":\"Posts with historical references or nostalgic imagery\"},{\"theme\":\"Media Work (incl. TV Debates)\",\"percentage\":5.1,\"description\":\"Posts about media appearances, interviews, or press coverage\"},{\"theme\":\"Other Image Content\",\"percentage\":1.3,\"description\":\"Posts with other types of visual content\"}];\n          const item = data.find(d => d.theme === theme);\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + theme + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> of AI posts (' + item.percentage + '% Posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>78<\/strong> total AI posts analyzed (Parties & Politicians)<\/div>' +\n            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + item.description + '<\/div>' +\n          '<\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Image/Video Content in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom"],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-8-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<style>
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
+max-width: 100%;
+height: auto;
+overflow-x: auto;
+overflow-y: auto;
+padding: 20px;
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
+}
+</style>
+<div class="apex-container">
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-9b92a96a11fc1ce70388" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-9b92a96a11fc1ce70388">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":false,"height":800,"horizontal":true},"series":[{"name":"n","data":[{"x":"Symbolic Image (Front-Facing People)","y":61},{"x":"Negative Imagery/Campaigning","y":55},{"x":"Humor / Satire","y":36},{"x":"Positive Imagery/Acclaims","y":25},{"x":"Event Announcement/Election Appeal/Candidate Intro","y":13},{"x":"Media Work (incl. TV Debates)","y":11},{"x":"Nostalgic / Historic","y":11},{"x":"Day-to-Day Politics","y":3},{"x":"Campaign Event Imagery","y":1},{"x":"Other Image Content","y":1}]}],"dataLabels":{"enabled":true,"formatter":"function(val) { return val + ' Posts'; }"},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":false,"barHeight":"60%","borderRadius":5}},"tooltip":{"shared":true,"intersect":false,"followCursor":true,"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const theme = w.globals.labels[dataPointIndex];\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const data = [{\"theme\":\"Symbolic Image (Front-Facing People)\",\"percentage\":73.5,\"description\":\"Posts using symbolic imagery, logos, or abstract concepts\"},{\"theme\":\"Negative Imagery/Campaigning\",\"percentage\":66.3,\"description\":\"Posts with negative imagery or attack campaigning\"},{\"theme\":\"Humor / Satire\",\"percentage\":43.4,\"description\":\"Posts using humor, satire, or comedic elements\"},{\"theme\":\"Positive Imagery/Acclaims\",\"percentage\":30.1,\"description\":\"Posts with positive imagery or celebratory content\"},{\"theme\":\"Event Announcement/Election Appeal/Candidate Intro\",\"percentage\":15.7,\"description\":\"Posts announcing events, elections, or introducing candidates\"},{\"theme\":\"Media Work (incl. TV Debates)\",\"percentage\":13.3,\"description\":\"Posts about media appearances, interviews, or press coverage\"},{\"theme\":\"Nostalgic / Historic\",\"percentage\":13.3,\"description\":\"Posts with historical references or nostalgic imagery\"},{\"theme\":\"Day-to-Day Politics\",\"percentage\":3.6,\"description\":\"Posts about routine political activities and governance\"},{\"theme\":\"Campaign Event Imagery\",\"percentage\":1.2,\"description\":\"Posts from campaign rallies, meetings, or political events\"},{\"theme\":\"Other Image Content\",\"percentage\":1.2,\"description\":\"Posts with other types of visual content\"}];\n          const item = data.find(d => d.theme === theme);\n          \n          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + theme + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> of AI posts (' + item.percentage + '% Posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>83<\/strong> total AI posts analyzed (Other Actors)<\/div>' +\n            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + item.description + '<\/div>' +\n          '<\/div>';\n        }"},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"title":{"text":"Distribution of Image/Video Content in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}},"legend":{"position":"bottom","labels":{"colors":"#000"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"bar"},"evals":["ax_opts.dataLabels.formatter","ax_opts.tooltip.custom"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9508,26 +9904,42 @@ border-radius: 10px;
 <section id="personen" class="level2">
 <h2 class="anchored" data-anchor-id="personen">People Shown in AI Content</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">Parties &amp; Politicians</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Other Actors</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">All</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Parties &amp; Politicians</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-3" role="tab" aria-controls="tabset-9-3" aria-selected="false">Other Actors</a></li></ul>
 <div class="tab-content">
 <div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <style>
-.apex-container {
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
 max-width: 100%;
 height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
+overflow-x: auto;
+overflow-y: auto;
 padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-94935c9d4a9f95686790" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-94935c9d4a9f95686790">{"x":{"ax_opts":{"chart":{"type":"treemap"},"series":[{"name":[],"data":[{"x":"Social Movement Representatives","y":1},{"x":"GL-PvdA: Frans Timmermans","y":3},{"x":"Non-Political Institution Representatives","y":6},{"x":"Illegals/Criminals/Extremists","y":9},{"x":"PVV: Geert Wilders","y":10},{"x":"Minorities","y":15},{"x":"Ordinary People","y":50}]}],"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#547D01"],"dataLabels":{"style":{"colors":["#000000"]}},"title":{"text":"Distribution of People in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"GL-PvdA: Frans Timmermans","max":"Social Movement Representatives"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-8a415a846c31dfc10f10" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-8a415a846c31dfc10f10">{"x":{"ax_opts":{"chart":{"type":"treemap"},"series":[{"name":"n","data":[{"x":"Foreign Politicians (Non-EU, UN, NATO)","y":1},{"x":"Other People","y":1},{"x":"GL-PvdA: Jesse Klaver","y":3},{"x":"JA21: Joost Eerdmans","y":3},{"x":"Social Movement Representatives","y":3},{"x":"Denk: Stephan van Baarle","y":4},{"x":"CDA: Henri Bontenbal","y":5},{"x":"BBB: Caroline van der Plas","y":6},{"x":"Other Parties","y":6},{"x":"Other Politicians","y":6},{"x":"VVD: Dilan Yeşilgöz","y":6},{"x":"PvdD: Esther Ouwehand","y":7},{"x":"Journalists/News Media","y":8},{"x":"D66: Rob Jetten","y":9},{"x":"GL-PvdA: Frans Timmermans","y":10},{"x":"Non-Political Institution Representatives","y":12},{"x":"Celebrities/Opinion Leaders","y":14},{"x":"Illegals/Criminals/Extremists","y":15},{"x":"PVV: Geert Wilders","y":17},{"x":"Foreign Politicians (EU, UN, NATO)","y":24},{"x":"Minorities","y":28},{"x":"Ordinary People","y":100}]}],"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#547D01"],"tooltip":{"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const data = [{\"people_in_the_image_video\":\"Foreign Politicians (Non-EU, UN, NATO)\",\"n\":1,\"percentage\":0.6},{\"people_in_the_image_video\":\"Other People\",\"n\":1,\"percentage\":0.6},{\"people_in_the_image_video\":\"GL-PvdA: Jesse Klaver\",\"n\":3,\"percentage\":1.9},{\"people_in_the_image_video\":\"JA21: Joost Eerdmans\",\"n\":3,\"percentage\":1.9},{\"people_in_the_image_video\":\"Social Movement Representatives\",\"n\":3,\"percentage\":1.9},{\"people_in_the_image_video\":\"Denk: Stephan van Baarle\",\"n\":4,\"percentage\":2.5},{\"people_in_the_image_video\":\"CDA: Henri Bontenbal\",\"n\":5,\"percentage\":3.1},{\"people_in_the_image_video\":\"BBB: Caroline van der Plas\",\"n\":6,\"percentage\":3.7},{\"people_in_the_image_video\":\"Other Parties\",\"n\":6,\"percentage\":3.7},{\"people_in_the_image_video\":\"Other Politicians\",\"n\":6,\"percentage\":3.7},{\"people_in_the_image_video\":\"VVD: Dilan Yeşilgöz\",\"n\":6,\"percentage\":3.7},{\"people_in_the_image_video\":\"PvdD: Esther Ouwehand\",\"n\":7,\"percentage\":4.3},{\"people_in_the_image_video\":\"Journalists/News Media\",\"n\":8,\"percentage\":5},{\"people_in_the_image_video\":\"D66: Rob Jetten\",\"n\":9,\"percentage\":5.6},{\"people_in_the_image_video\":\"GL-PvdA: Frans Timmermans\",\"n\":10,\"percentage\":6.2},{\"people_in_the_image_video\":\"Non-Political Institution Representatives\",\"n\":12,\"percentage\":7.5},{\"people_in_the_image_video\":\"Celebrities/Opinion Leaders\",\"n\":14,\"percentage\":8.7},{\"people_in_the_image_video\":\"Illegals/Criminals/Extremists\",\"n\":15,\"percentage\":9.3},{\"people_in_the_image_video\":\"PVV: Geert Wilders\",\"n\":17,\"percentage\":10.6},{\"people_in_the_image_video\":\"Foreign Politicians (EU, UN, NATO)\",\"n\":24,\"percentage\":14.9},{\"people_in_the_image_video\":\"Minorities\",\"n\":28,\"percentage\":17.4},{\"people_in_the_image_video\":\"Ordinary People\",\"n\":100,\"percentage\":62.1}];\n          const item = data[dataPointIndex];\n          const person = item ? item.people_in_the_image_video : 'Unknown';\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const total = 161;\n          // Calculate percentage from count and total\n          const percentage = Math.round((count / total) * 100 * 10) / 10;\n          \n          return '<div style=\"padding: 12px; background: #547D01; color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + person + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> Posts (' + percentage + '%% of AI posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + total + '<\/strong> total AI posts analyzed (All)<\/div>' +\n          '<\/div>';\n        }"},"dataLabels":{"style":{"colors":["#000000"]}},"title":{"text":"Distribution of People in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"treemap"},"evals":["ax_opts.tooltip.custom"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9536,20 +9948,74 @@ border-radius: 10px;
 <div class="cell">
 <div class="cell-output-display">
 <style>
-.apex-container {
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
 max-width: 100%;
 height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
+overflow-x: auto;
+overflow-y: auto;
 padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
 }
 </style>
 <div class="apex-container">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-ac03dc9c17287c74e25d" style="width:100%;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-ac03dc9c17287c74e25d">{"x":{"ax_opts":{"chart":{"type":"treemap"},"series":[{"name":[],"data":[{"x":"Foreign Politicians (Non-EU, UN, NATO)","y":1},{"x":"Other People","y":1},{"x":"Social Movement Representatives","y":2},{"x":"GL-PvdA: Jesse Klaver","y":3},{"x":"JA21: Joost Eerdmans","y":3},{"x":"Denk: Stephan van Baarle","y":4},{"x":"CDA: Henri Bontenbal","y":5},{"x":"BBB: Caroline van der Plas","y":6},{"x":"Illegals/Criminals/Extremists","y":6},{"x":"Non-Political Institution Representatives","y":6},{"x":"Other Parties","y":6},{"x":"Other Politicians","y":6},{"x":"VVD: Dilan Yeşilgöz","y":6},{"x":"GL-PvdA: Frans Timmermans","y":7},{"x":"PvdD: Esther Ouwehand","y":7},{"x":"PVV: Geert Wilders","y":7},{"x":"Journalists/News Media","y":8},{"x":"D66: Rob Jetten","y":9},{"x":"Minorities","y":13},{"x":"Celebrities/Opinion Leaders","y":14},{"x":"Foreign Politicians (EU, UN, NATO)","y":24},{"x":"Ordinary People","y":50}]}],"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#547D01"],"dataLabels":{"style":{"colors":["#000000"]}},"title":{"text":"Distribution of People in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"BBB: Caroline van der Plas","max":"VVD: Dilan Yeşilgöz"},"type":"treemap"},"evals":[],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-bf17e42642e1f054fb8e" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-bf17e42642e1f054fb8e">{"x":{"ax_opts":{"chart":{"type":"treemap"},"series":[{"name":"n","data":[{"x":"Social Movement Representatives","y":1},{"x":"GL-PvdA: Frans Timmermans","y":3},{"x":"Non-Political Institution Representatives","y":6},{"x":"Illegals/Criminals/Extremists","y":9},{"x":"PVV: Geert Wilders","y":10},{"x":"Minorities","y":15},{"x":"Ordinary People","y":50}]}],"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#547D01"],"tooltip":{"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const data = [{\"people_in_the_image_video\":\"Social Movement Representatives\",\"n\":1,\"percentage\":1.3},{\"people_in_the_image_video\":\"GL-PvdA: Frans Timmermans\",\"n\":3,\"percentage\":3.8},{\"people_in_the_image_video\":\"Non-Political Institution Representatives\",\"n\":6,\"percentage\":7.7},{\"people_in_the_image_video\":\"Illegals/Criminals/Extremists\",\"n\":9,\"percentage\":11.5},{\"people_in_the_image_video\":\"PVV: Geert Wilders\",\"n\":10,\"percentage\":12.8},{\"people_in_the_image_video\":\"Minorities\",\"n\":15,\"percentage\":19.2},{\"people_in_the_image_video\":\"Ordinary People\",\"n\":50,\"percentage\":64.1}];\n          const item = data[dataPointIndex];\n          const person = item ? item.people_in_the_image_video : 'Unknown';\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const total = 78;\n          // Calculate percentage from count and total\n          const percentage = Math.round((count / total) * 100 * 10) / 10;\n          \n          return '<div style=\"padding: 12px; background: #547D01; color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + person + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> Posts (' + percentage + '%% of AI posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + total + '<\/strong> total AI posts analyzed (Parties & Politicians)<\/div>' +\n          '<\/div>';\n        }"},"dataLabels":{"style":{"colors":["#000000"]}},"title":{"text":"Distribution of People in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"treemap"},"evals":["ax_opts.tooltip.custom"],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<style>
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
+max-width: 100%;
+height: auto;
+overflow-x: auto;
+overflow-y: auto;
+padding: 20px;
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
+}
+</style>
+<div class="apex-container">
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-b738eb61b053840f3c8a" style="width:100%;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-b738eb61b053840f3c8a">{"x":{"ax_opts":{"chart":{"type":"treemap"},"series":[{"name":"n","data":[{"x":"Foreign Politicians (Non-EU, UN, NATO)","y":1},{"x":"Other People","y":1},{"x":"Social Movement Representatives","y":2},{"x":"GL-PvdA: Jesse Klaver","y":3},{"x":"JA21: Joost Eerdmans","y":3},{"x":"Denk: Stephan van Baarle","y":4},{"x":"CDA: Henri Bontenbal","y":5},{"x":"BBB: Caroline van der Plas","y":6},{"x":"Illegals/Criminals/Extremists","y":6},{"x":"Non-Political Institution Representatives","y":6},{"x":"Other Parties","y":6},{"x":"Other Politicians","y":6},{"x":"VVD: Dilan Yeşilgöz","y":6},{"x":"GL-PvdA: Frans Timmermans","y":7},{"x":"PvdD: Esther Ouwehand","y":7},{"x":"PVV: Geert Wilders","y":7},{"x":"Journalists/News Media","y":8},{"x":"D66: Rob Jetten","y":9},{"x":"Minorities","y":13},{"x":"Celebrities/Opinion Leaders","y":14},{"x":"Foreign Politicians (EU, UN, NATO)","y":24},{"x":"Ordinary People","y":50}]}],"yaxis":{"labels":{"style":{"colors":"#848484","fontSize":"14px","fontWeight":"bold"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Number of Posts"}},"colors":["#547D01"],"tooltip":{"enabled":true,"custom":"\n        function({series, seriesIndex, dataPointIndex, w}) {\n          const data = [{\"people_in_the_image_video\":\"Foreign Politicians (Non-EU, UN, NATO)\",\"n\":1,\"percentage\":1.2},{\"people_in_the_image_video\":\"Other People\",\"n\":1,\"percentage\":1.2},{\"people_in_the_image_video\":\"Social Movement Representatives\",\"n\":2,\"percentage\":2.4},{\"people_in_the_image_video\":\"GL-PvdA: Jesse Klaver\",\"n\":3,\"percentage\":3.6},{\"people_in_the_image_video\":\"JA21: Joost Eerdmans\",\"n\":3,\"percentage\":3.6},{\"people_in_the_image_video\":\"Denk: Stephan van Baarle\",\"n\":4,\"percentage\":4.8},{\"people_in_the_image_video\":\"CDA: Henri Bontenbal\",\"n\":5,\"percentage\":6},{\"people_in_the_image_video\":\"BBB: Caroline van der Plas\",\"n\":6,\"percentage\":7.2},{\"people_in_the_image_video\":\"Illegals/Criminals/Extremists\",\"n\":6,\"percentage\":7.2},{\"people_in_the_image_video\":\"Non-Political Institution Representatives\",\"n\":6,\"percentage\":7.2},{\"people_in_the_image_video\":\"Other Parties\",\"n\":6,\"percentage\":7.2},{\"people_in_the_image_video\":\"Other Politicians\",\"n\":6,\"percentage\":7.2},{\"people_in_the_image_video\":\"VVD: Dilan Yeşilgöz\",\"n\":6,\"percentage\":7.2},{\"people_in_the_image_video\":\"GL-PvdA: Frans Timmermans\",\"n\":7,\"percentage\":8.4},{\"people_in_the_image_video\":\"PvdD: Esther Ouwehand\",\"n\":7,\"percentage\":8.4},{\"people_in_the_image_video\":\"PVV: Geert Wilders\",\"n\":7,\"percentage\":8.4},{\"people_in_the_image_video\":\"Journalists/News Media\",\"n\":8,\"percentage\":9.6},{\"people_in_the_image_video\":\"D66: Rob Jetten\",\"n\":9,\"percentage\":10.8},{\"people_in_the_image_video\":\"Minorities\",\"n\":13,\"percentage\":15.7},{\"people_in_the_image_video\":\"Celebrities/Opinion Leaders\",\"n\":14,\"percentage\":16.9},{\"people_in_the_image_video\":\"Foreign Politicians (EU, UN, NATO)\",\"n\":24,\"percentage\":28.9},{\"people_in_the_image_video\":\"Ordinary People\",\"n\":50,\"percentage\":60.2}];\n          const item = data[dataPointIndex];\n          const person = item ? item.people_in_the_image_video : 'Unknown';\n          const count = w.globals.series[seriesIndex][dataPointIndex];\n          const total = 83;\n          // Calculate percentage from count and total\n          const percentage = Math.round((count / total) * 100 * 10) / 10;\n          \n          return '<div style=\"padding: 12px; background: #547D01; color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +\n            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + person + '<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '<\/strong> Posts (' + percentage + '%% of AI posts)<\/div>' +\n            '<div style=\"margin-bottom: 4px;\"><strong>' + total + '<\/strong> total AI posts analyzed (Other Actors)<\/div>' +\n          '<\/div>';\n        }"},"dataLabels":{"style":{"colors":["#000000"]}},"title":{"text":"Distribution of People in AI-Generated Content","align":"center","style":{"fontSize":"18px","fontWeight":"bold"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"type":"treemap"},"evals":["ax_opts.tooltip.custom"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -9568,20 +10034,36 @@ border-radius: 10px;
 <div class="cell-output-display">
 
 <style>
-.apex-container {
+
+.apex-container,
+.apex-container0,
+.apex-container2 {
 max-width: 100%;
 height: auto;
-overflow-x: auto; 
-overflow-y: auto; 
+overflow-x: auto;
+overflow-y: auto;
 padding: 20px;
-background-color: #f8f9fa; 
-border: 1px solid #ccc; 
-border-radius: 10px; 
+background-color: #f8f9fa;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.ac-grid > div,
+.ac-grid .html-widget,
+.ac-grid .apexcharts-canvas,
+.ac-grid .apexcharts-svg,
+.ac-grid .apexcharts-inner {
+background: transparent !important;
+}
+
+.apexcharts-tooltip {
+background: rgba(255,255,255,.96) !important;
+color: #111 !important;
 }
 </style>
 <div class="apex-container">
-<div class="highchart html-widget html-fill-item" id="htmlwidget-b880a9aecb53296d28bb" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-b880a9aecb53296d28bb">{"x":{"hc_opts":{"chart":{"reflow":true,"type":"line"},"title":{"text":"AI Posts Over Time"},"yAxis":{"title":{"text":"Number of Posts"}},"credits":{"enabled":false},"exporting":{"enabled":false},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"}},"xAxis":{"categories":["2025-09-17","2025-09-18","2025-09-19","2025-09-20","2025-09-21","2025-09-22","2025-09-23","2025-09-24","2025-09-25"]},"series":[{"data":[8,15,18,24,19,21,22,14,20],"name":"Posts with AI","color":"#FF6F61"},{"data":[801,777,666,619,505,690,776,748,826],"name":"Posts without AI","color":"#6B5B95"}],"tooltip":{"pointFormat":"<b>{series.name}<\/b>: {point.y}"}},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
+<div class="highchart html-widget html-fill-item" id="htmlwidget-16083776e72ed1f2b010" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-16083776e72ed1f2b010">{"x":{"hc_opts":{"chart":{"reflow":true,"type":"line"},"title":{"text":"AI Posts Over Time"},"yAxis":{"title":{"text":"Number of Posts"}},"credits":{"enabled":false},"exporting":{"enabled":false},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"}},"xAxis":{"categories":["2025-09-17","2025-09-18","2025-09-19","2025-09-20","2025-09-21","2025-09-22","2025-09-23","2025-09-24","2025-09-25"]},"series":[{"data":[8,15,18,24,19,21,22,14,20],"name":"Posts with AI","color":"#FF6F61"},{"data":[815,795,681,643,520,710,797,764,845],"name":"Posts without AI","color":"#6B5B95"}],"tooltip":{"pointFormat":"<b>{series.name}<\/b>: {point.y}"}},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
