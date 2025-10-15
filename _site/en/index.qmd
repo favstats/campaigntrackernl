@@ -488,8 +488,8 @@ create_media_format_chart <- function(data, lang, actor_type_label = "", chart_h
           '</div>';
         }", 
         jsonlite::toJSON(med_df[, c("label", "n", "description")], auto_unbox = FALSE),
-        get_text("tooltip_of_ai_posts", lang),
         get_text("theposts", lang),
+        get_text("tooltip_of_ai_posts", lang),
         media_total,
         get_text("tooltip_total_ai_analyzed", lang),
         if(nchar(actor_type_label) > 0) paste0(" (", actor_type_label, ")") else ""
