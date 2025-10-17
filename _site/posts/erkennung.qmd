@@ -1,0 +1,113 @@
+---
+title: "How to Recognize AI-Generated Images and Strengthen Your AI Literacy"
+description-meta: "Tips for recognizing AI-generated images and strengthening digital resilience in political campaigns."
+author: "Jakob Scherer"
+date: "2.17.2025"
+image: "yPrk02y.png"
+lang: en
+format:
+  html:
+    theme: lumen
+    toc: true
+    toc-title: "Contents"
+    toc-depth: 2
+    smooth-scroll: true
+---
+
+<!-- Custom CSS -->
+<style>
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color: #004080;
+  margin-bottom: 0.5em;
+}
+
+p {
+  text-align: justify;
+  margin: 1em 0;
+}
+
+img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+blockquote {
+  font-style: italic;
+  background: #f0f8ff;
+  padding: 15px;
+  border-left: 4px solid #004080;
+  margin: 20px 0;
+}
+
+.callout {
+  background-color: #e7f3fe;
+  padding: 15px;
+  border-left: 5px solid #2196F3;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+.credit {
+  font-size: 0.9em;
+  color: #555;
+  text-align: center;
+  margin-top: -10px;
+}
+</style>
+
+
+The ability to recognize AI-generated images is essential to preventing disinformation and manipulation in digital campaigns. Especially in the context of political communication, generative AI is increasingly used – sometimes for creative purposes, sometimes for deliberate deception. The **campAIgn Tracker** provides an overview of current AI trends in political campaigns and helps citizens protect themselves against disinformation.
+
+### **AI-Generated Images: Deceptively Real Yet Detectable**
+
+Modern AI can now create images that look realistic. But some clues give them away:
+
+- **Unnatural details:** Distorted facial proportions, inconsistent light sources, or missing reflections.  
+- **Strange textures and patterns:** Repetitions or blurry spots, especially in backgrounds.  
+- **Problems with eyes and hands:** AI struggles to generate realistic hands or symmetrical eyes.  
+- **Metadata analysis:** Tools like *Foto Forensics* or *Google Lens* can be used to check the origin of an image.  
+- **Reverse image search:** A reverse search can reveal whether the image has been flagged as AI-generated.  
+
+![[Infobox from current study on AI in election campaigns](https://www.otto-brenner-stiftung.de/generative-ki-in-politischen-kampagnen/) by Dr. Simon Kruschinski, Dr. Pablo Jost, Tobias Scherer, and Hannah Fecher](A4gQPaI.png)
+
+### Digital Resilience: How Citizens Can Strengthen Their AI Literacy
+
+To avoid manipulation, a critical approach to digital content is essential. Here are some measures that can help:
+
+#### **1. Train Critical Thinking**
+
+- Question images and content, especially in political contexts.  
+- Compare information with reliable news sources or fact-checking platforms.  
+
+#### **2. Use Technical Tools**
+
+- Specialized *deepfake detectors* and *image analysis tools* can help identify manipulated content.  
+- Browser extensions and AI warning systems provide early signs of falsification.  
+
+#### **3. Expand Media Literacy**
+
+- Use educational resources on digital literacy, such as those provided by the **campAIgn Tracker**.  
+- Schools and educational institutions should increasingly offer workshops on AI detection and the ethical use of AI.  
+
+#### **4. Demand AI Labeling**
+
+- Advocate for transparency rules that require labeling of AI-generated content.  
+- Public pressure on platforms like **Meta** or **X** (formerly Twitter) can help enforce reliable AI tagging.  
+
+### **Conclusion**
+
+The **campAIgn Tracker** shows how generative AI is already being used in political campaigns today – with both positive and negative effects. Those who know how to recognize AI-generated images are better equipped to protect themselves from manipulation.  
+
+**Digital resilience** means combining critical thinking, technical tools, and media literacy. Stay informed and strengthen your digital skills with the **campAIgn Tracker**!

@@ -1,0 +1,2122 @@
+---
+title: ""
+format:
+  html:
+    theme: lumen
+    page-layout: full
+    self-contained: true
+    code-fold: true
+    code-overflow: wrap
+    html-math-method: mathjax
+    include-after-body:
+      text: |
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+              var toc = document.createElement("div");
+              toc.id = "custom-toc";
+              toc.style.position = "fixed";
+              toc.style.top = "0";
+              toc.style.right = "-300px";
+              toc.style.width = "260px";
+              toc.style.height = "100%";
+              toc.style.background = "white";
+              toc.style.padding = "10px";
+              toc.style.boxShadow = "0px 2px 5px rgba(0, 0, 0, 0.2)";
+              toc.style.transition = "right 0.3s ease-in-out";
+              toc.style.overflowY = "auto";
+          
+              var tocTitle = document.createElement("h3");
+              tocTitle.innerText = "Navigation";
+              toc.appendChild(tocTitle);
+          
+              var headers = document.querySelectorAll("h2, h3, h4");
+              headers.forEach(function (header, index) {
+                  if (!header.id) {
+                      header.id = "section-" + index;
+                  }
+          
+                  var link = document.createElement("a");
+                  link.innerText = header.innerText;
+                  link.href = "#" + header.id;
+                  link.style.display = "block";
+                  link.style.padding = "5px 0";
+                  link.style.color = "#007bff";
+                  link.style.textDecoration = "none";
+          
+                  toc.appendChild(link);
+              });
+          
+              document.body.appendChild(toc);
+          
+              var button = document.createElement("button");
+              button.id = "toggle-toc";
+              button.innerHTML = "📑";
+              button.style.position = "fixed";
+              button.style.top = "15px";
+              button.style.right = "15px";
+              button.style.backgroundColor = "white";
+              button.style.color = "#333";
+              button.style.border = "2px solid #ccc";
+              button.style.padding = "10px 12px";
+              button.style.cursor = "pointer";
+              button.style.borderRadius = "8px";
+              button.style.fontSize = "22px";
+              button.style.zIndex = "1000";
+              button.style.boxShadow = "0px 3px 6px rgba(0, 0, 0, 0.2)";
+              button.style.width = "50px";
+              button.style.height = "50px";
+          
+              document.body.appendChild(button);
+          
+              button.addEventListener("click", function () {
+                  if (toc.style.right === "0px") {
+                      toc.style.right = "-300px";
+                  } else {
+                      toc.style.right = "0px";
+                  }
+              });
+          });
+          
+          document.addEventListener("DOMContentLoaded", function () {
+              document.querySelectorAll("a[href='https://favstats.github.io/de25/']").forEach(function(link) {
+                  link.addEventListener("click", function(event) {
+                      event.preventDefault();
+                      window.open(link.href, "_blank");
+                  });
+              });
+          });
+          
+          // Clean, simple enhancements only
+          document.addEventListener("DOMContentLoaded", function () {
+              // Simple back to top button only
+              const backToTop = document.createElement("button");
+              backToTop.id = "back-to-top";
+              backToTop.innerHTML = '↑';
+              backToTop.setAttribute("aria-label", "Back to top");
+              document.body.appendChild(backToTop);
+              
+              window.addEventListener("scroll", function() {
+                  if (window.scrollY > 300) {
+                      backToTop.classList.add("show");
+                  } else {
+                      backToTop.classList.remove("show");
+                  }
+              });
+              
+              backToTop.addEventListener("click", function() {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+              });
+          });
+        </script>
+    includes:
+      in-header: |
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <!-- Privacy-friendly analytics by Plausible -->
+        <script async src="https://plausible.io/js/pa-rqPvCO0myNv3ooL2Rc_5o.js"></script>
+        <script>
+        window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+        plausible.init()
+        </script>
+        <script data-goatcounter="https://favstats.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+---
+
+<style>
+  /* ============================================
+     PROFESSIONAL DESIGN POLISH & VISUAL HIERARCHY
+     ============================================ */
+  
+  /* Color all Markdown bold text */
+  main.content strong,
+  main.content b {
+    color: #0d6efd !important;
+    font-weight: 700;
+  }
+  
+  /* Tooltip text should be white */
+  .apexcharts-tooltip strong,
+  .apexcharts-tooltip b,
+  .apexcharts-tooltip-series strong,
+  .apexcharts-tooltip-series b,
+  div[class*="apexcharts-tooltip"] strong,
+  div[class*="apexcharts-tooltip"] b {
+    color: #FFFFFF !important;
+  }
+  
+  /* Section Headers with Gradient Border */
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(90deg, #0028B8 0%, #FF4D6A 100%);
+    border-image-slice: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  /* Premium blockquotes */
+  blockquote {
+    background: linear-gradient(135deg, #f9f9f9 0%, #f8f9fa 100%);
+    border-left: 4px solid #0028B8;
+    padding: 2rem 2.5rem;
+    margin: 2.5rem 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 40, 184, 0.08);
+    position: relative;
+    overflow: hidden;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  /* Removed quote symbol - cleaner look */
+  
+  blockquote::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #0028B8 0%, #FF4D6A 100%);
+  }
+  
+  blockquote:hover {
+    box-shadow: 0 8px 24px rgba(0, 40, 184, 0.12);
+    transform: translateY(-3px);
+    transition: all 0.3s ease;
+  }
+  
+  /* Better spacing and typography */
+  main.content {
+    line-height: 1.7;
+    font-size: 1.05rem;
+  }
+  
+  /* Premium chart containers */
+  .apex-container,
+  .apex-container0,
+  .apex-container2 {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+    border: 1px solid #e9ecef !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+    transition: all 0.3s ease !important;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .apex-container:hover,
+  .apex-container0:hover,
+  .apex-container2:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+    transform: translateY(-4px) !important;
+  }
+  
+  /* Tab styling enhancement */
+  .panel-tabset {
+    margin: 2rem 0;
+  }
+  
+  /* Back to top button */
+  #back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #0028B8 0%, #FF4D6A 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+  
+  #back-to-top:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 40, 184, 0.6);
+  }
+  
+  #back-to-top.show {
+    display: flex;
+  }
+  
+  /* Phosphor icons in headers */
+  h2 iconify-icon {
+    margin-right: 12px;
+    color: #0028B8;
+    transition: color 0.3s ease;
+    pointer-events: none;
+  }
+  
+  h2:hover iconify-icon {
+    color: #FF4D6A;
+  }
+  
+  /* Sparkbox enhancements */
+  .apexcharts-sparkbox {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+  }
+  
+  .apexcharts-sparkbox:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 40, 184, 0.15);
+  }
+  
+  /* PROFESSIONAL TAB STYLING */
+  .panel-tabset {
+    margin: 1.5rem 0;
+  }
+  
+  .panel-tabset .nav-tabs {
+    border-bottom: none !important;
+    border: none !important;
+    margin-bottom: 1rem;
+  }
+  
+  .panel-tabset .nav-link {
+    border: 1px solid transparent !important;
+    border-radius: 4px 4px 0 0 !important;
+    padding: 8px 16px !important;
+    font-weight: 500 !important;
+    color: #6c757d !important;
+    background: transparent !important;
+    transition: all 0.2s ease !important;
+    margin-right: 2px;
+  }
+  
+  .panel-tabset .nav-link:hover {
+    background: rgba(0, 40, 184, 0.05) !important;
+    color: #0028B8 !important;
+    border-color: rgba(0, 40, 184, 0.2) !important;
+  }
+  
+  .panel-tabset .nav-link.active {
+    background: #0028B8 !important;
+    color: white !important;
+    border-color: #0028B8 !important;
+    border-bottom: none !important;
+  }
+  
+  .panel-tabset .tab-content {
+    padding-top: 1rem;
+    border-top: none !important;
+  }
+  
+  /* Fix nested tabset spacing - remove ALL spacing and borders */
+  .panel-tabset .panel-tabset {
+    margin: 0.25rem 0 0 0;
+    border: none !important;
+  }
+  
+  .panel-tabset .panel-tabset > .nav-tabs {
+    margin-bottom: 0 !important;
+    border-bottom: none !important;
+  }
+  
+  .panel-tabset .panel-tabset > .tab-content {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    border-top: none !important;
+    border: none !important;
+  }
+  
+  .panel-tabset .panel-tabset > .tab-content .tab-pane {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    border-top: none !important;
+    border: none !important;
+  }
+  
+  /* Remove all borders and spacing from nested tabs */
+  .panel-tabset .panel-tabset .nav-link {
+    margin-bottom: 0 !important;
+    border-bottom: none !important;
+  }
+  
+  /* Ensure top-level tabsets keep a single divider */
+  .panel-tabset > .nav-tabs {
+    border-bottom: none !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  /* Remove extra spacing after nested tabsets */
+  .panel-tabset .panel-tabset + * {
+    margin-top: 0.5rem !important;
+  }
+  
+  /* Remove all borders from tab content */
+  .tab-pane {
+    border: none !important;
+    border-top: none !important;
+  }
+  
+  /* Page header enhancement */
+  .quarto-title {
+    margin-bottom: 3rem !important;
+  }
+  
+  /* Better spacing between sections */
+  section {
+    margin-bottom: 3rem;
+  }
+  
+  /* Enhanced data labels in charts */
+  .apexcharts-datalabel-label,
+  .apexcharts-datalabel-value {
+    font-weight: 600 !important;
+  }
+  
+  /* DRAMATIC DESIGN ENHANCEMENTS */
+  
+  /* Improve overall page background */
+  body {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    min-height: 100vh;
+  }
+  
+  /* Better main content styling */
+  main.content {
+    background: white;
+    border-radius: 12px;
+    padding: 3rem;
+    margin: 2rem auto;
+    max-width: 100%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Add subtle background pattern */
+  main.content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0028B8 0%, #FF4D6A 100%);
+  }
+  
+  /* Enhanced header hierarchy */
+  h1 {
+    color: #0A1532 !important;
+    font-weight: 800 !important;
+    margin-bottom: 2.5rem !important;
+    font-size: 2.5rem !important;
+    text-align: center;
+    position: relative;
+  }
+  
+  h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #0028B8 0%, #FF4D6A 100%);
+    border-radius: 2px;
+  }
+  
+  h2 {
+    color: #0A1532 !important;
+    font-weight: 600 !important;
+    margin-top: 3rem !important;
+    margin-bottom: 1.5rem !important;
+    position: relative;
+  }
+  
+  h3 {
+    color: #495057 !important;
+    font-weight: 600 !important;
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 1.2rem !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  h3 iconify-icon {
+    color: #0028B8 !important;
+    font-size: 1.1em !important;
+  }
+  
+  /* Better paragraph spacing */
+  p {
+    margin-bottom: 1rem;
+    color: #495057;
+  }
+  
+  /* Improve list styling */
+  ul, ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+  
+  li {
+    margin-bottom: 0.5rem;
+    color: #495057;
+  }
+  
+  /* Better code styling */
+  code {
+    background: #f8f9fa !important;
+    color: #e23c66 !important;
+    padding: 0.2rem 0.4rem !important;
+    border-radius: 3px !important;
+    font-size: 0.9em !important;
+  }
+  
+  /* Improve table styling */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #0A1532;
+  }
+  
+  /* Improve sparkbox containers */
+  .apexcharts-sparkbox {
+    background: white !important;
+    border: 1px solid #e9ecef !important;
+    border-radius: 8px !important;
+    padding: 1rem !important;
+    margin: 0.5rem !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+  }
+  
+  /* Better button styling */
+  button {
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+  }
+  
+  /* Improve form elements */
+  input, select, textarea {
+    border-radius: 6px !important;
+    border: 1px solid #dee2e6 !important;
+    padding: 0.5rem 0.75rem !important;
+    transition: border-color 0.2s ease !important;
+  }
+  
+  input:focus, select:focus, textarea:focus {
+    border-color: #0028B8 !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 40, 184, 0.1) !important;
+  }
+</style>
+
+
+
+
+
+
+```{r setup, include=FALSE}
+# ============================================================================
+# LIBRARIES
+# ============================================================================
+library(tidyverse)
+library(dplyr)
+library(htmltools)
+library(apexcharter)
+library(highcharter)
+library(purrr)
+library(stringr)
+
+# ============================================================================
+# SETUP
+# ============================================================================
+htmltools::tags$script(src = "https://cdn.jsdelivr.net/npm/apexcharts")
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+htmltools::tags$head(
+  tags$link(rel = "stylesheet", href = "https://unpkg.com/reactable@0.4.4/reactable.css"),
+  tags$script(src = "https://unpkg.com/react@18/umd/react.production.min.js"),
+  tags$script(src = "https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"),
+  tags$script(src = "https://unpkg.com/reactable@0.4.4/reactable.js")
+)
+
+# ============================================================================
+# SOURCE UTILS
+# ============================================================================
+source("../../utils.R")
+
+# ============================================================================
+# CONFIGURATION
+# ============================================================================
+lang <- "en"
+date_start <- as.Date("2025-09-17")
+date_end <- as.Date("2025-10-07")
+
+# Translation system
+transl <- readRDS("../../data/transl.rds")
+# transl <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTpyBm3aU-1zAP9Yi6qurwC2p3spS5iL9Yt-0szckelT55KkB1uFUi9kkWVCU3i9I1zNhAbgFTpOjy1/pub?gid=1726661963&single=true&output=csv")
+
+# openxlsx::write.xlsx(transl, "../../data/transl.xlsx")
+
+get_text <- function(thtxt, lang) {
+  transl %>% filter(variable == thtxt) %>% pull(lang) 
+}
+
+# Platform colors (party_colors defined in utils.R)
+platform_colors <- c(
+  "Facebook" = "#1877F2",
+  "Instagram" = "#E4405F",
+  "TikTok" = "#69C9D0",
+  "X" = "#000000"
+)
+
+# Consolidated CSS for all charts
+custom_css <- tags$style(HTML("
+  /* Apex chart containers */
+  .apex-container,
+  .apex-container0,
+  .apex-container2 {
+    max-width: 100%;
+    height: auto;
+    overflow-x: auto;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  /* Kill theme/Widget backgrounds for apexcharts */
+  .ac-grid > div,
+  .ac-grid .html-widget,
+  .ac-grid .apexcharts-canvas,
+  .ac-grid .apexcharts-svg,
+  .ac-grid .apexcharts-inner {
+    background: transparent !important;
+  }
+  
+  /* Keep tooltip readable */
+  .apexcharts-tooltip {
+    background: rgba(255,255,255,.96) !important;
+    color: #111 !important;
+  }
+"))
+
+# Chart wrapper function
+render_chart <- function(chart, css = custom_css, container_class = "apex-container") {
+  htmltools::tagList(
+    css,
+    tags$div(class = container_class, htmltools::browsable(chart))
+  )
+}
+
+# Safe get_text wrapper
+safe_get <- function(k, lang) {
+  x <- tryCatch(get_text(k, lang), error = function(e) character(0))
+  if (length(x) == 1 && nzchar(x)) x else k
+}
+
+# Topic analysis function
+create_topic_analysis <- function(data, lang, actor_type_label = "") {
+  # Topic mapping with description keys
+  topic_info <- list(
+    topic_general_election    = list(name = "Election in general", desc_key = "topic_election_desc"),
+    topic_politicians         = list(name = "Political parties and politicians", desc_key = "topic_politicians_desc"),
+    topic_election_call       = list(name = "Call to vote / get-out-the-vote call", desc_key = "topic_vote_call_desc"),
+    topic_economy_finance     = list(name = "Economy and finance", desc_key = "topic_economy_desc"),
+    topic_labor_social        = list(name = "Labor and social issues", desc_key = "topic_labor_desc"),
+    topic_domestic_migration  = list(name = "Domestic and migration policy", desc_key = "topic_migration_desc"),
+    topic_energy_policy       = list(name = "Environmental and energy policy", desc_key = "topic_energy_desc"),
+    topic_defense_policy      = list(name = "Foreign, security, and defense policy", desc_key = "topic_defense_desc"),
+    topic_housing             = list(name = "Housing (Crisis)", desc_key = "topic_housing_desc"),
+    topic_digital_infra       = list(name = "Digital and Infrastructure", desc_key = "topic_digital_desc"),
+    topic_europe              = list(name = "Europe", desc_key = "topic_europe_desc"),
+    topic_education_culture   = list(name = "Education and culture", desc_key = "topic_education_desc"),
+    topic_constitution_system = list(name = "Constitution of the Political System", desc_key = "topic_constitution_system_desc"),
+    topic_civil_rights        = list(name = "Civil rights", desc_key = "topic_civil_rights_desc"),
+    topic_constitution        = list(name = "Constitutional Order", desc_key = "topic_constitution_order_desc"),
+    topic_other_political     = list(name = "Other political topic", desc_key = "topic_other_desc")
+  )
+  
+  # Localized labels
+  topic_labels_local <- vapply(names(topic_info), function(k) safe_get(k, lang), character(1))
+  topic_labels_local <- make.unique(unname(topic_labels_local), sep = "_")
+  
+  # Build indicators
+  topics_vec <- data$topics
+  indicators_list <- setNames(
+    lapply(names(topic_info), function(k) {
+      str_detect(topics_vec, fixed(topic_info[[k]]$name, ignore_case = TRUE))
+    }),
+    topic_labels_local
+  )
+  
+  indicators <- as_tibble(indicators_list)
+  
+  # Count topics
+  topic_data <- indicators %>%
+    pivot_longer(everything(), names_to = "topic", values_to = "value") %>%
+    filter(value) %>%
+    count(topic, sort = TRUE)
+  
+  # Calculate total and percentages in R
+  topic_total <- nrow(data)
+  
+  # Add tooltip data prepared in R with LOCALIZED descriptions
+  topic_data <- topic_data %>%
+    mutate(
+      percentage = round(n / topic_total * 100, 1),
+      # Find matching description from topic_info using get_text
+      description = sapply(topic, function(t) {
+        # Match back to original key
+        for (key in names(topic_info)) {
+          local_label <- safe_get(key, lang)
+          if (grepl(local_label, t, fixed = TRUE)) {
+            return(get_text(topic_info[[key]]$desc_key, lang))
+          }
+        }
+        return(get_text("topic_other_desc", lang))
+      })
+    )
+  
+  # Create chart with enhanced tooltip using R-prepared data
+  topic_chart <- apex(data = topic_data, type = "bar", mapping = aes(x = reorder(topic, n), y = n)) %>%
+    ax_chart(stacked = FALSE, horizontal = TRUE, height = 800) %>%
+    ax_plotOptions(bar = list(barHeight = "60%", borderRadius = 5)) %>%
+    ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ", get_text("theposts", lang), "'; }"))) %>%
+    ax_xaxis(title = list(text = get_text("numberposts", lang))) %>%
+    ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
+    ax_title(text = get_text("topics", lang), align = "center", style = list(fontSize = "18px", fontWeight = "bold")) %>%
+    ax_tooltip(
+      enabled = TRUE,
+      custom = JS(sprintf("
+        function({series, seriesIndex, dataPointIndex, w}) {
+          const topic = w.globals.labels[dataPointIndex];
+          const count = w.globals.series[seriesIndex][dataPointIndex];
+          const data = %s;
+          const item = data.find(d => d.topic === topic);
+          
+          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +
+            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + topic + '</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '</strong> %s (' + item.percentage + '%% %s)</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>%d</strong> %s%s</div>' +
+            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + item.description + '</div>' +
+          '</div>';
+        }", 
+        jsonlite::toJSON(topic_data[, c("topic", "percentage", "description")], auto_unbox = FALSE),
+        get_text("theposts", lang),
+        get_text("tooltip_of_ai_posts", lang),
+        topic_total,
+        get_text("tooltip_total_ai_analyzed", lang),
+        if(nchar(actor_type_label) > 0) paste0(" (", actor_type_label, ")") else ""
+      ))
+    ) %>%
+    ax_legend(position = "bottom", labels = list(colors = "#000"))
+  
+  htmltools::tagList(custom_css, tags$div(class = "apex-container", htmltools::browsable(topic_chart)))
+}
+
+# Theme analysis function
+create_theme_analysis <- function(data, lang, actor_type_label = "") {
+  # Theme mapping with description keys
+  theme_info <- list(
+    theme_event_announcement   = list(name = "Event announcement/Election call/Candidate presentation", desc_key = "theme_event_desc"),
+    theme_negative_content     = list(name = "Negative imagery/Negative campaigning", desc_key = "theme_negative_desc"),
+    theme_positive_content     = list(name = "Positive imagery/Acclaims", desc_key = "theme_positive_desc"),
+    theme_symbolic_image       = list(name = "Symbolic image", desc_key = "theme_symbolic_desc"),
+    theme_events_scenery       = list(name = "Events/Landscape & city scenes", desc_key = "theme_events_scenery_desc"),
+    theme_campaign_event       = list(name = "Image from a campaign event", desc_key = "theme_campaign_event_desc"),
+    theme_voter_contact        = list(name = "Individual voter contact", desc_key = "theme_voter_contact_desc"),
+    theme_media_work           = list(name = "Media work", desc_key = "theme_media_work_desc"),
+    theme_personal_background  = list(name = "Private background story", desc_key = "theme_personal_desc"),
+    theme_daily_politics       = list(name = "Everyday politics", desc_key = "theme_daily_politics_desc"),
+    theme_nostalgic            = list(name = "Nostalgic / Historic", desc_key = "theme_nostalgic_desc"),
+    theme_humor                = list(name = "Humor / Satire", desc_key = "theme_humor_desc"),
+    theme_fantasy              = list(name = "Utopia or Dystopia", desc_key = "theme_fantasy_desc"),
+    theme_other_image_content  = list(name = "Other imagery", desc_key = "theme_other_imagery_desc")
+  )
+  
+  # Localized labels
+  theme_labels_local <- vapply(names(theme_info), function(k) safe_get(k, lang), character(1))
+  theme_labels_local <- make.unique(unname(theme_labels_local), sep = "_")
+  
+  # Build indicators
+  theme_vec <- data$theme_of_the_image_video
+  theme_indicators_list <- setNames(
+    lapply(names(theme_info), function(k) {
+      str_detect(theme_vec, fixed(theme_info[[k]]$name, ignore_case = TRUE))
+    }),
+    theme_labels_local
+  )
+  
+  theme_indicators <- as_tibble(theme_indicators_list)
+  
+  # Count themes
+  theme_data <- theme_indicators %>%
+    pivot_longer(everything(), names_to = "theme", values_to = "value") %>%
+    filter(value) %>%
+    count(theme, sort = TRUE)
+  
+  # Calculate total and percentages in R
+  theme_total <- nrow(data)
+  
+  # Add tooltip data prepared in R with LOCALIZED descriptions
+  theme_data <- theme_data %>%
+    mutate(
+      percentage = round(n / theme_total * 100, 1),
+      # Find matching description from theme_info using get_text
+      description = sapply(theme, function(t) {
+        # Match back to original key
+        for (key in names(theme_info)) {
+          local_label <- safe_get(key, lang)
+          if (grepl(local_label, t, fixed = TRUE)) {
+            return(get_text(theme_info[[key]]$desc_key, lang))
+          }
+        }
+        return(get_text("theme_other_imagery_desc", lang))
+      })
+    )
+  
+  # Create chart with enhanced tooltip using R-prepared data
+  theme_chart <- apex(data = theme_data, type = "bar", mapping = aes(x = reorder(theme, n), y = n)) %>%
+    ax_chart(stacked = FALSE, horizontal = TRUE, height = 800) %>%
+    ax_plotOptions(bar = list(barHeight = "60%", borderRadius = 5)) %>%
+    ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ", get_text("theposts", lang), "'; }"))) %>%
+    ax_xaxis(title = list(text = get_text("numberposts", lang))) %>%
+    ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
+    ax_title(text = get_text("topics_media", lang), align = "center", style = list(fontSize = "18px", fontWeight = "bold")) %>%
+    ax_tooltip(
+      enabled = TRUE,
+      custom = JS(sprintf("
+        function({series, seriesIndex, dataPointIndex, w}) {
+          const theme = w.globals.labels[dataPointIndex];
+          const count = w.globals.series[seriesIndex][dataPointIndex];
+          const data = %s;
+          const item = data.find(d => d.theme === theme);
+          
+          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +
+            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + theme + '</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '</strong> %s (' + item.percentage + '%% %s)</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>%d</strong> %s%s</div>' +
+            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + item.description + '</div>' +
+          '</div>';
+        }", 
+        jsonlite::toJSON(theme_data[, c("theme", "percentage", "description")], auto_unbox = FALSE),
+        get_text("tooltip_of_ai_posts", lang),
+        get_text("theposts", lang),
+        theme_total,
+        get_text("tooltip_total_ai_analyzed", lang),
+        if(nchar(actor_type_label) > 0) paste0(" (", actor_type_label, ")") else ""
+      ))
+    ) %>%
+    ax_legend(position = "bottom", labels = list(colors = "#000"))
+  
+  htmltools::tagList(custom_css, tags$div(class = "apex-container", htmltools::browsable(theme_chart)))
+}
+
+# Media format analysis function
+create_media_format_chart <- function(data, lang, actor_type_label = "", chart_height = 200,
+                                       img_color = "#FF6347", vid_color = "#4682B4") {
+  img_lbl <- get_text("img", lang)
+  vid_lbl <- get_text("vid", lang)
+  
+  med_df <- data %>%
+    mutate(type = case_when(
+      str_detect(image_s_video_s_included, "image") ~ img_lbl,
+      str_detect(image_s_video_s_included, "video") ~ vid_lbl,
+      TRUE ~ NA_character_
+    )) %>%
+    filter(!is.na(type)) %>%
+    count(type, name = "n") %>%
+    mutate(
+      pct = 100 * n / sum(n), 
+      label = sprintf("%s (n=%d)", type, n),
+      # Add localized descriptions
+      description = case_when(
+        type == img_lbl ~ get_text("media_image_desc_simple", lang),
+        type == vid_lbl ~ get_text("media_video_desc_simple", lang),
+        TRUE ~ ""
+      )
+    ) %>%
+    arrange(desc(pct))
+  
+  cats <- med_df$type
+  colors_vec <- ifelse(cats == img_lbl, img_color, ifelse(cats == vid_lbl, vid_color, "#9E9E9E"))
+  
+  # Calculate total for tooltip
+  media_total <- nrow(data)
+  
+  med_df %>%
+    apex(type = "bar", mapping = aes(x = label, y = round(pct, 1))) %>%
+    ax_chart(height = chart_height, background = "transparent", foreColor = "#000",
+             animations = list(enabled = FALSE), redrawOnWindowResize = TRUE,
+             redrawOnParentResize = TRUE, toolbar = list(show = FALSE)) %>%
+    ax_plotOptions(bar = list(horizontal = TRUE, barHeight = "60%", borderRadius = 6, distributed = TRUE)) %>%
+    ax_dataLabels(enabled = TRUE, formatter = JS("function(v){ return (Math.round(v*10)/10) + '%'; }")) %>%
+    ax_xaxis(max = 100, labels = list(formatter = JS("function(v){ return v + '%'; }")),
+             title = list(text = get_text('percent', lang))) %>%
+    ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
+    ax_colors(colors_vec) %>%
+    ax_legend(show = TRUE, position = "bottom", customLegendItems = c(img_lbl, vid_lbl),
+              markers = list(fillColors = c(img_color, vid_color)), labels = list(colors = "#000")) %>%
+    ax_title(text = get_text("title_type", lang), align = "center", 
+             style = list(fontSize = "18px", fontWeight = "bold")) %>%
+    ax_tooltip(
+            enabled = TRUE,
+      custom = JS(sprintf("
+        function({series, seriesIndex, dataPointIndex, w}) {
+          const label = w.globals.labels[dataPointIndex];
+          const percentage = Math.round(w.globals.series[seriesIndex][dataPointIndex] * 10) / 10;
+          const data = %s;
+          const item = data.find(d => d.label === label);
+          const count = item ? item.n : 0;
+          const description = item ? item.description : '';
+          
+          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +
+            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + description + '</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '</strong> %s (' + percentage + '%% %s)</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>%d</strong> %s%s</div>' +
+            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + description + '</div>' +
+          '</div>';
+        }", 
+        jsonlite::toJSON(med_df[, c("label", "n", "description")], auto_unbox = FALSE),
+        get_text("theposts", lang),
+        get_text("tooltip_of_ai_posts", lang),
+        media_total,
+        get_text("tooltip_total_ai_analyzed", lang),
+        if(nchar(actor_type_label) > 0) paste0(" (", actor_type_label, ")") else ""
+      ))
+    ) %>%
+    render_chart()
+}
+
+# Helper function for party treemaps
+create_party_treemap <- function(data, title_key, lang, party_colors) {
+  treemap_data <- data %>%
+    count(party, name = "y") %>%
+    arrange(desc(y)) %>%
+    transmute(
+      x = party, 
+      y
+    )
+  
+  create_political_treemap_ac(
+    data = treemap_data,
+    party_colors = party_colors,
+    title = get_text(title_key, lang),
+    height = 400,
+    lang = lang
+  ) %>% render_chart(container_class = "apex-container2")
+}
+
+# Helper function for platform treemaps
+create_platform_treemap <- function(data, title_key, lang, container_class = "apex-container0") {
+  treemap_data <- data %>%
+    count(platform, name = "y") %>%
+    arrange(desc(y)) %>%
+    transmute(
+      x = platform, 
+      y
+    )
+  
+  create_political_treemap_ac(
+    data = treemap_data,
+    party_colors = platform_colors,
+    title = get_text(title_key, lang),
+    height = 400,
+    lang = lang
+  ) %>% render_chart(container_class = container_class)
+}
+
+# Helper function for actor type treemaps
+create_actor_type_treemap <- function(data, title_key, lang, actor_type_colors) {
+  treemap_data <- data %>%
+    count(list_source, name = "y") %>%
+    arrange(desc(y)) %>%
+    mutate(x = case_when(
+      list_source == "Politicians" ~ get_text("politicians", lang),
+      list_source == "Parties" ~ get_text("parties", lang),
+      list_source == "Fans" ~ get_text("other_actors", lang),
+      TRUE ~ list_source
+    )) %>%
+    transmute(
+      x, 
+      y
+    )
+  
+  create_political_treemap_ac(
+    data = treemap_data,
+    party_colors = actor_type_colors,
+    title = get_text(title_key, lang),
+    height = 400,
+    lang = lang
+  ) %>% render_chart(container_class = "apex-container2")
+}
+
+# Real-looking content analysis function
+create_real_content_chart <- function(data, lang, actor_type_label = "") {
+  real_total <- nrow(data)
+  
+  real_lbl <- get_text("like_real", lang)
+  unreal_lbl <- get_text("like_unreal", lang)
+  
+  real_df <- data %>%
+    mutate(kind = case_when(
+      str_detect(nature_of_the_image_video, "contains real-looking") ~ real_lbl,
+      str_detect(nature_of_the_image_video, "does NOT") ~ unreal_lbl,
+      TRUE ~ NA_character_
+    )) %>%
+    filter(!is.na(kind)) %>%
+    count(kind, name = "n") %>%
+    mutate(
+      pct = 100 * n / sum(n), 
+      label = sprintf("%s (n=%d)", kind, n),
+      # Add localized descriptions
+      description = case_when(
+        kind == real_lbl ~ get_text("deepfake_realistic_desc", lang),
+        kind == unreal_lbl ~ get_text("deepfake_unrealistic_desc", lang),
+        TRUE ~ ""
+      )
+    ) %>%
+    arrange(desc(pct))
+  
+  real_df %>%
+    apex(type = "bar", mapping = aes(x = label, y = round(pct, 1))) %>%
+    ax_chart(height = 200, background = "transparent", foreColor = "#000",
+             animations = list(enabled = FALSE), redrawOnWindowResize = TRUE,
+             redrawOnParentResize = TRUE, toolbar = list(show = FALSE)) %>%
+    ax_plotOptions(bar = list(horizontal = TRUE, barHeight = "60%", borderRadius = 6, distributed = TRUE)) %>%
+    ax_dataLabels(enabled = TRUE, formatter = JS("function(v){ return (Math.round(v*10)/10) + '%'; }")) %>%
+    ax_xaxis(max = 100, labels = list(formatter = JS("function(v){ return v + '%'; }")),
+             title = list(text = get_text('percent', lang))) %>%
+    ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
+    ax_colors(c("#1F5A96", "#AC0999")) %>%
+    ax_tooltip(
+      enabled = TRUE,
+      custom = JS(sprintf("
+        function({series, seriesIndex, dataPointIndex, w}) {
+          const label = w.globals.labels[dataPointIndex];
+          const percentage = Math.round(w.globals.series[seriesIndex][dataPointIndex] * 10) / 10;
+          const data = %s;
+          const item = data.find(d => d.label === label);
+          const count = item ? item.n : 0;
+          const description = item ? item.description : '';
+          
+          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +
+            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + description + '</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '</strong> %s (' + percentage + '%% %s)</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>%d</strong> %s%s</div>' +
+            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + description + '</div>' +
+          '</div>';
+        }", 
+        jsonlite::toJSON(real_df[, c("label", "n", "description")], auto_unbox = FALSE),
+        get_text("theposts", lang),
+        get_text("tooltip_of_ai_posts", lang),
+        real_total,
+        get_text("tooltip_total_ai_analyzed", lang),
+        if(nchar(actor_type_label) > 0) paste0(" (", actor_type_label, ")") else ""
+      ))
+    ) %>%
+    ax_legend(show = FALSE) %>%
+    ax_title(text = get_text("title_real", lang), align = "center",
+             style = list(fontSize = "18px", fontWeight = "bold")) %>%
+    render_chart()
+}
+
+# Tonality analysis function
+create_tonality_chart <- function(data, lang, actor_type_label = "") {
+  negative_data <- data %>% count(negative_tendency_tonality) %>% rename(tonality = negative_tendency_tonality)
+  positive_data <- data %>% count(positive_tendency_tonality) %>% rename(tonality = positive_tendency_tonality)
+  
+  neg_lbl <- get_text("negative", lang)
+  pos_lbl <- get_text("positive", lang)
+  green <- "#4CAF50"
+  red <- "#F44336"
+  
+  tonality_data <- positive_data %>%
+    bind_rows(negative_data) %>%
+    mutate(
+      tendenz_kurz = case_when(
+        tonality == "Negative tendency/tonality present" ~ neg_lbl,
+        tonality == "Positive tendency/tonality present" ~ pos_lbl,
+        TRUE ~ NA_character_
+      ),
+      # Add localized descriptions
+      description = case_when(
+        tendenz_kurz == neg_lbl ~ get_text("tonality_negative_desc", lang),
+        tendenz_kurz == pos_lbl ~ get_text("tonality_positive_desc", lang),
+        TRUE ~ ""
+      )
+    ) %>%
+    drop_na()
+  
+  # Calculate total and percentages
+  tonality_total <- nrow(data)
+  tonality_data <- tonality_data %>%
+    mutate(percentage = round(n / tonality_total * 100, 1))
+  
+  cats <- tonality_data$tendenz_kurz
+  colors_vec <- ifelse(cats == pos_lbl, green, ifelse(cats == neg_lbl, red, "#9E9E9E"))
+  
+  tonality_data %>%
+    apex(type = "bar", mapping = aes(x = tendenz_kurz, y = n)) %>%
+    ax_plotOptions(bar = list(barHeight = "60%", borderRadius = 5, distributed = TRUE)) %>%
+    ax_colors(colors_vec) %>%
+    ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val){return val+' ", get_text("theposts", lang), "';}"))) %>%
+    ax_xaxis(title = list(text = get_text("numberposts", lang))) %>%
+    ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
+    ax_title(text = get_text("sentiment", lang), align = "center", 
+             style = list(fontSize = "18px", fontWeight = "bold")) %>%
+    ax_tooltip(
+      enabled = TRUE,
+      custom = JS(sprintf("
+        function({series, seriesIndex, dataPointIndex, w}) {
+          const label = w.globals.labels[dataPointIndex];
+          const count = w.globals.series[seriesIndex][dataPointIndex];
+          const data = %s;
+          const item = data.find(d => d.tendenz_kurz === label);
+          const percentage = item ? item.percentage : 0;
+          const description = item ? item.description : '';
+          
+          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +
+            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + description + '</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '</strong> %s (' + percentage + '%% %s)</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>%d</strong> %s%s</div>' +
+            '<div style=\"font-size: 12px; color: #ccc; margin-top: 8px; border-top: 1px solid #555; padding-top: 8px;\">' + description + '</div>' +
+          '</div>';
+        }", 
+        jsonlite::toJSON(tonality_data[, c("tendenz_kurz", "percentage", "description")], auto_unbox = FALSE),
+        get_text("theposts", lang),
+        get_text("tooltip_of_ai_posts", lang),
+        tonality_total,
+        get_text("tooltip_total_ai_analyzed", lang),
+        if(nchar(actor_type_label) > 0) paste0(" (", actor_type_label, ")") else ""
+      ))
+    ) %>%
+    ax_legend(position = "bottom", customLegendItems = c(pos_lbl, neg_lbl),
+              markers = list(fillColors = c(green, red)), labels = list(colors = "#000")) %>%
+    render_chart()
+}
+
+# People analysis function using the original working detection logic
+create_people_analysis <- function(data, lang, actor_type_label = "") {
+  people_total <- nrow(data)
+  
+  # Use the original str_detect approach that worked
+  people_data <- data %>%
+    mutate(
+      # Generic actor groups
+      !!get_text("people_ordinary",  lang) := str_detect(people_in_the_image_video,
+        fixed("Ordinary people / average citizens / ordinary supporters", ignore_case = TRUE)),
+      !!get_text("people_minorities", lang) := str_detect(people_in_the_image_video,
+        fixed("(Members of) minorities", ignore_case = TRUE)),
+      !!get_text("people_criminals",  lang) := str_detect(people_in_the_image_video,
+        fixed("Illegal actors, criminals, offenders, terrorists, extremists", ignore_case = TRUE)),
+      # CDA
+      `CDA: Henri Bontenbal` = str_detect(people_in_the_image_video, fixed("CDA: Henri Bontenbal")),
+      `CDA: Hanneke Steen`   = str_detect(people_in_the_image_video, fixed("CDA: Hanneke Steen")),
+      # GL-PvdA
+      `GL-PvdA: Frans Timmermans`   = str_detect(people_in_the_image_video, fixed("GL-PvdA: Frans Timmermans")),
+      `GL-PvdA: Esmah Lahlah`       = str_detect(people_in_the_image_video, fixed("GL-PvdA: Esmah Lahlah")),
+      `GL-PvdA: Jesse Klaver`       = str_detect(people_in_the_image_video, fixed("GL-PvdA: Jesse Klaver")),
+      `GL-PvdA: Marjolein Moorman`  = str_detect(people_in_the_image_video, fixed("GL-PvdA: Marjolein Moorman")),
+      `GL-PvdA: Mei Li Vos`         = str_detect(people_in_the_image_video, fixed("GL-PvdA: Mei Li Vos")),
+      `GL-PvdA: Femke Halsema`      = str_detect(people_in_the_image_video, fixed("GL-PvdA: Femke Halsema")),
+      # PVV
+      `PVV: Geert Wilders`    = str_detect(people_in_the_image_video, fixed("PVV: Geert Wilders")),
+      `PVV: Fleur Agema`      = str_detect(people_in_the_image_video, fixed("PVV: Fleur Agema")),
+      `PVV: Dirk Beljaarts`   = str_detect(people_in_the_image_video, fixed("PVV: Dirk Beljaarts")),
+      `PVV: Barry Madlener`   = str_detect(people_in_the_image_video, fixed("PVV: Barry Madlener")),
+      `PVV: Marjolein Faber`  = str_detect(people_in_the_image_video, fixed("PVV: Marjolein Faber")),
+      `PVV: Reinette Klever`  = str_detect(people_in_the_image_video, fixed("PVV: Reinette Klever")),
+      `PVV: Zsolt Szabó`      = str_detect(people_in_the_image_video, fixed("PVV: Zsolt Szabó")),
+      `PVV: Vicky Maeijer`    = str_detect(people_in_the_image_video, fixed("PVV: Vicky Maeijer")),
+      `PVV: Chris Jansen`     = str_detect(people_in_the_image_video, fixed("PVV: Chris Jansen")),
+      `PVV: Martin Bosma`     = str_detect(people_in_the_image_video, fixed("PVV: Martin Bosma")),
+      # VVD
+      `VVD: Dilan Yeşilgöz`   = str_detect(people_in_the_image_video, fixed("VVD: Dilan Yeşilgöz")),
+      `VVD: Sophie Hermans`   = str_detect(people_in_the_image_video, fixed("VVD: Sophie Hermans")),
+      `VVD: Eelco Heinen`     = str_detect(people_in_the_image_video, fixed("VVD: Eelco Heinen")),
+      `VVD: Ruben Brekelmans` = str_detect(people_in_the_image_video, fixed("VVD: Ruben Brekelmans")),
+      `VVD: David van Weel`   = str_detect(people_in_the_image_video, fixed("VVD: David van Weel")),
+      `VVD: Mariëlle Paul`    = str_detect(people_in_the_image_video, fixed("VVD: Mariëlle Paul")),
+      `VVD: Vincent Karremans`= str_detect(people_in_the_image_video, fixed("VVD: Vincent Karremans")),
+      `VVD: Jurgen Nobel`     = str_detect(people_in_the_image_video, fixed("VVD: Jurgen Nobel")),
+      # D66
+      `D66: Rob Jetten`       = str_detect(people_in_the_image_video, fixed("D66: Rob Jetten")),
+      `D66: Jan Paternotte`   = str_detect(people_in_the_image_video, fixed("D66: Jan Paternotte")),
+      `D66: Hans Vijlbrief`   = str_detect(people_in_the_image_video, fixed("D66: Hans Vijlbrief")),
+      `D66: Paul van Meenen`  = str_detect(people_in_the_image_video, fixed("D66: Paul van Meenen")),
+      # BBB
+      `BBB: Caroline van der Plas` = str_detect(people_in_the_image_video, fixed("BBB: Caroline van der Plas")),
+      `BBB: Mona Keijzer`          = str_detect(people_in_the_image_video, fixed("BBB: Mona Keijzer")),
+      `BBB: Eddie van Marum`       = str_detect(people_in_the_image_video, fixed("BBB: Eddie van Marum")),
+      `BBB: Jean Rummenie`         = str_detect(people_in_the_image_video, fixed("BBB: Jean Rummenie")),
+      `BBB: Gijs Tuinman`          = str_detect(people_in_the_image_video, fixed("BBB: Gijs Tuinman")),
+      `BBB: Femke Wiersma`         = str_detect(people_in_the_image_video, fixed("BBB: Femke Wiersma")),
+      # SP
+      `SP: Jimmy Dijk`             = str_detect(people_in_the_image_video, fixed("SP: Jimmy Dijk")),
+      # FVD
+      `FVD: Thierry Baudet`        = str_detect(people_in_the_image_video, fixed("FVD: Thierry Baudet")),
+      `FVD: Gideon van Meijeren`   = str_detect(people_in_the_image_video, fixed("FVD: Gideon van Meijeren")),
+      # CU
+      `CU: Mirjam Bikker`          = str_detect(people_in_the_image_video, fixed("CU: Mirjam Bikker")),
+      `CU: Pieter Grinwis`         = str_detect(people_in_the_image_video, fixed("CU: Pieter Grinwis")),
+      # JA21
+      `JA21: Joost Eerdmans`       = str_detect(people_in_the_image_video, fixed("JA21: Joost Eerdmans")),
+      `JA21: Annabel Nanninga`     = str_detect(people_in_the_image_video, fixed("JA21: Annabel Nanninga")),
+      `JA21: Ingrid Coenradie`     = str_detect(people_in_the_image_video, fixed("JA21: Ingrid Coenradie")),
+      # Volt
+      `Volt: Laurens Dassen`       = str_detect(people_in_the_image_video, fixed("Volt: Laurens Dassen")),
+      `Volt: Marieke Koekkoek`     = str_detect(people_in_the_image_video, fixed("Volt: Marieke Koekkoek")),
+      # SGP
+      `SGP: Chris Stoffer`         = str_detect(people_in_the_image_video, fixed("SGP: Chris Stoffer")),
+      # Denk
+      `Denk: Stephan van Baarle`   = str_detect(people_in_the_image_video, fixed("Denk: Stephan van Baarle")),
+      `Denk: Tunahan Kuzu`         = str_detect(people_in_the_image_video, fixed("Denk: Tunahan Kuzu")),
+      # NSC
+      `NSC: Eddy van Hijum`            = str_detect(people_in_the_image_video, fixed("NSC: Eddy van Hijum")),
+      `NSC: Nicolien van Vroonhoven`   = str_detect(people_in_the_image_video, fixed("NSC: Nicolien van Vroonhoven")),
+      `NSC: Eppo Bruins`               = str_detect(people_in_the_image_video, fixed("NSC: Eppo Bruins")),
+      `NSC: Tjebbe van Oostenbruggen`  = str_detect(people_in_the_image_video, fixed("NSC: Tjebbe van Oostenbruggen")),
+      `NSC: Teun Struycken`            = str_detect(people_in_the_image_video, fixed("NSC: Teun Struycken")),
+      `NSC: Judith Uitermark`          = str_detect(people_in_the_image_video, fixed("NSC: Judith Uitermark")),
+      `NSC: Caspar Veldkamp`           = str_detect(people_in_the_image_video, fixed("NSC: Caspar Veldkamp")),
+      `NSC: Daniëlle Jansen`           = str_detect(people_in_the_image_video, fixed("NSC: Daniëlle Jansen")),
+      # PvdD
+      `PvdD: Esther Ouwehand`      = str_detect(people_in_the_image_video, fixed("PvdD: Esther Ouwehand")),
+      `PvdD: Ines Kostić`          = str_detect(people_in_the_image_video, fixed("PvdD: Ines Kostić")),
+      # Other Dutch/independent
+      !!get_text("people_other_parties",     lang) := str_detect(people_in_the_image_video, fixed("Other politicians from Dutch parties", ignore_case = TRUE)),
+      !!get_text("people_other_politicians", lang) := str_detect(people_in_the_image_video, fixed("Other politicians from Dutch parties / independent politicians", ignore_case = TRUE)),
+      # Foreign / institutions / orgs / media / etc.
+      !!get_text("people_foreign_non_eu",       lang) := str_detect(people_in_the_image_video, fixed("Foreign politicians (ALL EXCEPT from EU, UN, NATO)", ignore_case = TRUE)),
+      !!get_text("people_foreign_eu",           lang) := str_detect(people_in_the_image_video, fixed("Foreign politicians from EU, UN, NATO", ignore_case = TRUE)),
+      !!get_text("people_non_pol_institutions", lang) := str_detect(people_in_the_image_video, fixed("Representatives of non-political institutions", ignore_case = TRUE)),
+      !!get_text("people_interest_groups",      lang) := str_detect(people_in_the_image_video, fixed("Representatives of interest groups / NGOs", ignore_case = TRUE)),
+      !!get_text("people_social_movements",     lang) := str_detect(people_in_the_image_video, fixed("Representatives of social movements", ignore_case = TRUE)),
+      !!get_text("people_business",             lang) := str_detect(people_in_the_image_video, fixed("Entrepreneurs / business leaders", ignore_case = TRUE)),
+      !!get_text("people_celebrities",          lang) := str_detect(people_in_the_image_video, fixed("Celebrities and/or opinion leaders", ignore_case = TRUE)),
+      !!get_text("people_media",                lang) := str_detect(people_in_the_image_video, fixed("Journalists, representatives of news media", ignore_case = TRUE)),
+      !!get_text("people_others",               lang) := str_detect(people_in_the_image_video, fixed("Other persons", ignore_case = TRUE))
+    ) %>%
+    select(get_text("people_ordinary", lang):get_text("people_others", lang)) %>%
+    tidyr::gather(key = "people_in_the_image_video", value = "value") %>%
+    filter(value)
+  
+  # Prepare people summary with percentages
+  people_summary <- people_data %>% 
+    add_count(people_in_the_image_video, sort = T) %>% 
+    mutate(
+      people_in_the_image_video = fct_reorder(people_in_the_image_video, n),
+      percentage = round(n / people_total * 100, 1)
+    ) %>% 
+    arrange(people_in_the_image_video) %>%
+    distinct(people_in_the_image_video, n, percentage)
+
+  people_chart <- apex(
+    people_summary,
+    aes(x = people_in_the_image_video, y = n), "treemap"
+  ) %>%
+    ax_colors("#547D01") %>%
+    ax_tooltip(
+      enabled = TRUE,
+      custom = JS(sprintf("
+        function({series, seriesIndex, dataPointIndex, w}) {
+          const data = %s;
+          const item = data[dataPointIndex];
+          const person = item ? item.people_in_the_image_video : 'Unknown';
+          const count = w.globals.series[seriesIndex][dataPointIndex];
+          const total = %d;
+          // Calculate percentage from count and total
+          const percentage = Math.round((count / total) * 100 * 10) / 10;
+          
+          return '<div style=\"padding: 12px; background: #547D01; color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +
+            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + person + '</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '</strong> %s (' + percentage + '%%%% %s)</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>' + total + '</strong> %s%s</div>' +
+          '</div>';
+        }",
+        jsonlite::toJSON(people_summary),
+        people_total,
+        get_text("theposts", lang),
+        get_text("tooltip_of_ai_posts", lang),
+        get_text("tooltip_total_ai_analyzed", lang),
+        if(nchar(actor_type_label) > 0) paste0(" (", actor_type_label, ")") else ""
+      ))
+    ) %>%
+    ax_dataLabels(style = list(colors = list("#000000"))) %>%
+    ax_xaxis(title = list(text = get_text("numberposts", lang))) %>%
+    ax_yaxis(labels = list(style = list(fontSize = "14px", fontWeight = "bold"))) %>%
+    ax_title(text = get_text("peoples", lang), align = "center", style = list(fontSize = "18px", fontWeight = "bold"))
+  
+  return(people_chart)
+}
+
+# Disclaimer analysis function
+create_disclaimer_analysis <- function(data, lang) {
+  # Prepare disclaimer data
+  disclaimer_data <- data %>%
+    mutate(
+      # TRUE = disclaimer IS present (text does NOT contain "NOT")
+      detect_bild = str_detect(coalesce(ai_labeling_in_image_video, ""), "NOT", negate = T),
+      detect_text = str_detect(coalesce(ai_labeling_in_post_text, ""), "NOT", negate = T),
+      detect_ad   = str_detect(coalesce(ai_labeling_in_post_ad, ""), "NOT", negate = T),
+      # TRUE = no disclaimer present anywhere
+      no_label_present = case_when(
+        detect_bild | detect_text | detect_ad ~ 0,  # Any disclaimer present
+        TRUE ~ 1  # No disclaimer anywhere
+      )
+    )
+  
+  # Total posts with ANY disclaimer (calculate this first for use in tooltips)
+  posts_with_disclaimers <- sum(disclaimer_data$detect_bild | disclaimer_data$detect_text | disclaimer_data$detect_ad)
+  
+  proportion_without_disclaimer <- round(sum(disclaimer_data$no_label_present) / nrow(disclaimer_data) * 100)
+  
+  # Overall disclaimer chart
+  disclaimer_overall <- apex(
+    data = NULL, type = "radialBar",
+    mapping = aes(x = get_text("ai_wo_disclaimer", lang), y = proportion_without_disclaimer)
+  ) %>%
+    ax_chart(height = 420, sparkline = list(enabled = TRUE), 
+             background = "transparent", foreColor = "#000",
+             redrawOnWindowResize = TRUE, redrawOnParentResize = TRUE,
+             animations = list(enabled = FALSE)) %>%
+    ax_tooltip(
+      enabled = TRUE,
+      custom = JS(sprintf("
+        function({series, seriesIndex, dataPointIndex, w}) {
+          const total = %d;
+          const without = %d;
+          const with_disclaimers = %d;
+          const percentage = Math.round(without / total * 100);
+          
+          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +
+            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">%s</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>' + without + '</strong> %s (' + percentage + '%% %s)</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>' + total + '</strong> %s</div>' +
+          '</div>';
+        }",
+        nrow(disclaimer_data),
+        sum(disclaimer_data$no_label_present),
+        posts_with_disclaimers,
+        get_text("ai_wo_disclaimer", lang),
+        get_text("disclaimer_posts_no_disclaimers", lang),
+        get_text("tooltip_of_ai_posts", lang),
+        get_text("disclaimer_posts_with_disclaimers", lang),
+        get_text("disclaimer_posts_analyzed", lang)
+      ))
+    ) %>%
+    ax_colors("#FF4500") %>%
+    ax_plotOptions(
+      radialBar = radialBar_opts(
+        hollow = list(size = "58%", margin = 4),
+        track  = list(margin = 2),
+        dataLabels = list(
+          name  = list(show = TRUE, style = list(color = "#000", fontSize = "14px", fontWeight = "bold")),
+          value = list(show = TRUE, formatter = JS("function(val){ return Math.round(val) + '%'; }"),
+                       style = list(color = "#000", fontSize = "20px", fontWeight = "bold"))
+        )
+      )
+    ) %>%
+    ax_stroke(show = TRUE, lineCap = "round") %>%
+    ax_title(text = get_text("disclaimer_frequency", lang), align = "center",
+             style = list(fontSize = "18px", color = "#000")) %>%
+    ax_theme(mode = "light")
+  
+  # Calculate proportions for disclosure methods (from posts WITH disclaimers only)
+  bytype_dis <- disclaimer_data %>%
+    count(detect_ad, detect_bild, detect_text, .drop = FALSE)
+  
+  # Calculate percentages for each detection method separately (from posts that have disclaimers)
+  proportions <- data.frame(
+    name = c(get_text("by_party", lang), get_text("by_text", lang), get_text("by_meta", lang)),
+    value = c(
+      round(sum(disclaimer_data$detect_bild) / posts_with_disclaimers * 100, 1),   # Party disclosure
+      round(sum(disclaimer_data$detect_text) / posts_with_disclaimers * 100, 1),   # Text disclosure  
+      round(sum(disclaimer_data$detect_ad) / posts_with_disclaimers * 100, 1)      # Meta disclosure
+    ),
+    description = c(
+      get_text("disclaimer_image_desc", lang),
+      get_text("disclaimer_text_desc", lang),
+      get_text("disclaimer_meta_desc", lang)
+    ),
+    count = c(
+      sum(disclaimer_data$detect_bild),
+      sum(disclaimer_data$detect_text),
+      sum(disclaimer_data$detect_ad)
+    )
+  )
+  
+  imax <- which.max(proportions$value)
+  lab0 <- proportions$name[imax]
+  
+  # Methods chart
+  methods_chart <- apex(data = proportions, type = "radialBar", mapping = aes(x = name, y = value)) %>%
+    ax_chart(height = 420, sparkline = list(enabled = TRUE),
+             background = "transparent", foreColor = "#000",
+             redrawOnWindowResize = TRUE, redrawOnParentResize = TRUE,
+             animations = list(enabled = FALSE)) %>%
+    ax_tooltip(
+      enabled = TRUE,
+      custom = JS(sprintf("
+        function({series, seriesIndex, dataPointIndex, w}) {
+          const data = %s;
+          const totalWithDisclaimers = %d;
+          
+          // In radialBar, each ring is a separate series
+          // seriesIndex corresponds to our data array index
+          const item = data[seriesIndex];
+          const method = item ? item.name : 'Unknown';
+          const percentage = item ? item.value : 0;
+          const count = Math.round(totalWithDisclaimers * percentage / 100);
+          
+          return '<div style=\"padding: 12px; background: rgba(0,0,0,0.9); color: white; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 280px;\">' +
+            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + method + '</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '</strong> %s (' + Math.round(percentage * 10) / 10 + '%%%% %s)</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>' + totalWithDisclaimers + '</strong> %s</div>' +
+          '</div>';
+        }",
+        jsonlite::toJSON(proportions),
+        posts_with_disclaimers,
+        get_text("theposts", lang),
+        get_text("tooltip_of_ai_posts", lang),
+        get_text("tooltip_total_ai_analyzed", lang)
+      ))
+    ) %>%
+    ax_colors(c("#FF6347", "#4682B4", "#32CD32")) %>%
+    ax_plotOptions(
+      radialBar = radialBar_opts(
+        hollow = list(size = "48%", margin = 4),
+        track  = list(margin = 3),
+        dataLabels = list(
+          name  = list(show = TRUE, style = list(color = "#000", fontSize = "12px", fontWeight = "bold")),
+          value = list(show = TRUE, formatter = JS("v => Math.round(v) + '%'"),
+                       style = list(color = "#000", fontSize = "16px")),
+          total = list(show = TRUE, label = lab0,
+                       formatter = JS("function(w){ var t = w.globals.seriesTotals; var m = Math.max.apply(null, t); return Math.round(m) + '%'; }"))
+        )
+      )
+    ) %>%
+    ax_legend(show = FALSE) %>%
+    ax_stroke(show = TRUE, lineCap = "round") %>%
+    ax_title(text = get_text('how_disclose', lang), align = 'center',
+             style = list(fontSize = '18px', color = '#000'))
+  
+  # Return both charts side by side
+  htmltools::tagList(
+    custom_css,
+    tags$div(
+      class = "apex-container",
+      htmltools::tags$div(
+        style = "display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding: 10px;",
+        htmltools::tags$div(style = "flex: 1; min-width: 300px;", disclaimer_overall),
+        htmltools::tags$div(style = "flex: 1; min-width: 300px;", methods_chart)
+      )
+    )
+  )
+}
+```
+
+```{css}
+/* Modern, Subtle Blockquote Styling */
+blockquote {
+  background: #f9f9f9;  /* Light gray background for subtlety */
+  border-left: 4px solid #6c63ff;  /* Soft purple left border for a modern touch */
+  padding: 1rem 1.5rem;  /* Adequate padding for readability */
+  margin: 1.5rem 0;  /* Space around blockquote */
+  font-style: italic;  /* Classic blockquote style */
+  color: #333;  /* Dark text for good contrast */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);  /* Light shadow for depth */
+  border-radius: 8px;  /* Rounded corners for a modern feel */
+  transition: background-color 0.3s ease, border-color 0.3s ease;  /* Smooth hover transition */
+}
+
+/* Hover effect for subtle interaction */
+blockquote:hover {
+  background: #f0f0ff;  /* Very light purple on hover */
+  border-left-color: #4e47d6;  /* Slightly darker purple on hover */
+}
+```
+
+
+
+`r get_text("landingtext", lang)`
+
+```{r}
+labeled <- readRDS("../../data/labeled.rds")  %>%
+  filter(timevar >= date_start) %>%
+  # filter(timevar <= date_end) %>%
+  mutate(
+    timevar = lubridate::floor_date(timevar, unit = "day"),
+    list_source = ifelse(list_source == "NL Historic", "Parties", list_source),
+    party = case_when(
+      party %in% c("GL", "PvdA") ~ "GL-PvdA",
+    str_detect(username, "groenlinks|pvda") ~ "GL-PvdA",
+      TRUE ~ party
+    ),
+    platform = case_when(
+      platform == "FB" ~ "Facebook",
+      platform == "IG" ~ "Instagram",
+      TRUE ~ platform
+    )
+  )
+
+organic_data <- readRDS("../../data/organic_data.rds") %>%
+  filter(timevar >= date_start) %>%
+  filter(timevar <= date_end) %>%
+  mutate(
+    timevar = lubridate::floor_date(timevar, unit = "day"),
+    list_source = ifelse(is.na(list_source), "Fans", list_source),
+    platform = case_when(
+      platform == "FB" ~ "Facebook",
+      platform == "IG" ~ "Instagram",
+      TRUE ~ platform
+    )
+  )
+
+ai_labeled_data <- labeled %>% 
+  mutate(ai = ifelse(str_detect(ai_image_video, "COMPLETELY|PARTLY", negate = T) | is.na(ai_image_video), 0, 1)) 
+
+
+full_data <- ai_labeled_data %>%
+  bind_rows(
+    organic_data %>% mutate(ai = 0) %>% 
+      mutate(input_url_url = url)
+  ) %>% 
+  as_tibble() %>% 
+  mutate(id = input_url_url) %>%
+  filter(!is.na(id)) %>%
+  distinct(id, .keep_all = T) %>% 
+  mutate(posted_date = timevar)
+
+# Create pre-filtered datasets for reuse
+full_data_parties <- full_data %>% filter(list_source %in% c("Politicians", "Parties"))
+full_data_others <- full_data %>% filter(!list_source %in% c("Politicians", "Parties"))
+full_data_ai <- full_data %>% filter(ai == 1)
+full_data_parties_ai <- full_data_parties %>% filter(ai == 1)
+full_data_others_ai <- full_data_others %>% filter(ai == 1)
+
+saveRDS(full_data, file = "../../data/full_data.rds")
+```
+
+
+```{r}
+# Summary calculations
+total_tracked_posts <- nrow(full_data)
+total_ai_posts <- sum(full_data$ai, na.rm = T)
+
+spark_data <- full_data %>%
+  drop_na(posted_date) %>%
+  count(posted_date)
+
+spark_ai <- full_data_ai %>%
+  drop_na(posted_date) %>%
+  count(posted_date)
+total_posts <- spark_box(
+  data = spark_data,
+  title = total_tracked_posts,
+  subtitle = get_text("total_anzahl", lang),
+  synchronize = "spark_tooltips",
+  color = "#2E93fA",
+  background = "#FFF"
+)
+
+total_ai <- spark_box(
+  data = spark_ai,
+  title = sum(spark_ai$n),
+  subtitle = get_text("total_ki", lang),
+  color = "#FFF", background = "#1E90FF",
+  title_style = list(fontSize = "22px", color = "#FFF"),
+  subtitle_style = list(fontSize = "14px", color = "#FFF"),
+  synchronize = "spark_tooltips"
+)
+
+htmltools::tags$div(
+  style = "
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    gap: 20px;  /* Adds space between boxes */
+    padding: 10px;
+  ",
+  htmltools::tags$div(style = "flex: 1; min-width: 300px;", total_posts),
+  htmltools::tags$div(style = "flex: 1; min-width: 300px;", total_ai)
+)
+```
+
+<br>
+
+##  `r get_text("overview_text", lang)`
+
+`r get_text("platform_descr", lang)`
+
+::: {.panel-tabset}
+
+
+## {{< iconify ph:chart-pie size=1.5em >}} `r get_text("ai_by_party", lang)` {#ki-content-by-party2}
+
+```{r}
+create_political_treemap_ac <- function(
+  data,
+  party_colors,
+  title  = "AI Content Distribution by Political Party",
+  height = 400,
+  lang = "en"
+) {
+  stopifnot(is.data.frame(data))
+  if (!all(c("x", "y") %in% names(data))) {
+    stop("Data must have columns 'x' and 'y'.")
+  }
+  # Clean inputs
+  data <- data[!is.na(data$x) & !is.na(data$y), ]
+  data$x <- as.character(data$x)
+  data$y <- as.numeric(data$y)
+
+  if (missing(party_colors) || is.null(names(party_colors))) {
+    stop("Provide a *named* color vector 'party_colors', e.g. c('Party'='#123456').")
+  }
+
+  # Map colors by label; fallback gray
+  cols <- unname(party_colors[match(data$x, names(party_colors))])
+  cols[is.na(cols)] <- "#CCCCCC"
+
+  # Build treemap
+  ax <- apexcharter::apex(
+    data    = data,
+    mapping = apexcharter::aes(x = x, y = y),
+    type    = "treemap",
+    height  = height
+  )
+
+  # Add colors to data for tooltip
+  data$color <- cols
+
+  ax |>
+    apexcharter::ax_chart(toolbar = list(show = FALSE)) |>
+    apexcharter::ax_title(
+      text  = title,
+      align = "center",
+      style = list(fontSize = "16px")
+    ) |>
+    apexcharter::ax_legend(show = FALSE) |>
+    apexcharter::ax_colors(cols) |>
+    apexcharter::ax_tooltip(
+      enabled = TRUE,
+      custom = JS(sprintf("
+        function({series, seriesIndex, dataPointIndex, w}) {
+          const data = %s;
+          const colors = %s;
+          const item = data[dataPointIndex];
+          const label = item ? item.x : 'Unknown';
+          const count = w.globals.series[seriesIndex][dataPointIndex];
+          const color = colors[dataPointIndex] || '#CCCCCC';
+          const total = %d;
+          const percentage = Math.round(count / total * 100 * 10) / 10;
+          
+          // Use white text for better contrast on colorful backgrounds
+          const textColor = '#FFFFFF';
+          
+          return '<div style=\"padding: 12px; background: ' + color + '; color: ' + textColor + '; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 300px;\">' +
+            '<div style=\"font-weight: bold; margin-bottom: 8px; font-size: 16px;\">' + label + '</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>' + count + '</strong> %s (' + percentage + '%% %s)</div>' +
+            '<div style=\"margin-bottom: 4px;\"><strong>' + total + '</strong> %s</div>' +
+          '</div>';
+        }",
+        jsonlite::toJSON(data),
+        jsonlite::toJSON(cols),
+        sum(data$y),
+        get_text("treemap_ai_posts", lang),
+        get_text("treemap_of_total", lang),
+        get_text("tooltip_total_ai_analyzed", lang)
+      ))
+    ) |>
+    apexcharter::ax_plotOptions(
+      treemap = list(
+        distributed  = TRUE,
+        enableShades = FALSE,
+        dataLabels   = list(
+          enabled = TRUE,
+          style   = list(fontSize = "12px")
+        )
+      )
+    )
+}
+```
+
+::: {.panel-tabset}
+
+### {{< iconify ph:users-four size=1.2em >}} `r get_text("all_actors", lang)`
+
+```{r}
+create_party_treemap(full_data_ai, "ai_by_party", lang, party_colors)
+```
+
+### {{< iconify ph:users-three size=1.2em >}} `r get_text("parties_and_politicians", lang)`
+
+
+
+
+
+```{r}
+create_party_treemap(full_data_parties_ai, "ai_by_party2", lang, party_colors)
+```
+
+### {{< iconify ph:user-circle-dashed size=1.2em >}} `r get_text("other_actors", lang)`
+
+```{r}
+create_party_treemap(full_data_others_ai, "ai_by_party3", lang, party_colors)
+```
+
+:::
+
+
+> `r get_text("ai_by_party_descr", lang)`
+
+## {{< iconify ph:devices size=1.5em >}} `r get_text("platform_text", lang)` {#ki-content-by-platform}
+
+
+::: {.panel-tabset}
+
+### {{< iconify ph:users-four size=1.2em >}} `r get_text("all_actors", lang)`
+
+```{r}
+create_platform_treemap(full_data_ai, "by_platform_all", lang)
+```
+
+### {{< iconify ph:users-three size=1.2em >}} `r get_text("parties_and_politicians", lang)`
+
+
+
+
+
+```{r}
+create_platform_treemap(full_data_parties_ai, "by_platform_parties", lang)
+```
+
+### {{< iconify ph:user-circle-dashed size=1.2em >}} `r get_text("other_actors", lang)`
+
+```{r}
+create_platform_treemap(full_data_others_ai, "by_platform_other_actors", lang)
+```
+
+:::
+
+
+> `r get_text("ai_by_platform_descr", lang)`
+
+
+
+
+
+## {{< iconify ph:users-three size=1.5em >}} `r get_text("by_type_text", lang)` {#ki-content-by-type}
+
+
+
+```{r, results='asis'}
+actor_type_colors <- setNames(
+  c("#0072B2", "#D55E00", "#009E73"),
+  c(get_text("politicians", lang), get_text("parties", lang), get_text("other_actors", lang))
+)
+
+create_actor_type_treemap(full_data_ai, "by_type_text", lang, actor_type_colors)
+```
+
+> `r get_text("by_type_descr", lang)`
+
+
+::: 
+
+## {{< iconify ph:chart-bar size=1.5em >}} `r get_text("rel_ai_by_party", lang)` {#rel-ai-by-party}
+
+`r get_text("rel_ai_by_party_descr", lang)`
+
+```{r}
+ai_pct <- full_data %>%
+  count(party, name = "total") %>%
+  left_join(full_data_ai %>% count(party, name = "n_ai"), by = "party") %>%
+  mutate(n_ai = coalesce(n_ai, 0L),
+         pct  = ifelse(total > 0, 100 * n_ai / total, 0)) %>%
+  filter(n_ai > 0) %>%
+  arrange(desc(pct))
+
+if (nrow(ai_pct) == 0) {
+  apexchart() %>% ax_noData(text = "Geen AI-berichten gevonden")
+} else {
+  # points carry counts for the tooltip
+  pts <- pmap(
+    list(x = ai_pct$party,
+         y = ifelse(ai_pct$pct < 0.5, ai_pct$pct, round(ai_pct$pct)),
+         n = ai_pct$n_ai,
+         total = ai_pct$total),
+    ~ list(x = ..1, y = ..2, n = ..3, total = ..4)
+  )
+
+  cols <- unname(party_colors[ai_pct$party]); cols[is.na(cols)] <- "#17a2b8"
+  H <- max(240, 24 * nrow(ai_pct) + 120)
+
+  ai_percentage_chart <- apexchart() %>%
+    ax_chart(
+      type = "bar",
+      height = H,
+      background = "transparent",
+      foreColor  = "#000",
+      animations = list(enabled = FALSE),
+      redrawOnWindowResize = TRUE,
+      redrawOnParentResize = TRUE,
+      toolbar = list(show = FALSE)
+    ) %>%
+    ax_series(list(name = get_text("posts_with_ai", lang), data = pts)) %>%
+    ax_plotOptions(
+      bar = list(
+        horizontal   = TRUE,
+        barHeight    = "55%",
+        borderRadius = 6,
+        distributed  = TRUE,
+        dataLabels   = list(position = "center")   # <-- center text inside bar
+      )
+    ) %>%
+    ax_colors(cols) %>%
+    ax_dataLabels(
+      enabled = TRUE,
+      style   = list(fontSize = "12px", fontWeight = "bold", colors = list("#ffffff")),
+      formatter = JS(
+        # show centered %; hide on very tiny bars so it doesn't overlap
+        "function(v){ return (v < 2 ? '' : (Math.round(v*10)/10) + '%'); }"
+      )
+    ) %>%
+    ax_tooltip(
+      shared = FALSE,
+      y = list(formatter = JS(
+        # 23.1% (X out of 1,343 posts)
+        "function(val, opts){ 
+           var d  = opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex];
+           var nf = new Intl.NumberFormat();
+           return (Math.round(val*10)/10) + '% (' + d.n + ' / ' + nf.format(d.total) + ')';
+         }"
+      ))
+    ) %>%
+    ax_xaxis(
+      max = 80, tickAmount = 4,
+      labels = list(formatter = JS('v => v + "%"')),
+      title  = list(text = get_text("percent", lang))
+    ) %>%
+    ax_yaxis(
+      labels = list(style = list(fontSize = "13px", fontWeight = "600"))  # party names only
+    ) %>%
+    ax_grid(xaxis = list(lines = list(show = TRUE)),
+            yaxis = list(lines = list(show = FALSE))) %>%
+    ax_legend(show = FALSE) %>%
+    ax_title(text =  get_text("rel_ai_by_party2", lang),
+             align = "center",
+             style = list(fontSize = "18px", fontWeight = "bold"))
+}
+
+ai_percentage_chart %>% render_chart()
+```
+
+
+> `r get_text("disclaimer_note", lang)`
+
+## {{< iconify ph:eye-slash size=1.5em >}} `r get_text("transparency_title", lang)`
+
+### {{< iconify ph:users-three size=1.2em >}} `r get_text("parties_and_politicians", lang)`
+
+```{r}
+create_disclaimer_analysis(full_data_parties_ai, lang)
+
+
+```
+
+
+
+### {{< iconify ph:user-circle-dashed size=1.2em >}} `r get_text("other_actors", lang)`
+
+```{r}
+create_disclaimer_analysis(full_data_others_ai, lang)
+```
+
+> `r get_text("disclaimer_analysis", lang)` 
+
+## {{< iconify ph:images size=1.5em >}} `r get_text("media_formats", lang)` {#medienformatte}
+
+
+::: {.panel-tabset}
+
+### {{< iconify ph:users-four size=1.2em >}} `r get_text("all_actors", lang)`
+
+```{r}
+create_media_format_chart(full_data_ai, lang, get_text("all_actors", lang))
+```
+
+### {{< iconify ph:users-three size=1.2em >}} `r get_text("parties_and_politicians", lang)`
+
+```{r}
+create_media_format_chart(full_data_parties_ai, lang, get_text("parties_and_politicians", lang))
+```
+
+
+### {{< iconify ph:user-circle-dashed size=1.2em >}} `r get_text("other_actors", lang)`
+
+```{r}
+
+create_media_format_chart(full_data_others_ai, lang, get_text("other_actors", lang))
+```
+
+
+:::
+
+> `r get_text("media_formats_descr", lang)`
+
+
+::: {.panel-tabset}
+
+### {{< iconify ph:users-four size=1.2em >}} `r get_text("all_actors", lang)`
+
+```{r}
+create_real_content_chart(full_data_ai, lang, get_text("all_actors", lang))
+```
+
+### {{< iconify ph:users-three size=1.2em >}} `r get_text("parties_and_politicians", lang)`
+
+
+```{r}
+create_real_content_chart(full_data_parties_ai, lang, get_text("parties_and_politicians", lang))
+```
+
+
+### {{< iconify ph:user-circle-dashed size=1.2em >}} `r get_text("other_actors", lang)`
+
+
+
+```{r}
+create_real_content_chart(full_data_others_ai, lang, get_text("other_actors", lang))
+```
+
+
+
+:::
+
+
+
+> `r get_text("media_formats_descr", lang)`
+
+
+
+## {{< iconify ph:newspaper-clipping size=1.5em >}} `r get_text("tonal_analysis", lang)`
+
+::: {.panel-tabset}
+
+### {{< iconify ph:users-four size=1.2em >}} `r get_text("all_actors", lang)`
+
+```{r}
+create_tonality_chart(full_data_ai, lang, get_text("all_actors", lang))
+```
+
+### {{< iconify ph:users-three size=1.2em >}} `r get_text("parties_and_politicians", lang)`
+
+
+```{r}
+
+create_tonality_chart(full_data_parties_ai, lang, get_text("parties_and_politicians", lang))
+```
+
+
+### {{< iconify ph:user-circle-dashed size=1.2em >}} `r get_text("other_actors", lang)`
+
+```{r}
+
+create_tonality_chart(full_data_others_ai, lang, get_text("other_actors", lang))
+```
+
+
+
+
+:::
+
+
+
+>  `r get_text("positive_negative_content", lang)`
+
+::: {.panel-tabset}
+
+### {{< iconify ph:users-four size=1.2em >}} `r get_text("all_actors", lang)`
+
+```{r}
+create_topic_analysis(full_data_ai, lang, get_text("all_actors", lang))
+```
+
+### {{< iconify ph:users-three size=1.2em >}} `r get_text("parties_and_politicians", lang)`
+
+```{r}
+create_topic_analysis(full_data_parties_ai, lang, get_text("parties_and_politicians", lang))
+```
+
+
+### {{< iconify ph:user-circle-dashed size=1.2em >}} `r get_text("other_actors", lang)`
+
+```{r}
+create_topic_analysis(full_data_others_ai, lang, get_text("other_actors", lang))
+```
+
+
+
+
+:::
+
+
+
+> `r get_text("multi_topic_note", lang)`
+
+::: {.panel-tabset}
+
+### {{< iconify ph:users-four size=1.2em >}} `r get_text("all_actors", lang)`
+
+```{r}
+create_theme_analysis(full_data_ai, lang, get_text("all_actors", lang))
+```
+
+### {{< iconify ph:users-three size=1.2em >}} `r get_text("parties_and_politicians", lang)`
+
+```{r}
+create_theme_analysis(full_data_parties_ai, lang, get_text("parties_and_politicians", lang))
+```
+
+
+
+### {{< iconify ph:user-circle-dashed size=1.2em >}} `r get_text("other_actors", lang)`
+
+```{r}
+create_theme_analysis(full_data_others_ai, lang, get_text("other_actors", lang))
+```
+
+
+:::
+
+
+> `r get_text("multi_image_note", lang)`
+
+## {{< iconify ph:users size=1.5em >}} `r get_text("person_groups", lang)` {#personen}
+
+::: {.panel-tabset}
+
+### {{< iconify ph:users-four size=1.2em >}} `r get_text("all_actors", lang)`
+
+```{r}
+people_chart <- create_people_analysis(full_data_ai, lang, get_text("all_actors", lang))
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+    htmltools::browsable(people_chart)
+  )
+)
+```
+
+### {{< iconify ph:users-three size=1.2em >}} `r get_text("parties_and_politicians", lang)`
+
+```{r}
+people_chart <- create_people_analysis(full_data_parties_ai, lang, get_text("parties_and_politicians", lang))
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+    htmltools::browsable(people_chart)
+  )
+)
+```
+
+
+
+### {{< iconify ph:user-circle-dashed size=1.2em >}} `r get_text("other_actors", lang)`
+
+```{r}
+people_chart <- create_people_analysis(full_data_others_ai, lang, get_text("other_actors", lang))
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+    htmltools::browsable(people_chart)
+  )
+)
+```
+
+
+
+:::
+
+`r get_text("people_chart_desc", lang)`
+
+> `r get_text("multi_people_note", lang)`
+
+## {{< iconify ph:chart-line-up size=1.5em >}} `r get_text("time_evolution", lang)` {#ai-over-time}
+
+```{r, eval = T}
+
+
+# AI Usage Over Time
+ai_over_time <- full_data %>%
+  mutate(posted_date = as.Date(posted_date)) %>%
+  group_by(posted_date, ai) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  pivot_wider(names_from = ai, values_from = count, values_fill = 0) %>% 
+  drop_na(posted_date)
+
+ai_time_chart <- highchart() %>%
+  hc_chart(type = "line") %>%
+  hc_xAxis(categories = ai_over_time$posted_date) %>%
+  hc_yAxis(title = list(text = get_text("numberposts", lang))) %>%
+  hc_add_series(name = get_text("posts_with_ai", lang), data = ai_over_time$`1`, color = "#FF6F61") %>%
+  hc_add_series(name = get_text("posts_non_ai", lang), data = ai_over_time$`0`, color = "#6B5B95") %>%
+  hc_tooltip(pointFormat = "<b>{series.name}</b>: {point.y}") %>%
+  hc_title(text = get_text("ai_over_time", lang))
+
+ai_time_chart %>% render_chart()
+
+```
+
+<br>
+
+> `r get_text("time_chart_desc", lang)`
+
+<br>
+
+<br>
+<center>
+  <a href="https://favstats.github.io/campaigntrackernl">
+    <img src="logobelow.png" width="50%">
+  </a>
+</center>
+
