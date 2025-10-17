@@ -179,6 +179,7 @@ full_data %>%
   ))  %>% 
   mutate(party = case_when(
     str_detect(party, "GL|PvdA|GroenLinks|groenlinks|pvda") ~ "GL-PvdA",
+    str_detect(party, "50+") ~ "50Plus",
     T ~party
   )) %>% 
   count(party, sort = T) %>%
