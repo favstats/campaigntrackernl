@@ -1495,6 +1495,10 @@ full_data_parties_ai <- full_data_parties %>% filter(ai == 1)
 full_data_others_ai <- full_data_others %>% filter(ai == 1)
 
 saveRDS(full_data, file = "../../data/full_data.rds")
+
+# labeled %>% 
+#   filter(username == "vvd")
+#   count(username, sort = T)
 ```
 
 

@@ -129,12 +129,12 @@ h3 {
     which provides annual funding of 250,000 euros over five years to stimulate interdisciplinary research into how AI is reshaping politics and society.
   </p>
   <p>
-    We also received crucial funding from the <strong><a href="https://www.sidnfonds.nl/">SIDN Fonds</a></strong> as part of the <strong>Hybrid Election Interference Observatory (HEIO)</strong> consortium. This project brings together
+    We also received crucial funding from <strong><a href="https://www.sidnfonds.nl/">SIDN Fonds</a></strong> and <strong><a href="https://sdm.nl/">Stichting Democratie en Media</a></strong> as part of the <strong>Hybrid Election Interference Observatory (HEIO)</strong> consortium. This project brings together
     <a href="https://postxsociety.nl/">Post-X Society</a>,
     <a href="https://aiforensics.org/">AI Forensics</a>,
     <a href="https://trollrensics.com/">Trollrensics</a>,
     and <a href="https://justiceforprosperity.org/">Justice for Prosperity</a>
-    to protect election integrity by monitoring social media platforms for foreign interference operations.
+    to protect election integrity by monitoring social media platforms for illegitimate interference operations.
   </p>
 </div>
 
