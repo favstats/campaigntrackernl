@@ -12,5 +12,19 @@
     "title": "&nbsp;&nbsp;Dashboard",
     "section": "",
     "text": "×\n    \n    \n      \n        \n        \n      \n      \n        \n      \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI label present:\n\n\n\nLabeled as AI\n\n\n\nNo AI label\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n AI Gallery (Experimental)"
+  },
+  {
+    "objectID": "oldindex.knit.html",
+    "href": "oldindex.knit.html",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "",
+    "text": "Welcome to the AI Explorer. This view brings together posts that our pipeline flagged as AI-generated and \nlets you investigate patterns across actors, platforms, and message content. Use column filters to slice \nthe data, sort on any header, and search the post text to surface specific phrases.\n\n\n\n\n\n\nClick any column header to sort. Use the search box above the table to find words in the post text (case-insensitive).\n\n\n\n\n\n\nNarrow the list to a party or actor type. Select “All” (default) to clear the filter and return to the full set of images.\n\n\n\n\n\n\nLimit results to all the platforms we are tracking: Facebook, Instagram, X, or TikTok.\n\n\n\n\n\n\nExplore posts with our annotated topics and themes. If a +N chip appears on a post with many tags, you can hover over the chip to see the remaining tags.\n\n\n\n\n\n\n\nThe \n\n column marks AI disclosure (either in text, image, or by the platform): \n\n labeled (✓), \n\n no label (×), \n\n\n\n\n\n\n\n\nUse the \n\n column to open the post in a new tab on its source platform and verify content in context."
+  },
+  {
+    "objectID": "oldindex.knit.html#explore",
+    "href": "oldindex.knit.html#explore",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "Explore",
+    "text": "Explore\n\n\n\n\n\n\n\n\nAI label present:\n\n\n\nLabeled as AI\n\n\n\nNo AI label"
   }
 ]
