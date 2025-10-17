@@ -1,0 +1,200 @@
+name: "Explore — timestamped release on demand"
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch previous baseline (explore-latest → explore.zip)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          mkdir -p prev
+          if gh release view explore-latest >/dev/null 2>&1; then
+            echo "Found baseline release 'explore-latest' – downloading explore.zip"
+            gh release download explore-latest --pattern "explore.zip" --dir prev || true
+            if [ -f prev/explore.zip ]; then
+              unzip -q prev/explore.zip -d prev/unzipped || true
+            else
+              echo "No baseline explore.zip found; treating as first run."
+            fi
+          else
+            echo "No release 'explore-latest' found; treating as first run."
+          fi
+
+      - name: Detect new files in output_frames (images) and hashed_files
+        id: detect
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os, json
+          from pathlib import Path
+
+          IMG_EXTS = {'.jpg','.jpeg','.png','.gif','.webp','.bmp','.svg'}
+
+          now_root  = Path('staging/explore')
+          prev_root = Path('prev/unzipped/staging/explore')
+
+          def list_relatives(base: Path, sub: str, image_only=False):
+              p = base / sub
+              out = set()
+              if p.exists():
+                  for f in p.rglob('*'):
+                      if f.is_file():
+                          if image_only and f.suffix.lower() not in IMG_EXTS:
+                              continue
+                          out.add(str(f.relative_to(base).as_posix()))
+              return out
+
+          now_frames  = list_relatives(now_root,  'output_frames', image_only=True)
+          now_hashes  = list_relatives(now_root,  'organic/hashed_files',  image_only=False)
+          prev_frames = list_relatives(prev_root, 'output_frames', image_only=True)
+          prev_hashes = list_relatives(prev_root, 'organic/hashed_files',  image_only=False)
+
+          new_frames = sorted(now_frames - prev_frames)
+          new_hashes = sorted(now_hashes - prev_hashes)
+
+          summary = {
+            "new_frames_count": len(new_frames),
+            "new_hashes_count": len(new_hashes),
+            "any_new": (len(new_frames) + len(new_hashes)) > 0
+          }
+
+          Path("new_frames.txt").write_text("\n".join(new_frames), encoding="utf-8")
+          Path("new_hashes.txt").write_text("\n".join(new_hashes), encoding="utf-8")
+          Path("diff_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+
+          ts = os.popen("date -u +%Y%m%dT%H%M%SZ").read().strip()
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as gh:
+              gh.write(f"any_new={'true' if summary['any_new'] else 'false'}\n")
+              gh.write(f"new_frames_count={summary['new_frames_count']}\n")
+              gh.write(f"new_hashes_count={summary['new_hashes_count']}\n")
+              gh.write(f"ts={ts}\n")
+              gh.write(f"delta_zip_name=explore_delta_{ts}.zip\n")
+              gh.write(f"full_zip_name=explore_full_{ts}.zip\n")
+          PY
+
+      - name: Stop if nothing new
+        if: ${{ steps.detect.outputs.any_new != 'true' }}
+        run: |
+          echo "No new files detected. Exiting without creating a release."
+          exit 0
+
+      - name: Create delta ZIP (only new files)
+        run: |
+          set -e
+          mkdir -p delta_package/staging/explore
+          
+          # Copy new files while preserving directory structure
+          while IFS= read -r file; do
+            if [ -n "$file" ]; then
+              src="staging/explore/$file"
+              dst="delta_package/staging/explore/$file"
+              if [ -f "$src" ]; then
+                mkdir -p "$(dirname "$dst")"
+                cp "$src" "$dst"
+                echo "Added: $file"
+              fi
+            fi
+          done < new_frames.txt
+          
+          while IFS= read -r file; do
+            if [ -n "$file" ]; then
+              src="staging/explore/$file"
+              dst="delta_package/staging/explore/$file"
+              if [ -f "$src" ]; then
+                mkdir -p "$(dirname "$dst")"
+                cp "$src" "$dst"
+                echo "Added: $file"
+              fi
+            fi
+          done < new_hashes.txt
+          
+          # Create the delta ZIP
+          cd delta_package
+          zip -r -q "../${{ steps.detect.outputs.delta_zip_name }}" staging/explore
+          cd ..
+          ls -lh "${{ steps.detect.outputs.delta_zip_name }}"
+
+      - name: Create full ZIP (complete snapshot)
+        run: |
+          set -e
+          test -d staging/explore || { echo "::error::staging/explore not found"; exit 1; }
+          zip -r -q "${{ steps.detect.outputs.full_zip_name }}" staging/explore
+          ls -lh "${{ steps.detect.outputs.full_zip_name }}"
+
+      - name: Build release notes
+        env:
+          TS: ${{ steps.detect.outputs.ts }}
+          NF: ${{ steps.detect.outputs.new_frames_count }}
+          NH: ${{ steps.detect.outputs.new_hashes_count }}
+        run: |
+          {
+            echo "**Delta-Release**: Enthält nur neue Dateien seit dem letzten Release"
+            echo ""
+            echo "- Commit: ${{ github.sha }}"
+            echo "- Branch: ${{ github.ref_name }}"
+            echo "- Timestamp (UTC): ${TS}"
+            echo "- Neue output_frames-Bilder: ${NF}"
+            echo "- Neue hashed_files-Einträge: ${NH}"
+            echo ""
+            echo "#### Neue Dateien in output_frames (erste 50)"
+            head -n 50 new_frames.txt || true
+            echo ""
+            echo "#### Neue Dateien in hashed_files (erste 50)"
+            head -n 50 new_hashes.txt || true
+            echo ""
+            echo "---"
+            echo "💡 Für den vollständigen Snapshot siehe das 'explore-latest' Release"
+          } > release_body.md
+
+      - name: Create NEW timestamped release (delta only)
+        uses: ncipollo/release-action@v1
+        with:
+          tag: explore-${{ steps.detect.outputs.ts }}
+          name: "Explore Delta ${{ steps.detect.outputs.ts }}"
+          bodyFile: release_body.md
+          artifacts: "${{ steps.detect.outputs.delta_zip_name }}"
+          allowUpdates: false
+          artifactErrorsFailBuild: true
+          makeLatest: false
+          prerelease: true
+
+      - name: Refresh/maintain baseline 'explore-latest'
+        run: |
+          cp "${{ steps.detect.outputs.full_zip_name }}" explore.zip
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -f explore-latest
+          git push -f origin refs/tags/explore-latest
+
+      - name: Update/replace baseline asset on 'explore-latest'
+        uses: ncipollo/release-action@v1
+        with:
+          tag: explore-latest
+          name: "Explore baseline (latest) - Full Snapshot"
+          body: |
+            **Vollständiger Snapshot** von staging/explore für Diffs bei zukünftigen Runs.
+            
+            Commit: ${{ github.sha }}
+            Branch: ${{ github.ref_name }}
+            Timestamp: ${{ steps.detect.outputs.ts }}
+            
+            Dieses Release enthält ALLE Dateien, nicht nur neue.
+          artifacts: "explore.zip"
+          allowUpdates: true
+          removeArtifacts: true
+          artifactErrorsFailBuild: true
+          makeLatest: true
+          prerelease: true

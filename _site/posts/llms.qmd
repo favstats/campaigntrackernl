@@ -1,0 +1,125 @@
+---
+title: "Artificial Intelligence in Politics: Opportunities, Risks, and Perception"
+description-meta: "An analysis of the perception of AI-generated content in political campaigns."
+author: "Jakob Scherer"
+date: "2.15.2025"
+image: "XFCdE4j.png"
+lang: en
+format:
+  html:
+    theme: lumen
+    toc: true
+    toc-title: "Contents"
+    toc-depth: 2
+    smooth-scroll: true
+---
+
+<!-- Custom CSS -->
+<style>
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color: #004080;
+  margin-bottom: 0.5em;
+}
+
+p {
+  text-align: justify;
+  margin: 1em 0;
+}
+
+img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+blockquote {
+  font-style: italic;
+  background: #f0f8ff;
+  padding: 15px;
+  border-left: 4px solid #004080;
+  margin: 20px 0;
+}
+
+.callout {
+  background-color: #e7f3fe;
+  padding: 15px;
+  border-left: 5px solid #2196F3;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+.credit {
+  font-size: 0.9em;
+  color: #555;
+  text-align: center;
+  margin-top: -10px;
+}
+</style>
+
+
+[A recent study](https://www.otto-brenner-stiftung.de/generative-ki-in-politischen-kampagnen/) by Dr. Simon Kruschinski, Dr. Pablo Jost, Tobias Scherer, and Hannah Fecher takes a detailed look, for the first time, at how the German public perceives the use of AI-generated content in political campaigns. The results reveal a field of tension between skepticism, uncertainty, and cautious acceptance.
+
+### **Large Language Models and Diffusion Models in Political Campaigns**
+
+Artificial Intelligence (AI) has made significant progress in recent years and plays an increasingly important role in various social domains – including political communication. In particular, Large Language Models (LLMs) and diffusion models enable the creation and distribution of text and image content on a new level. These technologies offer opportunities but also carry risks, especially in the context of political campaigns.
+
+### **What Are Large Language Models (LLMs)?**
+
+LLMs are AI models specialized in processing natural language. They are trained on enormous amounts of text data, including books, scientific publications, news articles, and social media content. Their aim is to analyze text, recognize patterns in language, and generate new content. Well-known examples include ChatGPT (OpenAI), CoPilot (Microsoft), and Gemini (Google).
+
+The functioning of LLMs is based on transformer architectures, in particular the “attention mechanism,” which makes it possible to understand relationships between words in a sentence. A typical LLM consists of two main components:
+
+- **Encoder**: Breaks down texts into small units (tokens) and converts them into mathematical representations.  
+- **Decoder**: Generates new texts from these representations by calculating probabilities of which words could logically follow.  
+
+### **Diffusion Models: Image Generation with AI**
+
+While LLMs process language, diffusion models specialize in creating realistic images and videos. They learn from vast image databases and recognize structures, colors, and patterns in order to generate new visual content based on text inputs. Examples of such text-to-image models (TTI) include Midjourney, DALL·E (OpenAI), and Stable Diffusion.
+
+Thanks to advances in AI development, these models can now generate deceptively realistic images, making them attractive for various applications – including marketing, design, and media production. The creation of deepfakes also falls into this domain.
+
+### **Generative AI in Political Campaigns**
+
+The use of generative AI in political campaigns is already a reality. It is employed to create content more quickly, expand reach, and spread personalized messages. Some areas of application include:
+
+- **Automated text generation** for speeches, social media posts, and press releases  
+  Political actors use LLMs to create content in different tones and styles.  
+  Examples: quickly generated campaign slogans, personalized responses to voter questions.  
+
+- **Visual campaigns** using AI-generated images and videos  
+  Politicians or parties use diffusion models to create eye-catching images for advertising campaigns.  
+  Example: generating idealized scenes or posters perfectly tailored to certain messages.  
+
+- **Manipulation and disinformation through deepfakes**  
+  One of the biggest challenges is the misuse of AI for spreading fake content.  
+  Deepfake videos or manipulated images can be used to discredit political opponents or spread false information.  
+  Example: a fake video of a politician suggesting statements that were never actually made.  
+
+### **Opportunities and Risks of Generative AI in Politics**
+
+**Opportunities:**
+
+- More efficient campaign management through faster content creation.  
+- Democratization of political communication through low-threshold access to AI tools.  
+- Personalized and targeted voter outreach.  
+
+**Risks:**
+
+- Spread of fake news and disinformation.  
+- Loss of trust in the authenticity of political content.  
+- Manipulation of public opinion through AI-generated content.  
+
+### **Conclusion**
+
+LLMs and diffusion models open new possibilities for political campaigns but also raise ethical questions. While they can help distribute content more efficiently and in a more targeted way, there is also the risk of their use for disinformation or manipulation. The future challenge will be to create regulations and control mechanisms to ensure the responsible use of generative AI.

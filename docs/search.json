@@ -1,0 +1,590 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "",
+    "text": "In de CampAIgn Tracker analyseren we alle berichten op Facebook, Instagram, TikTok en X van partijen en kandidaten en geselecteerde influencers en commentatoren voor de Tweede Kamerverkiezingen van 2025.\nDe tracking monitor laat zien hoeveel AI-gegenereerde berichten door welke partijen worden verspreid. Daarnaast tonen we of AI-labels worden gebruikt, welke actoren in beeld komen, welke thema’s aan bod komen en of de toon positief of negatief is.\nOp deze pagina vindt u analyses van AI-gegenereerde campagnes voor de Tweede Kamerverkiezingen van 2025. Een doorzoekbaar overzicht van afzonderlijke AI-gegenereerde afbeeldingen en video’s is beschikbaar in de AI Explorer."
+  },
+  {
+    "objectID": "index.html#hello",
+    "href": "index.html#hello",
+    "title": "AI Content by Party",
+    "section": "hello",
+    "text": "hello\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOverall StatisticsBy PartyContent ExploringMethodology\n\n\n\n\nTimeframe: January 1st - December 13th 2024\nSource: Meta Ad Library. We retrieved all paid ads from 160+ official German party accounts.\n\n\n\n\nUnique AI Ads\n\n\nSpending\n\n\n\nThis only shows the top 3 ads in terms of impressions but future versions will include a browsable table!\n\n\n\n\n\n\nImpressionen: 125 000 \nTotal Spend: 500 €\nTarget Gender: Women\nTarget Age: All \nTarget Location: Brandenburg \n\nMore info on the ad: Ad Library Link\n\n\n\n\n\n\nImpressions: 120 500\nTotal Spend: 1300 €\nTarget Gender: Men\nTarget Age: All \nTarget Location: Brandenburg \n\nMore info on the ad: Ad Library Link\n\n\n\n\n\n\nImpressions: 100 000\nTotal Spend: 500 €\nTarget Gender: Mixed\nTarget Age: All \nTarget Location: Brandenburg \n\nMore info on the ad: Ad Library Link\n\n\n\n\n\n\n\n\n\n\nCampAIgn Tracker\n\n\nDaten\n\n\nFür unseren CampAIgn Tracker greifen wir aktuell auf die offiziellen Partei-Accounts der deutschen Parteien zu und analysieren deren Beiträge, die sie als bezahlte Werbung ausgespielt haben. Dafür nutzen wir Metadaten zu Targeting, Spending und vielem mehr und kombinieren diese mit einer Auswertung der einzelnen Beiträge zum Einsatz von KI.\n\n\n\n\nProzess\n\n\nWir setzen auf einem KI-Modell auf, welches automatisiert erkennt, wann Bilder und Videos mit KI bearbeitet oder erstellt wurden. Wir wissen, dass diese Detektoren keine 100%ige Genauigkeit haben. Deshalb schließen wir eine manuelle Klassifizierung an, in der Codierer:innen die Beiträge nochmal prüfen. Somit stellen wir sicher, dass wir alle KI-Bilder zuverlässig erkennen.\n\n\n\n\nBald verfügbar\n\n\nWir erweitern unseren CampAIgn Tracker kontinuierlich und werden bald nicht nur offizielle Partei-Accounts inkludieren, sondern 60.000 weitere Accounts von politischen Akteur:innen in Deutschland. So ermöglichen wir ein Live-Tracking von KI-Inhalten bei den nächsten Wahlen.\n\n\n\nKontaktieren Sie unsere Wissenschaftler:innen!"
+  },
+  {
+    "objectID": "index.html#hello-2",
+    "href": "index.html#hello-2",
+    "title": "AI Content by Party",
+    "section": "hello 2",
+    "text": "hello 2"
+  },
+  {
+    "objectID": "index.html#hello-2-1",
+    "href": "index.html#hello-2-1",
+    "title": "AI Content by Party",
+    "section": "hello 2",
+    "text": "hello 2"
+  },
+  {
+    "objectID": "index.html#ai-content-by-party",
+    "href": "index.html#ai-content-by-party",
+    "title": "\nCampAIgn Tracker\n",
+    "section": "AI Content by Party",
+    "text": "AI Content by Party"
+  },
+  {
+    "objectID": "index.html#ai-proportion-by-party",
+    "href": "index.html#ai-proportion-by-party",
+    "title": "\nCampAIgn Tracker\n",
+    "section": "AI Proportion by Party",
+    "text": "AI Proportion by Party\n\n\n\n\n\n\n\n\n\n:::\n\n\n\nAI vs Non-AI Content Analysis"
+  },
+  {
+    "objectID": "example.html",
+    "href": "example.html",
+    "title": "CampAIgn Tracker",
+    "section": "",
+    "text": "Willkommen beim CampAIgn Tracker, Ihrer go-to Plattform zur Überwachung des Einsatzes von KI-generierten Inhalten in politischen Kampagnen. Derzeit konzentriert sich unsere Analyse auf bezahlte Werbung auf Meta-Plattformen von offiziellen Parteiaccounts in Deutschland und bietet Einblicke in Targeting-Strategien, Ausgabemuster und die Verbreitung von KI-generierten Bildern und Botschaften."
+  },
+  {
+    "objectID": "example.html#ai-content-by-party",
+    "href": "example.html#ai-content-by-party",
+    "title": "CampAIgn Tracker",
+    "section": "AI Content by Party",
+    "text": "AI Content by Party"
+  },
+  {
+    "objectID": "example.html#ai-proportion-by-party",
+    "href": "example.html#ai-proportion-by-party",
+    "title": "CampAIgn Tracker",
+    "section": "AI Proportion by Party",
+    "text": "AI Proportion by Party"
+  },
+  {
+    "objectID": "index.html#methodologie",
+    "href": "index.html#methodologie",
+    "title": "AI Content by Party",
+    "section": "Methodologie",
+    "text": "Methodologie\n\n\n\n\n\nCampAIgn Tracker\n\n\nDaten\n\n\nFür unseren CampAIgn Tracker greifen wir aktuell auf die offiziellen Partei-Accounts der deutschen Parteien zu und analysieren deren Beiträge, die sie als bezahlte Werbung ausgespielt haben. Dafür nutzen wir Metadaten zu Targeting, Spending und vielem mehr und kombinieren diese mit einer Auswertung der einzelnen Beiträge zum Einsatz von KI.\n\n\n\n\nProzess\n\n\nWir setzen auf einem KI-Modell auf, welches automatisiert erkennt, wann Bilder und Videos mit KI bearbeitet oder erstellt wurden. Wir wissen, dass diese Detektoren keine 100%ige Genauigkeit haben. Deshalb schließen wir eine manuelle Klassifizierung an, in der Codierer:innen die Beiträge nochmal prüfen. Somit stellen wir sicher, dass wir alle KI-Bilder zuverlässig erkennen.\n\n\n\n\nBald verfügbar\n\n\nWir erweitern unseren CampAIgn Tracker kontinuierlich und werden bald nicht nur offizielle Partei-Accounts inkludieren, sondern 60.000 weitere Accounts von politischen Akteur:innen in Deutschland. So ermöglichen wir ein Live-Tracking von KI-Inhalten bei den nächsten Wahlen.\n\n\n\nKontaktieren Sie unsere Wissenschaftler:innen!"
+  },
+  {
+    "objectID": "explore.html",
+    "href": "explore.html",
+    "title": "CampAIgn Tracker",
+    "section": "",
+    "text": "Willkommen beim CampAIgn Tracker, Ihrer go-to Plattform zur Überwachung des Einsatzes von KI-generierten Inhalten in politischen Kampagnen. Derzeit konzentriert sich unsere Analyse auf bezahlte Werbung auf Meta-Plattformen von offiziellen Parteiaccounts in Deutschland und bietet Einblicke in Targeting-Strategien, Ausgabemuster und die Verbreitung von KI-generierten Bildern und Botschaften."
+  },
+  {
+    "objectID": "explore.html#entdecken",
+    "href": "explore.html#entdecken",
+    "title": "CampAIgn Tracker",
+    "section": "Entdecken",
+    "text": "Entdecken"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "The Prompts behind the Propaganda\n\n\n\n\n\n\n\n\n\n\n\n\n11.10.2025\n\n\nFabio Votta\n\n\n\n\n\n\n  \n\n\n\n\nFindings from the AlgoSoc AI Opinion Monitor\n\n\n\n\n\n\n\n\n\n\n\n\n10.10.2025\n\n\nErnesto de León\n\n\n\n\n\n\n  \n\n\n\n\nCampAIgn Tracker Expands to the Netherlands: Monitoring AI in the 2025 Dutch General Election\n\n\n\n\n\n\n\n\n\n\n\n\n09.10.2025\n\n\nSimon Kruschinski\n\n\n\n\n\n\n  \n\n\n\n\nResponsible Use of AI in Political Campaigns\n\n\n\n\n\n\n\n\n\n\n\n\n19.02.2025\n\n\nJakob Scherer\n\n\n\n\n\n\n  \n\n\n\n\nHow to Recognize AI-Generated Images and Strengthen Your AI Literacy\n\n\n\n\n\n\n\n\n\n\n\n\n17.02.2025\n\n\nJakob Scherer\n\n\n\n\n\n\n  \n\n\n\n\nArtificial Intelligence in Politics: Opportunities, Risks, and Perception\n\n\n\n\n\n\n\n\n\n\n\n\n15.02.2025\n\n\nJakob Scherer\n\n\n\n\n\n\n  \n\n\n\n\nHow it all Began: The CampAIgn Tracker for more Transparency in AI Use\n\n\n\n\n\n\n\n\n\n\n\n\n12.02.2025\n\n\nTheresa Schültken\n\n\n\n\n\n\nKeine Treffer"
+  },
+  {
+    "objectID": "posts/blog1.html",
+    "href": "posts/blog1.html",
+    "title": "CDA sluit online Groningers uit",
+    "section": "",
+    "text": "Het CDA sluit in haar onlinecampagne kiezers uit in Oost-Groningen, waarvan een groot deel op de aardgasbel woont. Dat blijkt uit advertentiegegevens van Meta, het moederbedrijf van Facebook en Instagram. De partij heeft sinds 3 oktober ruim 26.000 euro uitgegeven aan online advertenties op deze sociale media, waarbij die gebieden in 95 procent van de gevallen werden uitgesloten.\nDaarnaast kiest de partij ervoor om kiezers in grote steden als Amsterdam, Den Haag en Utrecht hun advertenties niet te tonen. In de thuisstad van lijsttrekker Henri Bontenbal, Rotterdam, gebeurt dat wel. Naast het grote gebied van Oost-Groningen wordt campagnemateriaal ook verborgen voor mensen op Vlieland, Schiermonnikoog en grote delen van Zeeland. Zelfs advertenties die gaan over het Groningse Kamerlid Anne Kuik worden in delen van Groningen expliciet niet vertoond.\nHet CDA wil in campagnetijd niet ingaan op vragen over deze strategie.\nHoewel elke partij doet aan micro-targeting, online op zoek gaan naar een specifieke doelgroep, is het actief uitsluiten van kiezers een zeldzame keuze. Hoewel andere partijen zich ook op locaties richten, doen ze dat alleen in positieve zin. Zo richten D66 en Volt zich op jonge mensen en hogeropgeleiden. Volt zet daarnaast in op bewoners van studentensteden en grensgebieden, waar de kans op een pro-Europa-sentiment groot is.\nVorige week besloot de Europese organisatie van privacywaakhonden dat Meta niet langer gepersonaliseerde advertenties mag tonen. En dat het daar binnen twee weken, midden in campagnetijd, mee moet stoppen."
+  },
+  {
+    "objectID": "methods.html",
+    "href": "methods.html",
+    "title": "Methodologie",
+    "section": "",
+    "text": "CampAIgn Tracker\n\n\nDaten\n\n\nFür unseren CampAIgn Tracker greifen wir aktuell auf die offiziellen Partei-Accounts der deutschen Parteien zu und analysieren deren Beiträge, die sie als bezahlte Werbung ausgespielt haben. Dafür nutzen wir Metadaten zu Targeting, Spending und vielem mehr und kombinieren diese mit einer Auswertung der einzelnen Beiträge zum Einsatz von KI.\n\n\n\n\nProzess\n\n\nWir setzen auf einem KI-Modell auf, welches automatisiert erkennt, wann Bilder und Videos mit KI bearbeitet oder erstellt wurden. Wir wissen, dass diese Detektoren keine 100%ige Genauigkeit haben. Deshalb schließen wir eine manuelle Klassifizierung an, in der Codierer:innen die Beiträge nochmal prüfen. Somit stellen wir sicher, dass wir alle KI-Bilder zuverlässig erkennen.\n\n\n\n\nBald verfügbar\n\n\nWir erweitern unseren CampAIgn Tracker kontinuierlich und werden bald nicht nur offizielle Partei-Accounts inkludieren, sondern 60.000 weitere Accounts von politischen Akteur:innen in Deutschland. So ermöglichen wir ein Live-Tracking von KI-Inhalten bei den nächsten Wahlen.\n\n\n\nKontaktieren Sie unsere Wissenschaftler:innen!"
+  },
+  {
+    "objectID": "index.html#ki-content-by-party",
+    "href": "index.html#ki-content-by-party",
+    "title": "CampAIgn Tracker",
+    "section": "Anteil KI-Inhalte nach Partei",
+    "text": "Anteil KI-Inhalte nach Partei\n\n\n\n\n\n\n\n\n\nDieser Graph zeigt den relativen Anteil von KI-generierten Inhalten pro Partei. Die Parteien sind nach dem höchsten Anteil an KI-Inhalten sortiert.\n\nBitte beachten: kleinere Parteien haben weniger Posts insgesamt daher kann auch eine geringe Nutzung von KI-Inhalten zu hohen relativen Anteilen führen.\n\n\n\n\nAI vs Non-AI Content Analysis"
+  },
+  {
+    "objectID": "index.html#ai-over-time",
+    "href": "index.html#ai-over-time",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": " AI-inhoud door de tijd heen",
+    "text": "AI-inhoud door de tijd heen\n\n\n\n\n\n\n\n\n\n\n\n\nDeze grafiek toont het gebruik van AI versus niet-AI-inhoud door de tijd heen."
+  },
+  {
+    "objectID": "index.html#ki-content-by-party1",
+    "href": "index.html#ki-content-by-party1",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "XXXXX",
+    "text": "XXXXX"
+  },
+  {
+    "objectID": "index.html#ki-content-by-party2",
+    "href": "index.html#ki-content-by-party2",
+    "title": "Overzicht van Inhoud",
+    "section": "Aandeel berichten met en zonder AI",
+    "text": "Aandeel berichten met en zonder AI\nDeze grafiek toont het relatieve aandeel AI-gegenereerde inhoud per partij. De partijen zijn gesorteerd naar het hoogste aandeel AI-inhoud.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: bij actoren met minder totale berichten (inclusief kleinere partijen) kan zelfs beperkt AI-gebruik leiden tot hoge relatieve percentages."
+  },
+  {
+    "objectID": "index.html#content-analyse",
+    "href": "index.html#content-analyse",
+    "title": "CampAIgn Tracker",
+    "section": "Content Analyse",
+    "text": "Content Analyse\n\n\n\n\n\n\n\n\n\nHinweis: es gibt die Möglichkeit dass ein Post negative und positive Inhalte zeigt.\n\n\n\n\n\n\n\n\n\nHinweis: es gibt die Möglichkeit dass ein Post mehrere Themen beinhaltet."
+  },
+  {
+    "objectID": "index.html#transparenz-der-ki-nutzung-in-politischen-inhalten",
+    "href": "index.html#transparenz-der-ki-nutzung-in-politischen-inhalten",
+    "title": "CampAIgn Tracker",
+    "section": "Transparenz der KI-Nutzung in Politischen Inhalten",
+    "text": "Transparenz der KI-Nutzung in Politischen Inhalten\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDie Kennzeichnung von KI-generierten Inhalten ist entscheidend für Transparenz und Vertrauen. Diese Grafik zeigt, wie häufig KI-Inhalte ohne klare Kennzeichnung veröffentlicht wurden."
+  },
+  {
+    "objectID": "info.html",
+    "href": "info.html",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "",
+    "text": "We are an interdisciplinary team dedicated to bringing transparency to the use of AI in political discourse on social media. Our project has received significant support through multiple funding sources, enabling us to build a comprehensive monitoring infrastructure.\n\n\n\n\nOur work is made possible through grants from the University of Amsterdam’s Research Priority Area in Artificial Intelligence & Politics (AI & Politics RPA), which provides annual funding of 250,000 euros over five years to stimulate interdisciplinary research into how AI is reshaping politics and society.\n\n\nWe also received crucial funding from the SIDN Fonds as part of the Hybrid Election Interference Observatory (HEIO) consortium. This project brings together Post-X Society, AI Forensics, Trollrensics, and Justice for Prosperity to protect election integrity by monitoring social media platforms for foreign interference operations.\n\n\n\n\nThe CampAIgn Tracker is led by Dr. Fabio Votta (AlgoSoc Consortium at the University of Amsterdam) and Dr. Simon Kruschinski (University of Mainz), who brought this initiative to life and are responsible for the research project. Both researchers specialize in political campaigns on social media.\n\n\n\n\n\n\n\n\nDoortje Cools, Lynn Louvet, Ella van Vloten, Daisy Blass, Isabella van der Zanden, Emily Murphy, Raluca Groza\n\n\nWe extend our deepest thanks to our research assistants for their exceptional dedication and effort in bringing this project to life.\n\n\n\n\n\n\n\nTobias Kleindamm, Ellen Linnert, Annamijn Beijeman, Haylee Kelsall,\n\n\nWe are grateful to our colleagues, whose expertise and commitment have been vital for the success of this project.\n\n\n\n\n\nWith the CampAIgn Tracker, we aim to help citizens and journalists understand where AI has been used and in what context. To achieve this, we have developed a two-stage process to reliably identify and code AI-generated images.\n\n\nWe capture all posts from over 4000 accounts of parties, leading candidates, political commentators and influencers. We consider party accounts at the national, provincial, and local levels.\nWe are currently tracking 15054 posts between 2025-09-17 and 2025-10-07.\n\n\n\n\n\n\n\nThe classification of accounts is based on the work of our research assistants as well as dedicated volunteer work of Who Targets Me, an organization committed to transparency in digital campaigning. They track the online advertising spending of over 100,000 advertisers from 650+ parties in over 50 countries.\n\n\n\nOur AI detection is a two-stage process that combines automatic classification using an AI model with manual annotation.\n1. Automatic Review: - All collected images and video stills are checked for AI generation using the AI detection model from SightEngine.\n2. Human Validation: - If the classification probability is above 0.1, trained research assisstants manually review the image. - This ensures that automatic AI classification is always validated by human expertise.\nAdditionally, for all identified AI posts, coders classify the following features:\n\nThe labeling of AI use\nThe actors in the image or video\nThe theme of the image or video\nThe actors in the entire post\nThe use of negativity, e.g., through attacks on parties\nThe use of acclaims, e.g., through references to a party’s successes\n\nThis comprehensive information is available on our platform campaigntracker.nl in simple visualizations.\nOur hope is that this enables citizens and journalists to learn how AI is being used in election campaigns and to hold a public debate about the use of AI in politics.\n\n\n\n\n\nTo learn more about the methodological background or if you are a journalist wanting to contact the team, please reach out to us at:\n\ninfo@campaigntracker.de\n\n\n\nWe initially started with this project at the Politechathon in Berlin, organized by the Baden-Württemberg Stiftung, where we won the prize in the “Media Literacy” category.\n\nThe CampAIgn Tracker project launched its first version during the 2025 German elections: campaigntracker.de.\n\n\n\n\nFrom left to right: Theresa Gröninger (Jury member at the Politechathon), Theresa Schültken, Miriam Runde, Fabio Votta, Simon Kruschinski, Jakob Scherer [Credits: @BW Stiftung / Viktor Heekeren]"
+  },
+  {
+    "objectID": "posts/anfang.html",
+    "href": "posts/anfang.html",
+    "title": "How it all Began: The CampAIgn Tracker for more Transparency in AI Use",
+    "section": "",
+    "text": "Saturday morning, 9:00 a.m. in gray Berlin: full of expectations and anticipation, we each arrive at the festively lit Baden-Württemberg State Representation.\nWe are Dr. Simon Kruschinski (Political Communication Researcher at Johannes Gutenberg University Mainz), Miriam Runde (M. Sc. Data Science for Public Policy), Dr. Fabio Votta (Postdoc Researcher in Data-Driven Campaigning at the University of Amsterdam), Jakob Scherer (M. Sc. Management) and Theresa Schültken (MA International Relations, Strategic Foresight Consultant).\nWhen we first meet around 10:30 a.m., we immediately realize that the combination of political science, data science, and AI expertise provides a strong foundation for the weekend.\nOver the course of a weekend of parallel data preparation, testing possible AI models, persona research, and many insightful conversations, an idea turned into a project: The CampAIgn Tracker.\n\n\n\nCredits @ BW Stiftung / Viktor Heekeren\n\n\n\nIn the context of the super election year 2024, the dangers of AI use in political debate were repeatedly discussed in the media and public sphere.\nThe fear of fake news, disinformation, emotionalization, and manipulation is palpable and contributes to uncertainty – yet concrete evidence and a data basis on the extent to which AI is actually used in political campaigns on social media platforms is lacking.\nThis is where the CampAIgn Tracker comes in:\nIt provides a platform to trace which image and video messages from political actors in Germany on social media were in fact generated with the help of AI.\n\n“With the CampAIgn Tracker, we contribute significantly to the necessary transparency around the use of AI for generating visual content, helping people to discuss whether this use for dissemination on social media is legitimate or poses a potential risk.”\n— Dr. Simon Kruschinski\n\n\n\n\nAt the Politechathon, a first prototype was created.\nThe dataset included paid Facebook and Instagram posts from all federal and state parties in 2024.\nThe first challenge was to find an AI model capable of identifying AI-generated content and test it with the dataset.\nThe CampAIgn Tracker relies on a two-step process:\n\nAutomated detection of AI-generated content.\n\nManual validation by experts to increase accuracy.\n\nThis ensures a very high level of accuracy in identifying AI-generated content – a key factor for the project’s acceptance.\n\n\n\nOn the website www.campaigntracker.de, in the future it will be possible to:\n\nView AI-generated content from over 3000 political actors in Germany\n\nAccess details on interactions, spending, and reach\n\nAnalyze individual AI messages with metadata\n\n\n\n\nOn Sunday afternoon came the big surprise:\nAfter pitching the project, we won first place in the Media Literacy category – including prize money for the further development of the CampAIgn Tracker.\nWithin 48 hours, an idea became a ready-to-use platform for promoting transparency in election campaigns.\n\n“Conclusion: expand your network, develop an AI tool in the shortest possible time, and even win an award in the end – the Politechathon showed that with the right team spirit and some ‘nerd power’ (as the evening news so fondly put it), the unimaginable can happen in 48 hours.”\n— Miriam Runde\n\n\n\n\nCredits @ BW Stiftung / Viktor Heekeren"
+  },
+  {
+    "objectID": "posts/anfang.html#hintergrund",
+    "href": "posts/anfang.html#hintergrund",
+    "title": "Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz",
+    "section": "",
+    "text": "Vor dem Hintergrund des Super-Wahljahres 2024 wurden in den Medien und der Öffentlichkeit immer wieder die Gefahren von KI-Einsatz in der politischen Debatte thematisiert.\nDie Sorge vor Fake News, Desinformation, Emotionalisierung und Beeinflussung ist zu spüren und trägt zur Verunsicherung bei – konkrete Anhaltspunkte und eine Datengrundlage, inwieweit KI tatsächlich in politischen Kampagnen auf Social Media Plattformen eingesetzt wird, fehlen allerdings.\nHier setzt der CampAIgn Tracker an:\nEr stellt eine Plattform bereit, auf der nachvollzogen werden kann, welche Bild- und Videobotschaften von politischen Akteuren in Deutschland auf Social Media tatsächlich mit Hilfe von KI erzeugt wurden.\n\n“Mit CampAIgn Tracker tragen wir wesentlich zur notwendigen Transparenz rund um den Einsatz von KI zur Generierung visueller Inhalte bei, der den Menschen dabei hilft, zu diskutieren, ob dieser Einsatz zur Verbreitung auf Social Media stattfindet, legitim ist oder eine mögliche Gefahr davon ausgeht.”\n— Dr. Simon Kruschinski"
+  },
+  {
+    "objectID": "posts/anfang.html#entwicklung-des-prototyps",
+    "href": "posts/anfang.html#entwicklung-des-prototyps",
+    "title": "Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz",
+    "section": "",
+    "text": "Auf dem Politechathon entstand hierfür ein erster Prototyp.\nDie Datengrundlage umfasste die bezahlten Facebook- und Instagram-Posts von allen Bundes- und Landesparteien im Jahr 2024.\nDie erste Herausforderung bestand darin, ein KI-Modell zur Identifizierung von KI-generierten Inhalten zu finden und mit der Datengrundlage zu testen.\nHier setzt der CampAIgn Tracker auf ein zweistufiges Verfahren:\n\nAutomatisierte Erkennung von KI-generierten Inhalten.\n\nManuelle Validierung durch Expert:innen, um die Genauigkeit zu erhöhen.\n\nSo wird eine sehr hohe Genauigkeit bei der Identifikation von KI-generierten Inhalten sichergestellt – ein zentraler Faktor für die Akzeptanz des Projekts."
+  },
+  {
+    "objectID": "posts/anfang.html#ausblick",
+    "href": "posts/anfang.html#ausblick",
+    "title": "Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz",
+    "section": "",
+    "text": "Auf der Website www.campaigntracker.de können in Zukunft:\n\nKI-generierte Inhalte von über 3000 politischen Akteuren in Deutschland eingesehen werden\n\nDetails zu Interaktionen, Geldausgaben und Reichweite abgerufen werden\n\nEinzelne KI-Botschaften mit Metadaten analysiert werden"
+  },
+  {
+    "objectID": "posts/anfang.html#unser-erfolg-beim-politechathon",
+    "href": "posts/anfang.html#unser-erfolg-beim-politechathon",
+    "title": "Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz",
+    "section": "",
+    "text": "Am Sonntagnachmittag kam dann die große Überraschung:\nNach einem Projektpitch gewannen wir den ersten Platz in der Kategorie Medienkompetenz – samt Preisgeld für die Weiterentwicklung des CampAIgn Trackers.\nInnerhalb von 48 Stunden wurde aus einer Idee eine anwendungsreife Plattform zur Förderung von Transparenz im Wahlkampf.\n\n“Fazit: Netzwerk erweitern, in kürzester Zeit ein KI-Tool entwickeln und am Ende sogar ausgezeichnet werden – der Politechathon hat gezeigt, dass mit dem richtigen Teamgeist und etwas ‘Nerd-Power’ (wie die Tagesthemen so liebevoll titelten) in 48 Stunden Unfassbares entstehen kann.”\n— Miriam Runde\n\n\n\n\nCredits @ BW Stiftung / Viktor Heekeren"
+  },
+  {
+    "objectID": "index.html#transparenz-beim-ki-einsatz",
+    "href": "index.html#transparenz-beim-ki-einsatz",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "Transparenz beim KI-Einsatz",
+    "text": "Transparenz beim KI-Einsatz\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDie Kennzeichnungen von KI-Inhalten mit Disclaimern durch die Parteien oder durch Plattformen sind wichtig für einen transparenten Einsatz. Diese Grafik zeigt, wie oft KI-generierte Inhalte ohne bzw. mit Kennzeichnung veröffentlicht wurden und ob die Kennzeichnung durch die Partei oder Meta erfolgte."
+  },
+  {
+    "objectID": "index.html#analyse-der-ki-inhalte",
+    "href": "index.html#analyse-der-ki-inhalte",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "Analyse der KI-Inhalte",
+    "text": "Analyse der KI-Inhalte\n\n\n\n\n\n\n\n\n\n\n\nHinweis: es gibt die Möglichkeit dass ein Post negative und positive Inhalte zeigt.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHinweis: Ein Beitrag kann mehrere Themen gleichzeitig behandeln.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHinweis: Ein Bild kann mehrere Bild-/Videoinhalte gleichzeitig beinhalten."
+  },
+  {
+    "objectID": "info.html#methode",
+    "href": "info.html#methode",
+    "title": "\nCampAIgn Tracker\n",
+    "section": "Methode",
+    "text": "Methode\nWir wollen mit dem CampAIgn Tracker dazu beitragen, dass Bürger:innen und Journalist:innen nachvollziehen können, wo KI genutzt wurde und in welchem Kontext. Dafür haben wir ein zweistufiges Verfahren entwickelt, um KI-generierte Bilder zuverlässig zu identifizieren und zu kodieren.\n\nDatenerhebung\nWir erfassen alle unbezahlten Beiträge und bezahlten Werbeanzeigen von über 3000 Accounts der Parteien und Spitzenkandidierenden von SPD, CDU/CSU, FDP, Grünen, der Linken, AfD, BSW, Freie Wähler, Tierschutzpartei, Partei des Fortschritts, dieBasis, VOLT, Piraten, Bayernpartei, V-Partei, und NPD/Heimat (und viele weitere Kleinstparteien).\nDabei berücksichtigen wir die Accounts der Parteien auf Bundes-, Landes- und Lokalebene.\n\nOrganische Posts werden über die Brightdata gesammelt.\n\nWerbeanzeigen stammen aus der Meta Ad Library API.\n\nDerzeit tracken wir 501 Beiträge zwischen NA und NA.\n\n\n\n\n\n\n\nDie Klassifizierung der Accounts basiert auf der engagierten Freiwilligenarbeit von Who Targets Me, einer Organisation, die sich für Transparenz im digitalen Wahlkampf einsetzt. Sie verfolgen die Online-Werbeausgaben von über 100.000 Werbetreibenden von 650+ Parteien in über 50 Ländern.\n\n\nKI-Detektion\nUnsere KI-Detektion ist ein zweistufiges Verfahren, das automatische Klassifikation mit einem KI-Modell und manuelle Annotation kombiniert.\n\nAutomatische Prüfung:\n\nAlle gesammelten Bilder und Video-Stills werden mit dem KI-Detektionsmodell von SightEngine auf KI-Generierung geprüft.\n\nMenschliche Validierung:\n\nFalls die Klassifikations-wahrscheinlichkeit über 0.1 liegt, prüfen geschulte Codierer:innen das Bild manuell.\n\nSo wird die automatische KI-Klassifikation durch menschliche Expertise abgesichert.\n\n\nZusätzlich klassifizieren die Codierer:innen für alle identifizierten KI-Beiträge folgende Merkmale:\n\nDie Kennzeichnung von KI-Nutzung\n\nDie Akteur:innen im Bild oder Video\n\nDas Thema des Bildes oder Videos\n\nDie Akteur:innen im gesamten Beitrag\n\nDie Verwendung von Negativität, z. B. durch Angriffe auf Parteien\n\nDie Verwendung von Acclaims, z. B. durch Verweise auf Erfolge einer Partei\n\nDiese umfassenden Informationen sind auf unserer Plattform campaigntracker.de in einfachen Visualisierungen verfügbar.\nSo ermöglichen wir, dass Bürger:innen und Journalist:innen erfahren, wie KI im Wahlkampf genutzt wird und eine öffentliche Debatte über den Einsatz von KI in der Politik führen können."
+  },
+  {
+    "objectID": "impressum.html",
+    "href": "impressum.html",
+    "title": "Impressum",
+    "section": "",
+    "text": "Impressum\nDr. Simon Kruschinski Watfordstraße 22 55122 Mainz Deutschland Kontakt: E-Mail: Simon.kruschinski@gmail.com\nVerantwortlich für den Inhalt: Dr. Simon Kruschinski Watfordstraße 22 55122 Mainz Deutschland\nHaftungsausschluss: Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.\nUrheberrecht:\nDie auf dieser Website veröffentlichten Inhalte unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers."
+  },
+  {
+    "objectID": "index.html#medienformatte",
+    "href": "index.html#medienformatte",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": " AI-mediavormen",
+    "text": "AI-mediavormen\n\n Alle Partijen & Politici Andere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeze grafiek toont het aandeel afbeeldingen en video’s in AI-gegenereerde berichten, en of ze er echt uitzien (camera-achtig of deepfakes) of tekeningen/grafisch zijn.\n\n\n Alle Partijen & Politici Andere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeze grafiek toont het aandeel afbeeldingen en video’s in AI-gegenereerde berichten, en of ze er echt uitzien (camera-achtig of deepfakes) of tekeningen/grafisch zijn."
+  },
+  {
+    "objectID": "index.html#personen",
+    "href": "index.html#personen",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": " Afgebeelde personen in AI-inhoud",
+    "text": "Afgebeelde personen in AI-inhoud\n\n Alle Partijen & Politici Andere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeze visualisatie toont welke persoon(groepen) in hoeveel van de AI-gegenereerde afbeeldingen/video’s worden afgebeeld.\n\nLet op: een enkele afbeelding kan meerdere personen bevatten."
+  },
+  {
+    "objectID": "posts/ausgaben.html",
+    "href": "posts/ausgaben.html",
+    "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
+    "section": "",
+    "text": "Digitale Wahlwerbung spielt eine zentrale Rolle in modernen Wahlkämpfen. Im Vorfeld der Bundestagswahl am 23. Februar 2025 analysiere ich die digitalen Werbeausgaben der Parteien im Vergleich zu den Wahlen 2021.\n🔗 Englische längere Version hier lesen: favstats.eu/post/btws\n\nGesamtentwicklung: Die Ausgaben steigen, aber nur leicht\nDie Gesamtausgaben für digitale Werbung haben sich gegenüber 2021 kaum verändert. Drei Tage vor der Wahl beliefen sich die Ausgaben 2025 auf 8,36 Mio. €, verglichen mit 8,32 Mio. € im gleichen Zeitraum 2021 (inflationsbereinigt).\n\n\n\nVergleich der digitalen Werbeausgaben zwischen 2021 und 2025\n\n\nDiese Stabilität könnte darauf hindeuten, dass die Bedeutung digitaler Werbung im Wahlkampf konstant bleibt – auch wenn sich die Verteilung der Ausgaben zwischen den Parteien stark verändert hat.\n\n\nParteiausgaben: Wer investiert mehr, wer spart?\nEin Blick auf die einzelnen Parteien offenbart deutliche Verschiebungen:\nDie FDP (+217.000 €) und besonders Volt (+815.000 €) haben ihre Budgets massiv erhöht. Für Volt, eine Partei ohne Bundestagsmandat, könnte dies ein Versuch sein, ihre Sichtbarkeit zu erhöhen.\nDagegen haben die CDU/CSU (-530.000 €) und die SPD (-731.000 €) ihre Ausgaben deutlich reduziert.\n\n\n\nVergleich der Parteiausgaben für digitale Werbung\n\n\n\n\nDigitale Prioritäten: Wer setzt wie viel vom Budget ein?\nNoch aufschlussreicher ist der Anteil der digitalen Werbeausgaben am Gesamtbudgets SPD, Linke, und CDU/CSU geben nur ca. 2-3% ihres Wahlkampfbudgets für digitale Werbung aus. Die Grünen hingegen geben mit 11% ihres Budgets ein vielfaches auf digitale Wahlwerbung.\nAuch hier fällt Volt besonders auf: Der Anteil der digitalen Ausgaben ist um beeindruckende 28,33 Prozentpunkte gestiegen, sodass nun rund 40 % des Gesamtbudgets in digitale Werbung fließen.\nBei traditionellen Parteien wie der CDU/CSU (-3,8 Prozentpunkte) und der SPD (-3,5 Prozentpunkte) ist der Anteil hingegen rückläufig.\nAuch Die Linke verzeichnet einen Rückgang (-1,6 Prozentpunkte). Die Grünen hingegen bleiben stabil und haben nur einen leichten Rückgang von 0,3 Prozentpunkten verzeichnen.\n\n\n\nAnteil der digitalen Ausgaben am Gesamtbudget\n\n\n\n\nPlattformvergleich: Google legt zu, Meta verliert\nEin interessanter Trend zeigt sich bei der Plattformwahl:\n\nDie Ausgaben für Google-Werbung haben sich mehr als verdoppelt, von 699.000 € im Jahr 2021 auf 1,5 Mio. € in 2025.\n\nGleichzeitig gingen die Ausgaben auf Meta-Plattformen (Facebook, Instagram) von 4,2 Mio. € auf 3,3 Mio. € zurück.\n\n\n\n\nVergleich der Ausgaben zwischen Meta und Google\n\n\n\n\nGoogle zieht sich zurück – Meta bleibt die Hauptplattform\nDiese Entwicklung muss vor dem Hintergrund von Googles Entscheidung gesehen werden, politische Werbung in der EU ab Oktober 2025 zu verbieten. Meta wird damit voraussichtlich eine dominierende Rolle im Bereich digitaler Wahlwerbung einnehmen.\nEin solches Quasi-Monopol birgt Risiken: Die Konzentration von Macht auf einer Plattform könnte den Wettbewerb einschränken, kleinere Parteien benachteiligen und politische Kommunikationsstrategien stark beeinflussen. Besonders besorgniserregend ist, dass Meta durch sein detailliertes Targeting politischen Akteuren große Reichweite ermöglicht – was jedoch auch die Gefahr einer verstärkten Manipulation birgt.\n\nAnmerkung: Eine frühere Version dieses Blogposts enthielt Daten bis zwei Wochen vor der Wahl. Die aktuellen Zahlen berücksichtigen nun auch die Inflation, sodass alle Ausgaben inflationsbereinigt und in 2025 Euro angegeben sind."
+  },
+  {
+    "objectID": "posts/ausgaben.html#steigende-digitale-werbeausgaben",
+    "href": "posts/ausgaben.html#steigende-digitale-werbeausgaben",
+    "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
+    "section": "Steigende digitale Werbeausgaben",
+    "text": "Steigende digitale Werbeausgaben\nInsgesamt sind die Ausgaben für digitale Werbung um 665.000 € gestiegen. Zwei Wochen vor der Wahl wurden 2025 bereits 4,8 Mio. € ausgegeben, verglichen mit 4,1 Mio. € im gleichen Zeitraum 2021.\n\n\n\nVergleich der digitalen Werbeausgaben zwischen 2021 und 2025\n\n\nDieser Anstieg könnte darauf hindeuten, dass digitale Plattformen eine noch zentralere Rolle im Wahlkampf spielen. Möglicherweise zeigt es allerdings auch dass die Budgets insgesamt gestiegen sind. Eine genauere Analyse folgt in einem zukünftigen Blogpost."
+  },
+  {
+    "objectID": "posts/ausgaben.html#wer-gibt-mehr-aus-und-wer-weniger",
+    "href": "posts/ausgaben.html#wer-gibt-mehr-aus-und-wer-weniger",
+    "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
+    "section": "Wer gibt mehr aus – und wer weniger?",
+    "text": "Wer gibt mehr aus – und wer weniger?\nBesonders Die Grünen (+419.000 €) und Volt (+581.000 €) haben ihre Ausgaben erheblich gesteigert. Volt, die bislang nicht im Bundestag vertreten sind, setzen besonders stark auf digitale Werbung im Vergleich zu 2021. Dagegen haben Parteien wie die CDU/CSU (-392.000 €) und die SPD (-370.000 €) ihre digitalen Wahlwerbungsbudgets gekürzt.\n\n\n\nVergleich der Parteiausgaben für digitale Werbung\n\n\nDiese Verschiebungen deuten möglicherweise darauf hin, dass kleinere und neuere Parteien stärker auf digitale Kampagnen setzen, während etabliertere Parteien ihre Strategien möglicherweise anders ausrichten. Auch das Gesamtbudget der Parteien sollte hier in Betracht gezogen werden. Eine tiefergehende Analyse dazu folgt bald."
+  },
+  {
+    "objectID": "posts/ausgaben.html#plattformwechsel-google-boomt-meta-stagniert",
+    "href": "posts/ausgaben.html#plattformwechsel-google-boomt-meta-stagniert",
+    "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
+    "section": "Plattformwechsel: Google boomt, Meta stagniert",
+    "text": "Plattformwechsel: Google boomt, Meta stagniert\nEin interessanter Trend zeigt sich bei den Plattformen:\n\nDie Ausgaben für Google-Werbung haben sich mehr als verdoppelt (+909.000 €), während\n\nDie Meta-Ausgaben leicht zurückgingen (-245.000 €).\n\n\n\n\nPlattformvergleich: Meta vs. Google"
+  },
+  {
+    "objectID": "posts/ausgaben.html#google-steigt-aus-meta-dominiert",
+    "href": "posts/ausgaben.html#google-steigt-aus-meta-dominiert",
+    "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
+    "section": "",
+    "text": "Diese Entwicklung steht im Kontext von Googles Entscheidung, politische Werbung in der EU ab Oktober 2025 zu verbieten. Dies könnte Meta eine Quasi-Monopolstellung bei digitaler Wahlwerbung verschaffen – mit potenziellen Risiken für den politischen Wettbewerb. Meta bleibt damit die wichtigste Plattform für digitale Wahlwerbung, insbesondere wegen seiner granularen Targeting-Möglichkeiten.\nMit diesen Zahlen zeichnet sich eine spannende Dynamik in der digitalen Wahlkampfführung ab. Mehr Details und weitere Analysen folgen in künftigen Blogposts!"
+  },
+  {
+    "objectID": "posts/ausgaben.html#trozdem-google-steigt-aus-meta-bleibt",
+    "href": "posts/ausgaben.html#trozdem-google-steigt-aus-meta-bleibt",
+    "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
+    "section": "Trozdem: Google steigt aus – Meta bleibt",
+    "text": "Trozdem: Google steigt aus – Meta bleibt\nDiese Entwicklung steht im Kontext von Googles Entscheidung, politische Werbung in der EU ab Oktober 2025 zu verbieten. Dies könnte Meta eine Quasi-Monopolstellung bei digitaler Wahlwerbung verschaffen. Das birgt potenzielle Risiken für den politischen Wettbewerb. Meta bleibt damit die wichtigste Plattform für bezahlte digitale Wahlwerbung, insbesondere wegen seiner granularen Targeting-Möglichkeiten."
+  },
+  {
+    "objectID": "index.html#ai-transparency",
+    "href": "index.html#ai-transparency",
+    "title": "CampAIgn Tracker",
+    "section": "AI Transparency",
+    "text": "AI Transparency\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDisclosure of AI content through party-added disclaimers or platform labels is crucial for transparency. This visualization shows how often AI-generated content was published with/without disclosures."
+  },
+  {
+    "objectID": "index.html#ai-content-analysis",
+    "href": "index.html#ai-content-analysis",
+    "title": "CampAIgn Tracker",
+    "section": "AI Content Analysis",
+    "text": "AI Content Analysis\n\n\n\n\n\n\n\n\n\n\n\nHinweis: es gibt die Möglichkeit dass ein Post negative und positive Inhalte zeigt.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single post may cover multiple topics.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single image may contain multiple topics."
+  },
+  {
+    "objectID": "index.html#anzahl-an-likes-nur-posts",
+    "href": "index.html#anzahl-an-likes-nur-posts",
+    "title": "CampAIgn Tracker",
+    "section": "Anzahl an Likes (nur Posts)",
+    "text": "Anzahl an Likes (nur Posts)\n\n\n\n\n\n\n\n\n\n\nCDU/CSUSPDAfDFDPB90/GRÜNELINKEFreie WählerDieBasisPiratenparteiPdFBayernparteiV-Partei³NPD /Die Heimat"
+  },
+  {
+    "objectID": "index.html#anzahl-an-likes-für-beiträge-mit-und-ohne-ki-nur-posts",
+    "href": "index.html#anzahl-an-likes-für-beiträge-mit-und-ohne-ki-nur-posts",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "Anzahl an Likes für Beiträge mit und ohne KI (nur Posts)",
+    "text": "Anzahl an Likes für Beiträge mit und ohne KI (nur Posts)\n\n\n\n\n\n\n\n\n\n\nDie Analyse umfasst insgesamt 68,601 Beiträge, die entweder mit oder ohne den Einsatz von Künstlicher Intelligenz (KI) erstellt wurden. Davon stammen 552 Beiträge aus der Kategorie mit KI und 68K aus der Kategorie ohne KI.\nDie Beiträge mit KI erzielten insgesamt 197K Likes, während die Beiträge ohne KI 27M Likes erreichten.\nBeim Median der Likes – also die Anzahl der Likes, die ein typischer Beitrag in der Mitte der Verteilung erhält – zeigt sich dass Beiträge mit KI im Median 52 Likes erhielten, während Beiträge ohne KI 20 Likes erzielten."
+  },
+  {
+    "objectID": "index.html#anzahl-an-likes-für-beiträge-mit-und-ohne-ki-nach-partei-nur-posts",
+    "href": "index.html#anzahl-an-likes-für-beiträge-mit-und-ohne-ki-nach-partei-nur-posts",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "Anzahl an Likes für Beiträge mit und ohne KI nach Partei (nur Posts)",
+    "text": "Anzahl an Likes für Beiträge mit und ohne KI nach Partei (nur Posts)\n\nCDU/CSUSPDAfDFDPB90/GRÜNELINKEFreie WählerDieBasisPiratenparteiPdFBayernparteiV-Partei³NPD /Die Heimat"
+  },
+  {
+    "objectID": "posts/ausgaben.html#gesamtentwicklung-die-ausgaben-steigen-aber-nur-leicht",
+    "href": "posts/ausgaben.html#gesamtentwicklung-die-ausgaben-steigen-aber-nur-leicht",
+    "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
+    "section": "Gesamtentwicklung: Die Ausgaben steigen, aber nur leicht",
+    "text": "Gesamtentwicklung: Die Ausgaben steigen, aber nur leicht\nDie Gesamtausgaben für digitale Werbung haben sich gegenüber 2021 kaum verändert. Drei Tage vor der Wahl beliefen sich die Ausgaben 2025 auf 8,36 Mio. €, verglichen mit 8,32 Mio. € im gleichen Zeitraum 2021 (inflationsbereinigt).\n\n\n\nVergleich der digitalen Werbeausgaben zwischen 2021 und 2025\n\n\nDiese Stabilität könnte darauf hindeuten, dass die Bedeutung digitaler Werbung im Wahlkampf konstant bleibt – auch wenn sich die Verteilung der Ausgaben zwischen den Parteien stark verändert hat."
+  },
+  {
+    "objectID": "posts/ausgaben.html#parteiausgaben-wer-investiert-mehr-wer-spart",
+    "href": "posts/ausgaben.html#parteiausgaben-wer-investiert-mehr-wer-spart",
+    "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
+    "section": "Parteiausgaben: Wer investiert mehr, wer spart?",
+    "text": "Parteiausgaben: Wer investiert mehr, wer spart?\nEin Blick auf die einzelnen Parteien offenbart deutliche Verschiebungen:\nDie FDP (+217.000 €) und besonders Volt (+815.000 €) haben ihre Budgets massiv erhöht. Für Volt, eine Partei ohne Bundestagsmandat, könnte dies ein Versuch sein, ihre Sichtbarkeit zu erhöhen.\nDagegen haben die CDU/CSU (-530.000 €) und die SPD (-731.000 €) ihre Ausgaben deutlich reduziert.\n\n\n\nVergleich der Parteiausgaben für digitale Werbung\n\n\nDiese Entwicklung deutet darauf hin, dass kleinere und neue Parteien zunehmend auf digitale Strategien setzen, während etablierte Akteure wieder verstärkt auf traditionelle Wahlkampftaktiken vertrauen."
+  },
+  {
+    "objectID": "posts/ausgaben.html#digitale-prioritäten-wer-setzt-wie-viel-vom-budget-ein",
+    "href": "posts/ausgaben.html#digitale-prioritäten-wer-setzt-wie-viel-vom-budget-ein",
+    "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
+    "section": "Digitale Prioritäten: Wer setzt wie viel vom Budget ein?",
+    "text": "Digitale Prioritäten: Wer setzt wie viel vom Budget ein?\nNoch aufschlussreicher ist der Anteil der digitalen Werbeausgaben am Gesamtbudget:\nVolt fällt besonders auf: Der Anteil der digitalen Ausgaben ist um beeindruckende 28,33 Prozentpunkte gestiegen, sodass nun rund 40 % des Gesamtbudgets in digitale Werbung fließen.\nBei traditionellen Parteien wie der CDU/CSU (-3,8 Prozentpunkte) und der SPD (-3,5 Prozentpunkte) ist der Anteil hingegen rückläufig.\nAuch Die Linke verzeichnet einen Rückgang (-1,6 Prozentpunkte), sowie die Grünen nur einen leichten Rückgang von 0,3 Prozentpunkten verzeichnen.\n\n\n\nAnteil der digitalen Ausgaben am Gesamtbudget\n\n\nDiese Unterschiede deuten darauf hin, dass neuere Parteien stärker auf digitale Reichweite setzen, während etablierte Parteien auf traditionelle Strukturen zurückgreifen."
+  },
+  {
+    "objectID": "posts/ausgaben.html#plattformvergleich-google-legt-zu-meta-verliert",
+    "href": "posts/ausgaben.html#plattformvergleich-google-legt-zu-meta-verliert",
+    "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
+    "section": "Plattformvergleich: Google legt zu, Meta verliert",
+    "text": "Plattformvergleich: Google legt zu, Meta verliert\nEin interessanter Trend zeigt sich bei der Plattformwahl:\n\nDie Ausgaben für Google-Werbung haben sich mehr als verdoppelt, von 699.000 € im Jahr 2021 auf 1,5 Mio. € in 2025.\n\nGleichzeitig gingen die Ausgaben auf Meta-Plattformen (Facebook, Instagram) von 4,2 Mio. € auf 3,3 Mio. € zurück.\n\n\n\n\nVergleich der Ausgaben zwischen Meta und Google"
+  },
+  {
+    "objectID": "posts/ausgaben.html#google-zieht-sich-zurück-meta-bleibt-die-hauptplattform",
+    "href": "posts/ausgaben.html#google-zieht-sich-zurück-meta-bleibt-die-hauptplattform",
+    "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
+    "section": "Google zieht sich zurück – Meta bleibt die Hauptplattform",
+    "text": "Google zieht sich zurück – Meta bleibt die Hauptplattform\nDiese Entwicklung muss vor dem Hintergrund von Googles Entscheidung gesehen werden, politische Werbung in der EU ab Oktober 2025 zu verbieten. Meta wird damit voraussichtlich eine dominierende Rolle im Bereich digitaler Wahlwerbung einnehmen.\nEin solches Quasi-Monopol birgt Risiken: Die Konzentration von Macht auf einer Plattform könnte den Wettbewerb einschränken, kleinere Parteien benachteiligen und politische Kommunikationsstrategien stark beeinflussen. Besonders besorgniserregend ist, dass Meta durch sein detailliertes Targeting politischen Akteuren große Reichweite ermöglicht – was jedoch auch die Gefahr einer verstärkten Manipulation birgt.\n\nAnmerkung: Eine frühere Version dieses Blogposts enthielt Daten bis zwei Wochen vor der Wahl. Die aktuellen Zahlen berücksichtigen nun auch die Inflation, sodass alle Ausgaben inflationsbereinigt und in Euro 2025 angegeben sind."
+  },
+  {
+    "objectID": "posts/llms.html",
+    "href": "posts/llms.html",
+    "title": "Artificial Intelligence in Politics: Opportunities, Risks, and Perception",
+    "section": "",
+    "text": "A recent study by Dr. Simon Kruschinski, Dr. Pablo Jost, Tobias Scherer, and Hannah Fecher takes a detailed look, for the first time, at how the German public perceives the use of AI-generated content in political campaigns. The results reveal a field of tension between skepticism, uncertainty, and cautious acceptance.\n\nLarge Language Models and Diffusion Models in Political Campaigns\nArtificial Intelligence (AI) has made significant progress in recent years and plays an increasingly important role in various social domains – including political communication. In particular, Large Language Models (LLMs) and diffusion models enable the creation and distribution of text and image content on a new level. These technologies offer opportunities but also carry risks, especially in the context of political campaigns.\n\n\nWhat Are Large Language Models (LLMs)?\nLLMs are AI models specialized in processing natural language. They are trained on enormous amounts of text data, including books, scientific publications, news articles, and social media content. Their aim is to analyze text, recognize patterns in language, and generate new content. Well-known examples include ChatGPT (OpenAI), CoPilot (Microsoft), and Gemini (Google).\nThe functioning of LLMs is based on transformer architectures, in particular the “attention mechanism,” which makes it possible to understand relationships between words in a sentence. A typical LLM consists of two main components:\n\nEncoder: Breaks down texts into small units (tokens) and converts them into mathematical representations.\n\nDecoder: Generates new texts from these representations by calculating probabilities of which words could logically follow.\n\n\n\nDiffusion Models: Image Generation with AI\nWhile LLMs process language, diffusion models specialize in creating realistic images and videos. They learn from vast image databases and recognize structures, colors, and patterns in order to generate new visual content based on text inputs. Examples of such text-to-image models (TTI) include Midjourney, DALL·E (OpenAI), and Stable Diffusion.\nThanks to advances in AI development, these models can now generate deceptively realistic images, making them attractive for various applications – including marketing, design, and media production. The creation of deepfakes also falls into this domain.\n\n\nGenerative AI in Political Campaigns\nThe use of generative AI in political campaigns is already a reality. It is employed to create content more quickly, expand reach, and spread personalized messages. Some areas of application include:\n\nAutomated text generation for speeches, social media posts, and press releases\nPolitical actors use LLMs to create content in different tones and styles.\nExamples: quickly generated campaign slogans, personalized responses to voter questions.\nVisual campaigns using AI-generated images and videos\nPoliticians or parties use diffusion models to create eye-catching images for advertising campaigns.\nExample: generating idealized scenes or posters perfectly tailored to certain messages.\nManipulation and disinformation through deepfakes\nOne of the biggest challenges is the misuse of AI for spreading fake content.\nDeepfake videos or manipulated images can be used to discredit political opponents or spread false information.\nExample: a fake video of a politician suggesting statements that were never actually made.\n\n\n\nOpportunities and Risks of Generative AI in Politics\nOpportunities:\n\nMore efficient campaign management through faster content creation.\n\nDemocratization of political communication through low-threshold access to AI tools.\n\nPersonalized and targeted voter outreach.\n\nRisks:\n\nSpread of fake news and disinformation.\n\nLoss of trust in the authenticity of political content.\n\nManipulation of public opinion through AI-generated content.\n\n\n\nConclusion\nLLMs and diffusion models open new possibilities for political campaigns but also raise ethical questions. While they can help distribute content more efficiently and in a more targeted way, there is also the risk of their use for disinformation or manipulation. The future challenge will be to create regulations and control mechanisms to ensure the responsible use of generative AI."
+  },
+  {
+    "objectID": "posts/erkennung.html",
+    "href": "posts/erkennung.html",
+    "title": "How to Recognize AI-Generated Images and Strengthen Your AI Literacy",
+    "section": "",
+    "text": "The ability to recognize AI-generated images is essential to preventing disinformation and manipulation in digital campaigns. Especially in the context of political communication, generative AI is increasingly used – sometimes for creative purposes, sometimes for deliberate deception. The campAIgn Tracker provides an overview of current AI trends in political campaigns and helps citizens protect themselves against disinformation.\n\nAI-Generated Images: Deceptively Real Yet Detectable\nModern AI can now create images that look realistic. But some clues give them away:\n\nUnnatural details: Distorted facial proportions, inconsistent light sources, or missing reflections.\n\nStrange textures and patterns: Repetitions or blurry spots, especially in backgrounds.\n\nProblems with eyes and hands: AI struggles to generate realistic hands or symmetrical eyes.\n\nMetadata analysis: Tools like Foto Forensics or Google Lens can be used to check the origin of an image.\n\nReverse image search: A reverse search can reveal whether the image has been flagged as AI-generated.\n\n\n\n\nInfobox from current study on AI in election campaigns by Dr. Simon Kruschinski, Dr. Pablo Jost, Tobias Scherer, and Hannah Fecher\n\n\n\n\nDigital Resilience: How Citizens Can Strengthen Their AI Literacy\nTo avoid manipulation, a critical approach to digital content is essential. Here are some measures that can help:\n\n1. Train Critical Thinking\n\nQuestion images and content, especially in political contexts.\n\nCompare information with reliable news sources or fact-checking platforms.\n\n\n\n2. Use Technical Tools\n\nSpecialized deepfake detectors and image analysis tools can help identify manipulated content.\n\nBrowser extensions and AI warning systems provide early signs of falsification.\n\n\n\n3. Expand Media Literacy\n\nUse educational resources on digital literacy, such as those provided by the campAIgn Tracker.\n\nSchools and educational institutions should increasingly offer workshops on AI detection and the ethical use of AI.\n\n\n\n4. Demand AI Labeling\n\nAdvocate for transparency rules that require labeling of AI-generated content.\n\nPublic pressure on platforms like Meta or X (formerly Twitter) can help enforce reliable AI tagging.\n\n\n\n\nConclusion\nThe campAIgn Tracker shows how generative AI is already being used in political campaigns today – with both positive and negative effects. Those who know how to recognize AI-generated images are better equipped to protect themselves from manipulation.\nDigital resilience means combining critical thinking, technical tools, and media literacy. Stay informed and strengthen your digital skills with the campAIgn Tracker!"
+  },
+  {
+    "objectID": "posts/erkennung.html#ki-generierte-bilder-täuschend-echt-und-doch-erkennbar",
+    "href": "posts/erkennung.html#ki-generierte-bilder-täuschend-echt-und-doch-erkennbar",
+    "title": "Wie erkennt man KI-generierte Bilder und wie stärkt man die eigene KI-Kompetenz?",
+    "section": "",
+    "text": "Moderne KI kann mittlerweile realistisch anmutende Bilder erstellen. Doch einige Hinweise verraten sie:\n\nUnnatürliche Details: Verzerrte Gesichtsproportionen, inkonsistente Lichtquellen oder fehlende Reflexionen.\n\nAuffällige Texturen und Muster: Wiederholungen oder unscharfe Stellen, besonders in Hintergründen.\n\nProbleme bei Augen und Händen: KI hat Schwierigkeiten, realistische Hände oder symmetrische Augen zu generieren.\n\nMetadaten-Analyse: Mit Tools wie Foto-Forensik oder Google Lens kann die Herkunft eines Bildes überprüft werden.\n\nReverse Image Search: Durch eine Rückwärtssuche kann festgestellt werden, ob das Bild als KI-generiert markiert wurde.\n\n\n\n\nInfobox aus aktueller Studie zur KI im Wahlkampf von Dr. Simon Kruschinski, Dr. Pablo Jost, Tobias Scherer und Hannah Fecher"
+  },
+  {
+    "objectID": "posts/erkennung.html#digitale-resilienz-wie-bürgerinnen-ihre-ki-kompetenz-stärken",
+    "href": "posts/erkennung.html#digitale-resilienz-wie-bürgerinnen-ihre-ki-kompetenz-stärken",
+    "title": "Wie erkennt man KI-generierte Bilder und wie stärkt man die eigene KI-Kompetenz?",
+    "section": "",
+    "text": "Um Manipulationen zu vermeiden, ist eine kritische Auseinandersetzung mit digitalen Inhalten unerlässlich. Hier sind einige Maßnahmen, die helfen:\n\n\n\nHinterfragen Sie Bilder und Inhalte, vor allem in politischen Kontexten.\n\nVergleichen Sie Informationen mit seriösen Nachrichtenquellen oder Faktencheck-Plattformen.\n\n\n\n\n\nSpezialisierte Deepfake-Detektoren und Bildanalyse-Tools helfen bei der Erkennung manipulierter Inhalte.\n\nErweiterungen für Browser und KI-Warnsysteme geben erste Hinweise auf Fälschungen.\n\n\n\n\n\nNutzen Sie Bildungsangebote zu digitaler Kompetenz, wie sie der campAIgn Tracker bereitstellt.\n\nSchulen und Bildungseinrichtungen sollten verstärkt Workshops zu KI-Erkennung und ethischem Umgang mit KI anbieten.\n\n\n\n\n\nSetzen Sie sich für Transparenzrichtlinien ein, die eine Kennzeichnung von KI-generierten Inhalten verpflichtend machen.\n\nÖffentlicher Druck auf Plattformen wie Meta oder X (ehemals Twitter) kann helfen, verlässliche KI-Markierungen durchzusetzen."
+  },
+  {
+    "objectID": "posts/erkennung.html#fazit",
+    "href": "posts/erkennung.html#fazit",
+    "title": "Wie erkennt man KI-generierte Bilder und wie stärkt man die eigene KI-Kompetenz?",
+    "section": "",
+    "text": "Der campAIgn Tracker zeigt, wie generative KI bereits heute in politischen Kampagnen eingesetzt wird – mit positiven wie negativen Auswirkungen. Wer weiß, wie KI-Bilder erkannt werden, kann sich besser vor Manipulation schützen.\nDigitale Resilienz bedeutet, kritisches Denken, technische Hilfsmittel und ein Bewusstsein für Medienkompetenz zu kombinieren. Bleiben Sie informiert und stärken Sie Ihre digitale Kompetenz mit dem campAIgn Tracker!"
+  },
+  {
+    "objectID": "posts/verantwortung.html",
+    "href": "posts/verantwortung.html",
+    "title": "Responsible Use of AI in Political Campaigns",
+    "section": "",
+    "text": "Artificial intelligence is changing the way political campaigns are conducted. Automated texts, personalized voter targeting, and AI-generated images open up new possibilities but also bring risks. The question is: How can the use of AI in political communication be shaped responsibly?\n\n1. Transparency as a Cornerstone\nResponsible use of AI begins with transparency. Voters should always be able to understand when they are confronted with AI-generated content. This includes:\n\nClear labeling of AI-assisted texts, videos, and images.\n\nDisclosure of AI use by political actors and parties.\n\nEstablishment of mechanisms to detect and regulate deepfake technologies in political communication.\n\n\n\n2. Promoting Media Literacy\nAI-generated content is often deceptively realistic and difficult to identify. Strengthening media literacy among the public is therefore essential. This includes:\n\nAwareness campaigns about AI and how it works.\n\nTraining for journalists to critically assess AI-generated content.\n\nProviding fact-checking tools for citizens.\n\n\n\n3. Defining Ethical Standards\nResponsible use of AI requires ethical guidelines for political actors. The following principles should apply:\n\nNo use of AI to spread misinformation.\n\nNo manipulation of voters through deepfake technologies.\n\nCommitment to ethical standards to ensure fair political competition.\n\n\n\n4. Regulation and Oversight\nTo prevent misuse of AI in political campaigns, legal frameworks are needed. Possible measures include:\n\nIntroduction of legal requirements for the use of AI in election campaigns.\n\nSanctions for spreading manipulative content.\n\nIndependent oversight bodies to monitor AI-assisted campaign advertising.\n\n\n\n5. Responsibility of All Actors\nNot only political parties but also technology companies and the media bear responsibility for the use of AI. Key approaches include:\n\nPlatforms should develop mechanisms to label AI-generated content.\n\nMedia should critically examine whether content comes from reliable sources.\n\nCitizens should actively engage with the opportunities and risks of AI.\n\n\n\nConclusion\nThe responsible use of AI in political campaigns is a societal task. Transparency, ethics, regulation, and media literacy are crucial factors in protecting democracy while benefiting from technological opportunities.\nThe campAIgn Tracker supports citizens, journalists, and political actors in keeping track of AI use in campaigns.\nOnly if all actors act responsibly can AI be used as an opportunity – and not as a tool of manipulation."
+  },
+  {
+    "objectID": "datenschutz.html",
+    "href": "datenschutz.html",
+    "title": "Datenschutzerklärung",
+    "section": "",
+    "text": "Datenschutzerklärung\n\nAllgemeine Hinweise Diese Datenschutzerklärung informiert Sie darüber, welche personenbezogenen Daten beim Besuch dieser Website und bei der Nutzung von Daten aus der Meta Ad Library erhoben und verarbeitet werden. Der Schutz Ihrer Daten hat für uns höchste Priorität. Wir behandeln Ihre personenbezogenen Daten vertraulich und gemäß den gesetzlichen Datenschutzvorschriften (DSGVO, BDSG).\nVerantwortliche Stelle\n\nVerantwortlich für die Datenverarbeitung auf dieser Website ist:\nDr. Simon Kruschinski Watfordstraße 22 55122 Mainz Deutschland\n\nErhebung und Speicherung personenbezogener Daten\n\n\nBeim Besuch der Website\n\nBeim Besuch dieser Website werden automatisch folgende Daten in Logfiles gespeichert: IP-Adresse (anonymisiert) Datum und Uhrzeit der Anfrage Besuchte Seiten Verwendeter Browser und Betriebssystem Referrer-URL (die zuvor besuchte Seite) Diese Daten werden ausschließlich zur Bereitstellung der Website und zur Sicherheit des Systems genutzt.\n\nVerarbeitung von Daten aus der Meta Ad Library\n\nIm Rahmen unseres wissenschaftlichen Projekts analysieren wir Daten aus der Meta Ad Library. Diese Daten enthalten öffentliche Informationen über politische Werbeanzeigen und Kampagnen, die auf Meta-Plattformen (Facebook, Instagram) geschaltet wurden. Die Verarbeitung dieser Daten erfolgt ausschließlich zu Forschungszwecken. Dabei werden: Daten zur Werbefinanzierung, Zielgruppen und Inhalten politischer Anzeigen analysiert. Personenbezogene Daten nicht aktiv erhoben oder gespeichert, es sei denn, sie sind bereits öffentlich in der Meta Ad Library zugänglich.\nKeine individuellen Profile erstellt oder personenbezogene Informationen für automatisierte Entscheidungsprozesse genutzt.\nFalls Sie weitere Informationen zur Meta Ad Library und deren Datenschutzrichtlinien benötigen, besuchen Sie bitte die Datenschutzerklärung von Meta unter: 🔗 https://www.facebook.com/privacy/policy\n\nRechtsgrundlage der Verarbeitung Die Verarbeitung Ihrer Daten erfolgt gemäß: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse) zur Analyse von politischer Werbung. Art. 6 Abs. 1 lit. e DSGVO (öffentliches Interesse in der wissenschaftlichen Forschung).\nSpeicherdauer Forschungsdaten aus der Meta Ad Library werden nur für die Dauer des wissenschaftlichen Projekts gespeichert und anschließend anonymisiert oder gelöscht.\nWeitergabe von Daten Die erhobenen Daten werden nicht an Dritte weitergegeben. Forschungsergebnisse werden ausschließlich in anonymisierter oder aggregierter Form veröffentlicht.\nIhre Rechte als betroffene Person\n\nSie haben folgende Rechte gemäß DSGVO: Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO) Berichtigung unrichtiger Daten (Art. 16 DSGVO) Löschung („Recht auf Vergessenwerden“) (Art. 17 DSGVO) Einschränkung der Verarbeitung (Art. 18 DSGVO) Datenübertragbarkeit (Art. 20 DSGVO) Widerspruch gegen die Verarbeitung (Art. 21 DSGVO) Falls Sie Fragen zur Verarbeitung Ihrer Daten haben oder Ihre Rechte geltend machen möchten, kontaktieren Sie uns unter den oben genannten Kontaktdaten.\n\nÄnderungen dieser Datenschutzerklärung Diese Datenschutzerklärung kann aktualisiert werden, falls sich gesetzliche oder technische Rahmenbedingungen ändern. Bitte überprüfen Sie sie daher regelmäßig."
+  },
+  {
+    "objectID": "index.html#ai-transparantie",
+    "href": "index.html#ai-transparantie",
+    "title": "Overzicht van Inhoud",
+    "section": "AI-transparantie",
+    "text": "AI-transparantie\n\nPartijen & Politici\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAndere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHet kenbaar maken van AI-inhoud via disclaimers of platformlabels is cruciaal voor transparantie. Deze visualisatie laat zien hoe vaak AI-gegenereerde content mét of zonder vermelding is gepubliceerd, en of het label is aangebracht door de actor (in tekst of beeld) of door het platform."
+  },
+  {
+    "objectID": "index.html#ai-inhoudsanalyse",
+    "href": "index.html#ai-inhoudsanalyse",
+    "title": "Overzicht van Inhoud",
+    "section": "AI-inhoudsanalyse",
+    "text": "AI-inhoudsanalyse\n\nAllePartijen & PoliticiAndere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: het is mogelijk dat een bericht zowel negatieve als positieve inhoud bevat.\n\n\n\nAllePartijen & PoliticiAndere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkel bericht kan meerdere thema’s behandelen.\n\n\n\nAllePartijen & PoliticiAndere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkele afbeelding kan meerdere beeld-/videothema’s bevatten."
+  },
+  {
+    "objectID": "posts/anfang.html#background",
+    "href": "posts/anfang.html#background",
+    "title": "How it all Began: The CampAIgn Tracker for more Transparency in AI Use",
+    "section": "",
+    "text": "In the context of the super election year 2024, the dangers of AI use in political debate were repeatedly discussed in the media and public sphere.\nThe fear of fake news, disinformation, emotionalization, and manipulation is palpable and contributes to uncertainty – yet concrete evidence and a data basis on the extent to which AI is actually used in political campaigns on social media platforms is lacking.\nThis is where the CampAIgn Tracker comes in:\nIt provides a platform to trace which image and video messages from political actors in Germany on social media were in fact generated with the help of AI.\n\n“With the CampAIgn Tracker, we contribute significantly to the necessary transparency around the use of AI for generating visual content, helping people to discuss whether this use for dissemination on social media is legitimate or poses a potential risk.”\n— Dr. Simon Kruschinski"
+  },
+  {
+    "objectID": "posts/anfang.html#development-of-the-prototype",
+    "href": "posts/anfang.html#development-of-the-prototype",
+    "title": "How it all Began: The CampAIgn Tracker for more Transparency in AI Use",
+    "section": "",
+    "text": "At the Politechathon, a first prototype was created.\nThe dataset included paid Facebook and Instagram posts from all federal and state parties in 2024.\nThe first challenge was to find an AI model capable of identifying AI-generated content and test it with the dataset.\nThe CampAIgn Tracker relies on a two-step process:\n\nAutomated detection of AI-generated content.\n\nManual validation by experts to increase accuracy.\n\nThis ensures a very high level of accuracy in identifying AI-generated content – a key factor for the project’s acceptance."
+  },
+  {
+    "objectID": "posts/anfang.html#outlook",
+    "href": "posts/anfang.html#outlook",
+    "title": "How it all Began: The CampAIgn Tracker for more Transparency in AI Use",
+    "section": "",
+    "text": "On the website www.campaigntracker.de, in the future it will be possible to:\n\nView AI-generated content from over 3000 political actors in Germany\n\nAccess details on interactions, spending, and reach\n\nAnalyze individual AI messages with metadata"
+  },
+  {
+    "objectID": "posts/anfang.html#our-success-at-the-politechathon",
+    "href": "posts/anfang.html#our-success-at-the-politechathon",
+    "title": "How it all Began: The CampAIgn Tracker for more Transparency in AI Use",
+    "section": "",
+    "text": "On Sunday afternoon came the big surprise:\nAfter pitching the project, we won first place in the Media Literacy category – including prize money for the further development of the CampAIgn Tracker.\nWithin 48 hours, an idea became a ready-to-use platform for promoting transparency in election campaigns.\n\n“Conclusion: expand your network, develop an AI tool in the shortest possible time, and even win an award in the end – the Politechathon showed that with the right team spirit and some ‘nerd power’ (as the evening news so fondly put it), the unimaginable can happen in 48 hours.”\n— Miriam Runde\n\n\n\n\nCredits @ BW Stiftung / Viktor Heekeren"
+  },
+  {
+    "objectID": "info.html#method",
+    "href": "info.html#method",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "",
+    "text": "With the CampAIgn Tracker, we aim to help citizens and journalists understand where AI has been used and in what context. To achieve this, we have developed a two-stage process to reliably identify and code AI-generated images.\n\n\nWe capture all posts from over 4000 accounts of parties, leading candidates, political commentators and influencers. We consider party accounts at the national, provincial, and local levels.\nWe are currently tracking 15054 posts between 2025-09-17 and 2025-10-07.\n\n\n\n\n\n\n\nThe classification of accounts is based on the work of our research assistants as well as dedicated volunteer work of Who Targets Me, an organization committed to transparency in digital campaigning. They track the online advertising spending of over 100,000 advertisers from 650+ parties in over 50 countries.\n\n\n\nOur AI detection is a two-stage process that combines automatic classification using an AI model with manual annotation.\n1. Automatic Review: - All collected images and video stills are checked for AI generation using the AI detection model from SightEngine.\n2. Human Validation: - If the classification probability is above 0.1, trained research assisstants manually review the image. - This ensures that automatic AI classification is always validated by human expertise.\nAdditionally, for all identified AI posts, coders classify the following features:\n\nThe labeling of AI use\nThe actors in the image or video\nThe theme of the image or video\nThe actors in the entire post\nThe use of negativity, e.g., through attacks on parties\nThe use of acclaims, e.g., through references to a party’s successes\n\nThis comprehensive information is available on our platform campaigntracker.nl in simple visualizations.\nOur hope is that this enables citizens and journalists to learn how AI is being used in election campaigns and to hold a public debate about the use of AI in politics."
+  },
+  {
+    "objectID": "info.html#research-background",
+    "href": "info.html#research-background",
+    "title": "\nCampAIgn Tracker\n",
+    "section": "",
+    "text": "This project is part of the University of Amsterdam’s Research Priority Area in Artificial Intelligence & Politics (AI & Politics RPA).\nThe RPA addresses the guiding question: How is AI changing contemporary politics, and how is the development and application of AI affected by political dynamics?\nThe RPA embraces a broad definition of politics, spanning both formal and informal dynamics through which societal challenges and conflicts are processed. As AI diffuses through our lives, it reconfigures central aspects of politics and society—affecting political deliberation, public service delivery, and transforming political issues into technical problems to be solved through private means."
+  },
+  {
+    "objectID": "index.html#ki-content-by-party3",
+    "href": "index.html#ki-content-by-party3",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "Aandeel berichten met en zonder AI per partij",
+    "text": "Aandeel berichten met en zonder AI per partij\n\n\n\n\n\n\n\n\n\n\nDeze grafiek toont het relatieve aandeel AI-gegenereerde inhoud per partij. De partijen zijn gesorteerd naar het hoogste aandeel AI-inhoud.\n\nLet op: bij partijen met minder totale berichten (inclusief kleinere partijen) kan zelfs beperkt AI-gebruik leiden tot hoge relatieve percentages."
+  },
+  {
+    "objectID": "index.html#ai-transparantie-1",
+    "href": "index.html#ai-transparantie-1",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "AI-transparantie",
+    "text": "AI-transparantie\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpenbaarmaking van AI-inhoud via disclaimers van partijen of platformlabels is cruciaal voor transparantie. Deze visualisatie toont hoe vaak AI-gegenereerde inhoud werd gepubliceerd met/zonder disclosure en of het label door de partij of door Meta werd toegevoegd."
+  },
+  {
+    "objectID": "index.html#ai-inhoudsanalyse-1",
+    "href": "index.html#ai-inhoudsanalyse-1",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "AI-inhoudsanalyse",
+    "text": "AI-inhoudsanalyse\n\n\n\n\n\n\n\n\n\n\n\nLet op: het is mogelijk dat een bericht zowel negatieve als positieve inhoud bevat.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkel bericht kan meerdere thema’s behandelen.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkele afbeelding kan meerdere beeld-/videothema’s bevatten."
+  },
+  {
+    "objectID": "posts/nl.html",
+    "href": "posts/nl.html",
+    "title": "CampAIgn Tracker Expands to the Netherlands: Monitoring AI in the 2025 Dutch General Election",
+    "section": "",
+    "text": "Following successful deployment during Germany’s 2025 federal election, the CampAIgn Tracker launches in the Netherlands to monitor AI-generated content across political campaigns ahead of the October 29, 2025 Dutch general election. We joined forces with Stichting Post-X Society, Trollrensics, AI Forensics, and Justice for Prosperity within the Hybrid Election Integrity Observatory Consortium, a collaborative network formed specifically to monitor digital spaces during the Dutch election. This expansion represents a significant step in our mission to bring transparency to digital campaigning across Europe.\nAs the October 29 election approaches, the CampAIgn Tracker will provide ongoing monitoring of how political actors across the Dutch political spectrum employ AI-generated content. The platform will update regularly as new content appears, allowing journalists and researchers to track developments throughout the campaign period.\nWe invite journalists, researchers, and interested citizens to explore the tracker at https://www.campaigntracker.nl/ and to contact us with questions or observations about patterns they identify in the data.\n\n\nThe CampAIgn Tracker is a research tool designed to identify and analyze AI-generated images and videos published by political actors on social media platforms. In an era where synthetic media becomes increasingly sophisticated and accessible, political parties and campaigns can produce content that appears photographic or video-recorded but is entirely computer-generated. Our tracker systematically detects these materials and makes them publicly accessible.\nThe tool serves two primary audiences. Journalists can use the platform to investigate how political actors employ AI-generated content in their messaging strategies. Citizens gain access to information about which parties use synthetic media, how frequently they deploy it, and whether they properly label such content as AI-generated. This transparency becomes particularly important as AI tools lower the barrier to creating convincing but fabricated imagery.\nBeyond simple detection, the tracker analyzes patterns in AI usage. We examine which topics are most commonly illustrated with synthetic imagery, whether positive or negative messaging dominates AI-generated content, and how labeling practices vary across parties and platforms. These analyses reveal strategic choices in digital campaigning that would otherwise remain invisible to the public.\nAccess the Dutch version at: https://www.campaigntracker.nl/\n\n\n\nThe Netherlands deployment introduces several technical and analytical enhancements that substantially expand the tracker’s capabilities beyond the German version.\n\nPlatform expansion: The original German tracker monitored Facebook and Instagram, the two platforms that provide the most comprehensive political advertising transparency through Meta’s Ad Library. For the Dutch election, we expanded coverage to include TikTok and Twitter/X. This addition reflects the changing landscape of political communication, where younger voters increasingly consume political content on TikTok, and Twitter/X remains a central platform for political discourse despite recent changes to the platform. Monitoring four platforms provides a more complete picture of how AI-generated content circulates across the digital ecosystem.\nBroader actor coverage: The German version focused exclusively on political parties and their official candidates. However, political communication increasingly occurs through informal channels. For the Dutch tracker, we extended our monitoring to include political commentators who shape public opinion, influencers who bring political messages to younger demographics, fan pages that amplify party messaging, and meme pages that use humor and satire to engage with political topics. This expanded scope recognizes that modern campaigns operate through networks of affiliated actors rather than centralized party accounts alone.\nEnhanced AI Explorer: We completely redesigned the interface that allows users to browse detected AI-generated content. The new AI Explorer (https://www.campaigntracker.nl/explore/) provides multiple filtering dimensions. Users can filter by specific actors to see how individual parties or commentators use AI. Platform filters allow comparison of content strategies across Facebook, Instagram, TikTok, and Twitter/X. Topic filters enable investigation of which policy issues are most commonly illustrated with synthetic imagery. AI labeling filters distinguish between content that political actors properly marked as AI-generated and content that carries no such disclosure. Users can also search through the text accompanying posts to find specific terms or phrases.\nDeepfake detection: One of the most concerning applications of AI in political campaigns involves creating synthetic content that appears to show real persons or real events. The Dutch tracker integrates analysis to identify whether AI-generated images depict recognizable public figures, simulate actual locations, or recreate historical moments. This deepfake detection capability flags content that poses particular risks for misinformation, as viewers may believe they are seeing documentary evidence of something that never occurred.\nExtended image classification: Our content analysis framework now includes categories that proved important in preliminary research. The nostalgia/historic imagery category captures AI-generated content that evokes past eras or recreates historical scenes, often used to connect contemporary political messages with national memory or heritage. The humor/satire category identifies content that uses AI to create absurd or exaggerated scenarios for comedic or critical effect. These categories help distinguish between AI applications intended to deceive and those used transparently for creative communication.\nThe expansion to the Netherlands represents a test case for scaling the tracker to additional countries. The technical and methodological enhancements developed for the Dutch context create a foundation for potential deployment in future European elections. Each implementation generates insights that improve our detection methods and analytical frameworks.\n\n\n\nThis expansion occurs through the Hybrid Election Integrity Observatory (HEIO) Consortium, a collaborative network formed specifically to monitor the Dutch election. The consortium brings together organizations with complementary expertise in different aspects of digital campaigning and election integrity.\n\n\nTwo institutions provide financial support that made this expansion possible.\n\n\n\n\nThe Research Priority Area “AI & Politics” at the Amsterdam School of Communication Research awarded a seed grant for this project. The RPA represents a five-year initiative examining how AI reconfigures political dynamics, with annual funding of €250,000 supporting interdisciplinary research. The RPA addresses four key dimensions: investigating AI’s impact on politics, analyzing the politics of AI governance, examining how AI systems perform traditional administrative functions, and understanding when and why AI use becomes politicized. Our project aligns with the RPA’s mission by generating empirical evidence about how AI transforms political communication during elections. The seed grant specifically aims to integrate research across communication science, sociology, political science, and geography that currently remains dispersed across departmental boundaries. By bringing together scholars from these different disciplines, the funding program enables comprehensive analysis of the interconnections between different aspects of the AI-politics relationship.\n\n\n\n\n\nThe second funding source comes from SIDN Fund, which supports projects contributing to a strong internet, empowered internet users, or research on the internet’s significance for public values. SIDN Fund operates in three areas: strengthening the internet as an open, free, and trusted infrastructure; empowering adults, young people, and children with skills for safe and confident internet use; and promoting public values while counteracting negative internet effects. The fund supports initiatives addressing cybersecurity, data autonomy, disinformation, and digital accessibility within Dutch society. Our project fits within SIDN Fund’s mission by addressing disinformation risks and promoting digital literacy regarding AI-generated content. The fund specifically prioritizes projects with impact on Dutch society, making the Dutch election tracker a natural fit for their support."
+  },
+  {
+    "objectID": "posts/nl.html#what-is-the-campaign-tracker",
+    "href": "posts/nl.html#what-is-the-campaign-tracker",
+    "title": "CampAIgn Tracker Expands to the Netherlands: Monitoring AI in the 2025 Dutch General Election",
+    "section": "",
+    "text": "The CampAIgn Tracker is a research tool designed to identify and analyze AI-generated images and videos published by political actors on social media platforms. In an era where synthetic media becomes increasingly sophisticated and accessible, political parties and campaigns can produce content that appears photographic or video-recorded but is entirely computer-generated. Our tracker systematically detects these materials and makes them publicly accessible.\nThe tool serves two primary audiences. Journalists can use the platform to investigate how political actors employ AI-generated content in their messaging strategies. Citizens gain access to information about which parties use synthetic media, how frequently they deploy it, and whether they properly label such content as AI-generated. This transparency becomes particularly important as AI tools lower the barrier to creating convincing but fabricated imagery.\nBeyond simple detection, the tracker analyzes patterns in AI usage. We examine which topics are most commonly illustrated with synthetic imagery, whether positive or negative messaging dominates AI-generated content, and how labeling practices vary across parties and platforms. These analyses reveal strategic choices in digital campaigning that would otherwise remain invisible to the public.\nAccess the Dutch version at: https://www.campaigntracker.nl/"
+  },
+  {
+    "objectID": "posts/nl.html#new-features-for-the-dutch-election",
+    "href": "posts/nl.html#new-features-for-the-dutch-election",
+    "title": "CampAIgn Tracker Expands to the Netherlands: Monitoring AI in the 2025 Dutch General Election",
+    "section": "",
+    "text": "The Netherlands deployment introduces several technical and analytical enhancements that substantially expand the tracker’s capabilities beyond the German version.\n\nPlatform expansion: The original German tracker monitored Facebook and Instagram, the two platforms that provide the most comprehensive political advertising transparency through Meta’s Ad Library. For the Dutch election, we expanded coverage to include TikTok and Twitter/X. This addition reflects the changing landscape of political communication, where younger voters increasingly consume political content on TikTok, and Twitter/X remains a central platform for political discourse despite recent changes to the platform. Monitoring four platforms provides a more complete picture of how AI-generated content circulates across the digital ecosystem.\nBroader actor coverage: The German version focused exclusively on political parties and their official candidates. However, political communication increasingly occurs through informal channels. For the Dutch tracker, we extended our monitoring to include political commentators who shape public opinion, influencers who bring political messages to younger demographics, fan pages that amplify party messaging, and meme pages that use humor and satire to engage with political topics. This expanded scope recognizes that modern campaigns operate through networks of affiliated actors rather than centralized party accounts alone.\nEnhanced AI Explorer: We completely redesigned the interface that allows users to browse detected AI-generated content. The new AI Explorer (https://www.campaigntracker.nl/explore/) provides multiple filtering dimensions. Users can filter by specific actors to see how individual parties or commentators use AI. Platform filters allow comparison of content strategies across Facebook, Instagram, TikTok, and Twitter/X. Topic filters enable investigation of which policy issues are most commonly illustrated with synthetic imagery. AI labeling filters distinguish between content that political actors properly marked as AI-generated and content that carries no such disclosure. Users can also search through the text accompanying posts to find specific terms or phrases.\nDeepfake detection: One of the most concerning applications of AI in political campaigns involves creating synthetic content that appears to show real persons or real events. The Dutch tracker integrates analysis to identify whether AI-generated images depict recognizable public figures, simulate actual locations, or recreate historical moments. This deepfake detection capability flags content that poses particular risks for misinformation, as viewers may believe they are seeing documentary evidence of something that never occurred.\nExtended image classification: Our content analysis framework now includes categories that proved important in preliminary research. The nostalgia/historic imagery category captures AI-generated content that evokes past eras or recreates historical scenes, often used to connect contemporary political messages with national memory or heritage. The humor/satire category identifies content that uses AI to create absurd or exaggerated scenarios for comedic or critical effect. These categories help distinguish between AI applications intended to deceive and those used transparently for creative communication.\nThe expansion to the Netherlands represents a test case for scaling the tracker to additional countries. The technical and methodological enhancements developed for the Dutch context create a foundation for potential deployment in future European elections. Each implementation generates insights that improve our detection methods and analytical frameworks."
+  },
+  {
+    "objectID": "posts/nl.html#partnership-and-funding",
+    "href": "posts/nl.html#partnership-and-funding",
+    "title": "CampAIgn Tracker Expands to the Netherlands: Monitoring AI in the 2025 Dutch General Election",
+    "section": "",
+    "text": "This expansion occurs through the Hybrid Election Integrity Observatory (HEIO) Consortium, a collaborative network formed specifically to monitor the Dutch election. The consortium brings together organizations with complementary expertise in different aspects of digital campaigning and election integrity.\n\n\nTwo institutions provide financial support that made this expansion possible.\n\n\n\n\nThe Research Priority Area “AI & Politics” at the Amsterdam School of Communication Research awarded a seed grant for this project. The RPA represents a five-year initiative examining how AI reconfigures political dynamics, with annual funding of €250,000 supporting interdisciplinary research. The RPA addresses four key dimensions: investigating AI’s impact on politics, analyzing the politics of AI governance, examining how AI systems perform traditional administrative functions, and understanding when and why AI use becomes politicized. Our project aligns with the RPA’s mission by generating empirical evidence about how AI transforms political communication during elections. The seed grant specifically aims to integrate research across communication science, sociology, political science, and geography that currently remains dispersed across departmental boundaries. By bringing together scholars from these different disciplines, the funding program enables comprehensive analysis of the interconnections between different aspects of the AI-politics relationship.\n\n\n\n\n\nThe second funding source comes from SIDN Fund, which supports projects contributing to a strong internet, empowered internet users, or research on the internet’s significance for public values. SIDN Fund operates in three areas: strengthening the internet as an open, free, and trusted infrastructure; empowering adults, young people, and children with skills for safe and confident internet use; and promoting public values while counteracting negative internet effects. The fund supports initiatives addressing cybersecurity, data autonomy, disinformation, and digital accessibility within Dutch society. Our project fits within SIDN Fund’s mission by addressing disinformation risks and promoting digital literacy regarding AI-generated content. The fund specifically prioritizes projects with impact on Dutch society, making the Dutch election tracker a natural fit for their support."
+  },
+  {
+    "objectID": "posts/monitor.html",
+    "href": "posts/monitor.html",
+    "title": "Findings from the AlgoSoc AI Opinion Monitor",
+    "section": "",
+    "text": "How Confident are people in the Netherlands in their ability to detect AI?\n\n\n\n\n\n\nWhile the CampAIgn Tracker sheds light on what kind of AI-generated images and videos circulate ahead of the 2025 Parliamentary election, the AI Opinion Monitor (developed by the AlgoSoc Consortium) reveals how citizens themselves experience and understand this shift. The monitor adds important context to the CampAIgn Tracker by showing how people in the Netherlands perceive and navigate the growing presence of AI in public life. For the past two years, it has followed among other things, changes in how often people encounter AI-generated content, how confident they feel in recognizing it, and who they think should be held responsible for it.\n\n\n\n\n\n\nFigure 1: Exposure to AI-generated content (March 2024–May 2025)\n\nOur most recent findings show a sharp rise in exposure to AI-generated video—technology that was until recently niche but is now widely accessible, for example via OpenAI’s Sora text-to-video model. In our AI Opinion Monitor we find that the share of people who say they often see AI-generated videos nearly doubled, from 25% in March 2024 to 44% in May 2025 (Figure 1). For AI-generated images, the increase is even sharper, from 24% to 53%. Encounters are most common among younger citizens: 76% of those aged 16–29 report frequently seeing AI-generated content. Political orientation also plays a role, with 61% of left-leaning respondents versus 53% of right-leaning respondents saying they see such material often.\n\n\n\n\n\n\nFigure 2: People’s confidence in themselves to detect AI-generated content (March 2024–May 2025).\n\nAs shown in Figure 2, while exposure has grown, people’s confidence in spotting AI content has not collapsed in the way many would have feared, in fact the opposite seems to be the case: people have increasingly become more confident in their ability to detect AI-generated content. In 2024, a large majority of 68% said they were not confident in their ability to detect AI. By mid-2025, that figure dropped to 52%.\n\n\n\n\n\n\nFigure 3: Confidence in detecting AI-generated content (May 2025).\n\nStill, skepticism about others’ ability remains widespread. Journalists are the most trusted group to recognize AI content, but even here, only 27% of respondents express confidence (Figure 3). Trust is lowest in the general public: 76% say they don’t trust ordinary people to detect AI—followed by friends and family (69%).\n\n\n\n\n\n\nFigure 4: Who is responsible for harmful AI content? (May 2025).\n\nAnd when it comes to accountability (Figure 4), most Dutch citizens point the finger at those who create the content: 74% believe the individual who made the AI-generated material should be held responsible. Still, 67% also blame social media platforms for allowing such content to spread, and 59% say the government bears some responsibility for not preventing or regulating it.\nCheck out and follow the Dutch AI Opinion Monitor to play around with the data and get more in-depth insights yourself!\nWritten by Ernesto de León, Postdoctoral Researcher at University of Amsterdam (AlgoSoc Consortium)"
+  },
+  {
+    "objectID": "posts/groene.html",
+    "href": "posts/groene.html",
+    "title": "The Prompts behind the Propaganda",
+    "section": "",
+    "text": "Investigative journalism by De Groene Amsterdammer has documented coordinated use of photorealistic AI imagery in Dutch political messaging, tracing the campaign to political candidates and members of parliament. The investigation is particularly valuable because it recovers the actual prompts used to generate these images, offering rare insight into how synthetic media is engineered for political messaging. With support from the CampAIgn Tracker, we provided additional evidence on where this content travels and how it is amplified.\n\n\n\n\n\n\nPrompting revealed by the Groene Amsterdammer in their article. Translated by CampAIgn Tracker.\n\nOur research team identified the main PVV-aligned page responsible for this content (GeenAangifte) as one of the most active generators of AI campaign material we have tracked across platforms. On Facebook, the page consistently ranks among the top most engaged accounts, with engagement comparable to many national politician and party pages and just shy of the total engagement on Geert Wilders’s page.\n\n\n\n\n\n\nPages with most total engagement on Facebook as monitored by the CampAIgn Tracker.\n\nIndeed, what is notable is not just the volume but the distribution as well: images likely originating from this source appear across multiple other far-right-leaning accounts on Facebook, Instagram, and TikTok. This reflects both the success of AI-generated political content at scale and the strong networking effects within the far-right online sphere.\n\n\n\n\n\n\nPage for Anti-Immigration Protest in Amsterdam rehashing AI-generated Imagery\n\n\n\n\n\n\n\n\nOther Party Fan Accounts also like to use imagery from the PVV-aligned Page and brand it with their own logos\n\nAmong 4,000 accounts we monitor across platforms, PVV-affiliated pages stand out in their systematic use of photorealistic AI imagery as campaign material. Their scale and reach is unmatched by (mainstream) parties and mostly just recycled and rebranded by other far-right actors.\n\nRead the full investigation: De Groene Amsterdammer - “Maak haar blond, onschuldig en knap”"
+  },
+  {
+    "objectID": "index.html#rel-ai-by-party",
+    "href": "index.html#rel-ai-by-party",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": " Aandeel berichten met en zonder AI",
+    "text": "Aandeel berichten met en zonder AI\nDeze grafiek toont het relatieve aandeel AI-gegenereerde inhoud per partij. De partijen zijn gesorteerd naar het hoogste aandeel AI-inhoud.\n\n\n\n\n\n\n\n\n\n\nLet op: bij actoren met minder totale berichten (inclusief kleinere partijen) kan zelfs beperkt AI-gebruik leiden tot hoge relatieve percentages."
+  },
+  {
+    "objectID": "oldindex.html",
+    "href": "oldindex.html",
+    "title": "Overzicht van Inhoud",
+    "section": "",
+    "text": "In de CampAIgn Tracker analyseren we alle berichten op Facebook, Instagram, TikTok en X van partijen en kandidaten en geselecteerde influencers en commentatoren voor de Tweede Kamerverkiezingen van 2025.\nDe tracking monitor laat zien hoeveel AI-gegenereerde berichten door welke partijen worden verspreid. Daarnaast tonen we of AI-labels worden gebruikt, welke actoren in beeld komen, welke thema’s aan bod komen en of de toon positief of negatief is.\nOp deze pagina vindt u analyses van AI-gegenereerde campagnes voor de Tweede Kamerverkiezingen van 2025. Een doorzoekbaar overzicht van afzonderlijke AI-gegenereerde afbeeldingen en video’s is beschikbaar in de AI Explorer."
+  },
+  {
+    "objectID": "oldindex.html#ki-content-by-party2",
+    "href": "oldindex.html#ki-content-by-party2",
+    "title": "Overzicht van Inhoud",
+    "section": "Aandeel berichten met en zonder AI",
+    "text": "Aandeel berichten met en zonder AI\nDeze grafiek toont het relatieve aandeel AI-gegenereerde inhoud per partij. De partijen zijn gesorteerd naar het hoogste aandeel AI-inhoud.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: bij actoren met minder totale berichten (inclusief kleinere partijen) kan zelfs beperkt AI-gebruik leiden tot hoge relatieve percentages."
+  },
+  {
+    "objectID": "oldindex.html#ai-transparantie",
+    "href": "oldindex.html#ai-transparantie",
+    "title": "Overzicht van Inhoud",
+    "section": "AI-transparantie",
+    "text": "AI-transparantie\n\n\nPartijen & Politici\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAndere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHet kenbaar maken van AI-inhoud via disclaimers of platformlabels is cruciaal voor transparantie. Deze visualisatie laat zien hoe vaak AI-gegenereerde content mét of zonder vermelding is gepubliceerd, en of het label is aangebracht door de actor (in tekst of beeld) of door het platform."
+  },
+  {
+    "objectID": "oldindex.html#medienformatte",
+    "href": "oldindex.html#medienformatte",
+    "title": "Overzicht van Inhoud",
+    "section": "AI-mediavormen",
+    "text": "AI-mediavormen\n\nPartijen & PoliticiAndere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeze grafiek toont het aandeel afbeeldingen en video’s in AI-gegenereerde berichten, en of ze er echt uitzien (camera-achtig of deepfakes) of tekeningen/grafisch zijn.\n\n\nPartijen & PoliticiAndere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeze grafiek toont het aandeel afbeeldingen en video’s in AI-gegenereerde berichten, en of ze er echt uitzien (camera-achtig of deepfakes) of tekeningen/grafisch zijn."
+  },
+  {
+    "objectID": "oldindex.html#ai-inhoudsanalyse",
+    "href": "oldindex.html#ai-inhoudsanalyse",
+    "title": "Overzicht van Inhoud",
+    "section": "AI-inhoudsanalyse",
+    "text": "AI-inhoudsanalyse\n\nPartijen & PoliticiAndere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: het is mogelijk dat een bericht zowel negatieve als positieve inhoud bevat.\n\n\n\nPartijen & PoliticiAndere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkel bericht kan meerdere thema’s behandelen.\n\n\n\nPartijen & PoliticiAndere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkele afbeelding kan meerdere beeld-/videothema’s bevatten."
+  },
+  {
+    "objectID": "oldindex.html#personen",
+    "href": "oldindex.html#personen",
+    "title": "Overzicht van Inhoud",
+    "section": "Afgebeelde personen in AI-inhoud",
+    "text": "Afgebeelde personen in AI-inhoud\n\nPartijen & PoliticiAndere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeze visualisatie toont welke persoon(groepen) in hoeveel van de AI-gegenereerde afbeeldingen/video’s worden afgebeeld.\n\nLet op: een enkele afbeelding kan meerdere personen bevatten."
+  },
+  {
+    "objectID": "oldindex.html#ai-over-time",
+    "href": "oldindex.html#ai-over-time",
+    "title": "Overzicht van Inhoud",
+    "section": "AI-inhoud door de tijd heen",
+    "text": "AI-inhoud door de tijd heen\n\n\n\n\n\n\n\n\n\n\n\n\nDeze grafiek toont het gebruik van AI versus niet-AI-inhoud door de tijd heen."
+  },
+  {
+    "objectID": "index.html#overzicht-van-inhoud",
+    "href": "index.html#overzicht-van-inhoud",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": "Overzicht van Inhoud",
+    "text": "Overzicht van Inhoud\nHier tonen we de hoeveelheid door ons geïdentificeerde AI-inhoud, uitgesplitst naar platform, actortype en (politieke) affiliatie of steunrichting.\nWe onderscheiden accounts die officieel verbonden zijn aan partijen en politici van andere actoren zonder officiële partijband, zoals commentatoren, influencers, fanpagina’s en memepagina’s.\n\n Per Partij / Actor Per Platform Per Actortype\n\n\n\n Alle Partijen & Politici Andere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeze visualisatie laat zien hoeveel AI-gegenereerde inhoud elke partij, politicus of andere actor heeft gepubliceerd. De veldgrootte komt overeen met het aantal geïdentificeerde berichten. Grotere velden duiden op een hoger gebruik van AI door de betreffende partij/actor.\n\n\n\n\n Alle Partijen & Politici Andere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeze visualisatie laat zien hoeveel AI-gegenereerde inhoud we hebben gevonden per actortype (bijv. partijen, politici, overige actoren). De veldgrootte komt overeen met het aantal geïdentificeerde berichten. Grotere velden duiden op meer AI-gegenereerde berichten van dat actortype."
+  },
+  {
+    "objectID": "index.html#iconify-pheye-slash-size1.5em-ai-transparantie",
+    "href": "index.html#iconify-pheye-slash-size1.5em-ai-transparantie",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": " AI-transparantie",
+    "text": "AI-transparantie\n\n Partijen & Politici\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Andere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHet kenbaar maken van AI-inhoud via disclaimers of platformlabels is cruciaal voor transparantie. Deze visualisatie laat zien hoe vaak AI-gegenereerde content mét of zonder vermelding is gepubliceerd, en of het label is aangebracht door de actor (in tekst of beeld) of door het platform."
+  },
+  {
+    "objectID": "index.html#iconify-phnewspaper-clipping-size1.5em-ai-inhoudsanalyse",
+    "href": "index.html#iconify-phnewspaper-clipping-size1.5em-ai-inhoudsanalyse",
+    "title": "&nbsp;&nbsp;Dashboard",
+    "section": " AI-inhoudsanalyse",
+    "text": "AI-inhoudsanalyse\n\n Alle Partijen & Politici Andere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: het is mogelijk dat een bericht zowel negatieve als positieve inhoud bevat.\n\n\n Alle Partijen & Politici Andere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkel bericht kan meerdere thema’s behandelen.\n\n\n Alle Partijen & Politici Andere Actoren\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet op: een enkele afbeelding kan meerdere beeld-/videothema’s bevatten."
+  }
+]

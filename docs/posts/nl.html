@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Simon Kruschinski">
+<meta name="dcterms.date" content="2025-10-09">
+<meta name="description" content="The CampAIgn Tracker creates transparency around the use of AI in political campaigns on social media. Track the influence of AI-generated content in election campaigns.">
+
+<title>&nbsp;&nbsp;Dashboard - CampAIgn Tracker Expands to the Netherlands: Monitoring AI in the 2025 Dutch General Election</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../RoundLogoSchriftzug_blue.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async="" src="https://plausible.io/js/pa-rqPvCO0myNv3ooL2Rc_5o.js"></script>
+<script>
+window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+plausible.init()
+</script>
+<script data-goatcounter="https://favstats.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../LogoSchriftzug.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">&nbsp;&nbsp;Dashboard</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text"><iconify-icon inline="" icon="ph:star-four-light" aria-label="Icon star-four-light from ph Iconify.design set." title="Icon star-four-light from ph Iconify.design set."></iconify-icon> AI Tracker</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://favstats.github.io/campaigntrackernl/explore" rel="" target="">
+ <span class="menu-text"><iconify-icon inline="" icon="ph:binoculars-light" aria-label="Icon binoculars-light from ph Iconify.design set." title="Icon binoculars-light from ph Iconify.design set."></iconify-icon> AI Explorer</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../blog.html" rel="" target="">
+ <span class="menu-text"><iconify-icon inline="" icon="ph:newspaper-light" aria-label="Icon newspaper-light from ph Iconify.design set." title="Icon newspaper-light from ph Iconify.design set."></iconify-icon> Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../info.html" rel="" target="">
+ <span class="menu-text"><iconify-icon inline="" icon="ph:info-light" aria-label="Icon info-light from ph Iconify.design set." title="Icon info-light from ph Iconify.design set."></iconify-icon> Info</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://favstats.github.io/nl25/" rel="" target="">
+ <span class="menu-text"><iconify-icon inline="" icon="material-symbols:target" aria-label="Icon target from material-symbols Iconify.design set." title="Icon target from material-symbols Iconify.design set."></iconify-icon> Targeting Tracker</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.campaigntracker.nl/en" rel="" target="">
+ <span class="menu-text">en <iconify-icon inline="" icon="emojione:flag-for-united-kingdom" aria-label="Icon flag-for-united-kingdom from emojione Iconify.design set." title="Icon flag-for-united-kingdom from emojione Iconify.design set."></iconify-icon></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#what-is-the-campaign-tracker" id="toc-what-is-the-campaign-tracker" class="nav-link active" data-scroll-target="#what-is-the-campaign-tracker">What is the CampAIgn Tracker?</a></li>
+  <li><a href="#new-features-for-the-dutch-election" id="toc-new-features-for-the-dutch-election" class="nav-link" data-scroll-target="#new-features-for-the-dutch-election">New Features for the Dutch Election</a></li>
+  <li><a href="#partnership-and-funding" id="toc-partnership-and-funding" class="nav-link" data-scroll-target="#partnership-and-funding">Partnership and Funding</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">CampAIgn Tracker Expands to the Netherlands: Monitoring AI in the 2025 Dutch General Election</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Simon Kruschinski </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 9, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<!-- Custom CSS -->
+<style>
+.blog-post-content {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+.blog-post-content h1, .blog-post-content h2, .blog-post-content h3 {
+  text-align: center;
+  color: #004080;
+  margin-bottom: 0.5em;
+}
+.blog-post-content p {
+  text-align: justify;
+  margin: 1em 0;
+}
+.blog-post-content img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.blog-post-content blockquote {
+  font-style: italic;
+  background: #f0f8ff;
+  padding: 15px;
+  border-left: 4px solid #004080;
+  margin: 20px 0;
+}
+.blog-post-content .callout {
+  background-color: #e7f3fe;
+  padding: 15px;
+  border-left: 5px solid #2196F3;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+.blog-post-content .credit {
+  font-size: 0.9em;
+  color: #555;
+  text-align: center;
+  margin-top: -10px;
+}
+</style>
+
+<div class="blog-post-content">
+<p>Following successful deployment during Germany’s 2025 federal election, the <a href="https://www.campaigntracker.de/">CampAIgn Tracker</a> launches in the Netherlands to monitor AI-generated content across political campaigns ahead of the October 29, 2025 Dutch general election. We joined forces with <a href="https://postxsociety.nl/">Stichting Post-X Society</a>, <a href="https://trollrensics.com/">Trollrensics</a>, <a href="https://aiforensics.org/">AI Forensics</a>, and <a href="https://justiceforprosperity.org/">Justice for Prosperity</a> within the Hybrid Election Integrity Observatory Consortium, a collaborative network formed specifically to monitor digital spaces during the Dutch election. This expansion represents a significant step in our mission to bring transparency to digital campaigning across Europe.</p>
+<p>As the October 29 election approaches, the CampAIgn Tracker will provide ongoing monitoring of how political actors across the Dutch political spectrum employ AI-generated content. The platform will update regularly as new content appears, allowing journalists and researchers to track developments throughout the campaign period.</p>
+<p>We invite journalists, researchers, and interested citizens to explore the tracker at <a href="https://www.campaigntracker.nl/">https://www.campaigntracker.nl/</a> and to contact us with questions or observations about patterns they identify in the data.</p>
+<section id="what-is-the-campaign-tracker" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-campaign-tracker">What is the CampAIgn Tracker?</h2>
+<p>The CampAIgn Tracker is a research tool designed to identify and analyze AI-generated images and videos published by political actors on social media platforms. In an era where synthetic media becomes increasingly sophisticated and accessible, political parties and campaigns can produce content that appears photographic or video-recorded but is entirely computer-generated. Our tracker systematically detects these materials and makes them publicly accessible.</p>
+<p>The tool serves two primary audiences. Journalists can use the platform to investigate how political actors employ AI-generated content in their messaging strategies. Citizens gain access to information about which parties use synthetic media, how frequently they deploy it, and whether they properly label such content as AI-generated. This transparency becomes particularly important as AI tools lower the barrier to creating convincing but fabricated imagery.</p>
+<p>Beyond simple detection, the tracker analyzes patterns in AI usage. We examine which topics are most commonly illustrated with synthetic imagery, whether positive or negative messaging dominates AI-generated content, and how labeling practices vary across parties and platforms. These analyses reveal strategic choices in digital campaigning that would otherwise remain invisible to the public.</p>
+<p>Access the Dutch version at: <a href="https://www.campaigntracker.nl/">https://www.campaigntracker.nl/</a></p>
+</section>
+<section id="new-features-for-the-dutch-election" class="level2">
+<h2 class="anchored" data-anchor-id="new-features-for-the-dutch-election">New Features for the Dutch Election</h2>
+<p>The Netherlands deployment introduces several technical and analytical enhancements that substantially expand the tracker’s capabilities beyond the German version.</p>
+<p><img src="CampaignTrackerFeaturesEN.png" class="img-fluid"></p>
+<p><strong>Platform expansion:</strong> The original German tracker monitored Facebook and Instagram, the two platforms that provide the most comprehensive political advertising transparency through Meta’s Ad Library. For the Dutch election, we expanded coverage to include TikTok and Twitter/X. This addition reflects the changing landscape of political communication, where younger voters increasingly consume political content on TikTok, and Twitter/X remains a central platform for political discourse despite recent changes to the platform. Monitoring four platforms provides a more complete picture of how AI-generated content circulates across the digital ecosystem.</p>
+<p><strong>Broader actor coverage:</strong> The German version focused exclusively on political parties and their official candidates. However, political communication increasingly occurs through informal channels. For the Dutch tracker, we extended our monitoring to include political commentators who shape public opinion, influencers who bring political messages to younger demographics, fan pages that amplify party messaging, and meme pages that use humor and satire to engage with political topics. This expanded scope recognizes that modern campaigns operate through networks of affiliated actors rather than centralized party accounts alone.</p>
+<p><strong>Enhanced AI Explorer:</strong> We completely redesigned the interface that allows users to browse detected AI-generated content. The new AI Explorer (<a href="https://www.campaigntracker.nl/explore/">https://www.campaigntracker.nl/explore/</a>) provides multiple filtering dimensions. Users can filter by specific actors to see how individual parties or commentators use AI. Platform filters allow comparison of content strategies across Facebook, Instagram, TikTok, and Twitter/X. Topic filters enable investigation of which policy issues are most commonly illustrated with synthetic imagery. AI labeling filters distinguish between content that political actors properly marked as AI-generated and content that carries no such disclosure. Users can also search through the text accompanying posts to find specific terms or phrases.</p>
+<p><strong>Deepfake detection:</strong> One of the most concerning applications of AI in political campaigns involves creating synthetic content that appears to show real persons or real events. The Dutch tracker integrates analysis to identify whether AI-generated images depict recognizable public figures, simulate actual locations, or recreate historical moments. This deepfake detection capability flags content that poses particular risks for misinformation, as viewers may believe they are seeing documentary evidence of something that never occurred.</p>
+<p><strong>Extended image classification:</strong> Our content analysis framework now includes categories that proved important in preliminary research. The nostalgia/historic imagery category captures AI-generated content that evokes past eras or recreates historical scenes, often used to connect contemporary political messages with national memory or heritage. The humor/satire category identifies content that uses AI to create absurd or exaggerated scenarios for comedic or critical effect. These categories help distinguish between AI applications intended to deceive and those used transparently for creative communication.</p>
+<p>The expansion to the Netherlands represents a test case for scaling the tracker to additional countries. The technical and methodological enhancements developed for the Dutch context create a foundation for potential deployment in future European elections. Each implementation generates insights that improve our detection methods and analytical frameworks.</p>
+</section>
+<section id="partnership-and-funding" class="level2">
+<h2 class="anchored" data-anchor-id="partnership-and-funding">Partnership and Funding</h2>
+<p>This expansion occurs through the Hybrid Election Integrity Observatory (HEIO) Consortium, a collaborative network formed specifically to monitor the Dutch election. The consortium brings together organizations with complementary expertise in different aspects of digital campaigning and election integrity.</p>
+<section id="funding-sources" class="level3">
+<h3 class="anchored" data-anchor-id="funding-sources">Funding sources:</h3>
+<p>Two institutions provide financial support that made this expansion possible.</p>
+</section>
+<section id="university-of-amsterdam" class="level3">
+<h3 class="anchored" data-anchor-id="university-of-amsterdam">University of Amsterdam:</h3>
+<blockquote class="blockquote">
+<p>The Research Priority Area “<a href="https://aissr.uva.nl/our-research/artificial-intelligence-politics.html">AI &amp; Politics</a>” at the Amsterdam School of Communication Research awarded a seed grant for this project. The RPA represents a five-year initiative examining how AI reconfigures political dynamics, with annual funding of €250,000 supporting interdisciplinary research. The RPA addresses four key dimensions: investigating AI’s impact on politics, analyzing the politics of AI governance, examining how AI systems perform traditional administrative functions, and understanding when and why AI use becomes politicized. Our project aligns with the RPA’s mission by generating empirical evidence about how AI transforms political communication during elections. The seed grant specifically aims to integrate research across communication science, sociology, political science, and geography that currently remains dispersed across departmental boundaries. By bringing together scholars from these different disciplines, the funding program enables comprehensive analysis of the interconnections between different aspects of the AI-politics relationship.</p>
+</blockquote>
+</section>
+<section id="sidn-fund" class="level3">
+<h3 class="anchored" data-anchor-id="sidn-fund">SIDN Fund:</h3>
+<blockquote class="blockquote">
+<p>The second funding source comes from <a href="https://www.sidnfonds.nl/">SIDN Fund</a>, which supports projects contributing to a strong internet, empowered internet users, or research on the internet’s significance for public values. SIDN Fund operates in three areas: strengthening the internet as an open, free, and trusted infrastructure; empowering adults, young people, and children with skills for safe and confident internet use; and promoting public values while counteracting negative internet effects. The fund supports initiatives addressing cybersecurity, data autonomy, disinformation, and digital accessibility within Dutch society. Our project fits within SIDN Fund’s mission by addressing disinformation risks and promoting digital literacy regarding AI-generated content. The fund specifically prioritizes projects with impact on Dutch society, making the Dutch election tracker a natural fit for their support.</p>
+</blockquote>
+</section></section></div>
+
+
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://favstats.github.io/campaigntrackernl/impressum.html">Copyright 2025, CampAIgn Tracker (Click for Imprint)</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://favstats.github.io/campaigntrackernl/datenschutz.html">Data Privacy Declaration</a>
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://aissr.uva.nl/content/news/2025/01/call-for-ai--politics-seed-grants.html">RPA Grants (UvA) &amp; SIDN Fonds</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
