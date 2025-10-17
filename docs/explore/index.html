@@ -184,53 +184,269 @@ Post text content will appear here…
 </div>
 </div>
 </div>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-document.querySelectorAll("a[href='https://favstats.github.io/nl25/']").forEach(function(link) {
-link.addEventListener("click", function(event) {
-event.preventDefault();
-window.open(link.href, "_blank");
-});
-});
-});
+<!-- Gallery Modal -->
+<div id="gallery-modal" class="gallery-modal">
+<div class="gallery-modal-content">
+<div class="gallery-modal-header">
+<h2 class="gallery-modal-title anchored">
+<iconify-icon icon="mdi:robot" width="24" height="24" style="color: #3b82f6;"></iconify-icon> AI Content Gallery
+</h2>
+<p><span class="gallery-close" onclick="closeGalleryModal()">×</span></p>
+</div>
+<div class="gallery-modal-body">
+<div class="gallery-search-container">
+<p><iconify-icon icon="mdi:magnify" width="16" height="16"></iconify-icon> <input type="text" id="gallery-search" placeholder="Search gallery posts..." class="gallery-search-input"></p>
+</div>
+<div id="ai-gallery-container" class="ai-gallery-container">
 
-window.onclick = function(event) {
-const modal = document.getElementById('imageModal');
-if (event.target === modal) {
-closeImageModal();
-}
+</div>
+</div>
+</div>
+</div>
+<style>
+/* CRITICAL: Force modals above everything */
+.modal, .gallery-modal {
+display: none;
+position: fixed !important;
+z-index: 2147483647 !important;
+left: 0 !important;
+top: 0 !important;
+width: 100% !important;
+height: 100% !important;
+background-color: rgba(0,0,0,0.8) !important;
+backdrop-filter: blur(5px);
+margin: 0 !important;
+padding: 0 !important;
+transform: none !important;
 }
 
-document.addEventListener('keydown', function(event) {
-if (event.key === 'Escape') {
-closeImageModal();
+.modal-content {
+position: absolute !important;
+left: 50% !important;
+top: 50% !important;
+transform: translate(-50%, -50%) !important;
+background-color: #fff;
+padding: 0;
+border-radius: 16px;
+width: 90%;
+max-width: 500px;
+max-height: 90vh;
+overflow: hidden;
+box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+z-index: 2147483647 !important;
 }
-});
 
-document.addEventListener('click', function(event) {
-const clickableImage = event.target.closest('.clickable-image');
-if (clickableImage) {
-const imageData = {
-imageUrl: clickableImage.getAttribute('data-image-url'),
-text: clickableImage.getAttribute('data-text') || '[No text content]',
-platform: clickableImage.getAttribute('data-platform') || 'Unknown',
-party: clickableImage.getAttribute('data-party') || 'Unknown Account',
-date: clickableImage.getAttribute('data-date') || 'Date not available',
-url: clickableImage.getAttribute('data-url') || '#',
-hasLabel: clickableImage.getAttribute('data-has-label') === 'true',
-labelScope: clickableImage.getAttribute('data-label-scope') || '',
-tags: clickableImage.getAttribute('data-tags') ? 
-clickableImage.getAttribute('data-tags').split(',').filter(tag => tag.trim() !== '') : 
-[]
-};
-console.log('Image data:', imageData);
-window.openImageModal(imageData);
+.gallery-modal-content {
+position: absolute !important;
+left: 50% !important;
+top: 50% !important;
+transform: translate(-50%, -50%) !important;
+background-color: #fff;
+padding: 0;
+border-radius: 8px;
+width: 90%;
+max-width: 800px;
+max-height: 92vh;
+overflow: hidden;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+z-index: 2147483647 !important;
 }
-});
-</script>
+
+body.modal-open {
+overflow: hidden !important;
+}
+
+.quarto-title-block,
+.page-layout-custom,
+.main-content {
+transform: none !important;
+}
+</style>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
 <script>
+console.log("=== MODAL SCRIPT LOADING ===");
+
+window.openImageModal = function(imageData) {
+console.log('=== MODAL DEBUG ===');
+console.log('openImageModal called with:', imageData);
+
+const modal = document.getElementById('imageModal');
+console.log('Modal element:', modal);
+
+if (!modal) {
+console.error('Modal not found in DOM');
+console.log('Available elements:', Array.from(document.querySelectorAll('[id*="modal"]')).map(el => el.id));
+return;
+}
+
+console.log('Modal computed z-index:', window.getComputedStyle(modal).zIndex);
+console.log('Modal computed display:', window.getComputedStyle(modal).display);
+console.log('Modal computed position:', window.getComputedStyle(modal).position);
+
+const modalImg = modal.querySelector('#modalImage');
+const modalText = modal.querySelector('#modalText');
+const modalPlatform = modal.querySelector('#modalPlatform');
+const modalAccount = modal.querySelector('#modalAccount');
+const modalDate = modal.querySelector('#modalDate');
+const modalUrl = modal.querySelector('#modalUrl');
+const modalTags = modal.querySelector('#modalTags');
+const modalLabel = modal.querySelector('#modalAiLabel');
+
+console.log('Modal children found:', {
+modalImg: !!modalImg,
+modalText: !!modalText,
+modalPlatform: !!modalPlatform,
+modalAccount: !!modalAccount,
+modalDate: !!modalDate,
+modalUrl: !!modalUrl,
+modalTags: !!modalTags,
+modalLabel: !!modalLabel
+});
+
+if (modalImg) modalImg.src = imageData.imageUrl;
+if (modalText) modalText.textContent = imageData.text || '[No text content]';
+if (modalPlatform) modalPlatform.textContent = imageData.platform || 'Unknown';
+if (modalAccount) modalAccount.textContent = imageData.party || 'Unknown Account';
+if (modalDate) modalDate.textContent = imageData.date || 'Date not available';
+if (modalUrl) modalUrl.href = imageData.url || '#';
+
+if (modalTags) {
+if (imageData.tags && imageData.tags.length > 0) {
+modalTags.innerHTML = Array.isArray(imageData.tags) ? 
+imageData.tags.map(tag => '<span class="tag-chip">' + tag + '</span>').join('') : 
+imageData.tags;
+} else {
+modalTags.textContent = 'No tags';
+}
+}
+
+if (modalLabel) {
+if (imageData.hasLabel) {
+modalLabel.innerHTML = '<iconify-icon icon="mdi:check-circle" width="16" height="16" style="color: #2E7D32;"></iconify-icon><span class="ai-label-text">AI Labeled: ' + (imageData.labelScope || '') + '</span>';
+modalLabel.style.display = 'flex';
+} else {
+modalLabel.innerHTML = '<iconify-icon icon="mdi:close-circle" width="16" height="16" style="color: #D32F2F;"></iconify-icon><span class="ai-label-text">No AI Label</span>';
+modalLabel.style.display = 'flex';
+}
+}
+
+modal.style.display = 'block';
+modal.style.position = 'fixed';
+modal.style.zIndex = '2147483647';
+document.body.style.overflow = 'hidden';
+document.body.classList.add('modal-open');
+
+console.log('Modal should now be visible');
+console.log('Final modal display:', modal.style.display);
+console.log('Final modal z-index:', modal.style.zIndex);
+
+const modalContent = modal.querySelector('.modal-content');
+if (modalContent) {
+console.log('Modal content z-index:', window.getComputedStyle(modalContent).zIndex);
+console.log('Modal content position:', window.getComputedStyle(modalContent).position);
+console.log('Modal content transform:', window.getComputedStyle(modalContent).transform);
+}
+};
+
+window.closeImageModal = function() {
+console.log('=== CLOSING IMAGE MODAL ===');
+const modal = document.getElementById('imageModal');
+if (modal) {
+modal.style.display = 'none';
+document.body.style.overflow = 'auto';
+document.body.classList.remove('modal-open');
+console.log('Modal closed');
+}
+};
+
+function openGalleryModal() {
+console.log("=== OPENING GALLERY MODAL ===");
+const modal = document.getElementById('gallery-modal');
+console.log("Modal element found:", modal);
+
+if (modal) {
+modal.style.display = 'block';
+modal.style.position = 'fixed';
+modal.style.zIndex = '2147483647';
+document.body.style.overflow = 'hidden';
+document.body.classList.add('modal-open');
+console.log("Modal should now be visible");
+
+setTimeout(() => {
+initializeGallery();
+}, 300);
+} else {
+console.error("Gallery modal not found in DOM!");
+console.log('Available elements:', Array.from(document.querySelectorAll('[id*="gallery"]')).map(el => el.id));
+}
+}
+
+function closeGalleryModal() {
+console.log("=== CLOSING GALLERY MODAL ===");
+const modal = document.getElementById('gallery-modal');
+if (modal) {
+modal.style.display = 'none';
+document.body.style.overflow = 'auto';
+document.body.classList.remove('modal-open');
+}
+}
+
+function initializeGallery() {
+console.log("=== INITIALIZING GALLERY ===");
+
+const container = document.getElementById("ai-gallery-container");
+console.log("Looking for container 'ai-gallery-container':", container);
+
+if (!container) {
+console.error("Gallery container not found!");
+console.log('Available elements:', Array.from(document.querySelectorAll('[id*="gallery"]')).map(el => el.id));
+return;
+}
+
+if (!window.galleryData) {
+console.error("No gallery data!");
+return;
+}
+
+if (!window.AIGallery) {
+console.error("No AIGallery object!");
+return;
+}
+
+window.AIGallery.init(window.galleryData);
+console.log("Gallery initialized!");
+
+setupGallerySearch();
+}
+
+function setupGallerySearch() {
+const searchInput = document.getElementById('gallery-search');
+if (!searchInput) return;
+
+searchInput.addEventListener('input', function() {
+const searchTerm = this.value.toLowerCase();
+console.log("Searching for:", searchTerm);
+
+if (!window.AIGallery || !window.AIGallery.galleryData) return;
+
+const filteredData = window.galleryData.filter(post => {
+const text = (post.text || '').toLowerCase();
+const party = (post.party || '').toLowerCase();
+const platform = (post.platform || '').toLowerCase();
+const tags = Array.isArray(post.tags) ? post.tags.join(' ').toLowerCase() : (post.tags || '').toLowerCase();
+
+return text.includes(searchTerm) || 
+party.includes(searchTerm) || 
+platform.includes(searchTerm) || 
+tags.includes(searchTerm);
+});
+
+console.log('Found ' + filteredData.length + ' posts matching "' + searchTerm + '"');
+window.AIGallery.init(filteredData);
+});
+}
+
 window.AIGallery = {
 currentSlide: 0,
 totalSlides: 0,
@@ -252,39 +468,19 @@ console.log("Gallery setup complete");
 renderGallery: function() {
 console.log("AIGallery.renderGallery() called");
 const container = document.getElementById('ai-gallery-container');
+console.log("Gallery container:", container);
 if (!container) {
 console.error("Gallery container not found!");
 return;
 }
-const galleryHTML = `
-<div class="gallery-header">
-<h2 class="gallery-title">
-<iconify-icon icon="mdi:robot" width="32" height="32" style="color: #3b82f6;"></iconify-icon>
-AI Content Gallery
-</h2>
-<div class="gallery-controls">
-<div class="gallery-stats">
-<span id="gallery-current">1</span> of <span id="gallery-total">${this.totalSlides}</span>
-</div>
-<button class="gallery-nav-btn" id="gallery-prev" disabled>
-<iconify-icon icon="mdi:chevron-left" width="24" height="24"></iconify-icon>
-</button>
-<button class="gallery-nav-btn" id="gallery-next">
-<iconify-icon icon="mdi:chevron-right" width="24" height="24"></iconify-icon>
-</button>
-</div>
-</div>
-<div class="gallery-carousel">
-<div class="gallery-track" id="gallery-track">
-${this.galleryData.map((post, index) => this.renderSlide(post, index)).join('')}
-</div>
-</div>
-<div class="gallery-dots" id="gallery-dots">
-${this.galleryData.map((_, index) => 
-`<div class="gallery-dot ${index === 0 ? 'active' : ''}" data-slide="${index}"></div>`
-).join('')}
-</div>
-`;
+
+const galleryHTML = '<div class="gallery-carousel"><div class="gallery-track" id="gallery-track">' + 
+this.galleryData.map((post, index) => this.renderSlide(post, index)).join('') +
+'</div><button class="gallery-nav-btn gallery-nav-prev" id="gallery-prev" disabled><iconify-icon icon="mdi:chevron-left" width="24" height="24"></iconify-icon></button><button class="gallery-nav-btn gallery-nav-next" id="gallery-next"><iconify-icon icon="mdi:chevron-right" width="24" height="24"></iconify-icon></button><div class="gallery-stats-overlay"><span id="gallery-current">1</span> / <span id="gallery-total">' + 
+this.totalSlides + '</span></div></div><div class="gallery-dots" id="gallery-dots">' + 
+this.galleryData.map((_, index) => '<div class="gallery-dot ' + (index === 0 ? 'active' : '') + '" data-slide="' + index + '"></div>').join('') +
+'</div>';
+
 container.innerHTML = galleryHTML;
 console.log("Gallery HTML rendered successfully");
 },
@@ -292,34 +488,14 @@ console.log("Gallery HTML rendered successfully");
 renderSlide: function(post, index) {
 const platformIcon = this.getPlatformIcon(post.platform);
 const aiLabel = post.hasLabel ? 
-`<iconify-icon icon="mdi:check-circle" style="color: #2E7D32;" width="16" height="16"></iconify-icon><span>AI Labeled</span>` :
-`<iconify-icon icon="mdi:close-circle" style="color: #D32F2F;" width="16" height="16"></iconify-icon><span>No AI Label</span>`;
+'<iconify-icon icon="mdi:check-circle" style="color: #2E7D32;" width="16" height="16"></iconify-icon><span>AI Labeled</span>' :
+'<iconify-icon icon="mdi:close-circle" style="color: #D32F2F;" width="16" height="16"></iconify-icon><span>No AI Label</span>';
 const tags = post.tags && post.tags.length > 0 ? 
-post.tags.map(tag => `<span class="gallery-tag-chip">${tag}</span>`).join('') : '';
-return `
-<div class="gallery-slide">
-<div class="gallery-post" onclick="window.openImageModal(${JSON.stringify(post).replace(/"/g, '&quot;')})">
-<img src="${post.imageUrl}" alt="AI Generated Content" class="gallery-post-image">
-<div class="gallery-post-content">
-<div class="gallery-post-header">
-<span class="gallery-post-platform-icon">${platformIcon}</span>
-<div class="gallery-post-account">
-<h3 class="gallery-post-name">${post.party}</h3>
-<p class="gallery-post-date">${post.date}</p>
-</div>
-<span class="gallery-post-platform">${post.platform}</span>
-</div>
-<p class="gallery-post-text">${post.text}</p>
-${tags ? `<div class="gallery-post-tags">${tags}</div>` : ''}
-<div class="gallery-ai-indicator">${aiLabel}</div>
-<a href="${post.url}" target="_blank" class="gallery-view-original" onclick="event.stopPropagation()">
-<iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
-View Original Post
-</a>
-</div>
-</div>
-</div>
-`;
+post.tags.map(tag => '<span class="gallery-tag-chip">' + tag + '</span>').join('') : '';
+
+const postJson = JSON.stringify(post).replace(/"/g, '&quot;');
+
+return '<div class="gallery-slide"><div class="gallery-post" onclick="window.openImageModal(' + postJson + ')"><img src="' + post.imageUrl + '" alt="AI Generated Content" class="gallery-post-image"><div class="gallery-post-content"><div class="gallery-post-header"><span class="gallery-post-platform-icon">' + platformIcon + '</span><div class="gallery-post-account"><h3 class="gallery-post-name">' + post.party + '</h3><p class="gallery-post-date">' + post.date + '</p></div><span class="gallery-post-platform">' + post.platform + '</span></div><p class="gallery-post-text">' + post.text + '</p>' + (tags ? '<div class="gallery-post-tags">' + tags + '</div>' : '') + '<div class="gallery-ai-indicator">' + aiLabel + '</div><a href="' + post.url + '" target="_blank" class="gallery-view-original" onclick="event.stopPropagation()"><iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>View Original Post</a></div></div></div>';
 },
 
 getPlatformIcon: function(platform) {
@@ -339,7 +515,7 @@ const iconColor = {
 'Facebook + Instagram': '#1877F2'
 };
 const color = iconColor[platform] || '#6b7280';
-return `<iconify-icon icon="${iconName}" width="20" height="20" style="color: ${color}"></iconify-icon>`;
+return '<iconify-icon icon="' + iconName + '" width="20" height="20" style="color: ' + color + '"></iconify-icon>';
 },
 
 updateControls: function() {
@@ -363,7 +539,7 @@ this.isAnimating = true;
 this.currentSlide = slideIndex;
 const track = document.getElementById('gallery-track');
 if (track) {
-track.style.transform = `translateX(-${slideIndex * 100}%)`;
+track.style.transform = 'translateX(-' + (slideIndex * 100) + '%)';
 }
 this.updateControls();
 setTimeout(() => {
@@ -424,78 +600,70 @@ this.prevSlide();
 }
 };
 
+document.addEventListener("DOMContentLoaded", function () {
+console.log("=== DOM READY ===");
 
+document.querySelectorAll("a[href='https://favstats.github.io/nl25/']").forEach(function(link) {
+link.addEventListener("click", function(event) {
+event.preventDefault();
+window.open(link.href, "_blank");
+});
+});
 
-</script>
-<script>
-
-/* Force modal to be on top of everything */
-.modal, .gallery-modal {
-  display: none;
-  position: fixed;
-  z-index: 99999 !important;  /* Increased from 1000 */
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.8);
-  backdrop-filter: blur(5px);
+const launchBtn = document.getElementById('launch-gallery-btn');
+if (launchBtn) {
+launchBtn.addEventListener('click', openGalleryModal);
+console.log("Gallery launch button set up");
 }
 
-</script>
-<script>
+const modal = document.getElementById('imageModal');
+const galleryModal = document.getElementById('gallery-modal');
 
-.modal-content, .gallery-modal-content {
-  position: relative;
-  background-color: #fff;
-  margin: 2% auto;
-  padding: 0;
-  border-radius: 16px;
-  width: 90%;
-  max-width: 500px;
-  max-height: 90vh;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
-  animation: modalSlideIn 0.3s ease-out;
-  border: none;
-  z-index: 100000 !important;  /* Content must be above backdrop */
+if (modal) {
+window.onclick = function(event) {
+if (event.target === modal) {
+closeImageModal();
+}
+if (event.target === galleryModal) {
+closeGalleryModal();
+}
+}
 }
 
-</script>
-<script>
-
-/* Ensure gallery modal content is also on top */
-.gallery-modal-content {
-  max-width: 800px;
+document.addEventListener('keydown', function(event) {
+if (event.key === 'Escape') {
+closeImageModal();
+if (galleryModal && galleryModal.style.display === 'block') {
+closeGalleryModal();
 }
-
-</script>
-<script>
-
-/* Override Quarto layout for modals */
-body.modal-open {
-  overflow: hidden !important;
 }
+});
 
-</script>
-<script>
-
-/* Ensure modals aren't affected by Quarto containers */
-.modal, .gallery-modal {
-  position: fixed !important;
-  margin: 0 !important;
-  padding: 0 !important;
+document.addEventListener('click', function(event) {
+const clickableImage = event.target.closest('.clickable-image');
+if (clickableImage) {
+const imageData = {
+imageUrl: clickableImage.getAttribute('data-image-url'),
+text: clickableImage.getAttribute('data-text') || '[No text content]',
+platform: clickableImage.getAttribute('data-platform') || 'Unknown',
+party: clickableImage.getAttribute('data-party') || 'Unknown Account',
+date: clickableImage.getAttribute('data-date') || 'Date not available',
+url: clickableImage.getAttribute('data-url') || '#',
+hasLabel: clickableImage.getAttribute('data-has-label') === 'true',
+labelScope: clickableImage.getAttribute('data-label-scope') || '',
+tags: clickableImage.getAttribute('data-tags') ? 
+clickableImage.getAttribute('data-tags').split(',').filter(tag => tag.trim() !== '') : 
+[]
+};
+console.log('Image data:', imageData);
+window.openImageModal(imageData);
 }
+});
 
-</script>
-<script>
-/* Fix if Quarto is adding transforms that break fixed positioning */
-.quarto-title-block,
-.page-layout-custom,
-.main-content {
-  transform: none !important;
-}
+console.log("Event delegation set up");
+});
 
+console.log("=== MODAL SCRIPT LOADED ===");
 </script>
 <!-- **In the AI Explorer**, you can *view all detected AI-generated posts from political parties* and sort them by specific criteria. The posts can be filtered by **party, post text, platform, post/ad** to reveal *specific patterns and trends*.  
 
