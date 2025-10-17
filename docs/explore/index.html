@@ -209,13 +209,34 @@ Via the **link**, you can access the *original post on the respective platform*.
   
   /* Fix any potential layout shifts */
   body {
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
   }
   
   html {
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Force proper centering for all content */
+  .main-content, .main-content * {
+    box-sizing: border-box !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Ensure Quarto content is properly centered */
+  .quarto-title-block, .quarto-title-block * {
+    box-sizing: border-box !important;
+  }
+  
+  /* Force table container to be centered */
+  #cars-select {
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
   
   .image-cell img {
@@ -1160,6 +1181,69 @@ Community Feedback
 
 <script>
 console.log("=== INLINE SCRIPT LOADING ===");
+
+// Define openImageModal function here to ensure it's available
+window.openImageModal = function(imageData) {
+  console.log('openImageModal called with:', imageData);
+  console.log('Looking for modal element...');
+  
+  const modal = document.getElementById('imageModal');
+  console.log('Modal element found:', modal);
+  
+  if (!modal) {
+    console.error('Modal not found in DOM');
+    console.log('Available elements with "modal" in ID:', 
+      Array.from(document.querySelectorAll('[id*="modal"]')).map(el => el.id));
+    return;
+  }
+
+  // Populate modal content
+  const modalImg = modal.querySelector('#modalImage');
+  const modalText = modal.querySelector('#modalText');
+  const modalPlatform = modal.querySelector('#modalPlatform');
+  const modalAccount = modal.querySelector('#modalAccount');
+  const modalDate = modal.querySelector('#modalDate');
+  const modalUrl = modal.querySelector('#modalUrl');
+  const modalTags = modal.querySelector('#modalTags');
+  const modalLabel = modal.querySelector('#modalLabel');
+
+  if (modalImg) modalImg.src = imageData.imageUrl;
+  if (modalText) modalText.textContent = imageData.text || '[No text content]';
+  if (modalPlatform) modalPlatform.textContent = imageData.platform || 'Unknown';
+  if (modalAccount) modalAccount.textContent = imageData.party || 'Unknown Account';
+  if (modalDate) modalDate.textContent = imageData.date || 'Date not available';
+  if (modalUrl) {
+    modalUrl.href = imageData.url || '#';
+    modalUrl.textContent = imageData.url || 'No URL available';
+  }
+  if (modalLabel) {
+    modalLabel.textContent = imageData.hasLabel ? 
+      `AI Label: ${imageData.labelScope || 'Unknown'}` : 
+      'No AI Label';
+    modalLabel.style.color = imageData.hasLabel ? '#2E7D32' : '#D32F2F';
+  }
+  if (modalTags) {
+    if (imageData.tags && imageData.tags.length > 0) {
+      modalTags.textContent = Array.isArray(imageData.tags) ? 
+        imageData.tags.join(', ') : imageData.tags;
+    } else {
+      modalTags.textContent = 'No tags';
+    }
+  }
+
+  // Show modal
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+};
+
+// Define closeImageModal function here too
+window.closeImageModal = function() {
+  const modal = document.getElementById('imageModal');
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+};
 
 // AIGallery object (moved from header)
 window.AIGallery = {
