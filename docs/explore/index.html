@@ -144,7 +144,574 @@ plausible.init()
 
 
 
-<!-- Image Modal -->
+<style>
+/* NUCLEAR MODAL FIX - Must be at the very top */
+#imageModal,
+#gallery-modal {
+display: none !important;
+position: fixed !important;
+z-index: 2147483647 !important;
+left: 0 !important;
+top: 0 !important;
+width: 100vw !important;
+height: 100vh !important;
+background-color: rgba(0,0,0,0.8) !important;
+backdrop-filter: blur(5px) !important;
+margin: 0 !important;
+padding: 0 !important;
+overflow: auto !important;
+}
+
+#imageModal[style*="display: block"],
+#gallery-modal[style*="display: block"] {
+display: block !important;
+}
+
+.modal-content,
+.gallery-modal-content {
+position: fixed !important;
+left: 50% !important;
+top: 50% !important;
+transform: translate(-50%, -50%) !important;
+background-color: #ffffff !important;
+padding: 0 !important;
+border-radius: 16px !important;
+width: 90% !important;
+max-width: 500px !important;
+max-height: 90vh !important;
+overflow-y: auto !important;
+box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
+z-index: 2147483647 !important;
+margin: 0 !important;
+}
+
+.gallery-modal-content {
+max-width: 800px !important;
+max-height: 92vh !important;
+}
+
+.modal-content *,
+.gallery-modal-content * {
+visibility: visible !important;
+opacity: 1 !important;
+}
+
+body > *:not(#imageModal):not(#gallery-modal) {
+transform: none !important;
+}
+
+.modal-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 16px 20px;
+border-bottom: 1px solid #f0f0f0;
+background: #fff;
+}
+
+.modal-title {
+font-size: 1rem;
+font-weight: 600;
+color: #1a1a1a;
+margin: 0;
+}
+
+.close,
+.gallery-close {
+color: #6b7280;
+font-size: 28px;
+font-weight: bold;
+cursor: pointer;
+transition: color 0.2s ease;
+line-height: 1;
+}
+
+.close:hover,
+.gallery-close:hover {
+color: #374151;
+}
+
+.modal-body {
+display: flex;
+flex-direction: column;
+}
+
+.post-image {
+width: 100%;
+max-height: 500px;
+object-fit: contain;
+background: #f8f9fa;
+border-bottom: 1px solid #e5e7eb;
+}
+
+.post-content {
+padding: 20px;
+}
+
+.post-meta {
+display: flex;
+align-items: center;
+gap: 12px;
+margin-bottom: 16px;
+padding-bottom: 16px;
+border-bottom: 1px solid #f0f0f0;
+}
+
+.platform-icon {
+font-size: 1.2rem;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.platform-badge {
+background: #f8f9fa;
+color: #6b7280;
+padding: 6px 12px;
+border-radius: 20px;
+font-size: 0.8rem;
+font-weight: 500;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+border: 1px solid #e5e7eb;
+}
+
+.account-info {
+flex: 1;
+}
+
+.account-name {
+font-weight: 600;
+color: #1a1a1a;
+margin: 0 0 4px 0;
+font-size: 1rem;
+}
+
+.post-date {
+font-size: 0.8rem;
+color: #8e8e8e;
+margin: 0;
+font-weight: 400;
+}
+
+.post-text {
+font-size: 1rem;
+line-height: 1.4;
+color: #1a1a1a;
+margin: 0 0 20px 0;
+white-space: pre-wrap;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+font-weight: 400;
+}
+
+.post-tags {
+display: flex;
+flex-wrap: wrap;
+gap: 6px;
+margin-bottom: 16px;
+}
+
+.tag-chip {
+background: #e0e7ff;
+color: #3730a3;
+padding: 4px 8px;
+border-radius: 12px;
+font-size: 0.75rem;
+font-weight: 500;
+}
+
+.ai-label-info {
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 14px 16px;
+background: #f8fafc;
+border-radius: 12px;
+border: 1px solid #e2e8f0;
+margin-top: 16px;
+}
+
+.ai-label-text {
+font-size: 0.9rem;
+color: #475569;
+font-weight: 500;
+}
+
+.post-actions {
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 16px;
+background: #fff;
+border-top: 1px solid #e5e7eb;
+}
+
+.view-original {
+background: #1a1a1a;
+color: white;
+padding: 12px 24px;
+border-radius: 24px;
+text-decoration: none;
+font-weight: 600;
+font-size: 14px;
+transition: all 0.2s ease;
+border: none;
+cursor: pointer;
+display: inline-flex;
+align-items: center;
+gap: 8px;
+}
+
+.view-original:hover {
+background: #333333;
+color: white;
+text-decoration: none;
+transform: translateY(-1px);
+box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.gallery-modal-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 12px 16px;
+border-bottom: 1px solid #e5e7eb;
+background: #f8fafc;
+}
+
+.gallery-modal-title {
+margin: 0;
+font-size: 18px;
+font-weight: 600;
+color: #1f2937;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.gallery-modal-body {
+padding: 8px;
+max-height: calc(96vh - 60px);
+overflow-y: auto;
+}
+
+.gallery-search-container {
+position: relative;
+margin: 0 auto 12px auto;
+max-width: 300px;
+display: flex;
+justify-content: center;
+}
+
+.gallery-search-input {
+width: 100%;
+padding: 8px 12px 8px 36px;
+border: 1px solid #e5e7eb;
+border-radius: 6px;
+font-size: 14px;
+transition: all 0.3s ease;
+background: #fff;
+}
+
+.gallery-search-input:focus {
+outline: none;
+border-color: #3b82f6;
+box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.gallery-search-container iconify-icon {
+position: absolute;
+left: 12px;
+top: 50%;
+transform: translateY(-50%);
+color: #9ca3af;
+pointer-events: none;
+}
+
+.ai-gallery-container {
+margin: 0;
+position: relative;
+}
+
+.gallery-carousel {
+position: relative;
+overflow: hidden;
+border-radius: 12px;
+background: #fff;
+box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.gallery-track {
+display: flex;
+transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+will-change: transform;
+}
+
+.gallery-slide {
+min-width: 100%;
+flex-shrink: 0;
+position: relative;
+}
+
+.gallery-post {
+background: #fff;
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+cursor: pointer;
+max-width: 600px;
+margin: 0 auto;
+width: 100%;
+}
+
+.gallery-post:hover {
+transform: translateY(-4px);
+box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+}
+
+.gallery-post-image {
+width: 100%;
+height: 500px;
+object-fit: contain;
+background: #f8f9fa;
+}
+
+.gallery-post-content {
+padding: 16px;
+}
+
+.gallery-post-header {
+display: flex;
+align-items: center;
+gap: 12px;
+margin-bottom: 16px;
+padding-bottom: 16px;
+border-bottom: 1px solid #f0f0f0;
+}
+
+.gallery-post-account {
+flex: 1;
+}
+
+.gallery-post-name {
+font-size: 1.1rem;
+font-weight: 600;
+color: #1a1a1a;
+margin: 0 0 4px 0;
+}
+
+.gallery-post-date {
+font-size: 0.85rem;
+color: #8e8e8e;
+margin: 0;
+}
+
+.gallery-post-platform {
+background: #f8f9fa;
+color: #6b7280;
+padding: 6px 12px;
+border-radius: 20px;
+font-size: 0.8rem;
+font-weight: 500;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+border: 1px solid #e5e7eb;
+}
+
+.gallery-post-text {
+font-size: 1rem;
+line-height: 1.5;
+color: #1a1a1a;
+margin: 0 0 16px 0;
+white-space: pre-wrap;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+overflow: hidden;
+}
+
+.gallery-post-tags {
+display: flex;
+flex-wrap: wrap;
+gap: 6px;
+margin-bottom: 16px;
+}
+
+.gallery-tag-chip {
+background: #e0e7ff;
+color: #3730a3;
+padding: 4px 8px;
+border-radius: 12px;
+font-size: 0.75rem;
+font-weight: 500;
+}
+
+.gallery-ai-indicator {
+display: flex;
+align-items: center;
+gap: 8px;
+padding: 12px 16px;
+background: #f8fafc;
+border-radius: 12px;
+border: 1px solid #e2e8f0;
+margin-top: 16px;
+}
+
+.gallery-view-original {
+background: #1a1a1a;
+color: white;
+padding: 12px 24px;
+border-radius: 24px;
+text-decoration: none;
+font-weight: 600;
+font-size: 14px;
+transition: all 0.2s ease;
+display: inline-flex;
+align-items: center;
+gap: 8px;
+margin-top: 16px;
+width: 100%;
+justify-content: center;
+}
+
+.gallery-view-original:hover {
+background: #333333;
+color: white;
+text-decoration: none;
+transform: translateY(-1px);
+box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.gallery-nav-btn {
+background: rgba(255, 255, 255, 0.9);
+border: 1px solid rgba(229, 231, 235, 0.8);
+border-radius: 50%;
+width: 44px;
+height: 44px;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: all 0.3s ease;
+box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+backdrop-filter: blur(10px);
+}
+
+.gallery-nav-prev {
+position: absolute;
+left: 16px;
+top: 50%;
+transform: translateY(-50%);
+z-index: 10;
+}
+
+.gallery-nav-next {
+position: absolute;
+right: 16px;
+top: 50%;
+transform: translateY(-50%);
+z-index: 10;
+}
+
+.gallery-nav-btn:hover {
+background: rgba(255, 255, 255, 1);
+border-color: #3b82f6;
+box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.gallery-nav-prev:hover {
+transform: translateY(-50%) translateX(-2px);
+}
+
+.gallery-nav-next:hover {
+transform: translateY(-50%) translateX(2px);
+}
+
+.gallery-nav-btn:disabled {
+opacity: 0.5;
+cursor: not-allowed;
+}
+
+.gallery-nav-prev:disabled {
+transform: translateY(-50%);
+}
+
+.gallery-nav-next:disabled {
+transform: translateY(-50%);
+}
+
+.gallery-stats-overlay {
+position: absolute;
+top: 16px;
+right: 16px;
+background: rgba(255, 255, 255, 0.9);
+padding: 6px 12px;
+border-radius: 16px;
+font-size: 0.8rem;
+color: #6b7280;
+font-weight: 500;
+backdrop-filter: blur(10px);
+border: 1px solid rgba(229, 231, 235, 0.8);
+z-index: 10;
+}
+
+.gallery-dots {
+display: flex;
+justify-content: center;
+gap: 8px;
+margin-top: 24px;
+padding: 0 20px;
+}
+
+.gallery-dot {
+width: 12px;
+height: 12px;
+border-radius: 50%;
+background: #e5e7eb;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.gallery-dot.active {
+background: #3b82f6;
+transform: scale(1.2);
+}
+
+.gallery-dot:hover {
+background: #94a3b8;
+}
+
+@media (max-width: 768px) {
+.modal-content {
+width: 95%;
+margin: 5% auto;
+}
+
+.modal-body {
+max-height: calc(90vh - 100px);
+}
+
+.post-content {
+padding: 16px;
+}
+
+.post-meta {
+flex-direction: column;
+align-items: flex-start;
+gap: 8px;
+}
+
+.gallery-post-image {
+height: 300px;
+}
+
+.gallery-post-content {
+padding: 20px;
+}
+}
+</style>
 <div id="imageModal" class="modal">
 <div class="modal-content">
 <div class="modal-header">
@@ -184,7 +751,6 @@ Post text content will appear here…
 </div>
 </div>
 </div>
-<!-- Gallery Modal -->
 <div id="gallery-modal" class="gallery-modal">
 <div class="gallery-modal-content">
 <div class="gallery-modal-header">
@@ -203,65 +769,6 @@ Post text content will appear here…
 </div>
 </div>
 </div>
-<style>
-/* CRITICAL: Force modals above everything */
-.modal, .gallery-modal {
-display: none;
-position: fixed !important;
-z-index: 2147483647 !important;
-left: 0 !important;
-top: 0 !important;
-width: 100% !important;
-height: 100% !important;
-background-color: rgba(0,0,0,0.8) !important;
-backdrop-filter: blur(5px);
-margin: 0 !important;
-padding: 0 !important;
-transform: none !important;
-}
-
-.modal-content {
-position: absolute !important;
-left: 50% !important;
-top: 50% !important;
-transform: translate(-50%, -50%) !important;
-background-color: #fff;
-padding: 0;
-border-radius: 16px;
-width: 90%;
-max-width: 500px;
-max-height: 90vh;
-overflow: hidden;
-box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-z-index: 2147483647 !important;
-}
-
-.gallery-modal-content {
-position: absolute !important;
-left: 50% !important;
-top: 50% !important;
-transform: translate(-50%, -50%) !important;
-background-color: #fff;
-padding: 0;
-border-radius: 8px;
-width: 90%;
-max-width: 800px;
-max-height: 92vh;
-overflow: hidden;
-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-z-index: 2147483647 !important;
-}
-
-body.modal-open {
-overflow: hidden !important;
-}
-
-.quarto-title-block,
-.page-layout-custom,
-.main-content {
-transform: none !important;
-}
-</style>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
 <script>
@@ -279,10 +786,6 @@ console.error('Modal not found in DOM');
 console.log('Available elements:', Array.from(document.querySelectorAll('[id*="modal"]')).map(el => el.id));
 return;
 }
-
-console.log('Modal computed z-index:', window.getComputedStyle(modal).zIndex);
-console.log('Modal computed display:', window.getComputedStyle(modal).display);
-console.log('Modal computed position:', window.getComputedStyle(modal).position);
 
 const modalImg = modal.querySelector('#modalImage');
 const modalText = modal.querySelector('#modalText');
@@ -331,21 +834,24 @@ modalLabel.style.display = 'flex';
 }
 }
 
-modal.style.display = 'block';
-modal.style.position = 'fixed';
-modal.style.zIndex = '2147483647';
+modal.style.cssText = 'display: block !important; position: fixed !important; z-index: 2147483647 !important; left: 0 !important; top: 0 !important; width: 100vw !important; height: 100vh !important; background-color: rgba(0,0,0,0.8) !important;';
 document.body.style.overflow = 'hidden';
 document.body.classList.add('modal-open');
 
-console.log('Modal should now be visible');
-console.log('Final modal display:', modal.style.display);
-console.log('Final modal z-index:', modal.style.zIndex);
-
 const modalContent = modal.querySelector('.modal-content');
 if (modalContent) {
-console.log('Modal content z-index:', window.getComputedStyle(modalContent).zIndex);
-console.log('Modal content position:', window.getComputedStyle(modalContent).position);
-console.log('Modal content transform:', window.getComputedStyle(modalContent).transform);
+modalContent.style.cssText = 'position: fixed !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; z-index: 2147483647 !important; background: white !important; width: 90% !important; max-width: 500px !important; visibility: visible !important; opacity: 1 !important; border-radius: 16px !important; overflow-y: auto !important; max-height: 90vh !important;';
+console.log('Modal content forced visible');
+}
+
+console.log('Modal display:', window.getComputedStyle(modal).display);
+console.log('Modal visibility:', window.getComputedStyle(modal).visibility);
+console.log('Modal z-index:', window.getComputedStyle(modal).zIndex);
+
+if (modalContent) {
+console.log('Content display:', window.getComputedStyle(modalContent).display);
+console.log('Content visibility:', window.getComputedStyle(modalContent).visibility);
+console.log('Content transform:', window.getComputedStyle(modalContent).transform);
 }
 };
 
@@ -366,11 +872,15 @@ const modal = document.getElementById('gallery-modal');
 console.log("Modal element found:", modal);
 
 if (modal) {
-modal.style.display = 'block';
-modal.style.position = 'fixed';
-modal.style.zIndex = '2147483647';
+modal.style.cssText = 'display: block !important; position: fixed !important; z-index: 2147483647 !important; left: 0 !important; top: 0 !important; width: 100vw !important; height: 100vh !important; background-color: rgba(0,0,0,0.8) !important;';
 document.body.style.overflow = 'hidden';
 document.body.classList.add('modal-open');
+
+const modalContent = modal.querySelector('.gallery-modal-content');
+if (modalContent) {
+modalContent.style.cssText = 'position: fixed !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; z-index: 2147483647 !important; background: white !important; width: 90% !important; max-width: 800px !important; visibility: visible !important; opacity: 1 !important; border-radius: 8px !important; overflow: hidden !important; max-height: 92vh !important;';
+}
+
 console.log("Modal should now be visible");
 
 setTimeout(() => {
@@ -454,11 +964,10 @@ galleryData: [],
 isAnimating: false,
 
 init: function(data) {
-console.log("AIGallery.init() called with data:", data);
+console.log("AIGallery.init() called with", data.length, "posts");
 this.galleryData = data;
 this.totalSlides = data.length;
 this.currentSlide = 0;
-console.log("Gallery initialized with", this.totalSlides, "slides");
 this.renderGallery();
 this.updateControls();
 this.bindEvents();
@@ -468,7 +977,6 @@ console.log("Gallery setup complete");
 renderGallery: function() {
 console.log("AIGallery.renderGallery() called");
 const container = document.getElementById('ai-gallery-container');
-console.log("Gallery container:", container);
 if (!container) {
 console.error("Gallery container not found!");
 return;
@@ -491,7 +999,7 @@ const aiLabel = post.hasLabel ?
 '<iconify-icon icon="mdi:check-circle" style="color: #2E7D32;" width="16" height="16"></iconify-icon><span>AI Labeled</span>' :
 '<iconify-icon icon="mdi:close-circle" style="color: #D32F2F;" width="16" height="16"></iconify-icon><span>No AI Label</span>';
 const tags = post.tags && post.tags.length > 0 ? 
-post.tags.map(tag => '<span class="gallery-tag-chip">' + tag + '</span>').join('') : '';
+post.tags.slice(0, 3).map(tag => '<span class="gallery-tag-chip">' + tag + '</span>').join('') : '';
 
 const postJson = JSON.stringify(post).replace(/"/g, '&quot;');
 
