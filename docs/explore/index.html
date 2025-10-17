@@ -155,6 +155,9 @@ Via the **link**, you can access the *original post on the respective platform*.
 <!-- Via the *link*, the original post can be accessed on the respective platform. -->
 <div class="cell">
 <div class="cell-output-display">
+<div class="page-layout-custom">
+</div>
+<div class="cell-output-display">
 
 <style>
   /* Container + typography */
@@ -220,6 +223,13 @@ Via the **link**, you can access the *original post on the respective platform*.
     box-sizing: border-box !important;
   }
   
+  /* Fix entire page layout - force everything to be centered */
+  .page-layout-custom, .page-layout-custom * {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+  
   /* Force proper centering for all content */
   .main-content, .main-content * {
     box-sizing: border-box !important;
@@ -236,6 +246,47 @@ Via the **link**, you can access the *original post on the respective platform*.
   #cars-select {
     margin: 0 auto !important;
     max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Fix the main page container */
+  .quarto-title-block, .quarto-title-block *,
+  .page-columns, .page-columns *,
+  .grid, .grid *,
+  .g-col-1, .g-col-2, .g-col-3, .g-col-4, .g-col-5, .g-col-6, .g-col-7, .g-col-8, .g-col-9, .g-col-10, .g-col-11, .g-col-12 {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Fix card elements */
+  .card, .card-body, .card-header, .card-footer {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Force all containers to be centered */
+  div[class*="container"], div[class*="row"], div[class*="col"] {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Fix Quarto main content area */
+  .quarto-layout-panel, .quarto-layout-row, .quarto-layout-col,
+  .page-columns .page-columns, .page-columns .column-margin,
+  .page-layout-custom > *, .page-layout-custom > * > * {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Ensure the main content wrapper is centered */
+  .page-layout-custom {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
     box-sizing: border-box !important;
   }
   
@@ -1674,9 +1725,14 @@ console.log("=== INLINE SCRIPT LOADED ===");
 <center>
 <a href="https://favstats.github.io/campaigntrackernl"> <img src="logobelow.png" width="50%"> </a>
 </center>
+<div class="cell">
+<div class="cell-output-display">
+</div>
+</div>
+</section></div>
 
 
-</section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
