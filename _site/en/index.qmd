@@ -1443,7 +1443,7 @@ blockquote:hover {
 ```{r}
 labeled <- readRDS("../../data/labeled.rds")  %>%
   filter(timevar >= date_start) %>%
-  filter(timevar <= as.Date("2025-10-07")) %>%
+  filter(timevar <= as.Date("2025-10-08")) %>%
   mutate(
     timevar = lubridate::floor_date(timevar, unit = "day"),
     list_source = ifelse(list_source == "NL Historic", "Parties", list_source),
