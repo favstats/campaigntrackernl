@@ -381,38 +381,6 @@ format:
     font-weight: 600 !important;
   }
   
-  /* DRAMATIC DESIGN ENHANCEMENTS */
-  
-  /* Improve overall page background */
-  body {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
-    min-height: 100vh;
-  }
-  
-  /* Better main content styling */
-  main.content {
-    background: white;
-    border-radius: 12px;
-    padding: 3rem;
-    margin: 2rem auto;
-    max-width: 100%;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    position: relative;
-    overflow: hidden;
-  }
-  
-  /* Add subtle background pattern */
-  main.content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #0028B8 0%, #FF4D6A 100%);
-  }
-  
   /* Enhanced header hierarchy */
   h1 {
     color: #0A1532 !important;
