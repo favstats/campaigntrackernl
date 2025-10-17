@@ -425,6 +425,10 @@ this.prevSlide();
 };
 
 
+
+</script>
+<script>
+
 /* Force modal to be on top of everything */
 .modal, .gallery-modal {
   display: none;
@@ -437,6 +441,9 @@ this.prevSlide();
   background-color: rgba(0,0,0,0.8);
   backdrop-filter: blur(5px);
 }
+
+</script>
+<script>
 
 .modal-content, .gallery-modal-content {
   position: relative;
@@ -454,15 +461,24 @@ this.prevSlide();
   z-index: 100000 !important;  /* Content must be above backdrop */
 }
 
+</script>
+<script>
+
 /* Ensure gallery modal content is also on top */
 .gallery-modal-content {
   max-width: 800px;
 }
 
+</script>
+<script>
+
 /* Override Quarto layout for modals */
 body.modal-open {
   overflow: hidden !important;
 }
+
+</script>
+<script>
 
 /* Ensure modals aren't affected by Quarto containers */
 .modal, .gallery-modal {
@@ -471,12 +487,15 @@ body.modal-open {
   padding: 0 !important;
 }
 
+</script>
+<script>
 /* Fix if Quarto is adding transforms that break fixed positioning */
 .quarto-title-block,
 .page-layout-custom,
 .main-content {
   transform: none !important;
 }
+
 </script>
 <!-- **In the AI Explorer**, you can *view all detected AI-generated posts from political parties* and sort them by specific criteria. The posts can be filtered by **party, post text, platform, post/ad** to reveal *specific patterns and trends*.  
 
