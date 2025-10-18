@@ -751,24 +751,7 @@ Post text content will appear here…
 </div>
 </div>
 </div>
-<div id="gallery-modal" class="gallery-modal">
-<div class="gallery-modal-content">
-<div class="gallery-modal-header">
-<h2 class="gallery-modal-title anchored">
-<iconify-icon icon="mdi:robot" width="24" height="24" style="color: #3b82f6;"></iconify-icon> AI Content Gallery
-</h2>
-<p><span class="gallery-close" onclick="closeGalleryModal()">×</span></p>
-</div>
-<div class="gallery-modal-body">
-<div class="gallery-search-container">
-<p><iconify-icon icon="mdi:magnify" width="16" height="16"></iconify-icon> <input type="text" id="gallery-search" placeholder="Search gallery posts..." class="gallery-search-input"></p>
-</div>
-<div id="ai-gallery-container" class="ai-gallery-container">
-
-</div>
-</div>
-</div>
-</div>
+<!-- Gallery section is now inline, defined in R code above -->
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
 <script>
@@ -866,40 +849,17 @@ console.log('Modal closed');
 }
 };
 
+// Legacy modal functions - kept for compatibility but not used
 function openGalleryModal() {
-console.log("=== OPENING GALLERY MODAL ===");
-const modal = document.getElementById('gallery-modal');
-console.log("Modal element found:", modal);
-
-if (modal) {
-modal.style.cssText = 'display: block !important; position: fixed !important; z-index: 2147483647 !important; left: 0 !important; top: 0 !important; width: 100vw !important; height: 100vh !important; background-color: rgba(0,0,0,0.8) !important;';
-document.body.style.overflow = 'hidden';
-document.body.classList.add('modal-open');
-
-const modalContent = modal.querySelector('.gallery-modal-content');
-if (modalContent) {
-modalContent.style.cssText = 'position: fixed !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; z-index: 2147483647 !important; background: white !important; width: 90% !important; max-width: 800px !important; visibility: visible !important; opacity: 1 !important; border-radius: 8px !important; overflow: hidden !important; max-height: 92vh !important;';
-}
-
-console.log("Modal should now be visible");
-
-setTimeout(() => {
-initializeGallery();
-}, 300);
-} else {
-console.error("Gallery modal not found in DOM!");
-console.log('Available elements:', Array.from(document.querySelectorAll('[id*="gallery"]')).map(el => el.id));
-}
+console.log("=== LEGACY MODAL FUNCTION CALLED ===");
+// Redirect to new inline gallery
+openGallery();
 }
 
 function closeGalleryModal() {
-console.log("=== CLOSING GALLERY MODAL ===");
-const modal = document.getElementById('gallery-modal');
-if (modal) {
-modal.style.display = 'none';
-document.body.style.overflow = 'auto';
-document.body.classList.remove('modal-open');
-}
+console.log("=== LEGACY MODAL CLOSE CALLED ===");
+// Redirect to new inline gallery close
+closeGallery();
 }
 
 function initializeGallery() {
@@ -1662,79 +1622,60 @@ Via the **link**, you can access the *original post on the respective platform*.
     background: #dee2e6;
   }
 
-  /* Gallery Modal Styles */
-  .gallery-modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
+  /* Gallery Section Styles */
+  .gallery-section {
+    margin: 40px auto;
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+    max-width: 1200px;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
+    box-sizing: border-box;
   }
 
-  .gallery-modal-content {
-    background-color: #fff;
-    margin: 2% auto;
-    padding: 0;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 800px;
-    max-height: 92vh;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    animation: modalSlideIn 0.3s ease-out;
-  }
-
-  @keyframes modalSlideIn {
-    from {
-      opacity: 0;
-      transform: translateY(-50px) scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
-
-  .gallery-modal-header {
+  .gallery-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 16px;
-    border-bottom: 1px solid #e5e7eb;
-    background: #f8fafc;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #e5e7eb;
   }
 
-  .gallery-modal-title {
+  .gallery-title {
     margin: 0;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 700;
     color: #1f2937;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
   }
 
-  .gallery-close {
-    color: #6b7280;
-    font-size: 32px;
-    font-weight: bold;
+  .close-gallery-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
     cursor: pointer;
-    transition: color 0.2s ease;
-    line-height: 1;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
   }
 
-  .gallery-close:hover {
-    color: #ef4444;
+  .close-gallery-btn:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
   }
 
-  .gallery-modal-body {
-    padding: 8px;
-    max-height: calc(96vh - 60px);
-    overflow-y: auto;
+  .gallery-body {
+    padding: 0;
   }
 
   /* AI Gallery/Carousel Styles */
@@ -1823,6 +1764,8 @@ Via the **link**, you can access the *original post on the respective platform*.
     border-radius: 12px;
     background: #fff;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 0 auto;
   }
 
   .gallery-track {
@@ -2011,23 +1954,9 @@ Via the **link**, you can access the *original post on the respective platform*.
 
   /* Mobile responsive */
   @media (max-width: 768px) {
-    .modal-content {
-      width: 95%;
-      margin: 5% auto;
-    }
-    
-    .modal-body {
-      max-height: calc(90vh - 100px);
-    }
-    
-    .post-content {
-      padding: 16px;
-    }
-    
-    .post-meta {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
+    .gallery-section {
+      margin: 20px 10px;
+      padding: 15px;
     }
 
     .gallery-header {
@@ -2040,9 +1969,8 @@ Via the **link**, you can access the *original post on the respective platform*.
       font-size: 1.5rem;
     }
 
-    .gallery-controls {
-      width: 100%;
-      justify-content: space-between;
+    .gallery-carousel {
+      max-width: 100%;
     }
 
     .gallery-post-image {
@@ -2138,33 +2066,6 @@ Community Feedback
 </div>
 <section id="explore" class="level2">
 <h2 class="anchored" data-anchor-id="explore">Explore</h2>
-<div class="cell">
-<div class="cell-output-display">
-
-<!-- Gallery Modal -->
-<div id="gallery-modal" class="gallery-modal">
-  <div class="gallery-modal-content">
-    <div class="gallery-modal-header">
-      <h2 class="gallery-modal-title anchored">
-        
-        AI Content Gallery
-      </h2>
-      <span class="gallery-close" onclick="closeGalleryModal()">×</span>
-    </div>
-    <div class="gallery-modal-body">
-      <div class="gallery-search-container">
-        <input type="text" id="gallery-search" placeholder="Search gallery posts..." class="gallery-search-input">
-        
-      </div>
-      <div id="ai-gallery-container" class="ai-gallery-container">
-        <!-- Gallery will be rendered here by JavaScript -->
-      </div>
-    </div>
-  </div>
-</div>
-
-</div>
-</div>
 <div class="cell">
 <div class="cell-output-display">
 <script>
@@ -2360,10 +2261,10 @@ window.AIGallery = {
         </div>
         <!-- Overlay controls -->
         <button class="gallery-nav-btn gallery-nav-prev" id="gallery-prev" disabled>
-          <i class="fas fa-chevron-left"></i>
+          <iconify-icon icon="mdi:chevron-left" width="24" height="24"></iconify-icon>
         </button>
         <button class="gallery-nav-btn gallery-nav-next" id="gallery-next">
-          <i class="fas fa-chevron-right"></i>
+          <iconify-icon icon="mdi:chevron-right" width="24" height="24"></iconify-icon>
         </button>
         <div class="gallery-stats-overlay">
           <span id="gallery-current">1</span> / <span id="gallery-total">${this.totalSlides}</span>
@@ -2385,8 +2286,8 @@ window.AIGallery = {
     
     const platformIcon = this.getPlatformIcon(post.platform);
     const aiLabel = post.hasLabel ? 
-      ` <span>AI Labeled</span>` :
-      ` <span>No AI Label</span>`;
+      `<iconify-icon icon="mdi:check-circle" width="16" height="16" style="color: #2E7D32;"></iconify-icon> <span>AI Labeled</span>` :
+      `<iconify-icon icon="mdi:close-circle" width="16" height="16" style="color: #D32F2F;"></iconify-icon> <span>No AI Label</span>`;
     
     // Use the same tagging logic as the table
     const tags = this.renderTagBadges(post.tags);
@@ -2414,13 +2315,7 @@ window.AIGallery = {
               ${aiLabel}
             </div>
             <a href="${post.url}" target="_blank" class="gallery-view-original" onclick="event.stopPropagation()">
-
-
-              
-
-
-
-
+              <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
               View Original Post
             </a>
           </div>
@@ -2446,7 +2341,7 @@ window.AIGallery = {
       'Facebook + Instagram': '#1877F2'
     };
     const color = iconColor[platform] || '#6b7280';
-    return ``;
+    return `<iconify-icon icon="${iconName}" width="20" height="20" style="color: ${color};"></iconify-icon>`;
   },
 
   renderTagBadges: function(tags, maxShow = 5) {
@@ -2597,31 +2492,32 @@ window.AIGallery = {
 
 // Gallery functions
 
-function openGalleryModal() {
-  console.log("=== OPENING GALLERY MODAL ===");
-  const modal = document.getElementById('gallery-modal');
-  console.log("Modal element found:", modal);
+function openGallery() {
+  console.log("=== OPENING GALLERY ===");
+  const gallery = document.getElementById('gallery-section');
+  console.log("Gallery element found:", gallery);
   
-  if (modal) {
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-    console.log("Modal should now be visible");
+  if (gallery) {
+    gallery.style.display = 'block';
+    console.log("Gallery should now be visible");
     
-    // Initialize gallery when modal opens - wait for modal to be visible
+    // Initialize gallery when it opens
     setTimeout(() => {
       initializeGallery();
-    }, 300);
+    }, 100);
+    
+    // Scroll to gallery
+    gallery.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } else {
-    console.error("Gallery modal not found in DOM!");
+    console.error("Gallery section not found in DOM!");
   }
 }
 
-function closeGalleryModal() {
-  console.log("=== CLOSING GALLERY MODAL ===");
-  const modal = document.getElementById('gallery-modal');
-  if (modal) {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
+function closeGallery() {
+  console.log("=== CLOSING GALLERY ===");
+  const gallery = document.getElementById('gallery-section');
+  if (gallery) {
+    gallery.style.display = 'none';
   }
 }
 
@@ -2693,27 +2589,26 @@ document.addEventListener('DOMContentLoaded', function() {
   // Set up gallery launch button
   const launchBtn = document.getElementById('launch-gallery-btn');
   if (launchBtn) {
-    launchBtn.addEventListener('click', openGalleryModal);
+    launchBtn.addEventListener('click', openGallery);
     console.log("Gallery launch button set up");
   }
   
-  // Set up modal close events
-  const modal = document.getElementById('gallery-modal');
-  if (modal) {
-    // Close when clicking outside modal
-    modal.addEventListener('click', function(event) {
-      if (event.target === modal) {
-        closeGalleryModal();
-      }
-    });
-    
-    // Close with Escape key
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape' && modal.style.display === 'block') {
-        closeGalleryModal();
-      }
-    });
+  // Set up gallery close button
+  const closeBtn = document.getElementById('close-gallery-btn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeGallery);
+    console.log("Gallery close button set up");
   }
+  
+  // Close with Escape key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      const gallery = document.getElementById('gallery-section');
+      if (gallery && gallery.style.display === 'block') {
+        closeGallery();
+      }
+    }
+  });
   
   // Set up event delegation for clickable images
   document.addEventListener('click', function(event) {
@@ -2745,9 +2640,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
 console.log("=== INLINE SCRIPT LOADED ===");
 </script>
+<div class="cell">
+<div class="cell-output-display">
+
+<!-- Gallery Section -->
+<div id="gallery-section" class="gallery-section" style="display: none;">
+  <div class="gallery-header">
+    <h2 class="gallery-title anchored">
+      <iconify-icon icon="mdi:robot" width="24" height="24" style="color: #3b82f6;"></iconify-icon>
+      AI Content Gallery
+    </h2>
+    <button id="close-gallery-btn" class="close-gallery-btn">
+      <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+    </button>
+  </div>
+  <div class="gallery-body">
+    <div class="gallery-search-container">
+      <iconify-icon icon="mdi:magnify" width="16" height="16"></iconify-icon>
+      <input type="text" id="gallery-search" placeholder="Search gallery posts..." class="gallery-search-input">
+    </div>
+    <div id="ai-gallery-container" class="ai-gallery-container">
+      <!-- Gallery will be rendered here by JavaScript -->
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
 <center>
 <button id="launch-gallery-btn" class="gallery-launch-btn">
-<iconify-icon inline="" icon="mdi:robot" style="font-size: 1em;" aria-label="Icon robot from mdi Iconify.design set." title="Icon robot from mdi Iconify.design set."></iconify-icon> AI Gallery (Experimental)
+<iconify-icon icon="mdi:robot" width="16" height="16"></iconify-icon> Show AI Gallery
 </button>
 </center>
 <br>
