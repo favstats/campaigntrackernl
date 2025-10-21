@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Teresa Völker">
+<meta name="dcterms.date" content="2025-10-21">
+<meta name="description" content="AI is used in many ways in modern election campaigns. One of the biggest concerns is that AI may contribute to the spread of visual disinformation. What the CampAIgn Tracker reveals about AI-generated images in the Dutch election.">
 
-<title>&nbsp;&nbsp;Dashboard - Blog</title>
+<title>&nbsp;&nbsp;Dashboard - The Deepfake era is here (sort of): What AI-generated images in the Dutch election tell us</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +26,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./RoundLogoSchriftzug_blue.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../RoundLogoSchriftzug_blue.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -51,47 +52,19 @@ ul.task-list li input[type="checkbox"] {
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "Keine Treffer",
-    "search-matching-documents-text": "Treffer",
-    "search-copy-link-title": "Link in die Suche kopieren",
-    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
-    "search-more-match-text": "weitere Treffer in diesem Dokument",
-    "search-more-matches-text": "weitere Treffer in diesem Dokument",
-    "search-clear-button-title": "Zurücksetzen",
-    "search-detached-cancel-button-title": "Abbrechen",
-    "search-submit-button-title": "Abschicken",
-    "search-label": "Suchen"
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
+<style>html{ scroll-behavior: smooth; }</style>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async="" src="https://plausible.io/js/pa-rqPvCO0myNv3ooL2Rc_5o.js"></script>
 <script>
@@ -100,8 +73,6 @@ plausible.init()
 </script>
 <script data-goatcounter="https://favstats.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -112,21 +83,21 @@ plausible.init()
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./LogoSchriftzug.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../LogoSchriftzug.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">&nbsp;&nbsp;Dashboard</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Suchen"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navigation umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
+    <a class="nav-link" href="../index.html" rel="" target="">
  <span class="menu-text"><iconify-icon inline="" icon="ph:star-four-light" aria-label="Icon star-four-light from ph Iconify.design set." title="Icon star-four-light from ph Iconify.design set."></iconify-icon> AI Tracker</span></a>
   </li>  
   <li class="nav-item">
@@ -134,11 +105,11 @@ plausible.init()
  <span class="menu-text"><iconify-icon inline="" icon="ph:binoculars-light" aria-label="Icon binoculars-light from ph Iconify.design set." title="Icon binoculars-light from ph Iconify.design set."></iconify-icon> AI Explorer</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../blog.html" rel="" target="">
  <span class="menu-text"><iconify-icon inline="" icon="ph:newspaper-light" aria-label="Icon newspaper-light from ph Iconify.design set." title="Icon newspaper-light from ph Iconify.design set."></iconify-icon> Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./info.html" rel="" target="">
+    <a class="nav-link" href="../info.html" rel="" target="">
  <span class="menu-text"><iconify-icon inline="" icon="ph:info-light" aria-label="Icon info-light from ph Iconify.design set." title="Icon info-light from ph Iconify.design set."></iconify-icon> Info</span></a>
   </li>  
 </ul>
@@ -159,23 +130,37 @@ plausible.init()
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Blog</h1>
+<h1 class="title">The Deepfake era is here (sort of): What AI-generated images in the Dutch election tell us</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Teresa Völker </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 21, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -183,242 +168,79 @@ plausible.init()
 
 </header>
 
+<!-- Custom CSS -->
+<style>
+.blog-post-content {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.blog-post-content h1, .blog-post-content h2, .blog-post-content h3 {
+  color: #004080;
+  margin-bottom: 0.8em;
+  margin-top: 1.2em;
+}
+.blog-post-content h1 {
+  text-align: center;
+  font-size: 2.2em;
+  margin-bottom: 0.3em;
+}
+.blog-post-content h2 {
+  font-size: 1.6em;
+  border-bottom: 2px solid #004080;
+  padding-bottom: 0.3em;
+}
+.blog-post-content p {
+  margin: 1em 0;
+  text-align: justify;
+}
+.blog-post-content blockquote {
+  font-style: italic;
+  background: #f0f8ff;
+  padding: 15px 20px;
+  border-left: 4px solid #004080;
+  margin: 20px 0;
+  border-radius: 3px;
+}
+.blog-post-content .callout {
+  background-color: #e7f3fe;
+  padding: 20px;
+  border-left: 5px solid #2196F3;
+  margin: 25px 0;
+  border-radius: 5px;
+  font-size: 0.95em;
+}
+.blog-post-content strong {
+  color: #004080;
+}
+</style>
+<div class="blog-post-content">
+<p>Generative AI is used in many ways in modern election campaigns, ranging from simple help with research tasks and translations to generate persuasive messages for voter outreach. However, one of the biggest concerns is that the advent of generative AI may contribute to the spread of <em>visual</em> disinformation, that is, <strong>inauthentic images that are created and disseminated with the intention to deceive</strong>. For the last few years, hyperrealistic deepfakes were considered the biggest danger in this context. The anticipated worst-case scenario was that a convincing fake video could appear days before an election, <a href="https://heinonline.org/HOL/Page?collection=journals&amp;handle=hein.journals/calr107&amp;id=1790&amp;men_tab=srchresults">shifting public opinion about a politician before fact-checkers could react</a>. Soon, we would not be able to <a href="https://www.nytimes.com/2019/06/10/opinion/deepfake-pelosi-video.html">“believe anythig we see.”</a> However, for the longest time, deepfakes or anything of the like were difficult to make and barely looked convincing. They rarely appeared in political contexts, and no verified case ever changed the outcome of an election.</p>
+<p>Now things have changed. On the CampAIgn Tracker we’re seeing a large and growing number of AI-generated images and videos across platforms. The vast majority are real-looking, resembling actual photographs and videos rather than drawings or cartoons. This means that there is a possibility that we might (still) encounter <em>the</em> smoking AI gun that tricks everyone and changes the election outcome overnight. But what is perhaps most interesting about the images is not their volume or lifelike quality. It’s the kind of content they show, and how it challenges long-held assumptions in disinformation research. Specifically, it seems like the images from the Dutch campaign are not primarily intended to deceive, but rather to illustrate on the one hand or to provoke, entertain, or ridicule, feeding into propagandistic narratives on the other hand. Some depict political figures in exaggerated or absurd settings. Some blend realism and symbolism: a leader portrayed as a superhero, or an opponent depicted as a criminal. Some are just playful memes.</p>
+<img src="example_teresa.png" class="img-fluid" data-fig-align="center">
+<center>
+<em>Some example sof AI imagery as monitored by the CampAIgn Tracker.</em>
+</center>
+<p>This challenges how researchers have long conceptualized the dangers of synthetic media in a disinformation context. Much of the early debate assumed a relatively simple causal chain: <em>realistic fake → people believe it → false beliefs spread</em>. But, as is often the case, things are a bit more complicated than that. Indeed, it can be challenging to distinguish artificial from real visual content. But research also shows that people are often quite good at recognizing if an image or video is fake, which is likely also the case with much of the content found in the CampAIgn Tracker. For instance, it is probably clear to most people that Geert Wilders did not really carry a cat or a child out of a burning building. But that doesn’t necessarily mean that these images have no influence. Our research shows (soon to be published) that the message of an image can stick even when its authenticity is doubted. Specifically, a deepfake that is rated unbelievable can still reinforce an existing stereotype or bias towards a politician. Additionally, <a href="https://link.springer.com/article/10.3758/MC.37.4.414">psychology research shows that images have a particularly powerful impact on memory</a>, and it doesn’t even matter whether they are deemed credible in the moment of encounter or not. This suggests that doctored images can shape beliefs and attitudes in the long run, which may even amplify through repeated exposure, such as seeing a similar image time and time again.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="linkedin-label-contenu-ia.jpg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<center>
+<em>Content credentials are part of the <a href="https://contentauthenticity.org/">Content Authenticity Initiative (CAI)</a>, a global standard to help verify the origin and authenticity of digital content.</em>
+</center>
+<p>Another insight from the CampAIgn Tracker is that AI-generated images spread across platforms, and that the use of AI mostly remains undisclosed. Yet, labelling content that is AI-generated is considered an essential <a href="https://www.europarl.europa.eu/thinktank/de/document/EPRS_BRI(2023)757583">measure against visual disinformation in the EU</a>. Labels or watermarks can ensure transparency in content creation, thus aid fact-checkers and social media users to identify where content originated. However, experiments testing the effectiveness of such labels to correct false beliefs in citizens offer mixed findings, generally demonstrating that their impact is limited. We find that they can work, but that this is very much context-dependent. For instance, <a href="https://osf.io/preprints/osf/8237p_v1">in a recent study</a> we show that social media posts containing AI-generated disinformation with the topic immigration lose credibility when paired with a community note stating that the information is false.</p>
+<p>Overall, it appears as if <strong>the long-predicted deepfake era has arrived, but not quite in the form we feared</strong>. This invites researchers, journalists and policymakers alike to rethink what exactly makes such content problematic. Rather than focusing solely on deception and false beliefs, we need to consider how AI-generated visuals feed into political propaganda, strengthen existing political attitudes, reinforce stereotypes or simply contribute to meme culture. Beyond that, we need to ask whether our go-to fixes like fact-checks and similar measures still work, or if we need to go back to the drawing board on how we deal with this content.</p>
+</div>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1761004800000" data-listing-file-modified-sort="1761034845575" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
-<div class="thumbnail">
-<p><a href="./posts/deepfakes.html"> <img src="./posts/example_teresa.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/deepfakes.html">
-<h3 class="no-anchor listing-title">
-The Deepfake era is here (sort of): What AI-generated images in the Dutch election tell us
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-Generative AI is used in many ways in modern election campaigns, ranging from simple help with research…<em></em><strong></strong>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/deepfakes.html">
-<div class="listing-date">
-21.10.2025
-</div>
-<div class="listing-author">
-Teresa Völker
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1760140800000" data-listing-file-modified-sort="1760174781233" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/groene.html"> <img src="./posts/geen_title.jpg" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/groene.html">
-<h3 class="no-anchor listing-title">
-The Prompts behind the Propaganda
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-Investigative journalism by <em>De Groene Amsterdammer</em> has documented coordinated use of photorealistic AI imagery in Dutch political messaging, tracing…<strong></strong>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/groene.html">
-<div class="listing-date">
-11.10.2025
-</div>
-<div class="listing-author">
-Fabio Votta
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1760054400000" data-listing-file-modified-sort="1760170389764" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/monitor.html"> <img src="./posts/monitor_title.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/monitor.html">
-<h3 class="no-anchor listing-title">
-Findings from the AlgoSoc AI Opinion Monitor
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-How Confident are people in the Netherlands in their ability to detect AI?
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/monitor.html">
-<div class="listing-date">
-10.10.2025
-</div>
-<div class="listing-author">
-Ernesto de León
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1759968000000" data-listing-file-modified-sort="1760170398532" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
-<div class="thumbnail">
-<p><a href="./posts/nl.html"> <img src="./posts/CampaignTrackerFeaturesEnglish.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/nl.html">
-<h3 class="no-anchor listing-title">
-CampAIgn Tracker Expands to the Netherlands: Monitoring AI in the 2025 Dutch General Election
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-Following successful deployment during Germany’s 2025 federal election, the CampAIgn Tracker launches in the Netherlands to monitor AI-generated content across political…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/nl.html">
-<div class="listing-date">
-09.10.2025
-</div>
-<div class="listing-author">
-Simon Kruschinski
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1739923200000" data-listing-file-modified-sort="1759574341432" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/verantwortung.html"> <img src="./posts/aJ9S4GL.jpeg" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/verantwortung.html">
-<h3 class="no-anchor listing-title">
-Responsible Use of AI in Political Campaigns
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-Artificial intelligence is changing…<strong></strong>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/verantwortung.html">
-<div class="listing-date">
-19.02.2025
-</div>
-<div class="listing-author">
-Jakob Scherer
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1739750400000" data-listing-file-modified-sort="1759574269339" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/erkennung.html"> <img src="./posts/yPrk02y.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/erkennung.html">
-<h3 class="no-anchor listing-title">
-How to Recognize AI-Generated Images and Strengthen Your AI Literacy
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-The ability to recognize AI-generated images is essential to preventing disinformation and manipulation in…<strong></strong>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/erkennung.html">
-<div class="listing-date">
-17.02.2025
-</div>
-<div class="listing-author">
-Jakob Scherer
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1739577600000" data-listing-file-modified-sort="1759574313844" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
-<div class="thumbnail">
-<p><a href="./posts/llms.html"> <img src="./posts/XFCdE4j.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/llms.html">
-<h3 class="no-anchor listing-title">
-Artificial Intelligence in Politics: Opportunities, Risks, and Perception
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-A recent study by Dr.&nbsp;Simon Kruschinski, Dr.&nbsp;Pablo Jost, Tobias Scherer, and Hannah Fecher takes a detailed look, for the first time, at how the German…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/llms.html">
-<div class="listing-date">
-15.02.2025
-</div>
-<div class="listing-author">
-Jakob Scherer
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1739318400000" data-listing-file-modified-sort="1759574212131" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
-<div class="thumbnail">
-<p><a href="./posts/anfang.html"> <img src="./posts/Foto 2_Preisgeld.jpeg" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/anfang.html">
-<h3 class="no-anchor listing-title">
-How it all Began: The CampAIgn Tracker for more Transparency in AI Use
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-Saturday morning, 9:00 a.m. in gray Berlin: full of expectations and anticipation, we each arrive at the festively lit Baden-Württemberg State Representation.<br>
-We are <strong>Dr.&nbsp;Simon…</strong><strong></strong><strong></strong><strong></strong><strong></strong>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/anfang.html">
-<div class="listing-date">
-12.02.2025
-</div>
-<div class="listing-author">
-Theresa Schültken
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-Keine Treffer
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -473,12 +295,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Kopiert");
+    button.setAttribute("title", "Copied!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Kopiert");
+      button.setAttribute("data-bs-title", "Copied!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -680,4 +502,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
