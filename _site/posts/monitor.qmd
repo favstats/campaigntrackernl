@@ -119,7 +119,7 @@ And when it comes to accountability (Figure 4), most Dutch citizens point the fi
 
 Check out and follow the Dutch [AI Opinion Monitor](https://monitor.algosoc.org/en/) to play around with the data and get more in-depth insights yourself!
 
-*Written by Ernesto de León, Postdoctoral Researcher at University of Amsterdam (AlgoSoc Consortium)*
+*Written by [Ernesto de León](https://www.uva.nl/en/profile/l/e/e.e.de-leon-williams/e.e.de-leon-williams.html), Postdoctoral Researcher at the University of Amsterdam ([AlgoSoc Consortium](https://algosoc.org/))*
 
 ```{=html}
 </div>
