@@ -2,6 +2,9 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/media.html",
+      "/posts/chatbots.html",
+      "/posts/protests.html",
       "/posts/deepfakes.html",
       "/posts/groene.html",
       "/posts/monitor.html",

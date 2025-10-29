@@ -1,0 +1,158 @@
+---
+title: "In the Media"
+description-meta: "Recent coverage of CampAIgn Tracker findings across Dutch and international media"
+author: "Fabio Votta"
+date: "10.29.2025"
+image: "media.jpg"
+lang: en
+format:
+  html:
+    theme: lumen
+    toc: true
+    toc-title: "Contents"
+    toc-depth: 2
+    smooth-scroll: true
+---
+
+<!-- Custom CSS -->
+```{=html}
+<style>
+.blog-post-content {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.blog-post-content h1, .blog-post-content h2, .blog-post-content h3 {
+  color: #004080;
+  margin-bottom: 0.8em;
+  margin-top: 1.2em;
+}
+.blog-post-content h1 {
+  text-align: center;
+  font-size: 2.2em;
+  margin-bottom: 0.3em;
+}
+.blog-post-content h2 {
+  font-size: 1.6em;
+  border-bottom: 2px solid #004080;
+  padding-bottom: 0.3em;
+}
+.blog-post-content p {
+  margin: 1em 0;
+  text-align: justify;
+}
+.blog-post-content blockquote {
+  font-style: italic;
+  background: #f0f8ff;
+  padding: 15px 20px;
+  border-left: 4px solid #004080;
+  margin: 20px 0;
+  border-radius: 3px;
+}
+.blog-post-content .media-item {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.blog-post-content .media-item h3 {
+  margin-top: 0;
+  color: #004080;
+  border-bottom: none;
+}
+.blog-post-content .media-source {
+  font-weight: bold;
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 0.5em;
+}
+.blog-post-content .media-date {
+  color: #999;
+  font-size: 0.85em;
+  margin-bottom: 1em;
+}
+.blog-post-content a {
+  color: #004080;
+  text-decoration: none;
+  border-bottom: 1px solid #004080;
+}
+.blog-post-content a:hover {
+  color: #0066cc;
+  border-bottom-color: #0066cc;
+}
+</style>
+<div class="blog-post-content">
+```
+
+CampAIgn Tracker findings have been featured across Dutch and international media outlets during the 2025 election campaign. Our research documenting AI-generated political content has informed public debate about synthetic media's role in electoral politics. Here a few examples:
+
+## Recent Coverage
+
+```{=html}
+<div class="media-item">
+<div class="media-source">De Volkskrant</div>
+<div class="media-date">October 27, 2025</div>
+<h3>Two PVV MPs anonymously attack Timmermans with fake images, GroenLinks-PvdA files a complaint
+</h3>
+<p><a href="https://www.volkskrant.nl/politiek/twee-pvv-kamerleden-vallen-met-nepbeelden-anoniem-timmermans-aan-groenlinks-pvda-doet-aangifte~b6958ea1/" target="_blank">Read article →</a></p>
+</div>
+
+<div class="media-item">
+<div class="media-source">De Volkskrant</div>
+<div class="media-date">October 27, 2025</div>
+<h3>AI campaign on the rise, half of AI messages come from PVV</h3>
+<p><a href="https://www.volkskrant.nl/verkiezingen-tweede-kamer/ai-campagne-in-opkomst-de-helft-van-ai-berichten-komt-van-pvv~b460de2b/" target="_blank">Read article →</a></p>
+</div>
+
+
+<div class="media-item">
+<div class="media-source">Trouw</div>
+<div class="media-date">October 27, 2025</div>
+<h3>Almost every party used AI content during campaigns</h3>
+<p><a href="https://www.trouw.nl/binnenland/vrijwel-elke-partij-gebruikte-ai-content-tijdens-campagne~b3f24617/" target="_blank">Read article →</a></p>
+</div>
+
+<div class="media-item">
+<div class="media-source">Bloomberg</div>
+<div class="media-date">October 21, 2025</div>
+<h3>Dutch Far Right Gets Unexpected Boost From AI, Political Ad Ban</h3>
+<p><a href="https://www.bloomberg.com/news/articles/2025-10-21/facebook-s-political-ad-ban-boosts-dutch-far-right-leader-geert-wilders?embedded-checkout=true" target="_blank">Read article →</a></p>
+</div>
+
+<div class="media-item">
+<div class="media-source">De Groene Amsterdammer</div>
+<div class="media-date">October 11, 2025</div>
+<h3>"'Make her blonde, innocent and beautiful'"</h3>
+<p><a href="https://www.groene.nl/artikel/maak-haar-blond-onschuldig-en-knap" target="_blank">Read article →</a></p>
+</div>
+
+<div class="media-item">
+<div class="media-source">NU.nl</div>
+<div class="media-date">October 27, 2025</div>
+<h3>The far right embraces AI: 'Perfect for portraying threats'</h3>
+<p><a href="https://www.nu.nl/politiek/6373906/radicaal-rechts-omarmt-ai-perfect-om-dreiging-uit-te-beelden.html" target="_blank">Read article →</a></p>
+</div>
+
+<div class="media-item">
+<div class="media-source">NOS Journaal</div>
+<div class="media-date">October 27, 2025</div>
+<h3>20:00 Evening broadcast coverage</h3>
+<p><a href="https://npo.nl/start/serie/nos-journaal-20-00-uur/seizoen-65/nos-journaal_101551" target="_blank">Watch segment →</a></p>
+</div>
+```
+
+
+---
+
+**For press inquiries:** Contact the CampAIgn Tracker team
+
+> info@campaigntracker.de
+
+```{=html}
+</div>
+```
