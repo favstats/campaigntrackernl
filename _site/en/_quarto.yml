@@ -17,6 +17,8 @@ website:
       - href: info.qmd
         text: "{{< iconify ph info-light >}} Info"
     right:
+      - href: https://favstats.github.io/reclamer/
+        text: "{{< iconify emojione-monotone:money-bag >}} Spending Tracker"    
       - href: https://favstats.github.io/nl25/
         text: "{{< iconify material-symbols:target >}} Targeting Tracker"        
         id: targeting-tracker
