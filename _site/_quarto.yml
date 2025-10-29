@@ -25,10 +25,13 @@ website:
   page-footer:
     background: light # or dark
     left:
-      - text: "Copyright 2025, CampAIgn Tracker (Click for Imprint)"
+      - text: "Copyright 2025"
         href: https://favstats.github.io/campaigntrackernl/impressum.html
-      - text: "Data Privacy Declaration"
+      - text: "Data Privacy"
         href: https://favstats.github.io/campaigntrackernl/datenschutz.html
+    center: |
+      As featured in:
+      ![](/mediacov.png)
     right:
       - text: "RPA Grants (UvA) & SIDN Fonds"
         href: "https://aissr.uva.nl/content/news/2025/01/call-for-ai--politics-seed-grants.html"
