@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Ernesto de León, Fabio Votta, Theo Araujo, Claes de Vreese">
+<meta name="dcterms.date" content="2025-10-29">
+<meta name="description" content="Survey data reveals concerning trends in AI chatbot use for political decision-making">
+
+<title>&nbsp;&nbsp;Dashboard - 1 in 10 Dutch citizens are likely to ask AI for election advice. This is why they shouldn’t</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../RoundLogoSchriftzug_blue.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async="" src="https://plausible.io/js/pa-rqPvCO0myNv3ooL2Rc_5o.js"></script>
+<script>
+window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+plausible.init()
+</script>
+<script data-goatcounter="https://favstats.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../LogoSchriftzug.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">&nbsp;&nbsp;Dashboard</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text"><iconify-icon inline="" icon="ph:star-four-light" aria-label="Icon star-four-light from ph Iconify.design set." title="Icon star-four-light from ph Iconify.design set."></iconify-icon> AI Tracker</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://favstats.github.io/campaigntrackernl/explore" rel="" target="">
+ <span class="menu-text"><iconify-icon inline="" icon="ph:binoculars-light" aria-label="Icon binoculars-light from ph Iconify.design set." title="Icon binoculars-light from ph Iconify.design set."></iconify-icon> AI Explorer</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../blog.html" rel="" target="">
+ <span class="menu-text"><iconify-icon inline="" icon="ph:newspaper-light" aria-label="Icon newspaper-light from ph Iconify.design set." title="Icon newspaper-light from ph Iconify.design set."></iconify-icon> Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../info.html" rel="" target="">
+ <span class="menu-text"><iconify-icon inline="" icon="ph:info-light" aria-label="Icon info-light from ph Iconify.design set." title="Icon info-light from ph Iconify.design set."></iconify-icon> Info</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://favstats.github.io/nl25/" rel="" target="">
+ <span class="menu-text"><iconify-icon inline="" icon="material-symbols:target" aria-label="Icon target from material-symbols Iconify.design set." title="Icon target from material-symbols Iconify.design set."></iconify-icon> Targeting Tracker</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.campaigntracker.nl/en" rel="" target="">
+ <span class="menu-text">en <iconify-icon inline="" icon="emojione:flag-for-united-kingdom" aria-label="Icon flag-for-united-kingdom from emojione Iconify.design set." title="Icon flag-for-united-kingdom from emojione Iconify.design set."></iconify-icon></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#would-you-trust-an-ai-to-tell-you-who-to-vote-for" id="toc-would-you-trust-an-ai-to-tell-you-who-to-vote-for" class="nav-link active" data-scroll-target="#would-you-trust-an-ai-to-tell-you-who-to-vote-for">Would you trust an AI to tell you who to vote for?</a></li>
+  <li><a href="#why-you-shouldnt-ask-chatbots-for-advice" id="toc-why-you-shouldnt-ask-chatbots-for-advice" class="nav-link" data-scroll-target="#why-you-shouldnt-ask-chatbots-for-advice">Why you shouldn’t ask chatbots for advice</a></li>
+  <li><a href="#ai-chatbots-can-mislead-late-deciding-voters" id="toc-ai-chatbots-can-mislead-late-deciding-voters" class="nav-link" data-scroll-target="#ai-chatbots-can-mislead-late-deciding-voters">AI chatbots can mislead late-deciding voters</a></li>
+  <li><a href="#many-dutch-people-share-these-concerns" id="toc-many-dutch-people-share-these-concerns" class="nav-link" data-scroll-target="#many-dutch-people-share-these-concerns">Many Dutch people share these concerns</a></li>
+  <li><a href="#what-you-can-do-instead" id="toc-what-you-can-do-instead" class="nav-link" data-scroll-target="#what-you-can-do-instead">What you can do instead</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">1 in 10 Dutch citizens are likely to ask AI for election advice. This is why they shouldn’t</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ernesto de León, Fabio Votta, Theo Araujo, Claes de Vreese </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 29, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<!-- Custom CSS -->
+<style>
+.blog-post-content {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.blog-post-content h1, .blog-post-content h2, .blog-post-content h3 {
+  color: #004080;
+  margin-bottom: 0.8em;
+  margin-top: 1.2em;
+}
+.blog-post-content h1 {
+  text-align: center;
+  font-size: 2.2em;
+  margin-bottom: 0.3em;
+}
+.blog-post-content h2 {
+  font-size: 1.6em;
+  border-bottom: 2px solid #004080;
+  padding-bottom: 0.3em;
+}
+.blog-post-content p {
+  margin: 1em 0;
+  text-align: justify;
+}
+.blog-post-content img {
+  display: block;
+  margin: 25px auto;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.blog-post-content blockquote {
+  font-style: italic;
+  background: #f0f8ff;
+  padding: 15px 20px;
+  border-left: 4px solid #004080;
+  margin: 20px 0;
+  border-radius: 3px;
+}
+.blog-post-content .callout {
+  background-color: #e7f3fe;
+  padding: 20px;
+  border-left: 5px solid #2196F3;
+  margin: 25px 0;
+  border-radius: 5px;
+  font-size: 0.95em;
+}
+.blog-post-content .credit {
+  font-size: 0.85em;
+  color: #666;
+  text-align: center;
+  margin-top: -15px;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+.blog-post-content strong {
+  color: #004080;
+}
+.blog-post-content ul {
+  margin: 1em 0;
+  padding-left: 2em;
+}
+.blog-post-content li {
+  margin: 0.5em 0;
+}
+</style>
+<div class="blog-post-content">
+<section id="would-you-trust-an-ai-to-tell-you-who-to-vote-for" class="level2">
+<h2 class="anchored" data-anchor-id="would-you-trust-an-ai-to-tell-you-who-to-vote-for">Would you trust an AI to tell you who to vote for?</h2>
+<p>When over 1,000 Dutch citizens were asked how likely they were to ask ChatGPT or another AI tool for advice on political candidates, parties, or election issues, the results were worrying:</p>
+<ul>
+<li>77% said it’s unlikely they’d do so</li>
+<li>13% sat on the fence (a cautious “maybe”)</li>
+<li>But <strong>1 in 10 said they’re likely to ask AI for voting advice</strong></li>
+</ul>
+<p>If we extrapolate this to the general population, this means that roughly 1.8 million citizens nationwide could be asking an AI chatbot for advice. And given how people often underreport behaviors they think are “socially undesirable”, the real number could be even higher.</p>
+<p>This is what a survey fielded by the AlgoSoc Consortium (a collaboration of the University of Amsterdam, Utrecht University, TU Delft, Tilburg, Erasmus University Rotterdam) tells us. In the lead up to the elections, they asked 1,220 Dutch citizens how likely they were to ask ChatGPT or another AI chatbot tool for advice on political candidates, parties, or election issues.</p>
+<p>The data, drawn from the LISS Panel of Centerdata, revealed pronounced differences across age groups in the likelihood of using AI for advice. Among respondents who were likely to use AI, 42.5% were under 34 years old, compared to only 19.2% of those unlikely to use AI. Conversely, older age groups were more represented among those not likely to use AI: 52.9% were 55 or older, while this age group accounted for just 31% of likely users.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chatbots.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<center>
+<em>Figure shows how likely different age groups are to use AI for advice on candidates, parties, and election issues. We find that younger voters are more likely than older age groups to do so.</em>
+</center>
+</section>
+<section id="why-you-shouldnt-ask-chatbots-for-advice" class="level2">
+<h2 class="anchored" data-anchor-id="why-you-shouldnt-ask-chatbots-for-advice">Why you shouldn’t ask chatbots for advice</h2>
+<p>The Dutch Data Protection Authority (AP) recently <a href="https://www.autoriteitpersoonsgegevens.nl/actueel/ap-waarschuwt-chatbots-geven-vertekend-stemadvies">tested several chatbots against trusted tools like Kieskompas and StemWijzer</a>. The results were clear: these chatbots are not ready to guide voters.</p>
+<p>According to the AP’s October 2025 report: Chatbots “surprisingly often” give the same two parties, PVV or GroenLinks-PvdA, as the top match, regardless of what the user asks. In more than 56% of cases, one of these two came out on top. For one chatbot, that number was over 80%.</p>
+<p>Meanwhile, parties like D66, VVD, SP, or PvdD barely appeared, and others (BBB, CDA, SGP, DENK) were practically invisible, even when the voter’s positions matched theirs perfectly.</p>
+<p>In other words, AI is biased and gets it completely wrong:</p>
+<blockquote class="blockquote">
+<p>“Chatbots may seem like clever tools but as a voting aid, they consistently fail. Voters may unknowingly be steered toward parties that don’t align with their views. This threatens the integrity of free and fair elections.”</p>
+</blockquote>
+<ul>
+<li>AP vice-chair Monique Verdier</li>
+</ul>
+</section>
+<section id="ai-chatbots-can-mislead-late-deciding-voters" class="level2">
+<h2 class="anchored" data-anchor-id="ai-chatbots-can-mislead-late-deciding-voters">AI chatbots can mislead late-deciding voters</h2>
+<p>Unlike official voting aids, chatbots are not designed for politics. Chatbot answers are generated from messy, unverifiable data scraped from across the internet, including social media and outdated news.</p>
+<p>That means they can:</p>
+<ul>
+<li>Mix up facts or misrepresent party positions.</li>
+<li>Reflect biases baked into their training data.</li>
+<li>And present all this as if it’s objective truth.</li>
+</ul>
+<p>So while a chatbot might sound confident, it’s not necessarily correct.</p>
+<p>This is worrying because voters often look for voting advice late in the campaign, when attention is high but time to reflect is short. <a href="https://www.tandfonline.com/doi/full/10.1080/19331681.2014.958794?casa_token=WoYcR9tcC7EAAAAA%3AfK3r4Rlt4yHMTZRKaPFFVho92F21RO1dx53FFBGqs1ATir_xdg-maXzWZGtU8aTdzHeRx-cC-3cr">Research shows</a> that many people turn to tools like StemWijzer or Kieskompas just days before an election (Van de Pol et al 2014). It’s reasonable to expect the same pattern for AI chatbots, except these tools aren’t designed, tested, or transparent enough to handle that responsibility.</p>
+<p>So, if you’re on your way to the polls tomorrow… maybe don’t stop to ask ChatGPT, “Who should I vote for?”</p>
+</section>
+<section id="many-dutch-people-share-these-concerns" class="level2">
+<h2 class="anchored" data-anchor-id="many-dutch-people-share-these-concerns">Many Dutch people share these concerns</h2>
+<p>It’s not just experts raising the alarm: the public is also concerned too. In our survey, nearly seven in ten (69.2%) Dutch citizens said they are worried about others receiving incorrect political information from AI tools.</p>
+<p>This shows that most people understand the risks: chatbots might sound smart, but they’re not neutral, and their influence can quietly distort how voters see the political landscape.</p>
+</section>
+<section id="what-you-can-do-instead" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-can-do-instead">What you can do instead</h2>
+<p>If you’re curious about which party aligns with your views, skip the chatbot detour and use verified, transparent sources:</p>
+<p>🗳️ <strong>StemWijzer or Kieskompas</strong>: independent, evidence-based, and audited tools.</p>
+<p>📰 <strong>Reputable journalistic sources</strong> that check their facts.</p>
+<p>🗣️ <strong>Or go straight to the original sources</strong>: party manifestos and official websites.</p>
+</section></div>
+
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://favstats.github.io/campaigntrackernl/impressum.html">Copyright 2025, CampAIgn Tracker (Click for Imprint)</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://favstats.github.io/campaigntrackernl/datenschutz.html">Data Privacy Declaration</a>
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://aissr.uva.nl/content/news/2025/01/call-for-ai--politics-seed-grants.html">RPA Grants (UvA) &amp; SIDN Fonds</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
